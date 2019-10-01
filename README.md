@@ -11,7 +11,7 @@
 
 </br>
 <h2>프레임워크 아키텍처</h2>
-![EXFW](https://user-images.githubusercontent.com/54433335/65942990-7230a380-e469-11e9-838d-af934a7327f6.png)
+<img src="https://user-images.githubusercontent.com/54433335/65942990-7230a380-e469-11e9-838d-af934a7327f6.png" )
 </br>
 
 
