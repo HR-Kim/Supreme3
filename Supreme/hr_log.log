@@ -1,0 +1,490 @@
+[2019-10-01 16:59:25.829] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 16:59:25.841] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 16:59:25.960] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 16:59:26.598] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 16:59:26.646] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 16:59:26 KST 2019]; root of context hierarchy
+[2019-10-01 16:59:26.768] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 16:59:26.993] WARN  AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tilesConfigurer' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No URL for ServletContext resource [/WEB-INF/views/tiles/tiles.xml]
+[2019-10-01 16:59:26.995] ERROR TestContextManager.prepareTestInstance(TestContextManager.java:234) - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf] to prepare test instance [kr.co.supreme.user.DaoFileTest@24ba9639]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:189)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:131)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tilesConfigurer' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No URL for ServletContext resource [/WEB-INF/views/tiles/tiles.xml]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.test.context.web.AbstractGenericWebContextLoader.loadContext(AbstractGenericWebContextLoader.java:134)
+	at org.springframework.test.context.web.AbstractGenericWebContextLoader.loadContext(AbstractGenericWebContextLoader.java:61)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: java.lang.IllegalArgumentException: No URL for ServletContext resource [/WEB-INF/views/tiles/tiles.xml]
+	at org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext.getResources(SpringWildcardServletTilesApplicationContext.java:96)
+	at org.springframework.web.servlet.view.tiles3.TilesConfigurer$SpringTilesContainerFactory.getSources(TilesConfigurer.java:305)
+	at org.apache.tiles.factory.BasicTilesContainerFactory.createLocaleDefinitionDao(BasicTilesContainerFactory.java:182)
+	at org.apache.tiles.factory.BasicTilesContainerFactory.createDefinitionsFactory(BasicTilesContainerFactory.java:137)
+	at org.springframework.web.servlet.view.tiles3.TilesConfigurer$SpringTilesContainerFactory.createDefinitionsFactory(TilesConfigurer.java:353)
+	at org.apache.tiles.factory.BasicTilesContainerFactory.createContainer(BasicTilesContainerFactory.java:86)
+	at org.apache.tiles.startup.AbstractTilesInitializer.createContainer(AbstractTilesInitializer.java:114)
+	at org.apache.tiles.startup.AbstractTilesInitializer.initialize(AbstractTilesInitializer.java:64)
+	at org.springframework.web.servlet.view.tiles3.TilesConfigurer.afterPropertiesSet(TilesConfigurer.java:271)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624)
+	... 40 more
+Caused by: java.io.FileNotFoundException: ServletContext resource [/WEB-INF/views/tiles/tiles.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.web.context.support.ServletContextResource.getURL(ServletContextResource.java:156)
+	at org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext.getResources(SpringWildcardServletTilesApplicationContext.java:91)
+	... 50 more
+[2019-10-01 17:02:22.944] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:02:22.956] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:02:23.023] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:02:23.639] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:02:23.700] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:02:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:02:23.831] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:02:24.039] WARN  AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tilesConfigurer' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No URL for ServletContext resource [/WEB-INF/views/tiles/tiles.xml]
+[2019-10-01 17:02:24.040] ERROR TestContextManager.prepareTestInstance(TestContextManager.java:234) - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf] to prepare test instance [kr.co.supreme.user.DaoUserTest@24ba9639]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:189)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:131)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tilesConfigurer' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No URL for ServletContext resource [/WEB-INF/views/tiles/tiles.xml]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.test.context.web.AbstractGenericWebContextLoader.loadContext(AbstractGenericWebContextLoader.java:134)
+	at org.springframework.test.context.web.AbstractGenericWebContextLoader.loadContext(AbstractGenericWebContextLoader.java:61)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: java.lang.IllegalArgumentException: No URL for ServletContext resource [/WEB-INF/views/tiles/tiles.xml]
+	at org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext.getResources(SpringWildcardServletTilesApplicationContext.java:96)
+	at org.springframework.web.servlet.view.tiles3.TilesConfigurer$SpringTilesContainerFactory.getSources(TilesConfigurer.java:305)
+	at org.apache.tiles.factory.BasicTilesContainerFactory.createLocaleDefinitionDao(BasicTilesContainerFactory.java:182)
+	at org.apache.tiles.factory.BasicTilesContainerFactory.createDefinitionsFactory(BasicTilesContainerFactory.java:137)
+	at org.springframework.web.servlet.view.tiles3.TilesConfigurer$SpringTilesContainerFactory.createDefinitionsFactory(TilesConfigurer.java:353)
+	at org.apache.tiles.factory.BasicTilesContainerFactory.createContainer(BasicTilesContainerFactory.java:86)
+	at org.apache.tiles.startup.AbstractTilesInitializer.createContainer(AbstractTilesInitializer.java:114)
+	at org.apache.tiles.startup.AbstractTilesInitializer.initialize(AbstractTilesInitializer.java:64)
+	at org.springframework.web.servlet.view.tiles3.TilesConfigurer.afterPropertiesSet(TilesConfigurer.java:271)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624)
+	... 40 more
+Caused by: java.io.FileNotFoundException: ServletContext resource [/WEB-INF/views/tiles/tiles.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.web.context.support.ServletContextResource.getURL(ServletContextResource.java:156)
+	at org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext.getResources(SpringWildcardServletTilesApplicationContext.java:91)
+	... 50 more
+[2019-10-01 17:02:53.849] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:02:53.860] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:02:53.926] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:02:54.608] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:02:54.753] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:02:54 KST 2019]; root of context hierarchy
+[2019-10-01 17:02:54.869] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:02:55.150] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:02:55.151] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:02:55.229] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:02:54 KST 2019]; root of context hierarchy
+[2019-10-01 17:02:55.259] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:02:54 KST 2019]; root of context hierarchy
+[2019-10-01 17:02:55.304] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:02:55.333] WARN  AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionTemplate' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]: Cannot resolve reference to bean 'sqlSessionFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'org.springframework.core.io.Resource[]' for property 'mapperLocations'; nested exception is java.lang.IllegalArgumentException: Could not resolve resource location pattern [classpath:mappers/**/*.xml]: class path resource [mappers/] cannot be resolved to URL because it does not exist
+[2019-10-01 17:02:55.335] ERROR TestContextManager.prepareTestInstance(TestContextManager.java:234) - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf] to prepare test instance [kr.co.supreme.user.DaoUserTest@60dce7ea]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:189)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:131)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionTemplate' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]: Cannot resolve reference to bean 'sqlSessionFactory' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'org.springframework.core.io.Resource[]' for property 'mapperLocations'; nested exception is java.lang.IllegalArgumentException: Could not resolve resource location pattern [classpath:mappers/**/*.xml]: class path resource [mappers/] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:359)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:108)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:634)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:145)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1193)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1095)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.test.context.web.AbstractGenericWebContextLoader.loadContext(AbstractGenericWebContextLoader.java:134)
+	at org.springframework.test.context.web.AbstractGenericWebContextLoader.loadContext(AbstractGenericWebContextLoader.java:61)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'org.springframework.core.io.Resource[]' for property 'mapperLocations'; nested exception is java.lang.IllegalArgumentException: Could not resolve resource location pattern [classpath:mappers/**/*.xml]: class path resource [mappers/] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:351)
+	... 45 more
+Caused by: org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'org.springframework.core.io.Resource[]' for property 'mapperLocations'; nested exception is java.lang.IllegalArgumentException: Could not resolve resource location pattern [classpath:mappers/**/*.xml]: class path resource [mappers/] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertIfNecessary(AbstractNestablePropertyAccessor.java:610)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertForProperty(AbstractNestablePropertyAccessor.java:617)
+	at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:216)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.convertForProperty(AbstractAutowireCapableBeanFactory.java:1577)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1536)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1276)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	... 51 more
+Caused by: java.lang.IllegalArgumentException: Could not resolve resource location pattern [classpath:mappers/**/*.xml]: class path resource [mappers/] cannot be resolved to URL because it does not exist
+	at org.springframework.core.io.support.ResourceArrayPropertyEditor.setAsText(ResourceArrayPropertyEditor.java:116)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:468)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:441)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:199)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertIfNecessary(AbstractNestablePropertyAccessor.java:590)
+	... 57 more
+[2019-10-01 17:04:41.895] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:04:41.907] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:04:41.973] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:04:42.570] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:04:42.616] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:04:42 KST 2019]; root of context hierarchy
+[2019-10-01 17:04:42.732] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:04:43.013] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:04:43.014] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:04:43.092] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:04:42 KST 2019]; root of context hierarchy
+[2019-10-01 17:04:43.124] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:04:42 KST 2019]; root of context hierarchy
+[2019-10-01 17:04:43.171] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:04:43.451] ERROR TestContextManager.prepareTestInstance(TestContextManager.java:234) - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19] to prepare test instance [kr.co.supreme.user.DaoUserTest@70e29e14]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'kr.co.supreme.user.DaoUserTest': Unsatisfied dependency expressed through field 'daoImpl'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'kr.co.supreme.user.service.impl.UserDaoImpl' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:386)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'kr.co.supreme.user.service.impl.UserDaoImpl' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1493)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585)
+	... 28 more
+[2019-10-01 17:04:43.457] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:04:42 KST 2019]; root of context hierarchy
+[2019-10-01 17:08:22.737] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:08:22.748] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:08:22.814] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:08:23.384] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:08:23.433] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:08:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:08:23.548] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:08:23.827] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:08:23.828] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:08:23.905] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:08:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:08:23.933] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:08:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:08:23.977] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:08:24.250] ERROR TestContextManager.prepareTestInstance(TestContextManager.java:234) - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19] to prepare test instance [kr.co.supreme.user.DaoUserTest@70e29e14]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'kr.co.supreme.user.DaoUserTest': Unsatisfied dependency expressed through field 'daoImpl'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'kr.co.supreme.user.service.impl.UserDaoImpl' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:386)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'kr.co.supreme.user.service.impl.UserDaoImpl' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1493)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585)
+	... 28 more
+[2019-10-01 17:08:24.256] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:08:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:09:46.150] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:09:46.161] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:09:46.228] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:09:46.844] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:09:46.893] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:09:46 KST 2019]; root of context hierarchy
+[2019-10-01 17:09:47.015] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:09:47.298] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:09:47.299] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:09:47.379] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:09:46 KST 2019]; root of context hierarchy
+[2019-10-01 17:09:47.408] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:09:46 KST 2019]; root of context hierarchy
+[2019-10-01 17:09:47.452] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:09:47.737] DEBUG DaoUserTest.getBean(DaoUserTest.java:74) - ====================
+[2019-10-01 17:09:47.737] DEBUG DaoUserTest.getBean(DaoUserTest.java:75) - =context=org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:09:46 KST 2019]; root of context hierarchy
+[2019-10-01 17:09:47.738] DEBUG DaoUserTest.getBean(DaoUserTest.java:76) - =boardDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@66238be2
+[2019-10-01 17:09:47.738] DEBUG DaoUserTest.getBean(DaoUserTest.java:77) - ====================
+[2019-10-01 17:09:47.743] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:09:46 KST 2019]; root of context hierarchy
+[2019-10-01 17:10:32.513] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:10:32.524] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:10:32.590] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:10:33.166] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:10:33.212] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:10:33 KST 2019]; root of context hierarchy
+[2019-10-01 17:10:33.331] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:10:33.609] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:10:33.610] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:10:33.690] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:10:33 KST 2019]; root of context hierarchy
+[2019-10-01 17:10:33.720] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:10:33 KST 2019]; root of context hierarchy
+[2019-10-01 17:10:33.769] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:10:34.059] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:55) - =========================
+[2019-10-01 17:10:34.059] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:56) - 1. param:User [id=test01, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-01 17:10:34.059] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:57) - =========================
+[2019-10-01 17:10:34.060] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:59) - =========================
+[2019-10-01 17:10:34.060] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:60) - 2. statement:kr.co.supreme.user.do_save
+[2019-10-01 17:10:34.060] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:61) - =========================
+[2019-10-01 17:10:34.269] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-01 17:10:34.270] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-01 17:10:34.270] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-01 17:10:34.273] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, image, reg_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE ) 
+[2019-10-01 17:10:34.340] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-01 17:10:34.340] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    SYSDATE
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@20d11153
+[2019-10-01 17:10:34.348] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "test01") returned 
+[2019-10-01 17:10:34.348] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(2, "test") returned 
+[2019-10-01 17:10:34.349] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(3, "test") returned 
+[2019-10-01 17:10:34.349] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(4, "1") returned 
+[2019-10-01 17:10:34.349] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(5, "test") returned 
+[2019-10-01 17:10:34.349] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(6, "test") returned 
+[2019-10-01 17:10:34.349] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(7, "11111") returned 
+[2019-10-01 17:10:34.350] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(8, "test") returned 
+[2019-10-01 17:10:34.350] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(9, "test") returned 
+[2019-10-01 17:10:34.350] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(10, "test") returned 
+[2019-10-01 17:10:34.350] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(11, "test") returned 
+[2019-10-01 17:10:34.351] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test01(String), test(String), test(String), 1(String), test(String), test(String), 11111(String), test(String), test(String), test(String), test(String)
+[2019-10-01 17:10:34.351] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    'test01',
+		    'test',
+		    'test',
+		    '1',
+		    'test',
+		    'test',
+		    '11111',
+		    'test',
+		    'test',
+		    'test',
+		    'test',
+		    SYSDATE
+		)
+[2019-10-01 17:10:34.385] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, 
+image, reg_dt ) VALUES ( 'test01', 'test', 'test', '1', 'test', 'test', '11111', 'test', 'test', 
+'test', 'test', SYSDATE )  {executed in 34 msec}
+[2019-10-01 17:10:34.385] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned false
+[2019-10-01 17:10:34.386] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getUpdateCount() returned 1
+[2019-10-01 17:10:34.386] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-01 17:10:34.386] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-01 17:10:34.387] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-01 17:10:34.387] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-01 17:10:34.387] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-01 17:10:34.388] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:64) - =========================
+[2019-10-01 17:10:34.388] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:65) - 3. flag:1
+[2019-10-01 17:10:34.388] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:66) - =========================
+[2019-10-01 17:10:34.390] DEBUG DaoUserTest.getBean(DaoUserTest.java:77) - ====================
+[2019-10-01 17:10:34.390] DEBUG DaoUserTest.getBean(DaoUserTest.java:78) - =context=org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:10:33 KST 2019]; root of context hierarchy
+[2019-10-01 17:10:34.390] DEBUG DaoUserTest.getBean(DaoUserTest.java:79) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@2f4919b0
+[2019-10-01 17:10:34.390] DEBUG DaoUserTest.getBean(DaoUserTest.java:80) - ====================
+[2019-10-01 17:10:34.394] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:10:33 KST 2019]; root of context hierarchy
+[2019-10-01 17:11:00.731] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:11:00.743] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:11:00.807] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:11:01.375] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:11:01.424] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:11:01 KST 2019]; root of context hierarchy
+[2019-10-01 17:11:01.545] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:11:01.828] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:11:01.829] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:11:01.909] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:11:01 KST 2019]; root of context hierarchy
+[2019-10-01 17:11:01.939] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:11:01 KST 2019]; root of context hierarchy
+[2019-10-01 17:11:01.984] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:11:02.282] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:35) - =========================
+[2019-10-01 17:11:02.282] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:36) - 1. param:User [id=test01, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-01 17:11:02.282] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:37) - =========================
+[2019-10-01 17:11:02.282] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:39) - =========================
+[2019-10-01 17:11:02.283] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:40) - 2. statement:kr.co.supreme.user.do_delete
+[2019-10-01 17:11:02.283] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:41) - =========================
+[2019-10-01 17:11:02.485] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-01 17:11:02.486] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-01 17:11:02.486] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-01 17:11:02.489] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: DELETE FROM "USER" WHERE id = ? 
+[2019-10-01 17:11:02.552] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-01 17:11:02.552] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(DELETE FROM "USER" WHERE id = ?) returned net.sf.log4jdbc.PreparedStatementSpy@7882c44a
+[2019-10-01 17:11:02.560] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "test01") returned 
+[2019-10-01 17:11:02.560] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test01(String)
+[2019-10-01 17:11:02.561] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : DELETE FROM "USER" WHERE id = 'test01'
+[2019-10-01 17:11:02.594] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - DELETE FROM "USER" WHERE id = 'test01'  {executed in 33 msec}
+[2019-10-01 17:11:02.594] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned false
+[2019-10-01 17:11:02.596] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getUpdateCount() returned 1
+[2019-10-01 17:11:02.596] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-01 17:11:02.596] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-01 17:11:02.597] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-01 17:11:02.597] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-01 17:11:02.597] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-01 17:11:02.598] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:44) - =========================
+[2019-10-01 17:11:02.598] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:45) - 3. flag:1
+[2019-10-01 17:11:02.598] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:46) - =========================
+[2019-10-01 17:11:02.601] DEBUG DaoUserTest.getBean(DaoUserTest.java:77) - ====================
+[2019-10-01 17:11:02.601] DEBUG DaoUserTest.getBean(DaoUserTest.java:78) - =context=org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:11:01 KST 2019]; root of context hierarchy
+[2019-10-01 17:11:02.601] DEBUG DaoUserTest.getBean(DaoUserTest.java:79) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@58faa93b
+[2019-10-01 17:11:02.601] DEBUG DaoUserTest.getBean(DaoUserTest.java:80) - ====================
+[2019-10-01 17:11:02.605] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:11:01 KST 2019]; root of context hierarchy

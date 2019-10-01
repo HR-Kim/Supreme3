@@ -6,11 +6,13 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import kr.co.supreme.cmn.DTO;
 import kr.co.supreme.cmn.WorkDiv;
 import kr.co.supreme.user.service.User;
 
+@Repository
 public class UserDaoImpl implements WorkDiv {
 	Logger LOG=LoggerFactory.getLogger(this.getClass());
 	
