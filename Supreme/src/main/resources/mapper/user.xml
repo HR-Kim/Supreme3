@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.supreme.user">
+	<!-- 
+		do_update:수정
+		do_delete:삭제
+		do_save: 등록
+		get_selectOne: 단건조회
+		get_retrieve: 목록조회
+	 -->
+	 
+	 
+<!-- 	<sql id="userColumns">
+		    u_id,                                
+		    name,                                
+		    passwd,                              
+		    DECODE(h_level,1,'BASIC',2,'SILVER',3,'GOLD') h_level,                             
+		    login,                               
+		    recommend,                           
+		    email,                               
+		    TO_CHAR(reg_dt, 'yyyy/mm/dd') reg_dt
+	</sql>
+ -->	 
+	<!-- 단건조회 -->
+<!-- 	<select id="get_selectOne" parameterType="User" resultType="User">
+		SELECT										
+		    <include refid="userColumns"/>                  
+		FROM                                     
+		    users                                
+		WHERE u_id = #{u_id,jdbcType=VARCHAR}
+	</select> 
+ -->	 
+	<!-- 삭제 -->
+	<delete id="do_delete" parameterType="User">
+		DELETE FROM "USER" WHERE id = #{id,jdbcType=VARCHAR}
+	</delete>
+	
+	<!-- 등록 -->
+	<insert id="do_save" parameterType="User">
+		INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    #{id,jdbcType=VARCHAR},
+		    #{pass,jdbcType=VARCHAR},
+		    #{name,jdbcType=VARCHAR},
+		    #{lvl,jdbcType=VARCHAR},
+		    #{nickname,jdbcType=VARCHAR},
+		    #{email,jdbcType=VARCHAR},
+		    #{postcode,jdbcType=VARCHAR},
+		    #{address1,jdbcType=VARCHAR},
+		    #{address2,jdbcType=VARCHAR},
+		    #{tel,jdbcType=VARCHAR},
+		    #{image,jdbcType=VARCHAR},
+		    SYSDATE
+		) 
+	</insert>
+</mapper>  
