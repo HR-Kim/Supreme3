@@ -7,11 +7,11 @@
 김민석 김영규 박지윤 여윤구 윤준
 </br>
 <h2>WBS</h2>
-![SupremeWBS](https://user-images.githubusercontent.com/54433335/65942234-d18db400-e467-11e9-8d26-a8fd0da64157.png)
+![SupremeWBS](https://user-images.githubusercontent.com/54433335/65943025-7eb4fc00-e469-11e9-8ee4-281718182b24.png)
 
 </br>
 <h2>프레임워크 아키텍처</h2>
-![EXFW](https://user-images.githubusercontent.com/54433335/65942233-d0f51d80-e467-11e9-89ee-0a83544d4c8b.png)
+![EXFW](https://user-images.githubusercontent.com/54433335/65942990-7230a380-e469-11e9-838d-af934a7327f6.png)
 </br>
 
 
