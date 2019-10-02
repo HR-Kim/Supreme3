@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.supreme.comments">
+	<sql id="commentsColumns">
+	    c_seq as cSeq,
+		bod_seq as bodSeq,
+	    id as id,
+	    content ,
+		TO_CHAR(REG_DT, 'yyyy/mm/dd HH24:MI:SS') as regDt,
+		udt_user as udtUser,
+		TO_CHAR(udt_dt, 'yyyy/mm/dd HH24:MI:SS') as udtDt
+	</sql>
+	
+	<sql id="baseCondition">
+			<choose>
+				<when test="'10' == searchDiv">
+					and bod_seq LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'20' == searchDiv">
+					and content LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'30' == searchDiv">
+					and id LIKE '%' || #{searchWord} || '%'
+				</when>
+				<otherwise></otherwise>							
+			</choose>
+	</sql>
+
+	<!-- get_IdList -->
+	<select id="get_IdList" parameterType="Search" resultType="Comments">
+		SELECT
+		    <include refid="commentsColumns" />
+		FROM Comments
+		WHERE id LIKE '%' || #{searchWord} || '%'
+	</select>
+	
+	
+	<!-- 목록조회 -->
+	<select id="get_retrieve" parameterType="Search" resultType="Comments">
+	  SELECT T1.*,T2.*													
+	  FROM                                                              
+	  (                                                           
+	  	SELECT                                                         
+		    B.c_seq as cSeq,
+		    B.BOD_SEQ as bodSeq,
+		    B.ID   as id,  
+		    B.content as content,
+	  		CASE TO_CHAR(B.reg_dt, 'yyyy/mm/dd') when TO_CHAR(sysdate, 'yyyy/mm/dd') THEN TO_CHAR(sysdate, 'HH24:MI')
+	  		ELSE TO_CHAR(B.reg_dt, 'yyyy/mm/dd') END AS regDt,
+            B.udt_user as udtUser,
+	  		CASE TO_CHAR(B.udt_dt, 'yyyy/mm/dd') when TO_CHAR(sysdate, 'yyyy/mm/dd') THEN TO_CHAR(sysdate, 'HH24:MI')
+	  		ELSE TO_CHAR(B.udt_dt, 'yyyy/mm/dd') END AS udtDt,
+	  		B.rnum  as num                       
+	  	FROM                                                           
+	  	( 	SELECT ROWNUM AS rnum, A.*                                 
+	  		FROM                                                       
+	  		(                                                           
+	  			SELECT  *                                              
+	  			FROM   Comments   
+	  			WHERE  1=1                          
+	  			AND reg_dt <![CDATA[ >  ]]> to_date('19700101','yyyymmdd')
+	  			<include refid="baseCondition"/>                                                                      
+	  		)A                                                         
+	  	   WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})    						       
+	  	) B                                                            
+	  	WHERE B.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)                  				   
+	  )T1
+	  NATURAL JOIN                                                      
+	  (                                                                 
+	      SELECT COUNT(*) totalCnt                                     
+	      FROM Comments       
+	      WHERE  1=1                                                
+	  	  <include refid="baseCondition"/>        		                               
+	  )T2  
+	</select>
+
+	<!-- ReadCount증가 -->
+	<update id="do_updateReadCnt" parameterType="Comments">
+		UPDATE Comments
+		SET  READ_CNT = (SELECT NVL(MAX(READ_CNT),0)+1 FROM BOARD WHERE ID = #{id,jdbcType=VARCHAR})
+		WHERE ID = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	
+	<!-- 수정 -->
+	<update id="do_update" parameterType="Comments">
+		UPDATE Comments
+		SET
+		    c_seq = #{cSeq,jdbcType=NUMERIC}
+		    ,bod_seq = #{bodSeq,jdbcType=NUMERIC}
+		    ,content = #{content,jdbcType=VARCHAR}
+		    ,id = #{id,jdbcType=VARCHAR}
+		    ,reg_dt = SYSDATE
+		    ,udt_user = #{udtUser,jdbcType=VARCHAR}
+		    ,udt_dt = SYSDATE
+		WHERE c_seq= #{cSeq}
+	</update>
+
+
+	<!-- 단건조회 -->
+	<select id="get_selectOne" parameterType="Comments"
+		resultType="Comments">
+		SELECT
+		<include refid="commentsColumns" />
+		FROM Comments
+		WHERE ID = #{id,jdbcType=VARCHAR}
+	</select>
+
+
+	<!-- 등록 -->
+	<insert id="do_save" parameterType="Comments">
+		 INSERT INTO Comments ( 				
+		     C_SEQ,          				
+		     BOD_SEQ,        						
+		     ID,    
+             content, 
+		     REG_DT,         				
+		     UDT_USER,       				
+		     UDT_DT           				         				
+		 ) VALUES (          				
+		     #{cSeq,jdbcType=NUMERIC},              	    
+		     #{bodSeq,jdbcType=NUMERIC},   
+		     #{id,jdbcType=VARCHAR},   	
+		     #{content,jdbcType=VARCHAR},        				
+		     SYSDATE,         				
+		     #{udtUser,jdbcType=VARCHAR},               				
+		     SYSDATE         				            		
+		 )
+	</insert>
+
+	<!-- 삭제 -->
+	<delete id="do_delete"
+		parameterType="Comments">
+		<![CDATA[
+			DELETE FROM Comments WHERE bod_Seq = #{bodSeq}
+		]]>
+	</delete>
+	
+	
+</mapper>

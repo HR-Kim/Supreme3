@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.supreme.board">
+	<sql id="boardColumns">
+	    b_seq as bSeq,
+	    b_title as bTitle,
+	    b_contents as bContents,
+	    read_cnt as readCnt,
+	    id   as Id,
+		TO_CHAR(REG_DT, 'yyyy/mm/dd HH24:MI:SS') as regDt,
+		udt_user as udtUser,
+		TO_CHAR(udt_dt, 'yyyy/mm/dd HH24:MI:SS') as udtDt,
+		b_code as bCode,         				
+     	p_code as pCode
+	</sql>
+	
+	<sql id="baseCondition">
+			<choose>
+				<when test="'10' == searchDiv">
+					and B_TITLE LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'20' == searchDiv">
+					and B_CONTENTS LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'30' == searchDiv">
+					and ID LIKE '%' || #{searchWord} || '%'
+				</when>
+				<otherwise></otherwise>							
+			</choose>
+	</sql>
+
+	<!-- get_IdList -->
+	<select id="get_IdList" parameterType="Search" resultType="Board">
+		SELECT
+		    <include refid="boardColumns" />
+		FROM
+		    BOARD
+		WHERE B_TITLE LIKE '%' || #{searchWord} || '%'
+		ORDER BY b_TITLE ASC
+	</select>
+	
+	
+	<!-- 목록조회 -->
+	<select id="get_retrieve" parameterType="Search" resultType="Board">
+	  SELECT T1.*,T2.*													
+	  FROM                                                              
+	  (                                                           
+	  	SELECT                                                         
+		    B.B_SEQ as bSeq,
+		    B.B_TITLE as bTitle,
+		    B.READ_CNT as readCnt,
+		    B.B_CONTENTS as bContents ,
+		    B.ID   as Id,  
+            B.READ_CNT as readCnt,
+	  		CASE TO_CHAR(B.reg_dt, 'yyyy/mm/dd') when TO_CHAR(sysdate, 'yyyy/mm/dd') THEN TO_CHAR(sysdate, 'HH24:MI')
+	  		ELSE TO_CHAR(B.reg_dt, 'yyyy/mm/dd') END AS regDt,
+            B.udt_user as udtUser,
+	  		CASE TO_CHAR(B.udt_dt, 'yyyy/mm/dd') when TO_CHAR(sysdate, 'yyyy/mm/dd') THEN TO_CHAR(sysdate, 'HH24:MI')
+	  		ELSE TO_CHAR(B.udt_dt, 'yyyy/mm/dd') END AS udtDt,
+            B.B_CODE as bCode,
+            B.P_CODE as pCode,
+	  		B.rnum  as num                       
+	  	FROM                                                           
+	  	( 	SELECT ROWNUM AS rnum, A.*                                 
+	  		FROM                                                       
+	  		(                                                           
+	  			SELECT  *                                              
+	  			FROM   board    
+	  			WHERE  1=1                          
+	  			AND reg_dt <![CDATA[ >  ]]> to_date('19700101','yyyymmdd')
+	  			<include refid="baseCondition"/>                                        
+	  			ORDER BY reg_dt DESC                                   
+	  		)A                                                         
+	  	   WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})    						       
+	  	) B                                                            
+	  	WHERE B.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)                  				   
+	  )T1
+	  NATURAL JOIN                                                      
+	  (                                                                 
+	      SELECT COUNT(*) totalCnt                                     
+	      FROM board       
+	      WHERE  1=1                                                
+	  	  <include refid="baseCondition"/>        		                               
+	  )T2  
+	</select>
+
+	<!-- ReadCount증가 -->
+	<update id="do_updateReadCnt" parameterType="Board">
+		UPDATE BOARD
+		SET  READ_CNT = (SELECT NVL(MAX(READ_CNT),0)+1 FROM BOARD WHERE ID = #{Id,jdbcType=VARCHAR})
+		WHERE ID = #{Id,jdbcType=VARCHAR}
+	</update>
+	
+	
+	<!-- 수정 -->
+	<update id="do_update" parameterType="Board">
+		UPDATE board
+		SET
+		    b_seq = #{bSeq}
+		    ,b_title = #{bTitle,jdbcType=VARCHAR}
+		    , b_contents = #{bContents,jdbcType=VARCHAR}
+		    , id = #{Id,jdbcType=VARCHAR}
+		    , read_cnt = 0
+		    , reg_dt = SYSDATE
+		    , udt_user = #{udtUser,jdbcType=VARCHAR}
+		    , udt_dt = SYSDATE
+		    , b_code = #{bCode}
+		    , p_code = #{pCode}
+		WHERE b_seq= #{bSeq}
+	</update>
+
+
+	<!-- 단건조회 -->
+	<select id="get_selectOne" parameterType="Board"
+		resultType="Board">
+		SELECT
+		<include refid="boardColumns" />
+		FROM BOARD
+		WHERE ID = #{Id,jdbcType=VARCHAR}
+	</select>
+
+
+	<!-- 등록 -->
+	<insert id="do_save" parameterType="Board">
+		 INSERT INTO board ( 				
+		     b_seq,          				
+		     b_title,        				
+		     b_contents,     				
+		     id,             				
+		     read_cnt,       				
+		     reg_dt,         				
+		     udt_user,       				
+		     udt_dt,         				
+		     b_code,         				
+		     p_code          				
+		 ) VALUES (          				
+		     #{bSeq,jdbcType=NUMERIC},              	    
+		     #{bTitle,jdbcType=VARCHAR},    	
+		     #{bContents,jdbcType=VARCHAR},  
+		     #{Id,jdbcType=VARCHAR},        
+		     #{readCnt},               				
+		     SYSDATE,         				
+		     #{udtUser,jdbcType=VARCHAR},               				
+		     SYSDATE,         				
+		     #{bCode},               		
+		     #{pCode}              		
+		 )
+	</insert>
+
+	<!-- 삭제 -->
+	<delete id="do_delete"
+		parameterType="Board">
+		<![CDATA[
+			DELETE FROM BOARD WHERE b_seq = #{bSeq}
+		]]>
+	</delete>
+	
+	
+</mapper>
