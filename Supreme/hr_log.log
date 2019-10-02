@@ -488,3 +488,569 @@ image, reg_dt ) VALUES ( 'test01', 'test', 'test', '1', 'test', 'test', '11111',
 [2019-10-01 17:11:02.601] DEBUG DaoUserTest.getBean(DaoUserTest.java:79) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@58faa93b
 [2019-10-01 17:11:02.601] DEBUG DaoUserTest.getBean(DaoUserTest.java:80) - ====================
 [2019-10-01 17:11:02.605] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:11:01 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:22.737] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:42:22.749] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:42:22.831] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:42:23.445] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:42:23.492] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:42:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:23.612] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:42:23.889] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:42:23.891] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:42:23.968] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:42:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:23.997] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:42:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:24.043] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:42:24.321] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:35) - =========================
+[2019-10-01 17:42:24.321] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:36) - 1. param:User [id=test01, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-01 17:42:24.321] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:37) - =========================
+[2019-10-01 17:42:24.322] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:39) - =========================
+[2019-10-01 17:42:24.322] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:40) - 2. statement:kr.co.supreme.user.do_delete
+[2019-10-01 17:42:24.322] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:41) - =========================
+[2019-10-01 17:42:24.513] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-01 17:42:24.514] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-01 17:42:24.514] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-01 17:42:24.517] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: DELETE FROM "USER" WHERE id = ? 
+[2019-10-01 17:42:24.592] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-01 17:42:24.593] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(DELETE FROM "USER" WHERE id = ?) returned net.sf.log4jdbc.PreparedStatementSpy@7882c44a
+[2019-10-01 17:42:24.605] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "test01") returned 
+[2019-10-01 17:42:24.605] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test01(String)
+[2019-10-01 17:42:24.606] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : DELETE FROM "USER" WHERE id = 'test01'
+[2019-10-01 17:42:24.613] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - DELETE FROM "USER" WHERE id = 'test01'  {executed in 7 msec}
+[2019-10-01 17:42:24.613] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned false
+[2019-10-01 17:42:24.614] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getUpdateCount() returned 0
+[2019-10-01 17:42:24.614] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 0
+[2019-10-01 17:42:24.614] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-01 17:42:24.615] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-01 17:42:24.615] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-01 17:42:24.615] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-01 17:42:24.616] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:44) - =========================
+[2019-10-01 17:42:24.616] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:45) - 3. flag:0
+[2019-10-01 17:42:24.616] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:46) - =========================
+[2019-10-01 17:42:24.623] DEBUG DaoUserTest.getBean(DaoUserTest.java:77) - ====================
+[2019-10-01 17:42:24.623] DEBUG DaoUserTest.getBean(DaoUserTest.java:78) - =context=org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:42:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:24.623] DEBUG DaoUserTest.getBean(DaoUserTest.java:79) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@58faa93b
+[2019-10-01 17:42:24.623] DEBUG DaoUserTest.getBean(DaoUserTest.java:80) - ====================
+[2019-10-01 17:42:24.626] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:42:23 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:54.435] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:42:54.446] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:42:54.513] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:42:55.097] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:42:55.142] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:42:55 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:55.268] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:42:55.554] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:42:55.555] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:42:55.640] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:42:55 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:55.670] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:42:55 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:55.719] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:42:55.995] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:55) - =========================
+[2019-10-01 17:42:55.995] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:56) - 1. param:User [id=test01, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-01 17:42:55.996] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:57) - =========================
+[2019-10-01 17:42:55.996] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:59) - =========================
+[2019-10-01 17:42:55.996] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:60) - 2. statement:kr.co.supreme.user.do_save
+[2019-10-01 17:42:55.997] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:61) - =========================
+[2019-10-01 17:42:56.167] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-01 17:42:56.168] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-01 17:42:56.168] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-01 17:42:56.172] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, image, reg_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE ) 
+[2019-10-01 17:42:56.234] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-01 17:42:56.235] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    SYSDATE
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@20d11153
+[2019-10-01 17:42:56.243] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "test01") returned 
+[2019-10-01 17:42:56.243] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(2, "test") returned 
+[2019-10-01 17:42:56.243] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(3, "test") returned 
+[2019-10-01 17:42:56.244] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(4, "1") returned 
+[2019-10-01 17:42:56.244] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(5, "test") returned 
+[2019-10-01 17:42:56.244] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(6, "test") returned 
+[2019-10-01 17:42:56.244] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(7, "11111") returned 
+[2019-10-01 17:42:56.244] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(8, "test") returned 
+[2019-10-01 17:42:56.245] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(9, "test") returned 
+[2019-10-01 17:42:56.245] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(10, "test") returned 
+[2019-10-01 17:42:56.245] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(11, "test") returned 
+[2019-10-01 17:42:56.246] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test01(String), test(String), test(String), 1(String), test(String), test(String), 11111(String), test(String), test(String), test(String), test(String)
+[2019-10-01 17:42:56.246] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    'test01',
+		    'test',
+		    'test',
+		    '1',
+		    'test',
+		    'test',
+		    '11111',
+		    'test',
+		    'test',
+		    'test',
+		    'test',
+		    SYSDATE
+		)
+[2019-10-01 17:42:56.253] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, 
+image, reg_dt ) VALUES ( 'test01', 'test', 'test', '1', 'test', 'test', '11111', 'test', 'test', 
+'test', 'test', SYSDATE )  {executed in 7 msec}
+[2019-10-01 17:42:56.253] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned false
+[2019-10-01 17:42:56.254] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getUpdateCount() returned 1
+[2019-10-01 17:42:56.254] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-01 17:42:56.254] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-01 17:42:56.254] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-01 17:42:56.254] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-01 17:42:56.254] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-01 17:42:56.255] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:64) - =========================
+[2019-10-01 17:42:56.255] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:65) - 3. flag:1
+[2019-10-01 17:42:56.255] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:66) - =========================
+[2019-10-01 17:42:56.257] DEBUG DaoUserTest.getBean(DaoUserTest.java:77) - ====================
+[2019-10-01 17:42:56.257] DEBUG DaoUserTest.getBean(DaoUserTest.java:78) - =context=org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:42:55 KST 2019]; root of context hierarchy
+[2019-10-01 17:42:56.257] DEBUG DaoUserTest.getBean(DaoUserTest.java:79) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@2f4919b0
+[2019-10-01 17:42:56.258] DEBUG DaoUserTest.getBean(DaoUserTest.java:80) - ====================
+[2019-10-01 17:42:56.261] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Tue Oct 01 17:42:55 KST 2019]; root of context hierarchy
+[2019-10-01 17:43:34.064] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-01 17:43:34.076] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-01 17:43:34.140] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-01 17:43:34.739] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-01 17:43:34.785] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:43:34 KST 2019]; root of context hierarchy
+[2019-10-01 17:43:34.901] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-01 17:43:35.175] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-01 17:43:35.176] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-01 17:43:35.251] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:43:34 KST 2019]; root of context hierarchy
+[2019-10-01 17:43:35.280] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:43:34 KST 2019]; root of context hierarchy
+[2019-10-01 17:43:35.324] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-01 17:43:35.605] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:35) - =========================
+[2019-10-01 17:43:35.605] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:36) - 1. param:User [id=test01, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-01 17:43:35.605] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:37) - =========================
+[2019-10-01 17:43:35.605] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:39) - =========================
+[2019-10-01 17:43:35.606] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:40) - 2. statement:kr.co.supreme.user.do_delete
+[2019-10-01 17:43:35.606] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:41) - =========================
+[2019-10-01 17:43:35.806] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-01 17:43:35.806] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-01 17:43:35.806] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-01 17:43:35.810] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: DELETE FROM "USER" WHERE id = ? 
+[2019-10-01 17:43:35.872] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-01 17:43:35.873] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(DELETE FROM "USER" WHERE id = ?) returned net.sf.log4jdbc.PreparedStatementSpy@7882c44a
+[2019-10-01 17:43:35.880] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "test01") returned 
+[2019-10-01 17:43:35.881] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test01(String)
+[2019-10-01 17:43:35.881] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : DELETE FROM "USER" WHERE id = 'test01'
+[2019-10-01 17:43:35.889] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - DELETE FROM "USER" WHERE id = 'test01'  {executed in 8 msec}
+[2019-10-01 17:43:35.889] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned false
+[2019-10-01 17:43:35.889] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getUpdateCount() returned 1
+[2019-10-01 17:43:35.890] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-01 17:43:35.890] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-01 17:43:35.890] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-01 17:43:35.891] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-01 17:43:35.891] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-01 17:43:35.891] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:44) - =========================
+[2019-10-01 17:43:35.891] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:45) - 3. flag:1
+[2019-10-01 17:43:35.891] DEBUG UserDaoImpl.do_delete(UserDaoImpl.java:46) - =========================
+[2019-10-01 17:43:35.894] DEBUG DaoUserTest.getBean(DaoUserTest.java:77) - ====================
+[2019-10-01 17:43:35.894] DEBUG DaoUserTest.getBean(DaoUserTest.java:78) - =context=org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:43:34 KST 2019]; root of context hierarchy
+[2019-10-01 17:43:35.894] DEBUG DaoUserTest.getBean(DaoUserTest.java:79) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@58faa93b
+[2019-10-01 17:43:35.895] DEBUG DaoUserTest.getBean(DaoUserTest.java:80) - ====================
+[2019-10-01 17:43:35.898] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Tue Oct 01 17:43:34 KST 2019]; root of context hierarchy
+[2019-10-02 12:29:56.694] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-02 12:29:56.706] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-02 12:29:56.771] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-02 12:29:57.380] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-02 12:29:57.485] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Wed Oct 02 12:29:57 KST 2019]; root of context hierarchy
+[2019-10-02 12:29:57.601] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-02 12:29:57.882] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-02 12:29:57.883] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-02 12:29:57.960] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Wed Oct 02 12:29:57 KST 2019]; root of context hierarchy
+[2019-10-02 12:29:57.989] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Wed Oct 02 12:29:57 KST 2019]; root of context hierarchy
+[2019-10-02 12:29:58.033] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-02 12:29:58.328] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:55) - =========================
+[2019-10-02 12:29:58.329] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:56) - 1. param:User [id=test01, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-02 12:29:58.329] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:57) - =========================
+[2019-10-02 12:29:58.329] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:59) - =========================
+[2019-10-02 12:29:58.329] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:60) - 2. statement:kr.co.supreme.user.do_save
+[2019-10-02 12:29:58.329] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:61) - =========================
+[2019-10-02 12:29:58.533] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-02 12:29:58.533] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-02 12:29:58.533] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-02 12:29:58.536] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, image, reg_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE ) 
+[2019-10-02 12:29:58.599] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-02 12:29:58.599] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    SYSDATE
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@5649ec46
+[2019-10-02 12:29:58.607] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "test01") returned 
+[2019-10-02 12:29:58.607] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(2, "test") returned 
+[2019-10-02 12:29:58.607] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(3, "test") returned 
+[2019-10-02 12:29:58.608] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(4, "1") returned 
+[2019-10-02 12:29:58.608] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(5, "test") returned 
+[2019-10-02 12:29:58.608] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(6, "test") returned 
+[2019-10-02 12:29:58.608] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(7, "11111") returned 
+[2019-10-02 12:29:58.608] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(8, "test") returned 
+[2019-10-02 12:29:58.609] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(9, "test") returned 
+[2019-10-02 12:29:58.609] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(10, "test") returned 
+[2019-10-02 12:29:58.609] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(11, "test") returned 
+[2019-10-02 12:29:58.609] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test01(String), test(String), test(String), 1(String), test(String), test(String), 11111(String), test(String), test(String), test(String), test(String)
+[2019-10-02 12:29:58.610] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    'test01',
+		    'test',
+		    'test',
+		    '1',
+		    'test',
+		    'test',
+		    '11111',
+		    'test',
+		    'test',
+		    'test',
+		    'test',
+		    SYSDATE
+		)
+[2019-10-02 12:29:58.628] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, 
+image, reg_dt ) VALUES ( 'test01', 'test', 'test', '1', 'test', 'test', '11111', 'test', 'test', 
+'test', 'test', SYSDATE )  {executed in 17 msec}
+[2019-10-02 12:29:58.628] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned false
+[2019-10-02 12:29:58.628] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getUpdateCount() returned 1
+[2019-10-02 12:29:58.629] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-02 12:29:58.629] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-02 12:29:58.629] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-02 12:29:58.630] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-02 12:29:58.630] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-02 12:29:58.630] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:64) - =========================
+[2019-10-02 12:29:58.630] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:65) - 3. flag:1
+[2019-10-02 12:29:58.630] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:66) - =========================
+[2019-10-02 12:29:58.631] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:55) - =========================
+[2019-10-02 12:29:58.631] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:56) - 1. param:User [id=test02, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-02 12:29:58.631] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:57) - =========================
+[2019-10-02 12:29:58.631] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:59) - =========================
+[2019-10-02 12:29:58.631] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:60) - 2. statement:kr.co.supreme.user.do_save
+[2019-10-02 12:29:58.631] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:61) - =========================
+[2019-10-02 12:29:58.631] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 2. Connection opened
+[2019-10-02 12:29:58.632] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.new Connection returned 
+[2019-10-02 12:29:58.632] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.getAutoCommit() returned true
+[2019-10-02 12:29:58.632] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, image, reg_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE ) 
+[2019-10-02 12:29:58.632] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.new PreparedStatement returned 
+[2019-10-02 12:29:58.632] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.prepareStatement(INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    SYSDATE
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@155d1021
+[2019-10-02 12:29:58.633] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(1, "test02") returned 
+[2019-10-02 12:29:58.633] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(2, "test") returned 
+[2019-10-02 12:29:58.633] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(3, "test") returned 
+[2019-10-02 12:29:58.633] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(4, "1") returned 
+[2019-10-02 12:29:58.634] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(5, "test") returned 
+[2019-10-02 12:29:58.634] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(6, "test") returned 
+[2019-10-02 12:29:58.634] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(7, "11111") returned 
+[2019-10-02 12:29:58.634] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(8, "test") returned 
+[2019-10-02 12:29:58.634] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(9, "test") returned 
+[2019-10-02 12:29:58.635] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(10, "test") returned 
+[2019-10-02 12:29:58.635] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(11, "test") returned 
+[2019-10-02 12:29:58.635] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test02(String), test(String), test(String), 1(String), test(String), test(String), 11111(String), test(String), test(String), test(String), test(String)
+[2019-10-02 12:29:58.635] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    'test02',
+		    'test',
+		    'test',
+		    '1',
+		    'test',
+		    'test',
+		    '11111',
+		    'test',
+		    'test',
+		    'test',
+		    'test',
+		    SYSDATE
+		)
+[2019-10-02 12:29:58.638] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, 
+image, reg_dt ) VALUES ( 'test02', 'test', 'test', '1', 'test', 'test', '11111', 'test', 'test', 
+'test', 'test', SYSDATE )  {executed in 3 msec}
+[2019-10-02 12:29:58.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.execute() returned false
+[2019-10-02 12:29:58.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.getUpdateCount() returned 1
+[2019-10-02 12:29:58.639] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-02 12:29:58.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.isClosed() returned false
+[2019-10-02 12:29:58.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.close() returned 
+[2019-10-02 12:29:58.642] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 2. Connection closed
+[2019-10-02 12:29:58.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.close() returned 
+[2019-10-02 12:29:58.642] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:64) - =========================
+[2019-10-02 12:29:58.642] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:65) - 3. flag:1
+[2019-10-02 12:29:58.642] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:66) - =========================
+[2019-10-02 12:29:58.643] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:55) - =========================
+[2019-10-02 12:29:58.643] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:56) - 1. param:User [id=test03, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-02 12:29:58.643] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:57) - =========================
+[2019-10-02 12:29:58.643] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:59) - =========================
+[2019-10-02 12:29:58.643] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:60) - 2. statement:kr.co.supreme.user.do_save
+[2019-10-02 12:29:58.643] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:61) - =========================
+[2019-10-02 12:29:58.643] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 3. Connection opened
+[2019-10-02 12:29:58.644] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.new Connection returned 
+[2019-10-02 12:29:58.644] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.getAutoCommit() returned true
+[2019-10-02 12:29:58.644] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, image, reg_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE ) 
+[2019-10-02 12:29:58.644] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.new PreparedStatement returned 
+[2019-10-02 12:29:58.644] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.prepareStatement(INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    SYSDATE
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@51745f40
+[2019-10-02 12:29:58.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(1, "test03") returned 
+[2019-10-02 12:29:58.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(2, "test") returned 
+[2019-10-02 12:29:58.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(3, "test") returned 
+[2019-10-02 12:29:58.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(4, "1") returned 
+[2019-10-02 12:29:58.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(5, "test") returned 
+[2019-10-02 12:29:58.646] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(6, "test") returned 
+[2019-10-02 12:29:58.646] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(7, "11111") returned 
+[2019-10-02 12:29:58.646] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(8, "test") returned 
+[2019-10-02 12:29:58.646] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(9, "test") returned 
+[2019-10-02 12:29:58.646] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(10, "test") returned 
+[2019-10-02 12:29:58.647] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(11, "test") returned 
+[2019-10-02 12:29:58.647] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test03(String), test(String), test(String), 1(String), test(String), test(String), 11111(String), test(String), test(String), test(String), test(String)
+[2019-10-02 12:29:58.647] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    'test03',
+		    'test',
+		    'test',
+		    '1',
+		    'test',
+		    'test',
+		    '11111',
+		    'test',
+		    'test',
+		    'test',
+		    'test',
+		    SYSDATE
+		)
+[2019-10-02 12:29:58.650] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, 
+image, reg_dt ) VALUES ( 'test03', 'test', 'test', '1', 'test', 'test', '11111', 'test', 'test', 
+'test', 'test', SYSDATE )  {executed in 3 msec}
+[2019-10-02 12:29:58.650] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.execute() returned false
+[2019-10-02 12:29:58.650] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.getUpdateCount() returned 1
+[2019-10-02 12:29:58.651] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-02 12:29:58.651] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.isClosed() returned false
+[2019-10-02 12:29:58.651] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.close() returned 
+[2019-10-02 12:29:58.651] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 3. Connection closed
+[2019-10-02 12:29:58.651] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.close() returned 
+[2019-10-02 12:29:58.652] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:64) - =========================
+[2019-10-02 12:29:58.652] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:65) - 3. flag:1
+[2019-10-02 12:29:58.652] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:66) - =========================
+[2019-10-02 12:29:58.652] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:55) - =========================
+[2019-10-02 12:29:58.652] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:56) - 1. param:User [id=test04, pass=test, name=test, lvl=1, nickname=test, email=test, postcode=11111, address1=test, address2=test, tel=test, image=test, regDt=19/10/01, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-02 12:29:58.653] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:57) - =========================
+[2019-10-02 12:29:58.653] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:59) - =========================
+[2019-10-02 12:29:58.653] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:60) - 2. statement:kr.co.supreme.user.do_save
+[2019-10-02 12:29:58.653] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:61) - =========================
+[2019-10-02 12:29:58.653] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 4. Connection opened
+[2019-10-02 12:29:58.653] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.new Connection returned 
+[2019-10-02 12:29:58.654] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.getAutoCommit() returned true
+[2019-10-02 12:29:58.654] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, image, reg_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE ) 
+[2019-10-02 12:29:58.654] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.new PreparedStatement returned 
+[2019-10-02 12:29:58.654] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.prepareStatement(INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    SYSDATE
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@d0ec63
+[2019-10-02 12:29:58.654] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(1, "test04") returned 
+[2019-10-02 12:29:58.655] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(2, "test") returned 
+[2019-10-02 12:29:58.655] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(3, "test") returned 
+[2019-10-02 12:29:58.655] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(4, "1") returned 
+[2019-10-02 12:29:58.655] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(5, "test") returned 
+[2019-10-02 12:29:58.655] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(6, "test") returned 
+[2019-10-02 12:29:58.655] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(7, "11111") returned 
+[2019-10-02 12:29:58.656] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(8, "test") returned 
+[2019-10-02 12:29:58.656] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(9, "test") returned 
+[2019-10-02 12:29:58.661] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(10, "test") returned 
+[2019-10-02 12:29:58.661] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(11, "test") returned 
+[2019-10-02 12:29:58.661] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: test04(String), test(String), test(String), 1(String), test(String), test(String), 11111(String), test(String), test(String), test(String), test(String)
+[2019-10-02 12:29:58.661] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO "USER" (
+		    id,
+		    pass,
+		    name,
+		    lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
+		    reg_dt
+		) VALUES (
+		    'test04',
+		    'test',
+		    'test',
+		    '1',
+		    'test',
+		    'test',
+		    '11111',
+		    'test',
+		    'test',
+		    'test',
+		    'test',
+		    SYSDATE
+		)
+[2019-10-02 12:29:58.664] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO "USER" ( id, pass, name, lvl, nickname, email, postcode, address1, address2, tel, 
+image, reg_dt ) VALUES ( 'test04', 'test', 'test', '1', 'test', 'test', '11111', 'test', 'test', 
+'test', 'test', SYSDATE )  {executed in 3 msec}
+[2019-10-02 12:29:58.664] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.execute() returned false
+[2019-10-02 12:29:58.664] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.getUpdateCount() returned 1
+[2019-10-02 12:29:58.665] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-02 12:29:58.665] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.isClosed() returned false
+[2019-10-02 12:29:58.665] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.close() returned 
+[2019-10-02 12:29:58.665] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 4. Connection closed
+[2019-10-02 12:29:58.665] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.close() returned 
+[2019-10-02 12:29:58.665] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:64) - =========================
+[2019-10-02 12:29:58.665] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:65) - 3. flag:1
+[2019-10-02 12:29:58.666] DEBUG UserDaoImpl.do_save(UserDaoImpl.java:66) - =========================
+[2019-10-02 12:29:58.667] DEBUG DaoUserTest.getBean(DaoUserTest.java:81) - ====================
+[2019-10-02 12:29:58.668] DEBUG DaoUserTest.getBean(DaoUserTest.java:82) - =context=org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Wed Oct 02 12:29:57 KST 2019]; root of context hierarchy
+[2019-10-02 12:29:58.668] DEBUG DaoUserTest.getBean(DaoUserTest.java:83) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@23eee4b8
+[2019-10-02 12:29:58.668] DEBUG DaoUserTest.getBean(DaoUserTest.java:84) - ====================
+[2019-10-02 12:29:58.671] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Wed Oct 02 12:29:57 KST 2019]; root of context hierarchy

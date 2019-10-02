@@ -58,14 +58,18 @@ public class DaoUserTest {
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void do_save() {
-		daoImpl.do_save(list.get(0));
+		for(User vo: list) {
+			daoImpl.do_save(vo);
+		}
+			
 	}
 	
 
 	
 	@Test
+	@Ignore
 	public void do_delete() {
 		daoImpl.do_delete(list.get(0));
 	}

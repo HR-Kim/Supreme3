@@ -12,26 +12,86 @@
 	 -->
 	 
 	 
-<!-- 	<sql id="userColumns">
-		    u_id,                                
-		    name,                                
-		    passwd,                              
-		    DECODE(h_level,1,'BASIC',2,'SILVER',3,'GOLD') h_level,                             
-		    login,                               
-		    recommend,                           
-		    email,                               
+ 	<sql id="userColumns">
+		    id,
+		    pass,
+		    name,
+		    DECODE(lvl,0,'GUEST',1,'BASIC',2,'SILVER',3,'GOLD',9,'ADMIN') lvl,
+		    nickname,
+		    email,
+		    postcode,
+		    address1,
+		    address2,
+		    tel,
+		    image,
 		    TO_CHAR(reg_dt, 'yyyy/mm/dd') reg_dt
 	</sql>
- -->	 
+	
+	
+	<sql id="baseCondition">
+			<choose>
+				<when test="'10' == searchDiv">
+					and ID LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'20' == searchDiv">
+					and NAME LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'30' == searchDiv">
+					and TEL LIKE '%' || #{searchWord} || '%'
+				</when>
+				<otherwise></otherwise>							
+			</choose>
+	</sql>
+	
+	
+	<!-- 전체 조회 -->
+	<select id="get_retrieve" parameterType="Search" resultType="User">
+		SELECT T1.*,T2.*													
+		FROM 
+		(SELECT 
+		    B.id as id,
+			B.pass as pass,
+			B.name as name,
+			DECODE(B.lvl,0,'GUEST',1,'BASIC',2,'SILVER',3,'GOLD',9,'ADMIN') lvl,
+			B.nickname as nickname,
+			B.email as email,
+			B.postcode as postcode,
+			B.address1 as address1, 
+			B.address2 as address2,
+			B.tel as tel,
+			B.image as image,
+			TO_CHAR(B.reg_dt, 'yyyy/mm/dd') reg_dt
+		    FROM
+		        (SELECT ROWNUM as rnum, A.*
+		        FROM
+		            (SELECT *
+		             FROM "USER"
+		             WHERE  1=1 
+		             <include refid="baseCondition"/>
+		             ORDER BY reg_dt DESC
+		            )A
+		            WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
+		        )B    
+		        WHERE b.rnum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+1)
+		)T1  
+		NATURAL JOIN                                                      
+		(                                                                 
+		  SELECT COUNT(*) totalCnt                                     
+		  FROM "USER"
+		  WHERE  1=1 
+		  <include refid="baseCondition"/>
+		)T2
+	</select>
+	 
 	<!-- 단건조회 -->
-<!-- 	<select id="get_selectOne" parameterType="User" resultType="User">
+ 	<select id="get_selectOne" parameterType="User" resultType="User">
 		SELECT										
 		    <include refid="userColumns"/>                  
-		FROM                                     
-		    users                                
-		WHERE u_id = #{u_id,jdbcType=VARCHAR}
+		FROM
+   			 "USER";                             
+		WHERE id = #{id,jdbcType=VARCHAR}
 	</select> 
- -->	 
+ 	 
 	<!-- 삭제 -->
 	<delete id="do_delete" parameterType="User">
 		DELETE FROM "USER" WHERE id = #{id,jdbcType=VARCHAR}
