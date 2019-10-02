@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kr.co.supreme.cmn.DTO;
+import kr.co.supreme.cmn.Search;
 
 /**
  * 사용자관리 Interface

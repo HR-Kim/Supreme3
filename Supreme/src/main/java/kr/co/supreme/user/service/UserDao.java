@@ -2,6 +2,8 @@ package kr.co.supreme.user.service;
 
 import java.util.List;
 
+import kr.co.supreme.cmn.Search;
+
 public interface UserDao {
 	
 	public int deleteAll();
