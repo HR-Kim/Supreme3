@@ -81,7 +81,7 @@
 		            )A
 		            WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
 		        )B    
-		        WHERE b.rnum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+1)
+		        WHERE b.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)
 		)T1  
 		NATURAL JOIN                                                      
 		(                                                                 

@@ -112,12 +112,12 @@ public class UserDaoImpl implements WorkDiv {
 	
 	@Override
 	public List<?> get_retrieve(DTO dto) {
-		String statement = this.NAMESPACE+"get_retrieve";
-		User inVO = (User) dto;
+		String statement = this.NAMESPACE+".get_retrieve";
+		Search search = (Search) dto;
 		LOG.debug("=========================");
-		LOG.debug("1. param:"+inVO);
+		LOG.debug("1. param:"+search);
 		LOG.debug("2. statement:"+statement);
-		List<User> list = this.sqlSessionTemplate.selectList(statement, inVO);
+		List<User> list = this.sqlSessionTemplate.selectList(statement, search);
 		LOG.debug("3. list:"+list);
 		LOG.debug("=========================");
 		return list;		

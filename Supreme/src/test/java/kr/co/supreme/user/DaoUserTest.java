@@ -50,17 +50,17 @@ public class DaoUserTest {
 		
 		list = Arrays.asList( 
 				
-				 new User("test01", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
-				 new User("test02", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
-				 new User("test03", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
-				 new User("test04", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01")
+				 new User("test01_142", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
+				 new User("test02_142", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
+				 new User("test03_142", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
+				 new User("test04_142", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01")
 				);
 		
 	}
 	
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void get_retrieve() {
 		//---------------------------
 		//-기존Data삭제
@@ -70,7 +70,7 @@ public class DaoUserTest {
 		LOG.debug("================================");
 		
 		Search search = new Search();
-		search.setSearchWord("test");
+		search.setSearchWord("_142");
 		List<User> getIdList = (List<User>) daoImpl.get_userIdList(search);
 		for(User vo: getIdList) {
 			daoImpl.do_delete(vo);
@@ -88,18 +88,25 @@ public class DaoUserTest {
 		//-------------------
 		//등록Data조회
 		//-------------------
+		LOG.debug("================================");
+		LOG.debug("=3.조회=");
+		LOG.debug("================================");
 		search.setSearchDiv("10");
 		search.setPageSize(4);
 		search.setPageNum(1);
 		
 		List<User> list = (List<User>) daoImpl.get_retrieve(search);
+		LOG.debug("================================");
+		LOG.debug("=3.1 list="+list);
+		LOG.debug("================================");
 		assertThat(search.getPageSize(), is(list.size()));
+		
 		
 		
 	}
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void do_update() {	
 		//---------------------------
 		//-기존Data삭제
