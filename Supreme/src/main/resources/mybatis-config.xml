@@ -17,6 +17,7 @@
 	    <typeAlias type="kr.co.supreme.code.service.Code" alias="Code" />
 		<typeAlias type="kr.co.supreme.board.service.Board" alias="Board" />
 		<typeAlias type="kr.co.supreme.comments.service.Comments" alias="Comments" />
+		<typeAlias type="kr.co.supreme.orderstatus.service.OrderStatus" alias="OrderStatus"/>
 	</typeAliases>
 
 </configuration>  
