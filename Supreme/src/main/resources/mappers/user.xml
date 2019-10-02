@@ -43,6 +43,15 @@
 			</choose>
 	</sql>
 	
+	<!-- Id조회 -->
+ 	<select id="get_userIdList" parameterType="Search" resultType="User">
+		SELECT										
+		    <include refid="userColumns"/>                  
+		FROM
+   			 USERS                             
+		WHERE id LIKE '%' || #{searchWord} || '%'
+	</select> 
+	
 	
 	<!-- 전체 조회 -->
 	<select id="get_retrieve" parameterType="Search" resultType="User">
@@ -65,7 +74,7 @@
 		        (SELECT ROWNUM as rnum, A.*
 		        FROM
 		            (SELECT *
-		             FROM "USER"
+		             FROM USERS
 		             WHERE  1=1 
 		             <include refid="baseCondition"/>
 		             ORDER BY reg_dt DESC
@@ -77,7 +86,7 @@
 		NATURAL JOIN                                                      
 		(                                                                 
 		  SELECT COUNT(*) totalCnt                                     
-		  FROM "USER"
+		  FROM USERS
 		  WHERE  1=1 
 		  <include refid="baseCondition"/>
 		)T2
@@ -88,18 +97,38 @@
 		SELECT										
 		    <include refid="userColumns"/>                  
 		FROM
-   			 "USER";                             
+   			 USERS                             
 		WHERE id = #{id,jdbcType=VARCHAR}
 	</select> 
+ 	
+ 	<!-- 수정 -->
+	<update id="do_update" parameterType="User">
+		UPDATE users
+		SET
+		    pass = #{pass,jdbcType=VARCHAR},
+		    name = #{name,jdbcType=VARCHAR},
+		    lvl = #{lvl,jdbcType=VARCHAR},
+		    nickname = #{nickname,jdbcType=VARCHAR},
+		    email = #{email,jdbcType=VARCHAR},
+		    postcode = #{postcode,jdbcType=VARCHAR},
+		    address1 = #{address1,jdbcType=VARCHAR},
+		    address2 = #{address2,jdbcType=VARCHAR},
+		    tel = #{tel,jdbcType=VARCHAR},
+		    image = #{image,jdbcType=VARCHAR},
+		    reg_dt = SYSDATE
+		WHERE
+		    id = #{id,jdbcType=VARCHAR}
+	</update>
+ 	
  	 
 	<!-- 삭제 -->
 	<delete id="do_delete" parameterType="User">
-		DELETE FROM "USER" WHERE id = #{id,jdbcType=VARCHAR}
+		DELETE FROM USERS WHERE id = #{id,jdbcType=VARCHAR}
 	</delete>
 	
 	<!-- 등록 -->
 	<insert id="do_save" parameterType="User">
-		INSERT INTO "USER" (
+		INSERT INTO USERS (
 		    id,
 		    pass,
 		    name,
