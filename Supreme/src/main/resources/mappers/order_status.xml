@@ -2,5 +2,92 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="kr.co.supreme.orderStatus"/>
- 
+  <mapper namespace="kr.co.supreme.orderStatus">
+  <sql id="orderStatusColumns">
+  		U.NICKNAME 닉네임,
+		O3.DETAIL_CODE 주문상세번호 ,
+		O2.ORDER_CODE 주문번호 ,
+		P.P_IMAGE 이미지,
+		P.P_NAME 상품명,
+		P.P_CONTENT 상품설명,
+		O2.QUANTITY 수량,
+		O3.OD_STATUS 주문상태
+  </sql>
+  
+ <sql id="baseCondition">
+			<choose>
+				<when test="'10' == searchDiv">
+					and TITLE LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'20' == searchDiv">
+					and CONTENTS LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'30' == searchDiv">
+					and REG_ID LIKE '%' || #{searchWord} || '%'
+				</when>
+				<otherwise></otherwise>							
+			</choose>
+	</sql>
+	
+	<!-- get_boardIdList -->
+	<select id="get_orderStatusList" parameterType="Search" resultType="OrderStatus">
+		SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || #{searchWord} || '%'
+		ORDER BY DETAIL_CODE ASC
+	</select>
+	<!-- 목록조회 -->
+	
+	<!-- 단건조회 -->
+	<select id="get_selectOne" parameterType="OrderStatus"
+		resultType="OrderStatus">
+		SELECT 
+		<include refid="orderStatusColumns" />
+		FROM 
+			USERS U JOIN ORDERS O1
+			ON U.ID = O1.ID
+			JOIN ORDER_DETAIL O2
+			ON O1.ORDER_CODE = O2.ORDER_CODE
+			JOIN ORDER_STATUS O3
+			ON O3.DETAIL_CODE = O2.DETAIL_CODE
+			JOIN PRODUCT P 
+			ON O2.P_CODE = P.P_CODE
+		WHERE U.ID = 
+		#{ID,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="do_update" parameterType="OrderStatus">
+	UPDATE ORDER_STATUS 
+	SET 
+		OD_STATUS =#{od_status,jdbcType=VARCHAR},
+		UDT_DT = SYSDATE 
+	WHERE
+		detail_code=#{detail_code,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 삭제  -->
+	<delete id="do_delete" parameterType="OrderStatus">
+	DELETE FROM ORDER_STATUS WHERE DETAIL_CODE=#{detail_code,jdbcType=VARCHAR}
+	</delete>
+	
+	<!-- 등록 -->
+	<insert id="do_save" parameterType="User">
+		INSERT INTO ORDER_STATUS (
+		   DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT 
+		) VALUES (
+		    #{detail_code,jdbcType=VARCHAR},
+		    #{od_status,jdbcType=VARCHAR},
+		    SYSDATE,
+		    #{udt_dt,jdbcType=VARCHAR}
+		) 
+	</insert>
+</mapper>
