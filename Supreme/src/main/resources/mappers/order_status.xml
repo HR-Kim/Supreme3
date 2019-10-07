@@ -41,8 +41,8 @@
 		WHERE DETAIL_CODE LIKE '%' || #{searchWord} || '%'
 		ORDER BY DETAIL_CODE ASC
 	</select>
-	<!-- 목록조회 -->
 	
+
 	<!-- 단건조회 -->
 	<select id="get_selectOne" parameterType="OrderStatus"
 		resultType="OrderStatus">
