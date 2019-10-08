@@ -119,7 +119,7 @@ public class OrderStatusDaoImpl implements WorkDiv {
 		LOG.debug("2. statement:"+statement);
 		LOG.debug("=========================");	
 		
-		List<OrderStatus> list = this.sqlSessionTemplate.selectOne(statement, search);
+		List<OrderStatus> list = this.sqlSessionTemplate.selectList(statement, search);
 		LOG.debug("=========================");
 		LOG.debug("3. list:"+list);
 		LOG.debug("=========================");			

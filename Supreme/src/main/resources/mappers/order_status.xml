@@ -28,7 +28,48 @@
 				<otherwise></otherwise>							
 			</choose>
 	</sql>
-	
+	<!-- 목록조회 -->
+   <select id="get_retrieve" parameterType="Search" resultType="OrderStatus">
+          SELECT T1.*,T2.*													
+		  FROM                                                              
+			  (                                                           
+			  	SELECT *            
+		      FROM                                                           
+			  	( 	SELECT ROWNUM AS rnum, A.*         
+		           FROM 
+		           ( SELECT 
+		             U.NICKNAME as nickname,
+		             O1.ORDER_CODE as order_code,
+		             O3.DETAIL_CODE as detail_code ,
+		             P.P_IMAGE as pImage,
+		             P.P_NAME as pName,
+		             P.P_CONTENT as pContent, 
+		             O3.OD_STATUS as od_status                                                            
+			  			FROM   
+						  USERS U JOIN ORDERS O1
+							ON U.ID = O1.ID         
+							JOIN ORDER_DETAIL O2
+							ON O1.ORDER_CODE = O2.ORDER_CODE
+							JOIN ORDER_STATUS O3
+							ON O3.DETAIL_CODE = O2.DETAIL_CODE
+							JOIN PRODUCT P 
+							ON O2.P_CODE = P.P_CODE		                     
+			  			AND udt_dt <![CDATA[ >  ]]> to_date('19700101','yyyymmdd')     
+			  			ORDER BY udt_dt DESC                                   
+			  		)A                                                         
+			  	   WHERE ROWNUM <![CDATA[ <= ]]>(#{pageSize} * (#{pageNum}-1)+#{pageSize})   						       
+			  	) B                                                            
+			  	WHERE B.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)                    				   
+			  )T1
+			  NATURAL JOIN                                                      
+			  (                                                                 
+			      SELECT COUNT(*) totalCnt                                     
+		         FROM order_Status       
+		         WHERE  1=1      
+		                                                    		                               
+		  )T2  
+
+   </select>
 	<!-- get_boardIdList -->
 	<select id="get_orderStatusList" parameterType="Search" resultType="OrderStatus">
 		SELECT

@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -20,6 +21,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.context.WebApplicationContext;
+
 
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.orderstatus.service.OrderStatus;
@@ -57,8 +59,46 @@ public class DaoOrderStatusTest{
 				
 				
 	}
-	
 	@Test
+	public void get_retrieve() {
+		Search search = new Search(10,1,"",""); //생성자 참고해서 하드코딩
+		List<OrderStatus> orderlist = (List<OrderStatus>) daoImpl.get_retrieve(search); 
+		
+		for(OrderStatus vo : list) {
+			LOG.debug(vo.toString());
+			
+		}
+	}
+//	@Test
+//
+//		public void get_retrieve() {
+//		LOG.debug("======================================");
+//		LOG.debug("=01. 기존 데이터 삭제=");
+//		LOG.debug("======================================");
+//		Search search = new Search();
+//		search.setSearchWord("123456789");
+//		List<OrderStatus> getstatus = (List<OrderStatus>) daoImpl.get_orderStatusList(search);
+//		for(OrderStatus vo:getstatus) {
+//			daoImpl.do_delete(vo);
+//		}
+//		LOG.debug("======================================");
+//		LOG.debug("=02. 데이터 추가=");
+//		LOG.debug("======================================");
+//		for(OrderStatus vo:list) { 
+//			int flag = daoImpl.do_save(vo);
+//			assertThat(1,is(flag));
+//		}
+//		//=====================================
+//		//2.01 등록Data조회
+//		//=====================================
+//			search.setSearchDiv("10");
+//			search.setPageSize(10);
+//			search.setPageNum(1);
+//			List<OrderStatus> addlistData = (List<OrderStatus>) daoImpl.get_retrieve(search);
+//		 	assertThat(1,is(addlistData.size()));
+//	}
+	@Test
+	@Ignore
 	public void do_update() {
 		//---------------------------
 		//-기존Data삭제
@@ -70,6 +110,7 @@ public class DaoOrderStatusTest{
 		Search search = new Search();
 		search.setSearchWord("123456789");
 		List<OrderStatus> getstatus = (List<OrderStatus>) daoImpl.get_orderStatusList(search);
+		
 		for(OrderStatus vo:getstatus) {
 			daoImpl.do_delete(vo);
 		}
