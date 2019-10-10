@@ -71,6 +71,7 @@ public class DaoUserWebTest {
 	
 	//목록 조회
 	@Test
+	@Ignore
 	public void do_retrieve() throws Exception{
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 찾고/삭제=");
