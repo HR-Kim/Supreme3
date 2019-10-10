@@ -12,8 +12,8 @@
 	<typeAliases>
 	    <typeAlias type="kr.co.supreme.user.service.User" alias="User" />
 	    <typeAlias type="kr.co.supreme.cmn.Search" alias="Search" />
-	<!--     <typeAlias type="kr.co.supreme.cart.service.Cart" alias="Cart" />
-	    <typeAlias type="kr.co.supreme.product.service.Product" alias="Product" />  -->
+	    <typeAlias type="kr.co.supreme.cart.service.Cart" alias="Cart" />
+	<!--     <typeAlias type="kr.co.supreme.product.service.Product" alias="Product" />  -->
 	    <typeAlias type="kr.co.supreme.code.service.Code" alias="Code" />
 		<typeAlias type="kr.co.supreme.board.service.Board" alias="Board" />
 		<typeAlias type="kr.co.supreme.comments.service.Comments" alias="Comments" />
