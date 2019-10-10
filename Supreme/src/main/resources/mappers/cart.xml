@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.supreme.cart">
+	
+	<sql id="cartColumns">
+		CART_CODE as cartCode,
+		P_CODE as pCode,
+		QUANTITY as quantity,
+		UNIT_PRICE as unitPrice,
+		ID as id
+	</sql>
+	
+	<!-- get_retrieve -->
+	<select id="get_retrieve" parameterType="Search" resultType="Cart">
+		SELECT
+       	<include refid="cartColumns" />
+		FROM
+		    CART
+		WHERE ID LIKE '%' || #{searchWord} || '%'
+		ORDER BY CART_CODE ASC
+	</select>
+	
+
+	<sql id="baseCondition">
+			<choose>
+				<when test="'20' == searchDiv">
+					and CART_CODE LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'10' == searchDiv">
+					and ID LIKE '%' || #{searchWord} || '%'
+				</when>
+				<otherwise></otherwise>							
+			</choose>
+	</sql>
+
+	<!-- get_IdList -->
+	<select id="get_IdList" parameterType="Search" resultType="Cart">
+		SELECT
+		    <include refid="cartColumns" />
+		FROM
+		    CART
+		WHERE ID  LIKE '%' || #{searchWord} || '%'
+	</select>
+	
+	
+	<!-- 등록 -->
+	<insert id="do_save" parameterType="Cart">
+		INSERT INTO cart (
+		    cart_code,
+		    p_code,
+		    quantity,
+		    unit_price,
+		    id
+			) VALUES (
+		    #{cartCode,jdbcType=NUMERIC},
+		    #{pCode,jdbcType=NUMERIC},
+		    #{quantity,jdbcType=NUMERIC},
+		    #{unitPrice,jdbcType=NUMERIC},
+		    #{id,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="do_update" parameterType="Cart">
+	UPDATE CART
+	SET
+	     p_code = #{pCode,jdbcType=NUMERIC},
+	     quantity = #{quantity,jdbcType=NUMERIC},
+	     unit_price = #{unitPrice,jdbcType=NUMERIC},
+	     id = #{id,jdbcType=VARCHER}
+	WHERE
+   		 cart_code = #{cartCode}
+    </update>
+	
+	
+	<!-- 삭제 -->
+	<delete id="do_delete"
+		parameterType="Cart">
+		<![CDATA[
+			DELETE FROM CART WHERE CART_CODE = #{cartCode,jdbcType=NUMERIC}
+		]]>
+	</delete>
+	
+	
+	<!-- 단건조회 -->
+ 	<select id="get_selectOne" parameterType="Cart" resultType="Cart">
+		SELECT										
+		    <include refid="cartColumns"/>                  
+		FROM
+   			 CART                             
+		WHERE CART_CODE = #{CartCode,jdbcType=VARCHAR}
+	</select> 
+
+
+</mapper>

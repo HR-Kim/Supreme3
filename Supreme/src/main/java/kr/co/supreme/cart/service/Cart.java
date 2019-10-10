@@ -10,10 +10,43 @@ public class Cart extends DTO{
 	private int unitPrice ;    //단가
 	private String id     ;    //회원아이디
 	
+	public Cart() {};
 	
-	public Cart() {}
-
-
+	public int getCartCode() {
+		return cartCode;
+	}
+	public void setCartCode(int cartCode) {
+		this.cartCode = cartCode;
+	}
+	public int getpCode() {
+		return pCode;
+	}
+	public void setpCode(int pCode) {
+		this.pCode = pCode;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public int getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	@Override
+	public String toString() {
+		return "Cart [cartCode=" + cartCode + ", pCode=" + pCode + ", quantity=" + quantity + ", unitPrice=" + unitPrice
+				+ ", id=" + id + ", toString()=" + super.toString() + "]";
+	}
 	public Cart(int cartCode, int pCode, int quantity, int unitPrice, String id) {
 		super();
 		this.cartCode = cartCode;
@@ -22,58 +55,6 @@ public class Cart extends DTO{
 		this.unitPrice = unitPrice;
 		this.id = id;
 	}
-
-
-	public int getCartCode() {
-		return cartCode;
-	}
-
-
-	public void setCartCode(int cartCode) {
-		this.cartCode = cartCode;
-	}
-
-
-	public int getpCode() {
-		return pCode;
-	}
-
-
-	public void setpCode(int pCode) {
-		this.pCode = pCode;
-	}
-
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-
-	public int getUnitPrice() {
-		return unitPrice;
-	}
-
-
-	public void setUnitPrice(int unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-
-
-	public String getId() {
-		return id;
-	}
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,8 +66,6 @@ public class Cart extends DTO{
 		result = prime * result + unitPrice;
 		return result;
 	}
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -111,12 +90,7 @@ public class Cart extends DTO{
 			return false;
 		return true;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Cart [cartCode=" + cartCode + ", pCode=" + pCode + ", quantity=" + quantity + ", unitPrice=" + unitPrice
-				+ ", id=" + id + ", toString()=" + super.toString() + "]";
-	}
+	
+	
 	
 }
