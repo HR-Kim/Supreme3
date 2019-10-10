@@ -50,10 +50,9 @@
 	  	SELECT                                                         
 		    B.B_SEQ as bSeq,
 		    B.B_TITLE as bTitle,
-		    B.READ_CNT as readCnt,
 		    B.B_CONTENTS as bContents ,
 		    B.ID   as Id,  
-            B.READ_CNT as readCnt,
+		    B.READ_CNT as readCnt,
 	  		CASE TO_CHAR(B.reg_dt, 'yyyy/mm/dd') when TO_CHAR(sysdate, 'yyyy/mm/dd') THEN TO_CHAR(sysdate, 'HH24:MI')
 	  		ELSE TO_CHAR(B.reg_dt, 'yyyy/mm/dd') END AS regDt,
             B.udt_user as udtUser,

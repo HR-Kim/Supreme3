@@ -12,6 +12,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -30,7 +31,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-
 
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.user.service.User;
@@ -69,8 +69,88 @@ public class DaoUserWebTest {
 	}
 	
 	
+	//목록 조회
+	@Test
+	public void do_retrieve() throws Exception{
+		LOG.debug("======================================");
+		LOG.debug("=01. 기존 데이터 찾고/삭제=");
+		LOG.debug("======================================");
+		Search search=new Search();
+		search.setSearchWord("_142");
+		List<User> getIdList = (List<User>) userDaoImpl.get_userIdList(search);
+		for(User vo : getIdList) {
+			do_delete(vo);
+		}
+		
+		LOG.debug("======================================");
+		LOG.debug("=02. 단건등록=");
+		LOG.debug("======================================");
+		for(User vo : list) {
+			do_save(vo);
+		}
+		
+		LOG.debug("======================================");
+		LOG.debug("=03. 목록조회 like _142");
+		LOG.debug("======================================");
+		search.setSearchDiv("10");
+		search.setSearchWord("_142");
+		search.setPageSize(10);
+		search.setPageNum(1);
+		
+		List<User> list = this.get_retrieve(search);
+		
+		for(User vo: list) {
+			LOG.debug(vo.toString());
+		}
+		
+		assertThat(4, is(list.size()));
+	}
+	
+	
+	//U
+	@Test
+	@Ignore
+	public void update() throws Exception {
+		LOG.debug("======================================");
+		LOG.debug("=01. 기존 데이터 찾고/삭제=");
+		LOG.debug("======================================");
+		Search search=new Search();
+		search.setSearchWord("_142");
+		//기존Data찾기
+		List<User> getIdList = (List<User>) userDaoImpl.get_userIdList(search);
+		for(User vo : getIdList) {
+			do_delete(vo);
+		}
+		LOG.debug("======================================");
+		LOG.debug("=02. 단건등록=");
+		LOG.debug("======================================");
+		this.do_save(list.get(0));
+		LOG.debug("======================================");
+		LOG.debug("=03. 단건조회=");
+		LOG.debug("======================================");
+		getIdList = (List<User>) userDaoImpl.get_userIdList(search);
+		
+		//Data수정
+		User user = getIdList.get(0);
+		user.setPass("U_"+user.getPass());
+		user.setName("U_"+user.getName());
+		user.setNickname("U_"+user.getNickname());
+		user.setEmail("U_"+user.getEmail());
+		
+		this.do_update(user);
+		LOG.debug("======================================");
+		LOG.debug("=05. Data 조회/비교=");
+		LOG.debug("======================================");		
+		User vsData = this.get_selectOne(user);
+		
+		checkData(user, vsData);
+		
+	}
+		
+	
 	//CRD
 	@Test
+	@Ignore
 	public void addAndGet() throws Exception {
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 삭제=");
@@ -109,6 +189,30 @@ public class DaoUserWebTest {
 		assertThat(org.getTel(), is(vs.getTel()));
 	}
 	
+	
+	private List<User> get_retrieve(Search inVO) throws Exception {
+		//url,param,post/get
+		MockHttpServletRequestBuilder createMessage = 
+				MockMvcRequestBuilders.get("/user/get_retrieve.do")
+				.param("searchDiv", inVO.getSearchDiv())
+				.param("searchWord", inVO.getSearchWord())
+				.param("pageSize", String.valueOf(inVO.getPageSize()))
+				.param("pageNum", String.valueOf(inVO.getPageNum()));
+
+		//url call 결과 return
+		MvcResult result = mockMvc.perform(createMessage)
+				                     .andExpect(status().isOk())
+				                     .andReturn()
+				                     ;		
+		ModelAndView   modelAndView= result.getModelAndView();
+		List<User> list = (List<User>) modelAndView.getModel().get("list");
+		
+		LOG.debug("=====================================");
+		LOG.debug("=list="+list);
+		LOG.debug("=====================================");		
+		
+		return list;
+	}
 	
 	
 	private void do_save(User vo) throws Exception{
@@ -183,6 +287,36 @@ public class DaoUserWebTest {
 		
 		return outVO;
 		
+	}
+	
+	private void do_update(User inVO) throws Exception{
+		MockHttpServletRequestBuilder createMessage = 
+				MockMvcRequestBuilders.post("/user/do_update.do")
+				.param("id", inVO.getId())
+				.param("pass", inVO.getPass())
+				.param("name", inVO.getName())
+				.param("lvl", inVO.getLvl())
+				.param("nickname", inVO.getNickname())
+				.param("email", inVO.getEmail())
+				.param("postcode", inVO.getPostcode())
+				.param("address1", inVO.getAddress1())
+				.param("address2", inVO.getAddress2())
+				.param("tel", inVO.getTel())
+				.param("image", inVO.getImage())
+				.param("reg_dt", inVO.getRegDt());
+		
+		//url call 결과 return
+		ResultActions resultActions = mockMvc.perform(createMessage)
+				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.msgId", is("1")));		
+		
+		String result = resultActions.andDo(print())
+				.andReturn()
+				.getResponse().getContentAsString();
+		
+		LOG.debug("=====================================");
+		LOG.debug("=result="+result);
+		LOG.debug("=====================================");	
 	}
 	
 	
