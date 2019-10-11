@@ -93,7 +93,7 @@ public class DaoOrderStatusWebTest {
 				LOG.debug("===============================");			
 			}
 	@Test
-
+	@Ignore
 	public void do_save() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.post("/orderStauts/do_save.do")
 				.param("detail_code", "987456123")
@@ -130,7 +130,7 @@ public class DaoOrderStatusWebTest {
 			}
 		
 	@Test
-	@Ignore
+	
 	public void get_selectOne() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/do_selectOne.do")
 		.param("detail_code", "123789");
