@@ -67,9 +67,9 @@
 	     p_code = #{pCode,jdbcType=NUMERIC},
 	     quantity = #{quantity,jdbcType=NUMERIC},
 	     unit_price = #{unitPrice,jdbcType=NUMERIC},
-	     id = #{id,jdbcType=VARCHER}
+	     id = #{id,jdbcType=VARCHAR}
 	WHERE
-   		 cart_code = #{cartCode}
+   		 cart_code = #{cartCode,jdbcType=NUMERIC}
     </update>
 	
 	
@@ -83,12 +83,12 @@
 	
 	
 	<!-- 단건조회 -->
- 	<select id="get_selectOne" parameterType="Cart" resultType="Cart">
+ 	<select id="get_selectOne" parameterType="Cart" >
 		SELECT										
 		    <include refid="cartColumns"/>                  
 		FROM
    			 CART                             
-		WHERE CART_CODE = #{CartCode,jdbcType=VARCHAR}
+		WHERE CART_CODE = #{CartCode,jdbcType=NUMERIC}
 	</select> 
 
 

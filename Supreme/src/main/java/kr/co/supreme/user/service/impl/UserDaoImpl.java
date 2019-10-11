@@ -23,6 +23,77 @@ public class UserDaoImpl implements WorkDiv {
 	
 	private final String NAMESPACE = "kr.co.supreme.user";
 	
+	public UserDaoImpl() {}
+	
+	public List<User> getAll(){
+		String statement = this.NAMESPACE+".get_all";
+		
+		LOG.debug("========================");
+		LOG.debug("01.no param=");
+		LOG.debug("========================");
+		
+		LOG.debug("========================");
+		LOG.debug("02.statement="+statement);
+		LOG.debug("========================");
+		
+		List<User> list = this.sqlSessionTemplate.selectList(statement);
+		
+		LOG.debug("========================");
+		LOG.debug("03.list="+list);
+		LOG.debug("========================");		
+		return list;		
+	}
+	
+	/**
+	 * 비번check
+	 * @param dto
+	 * @return
+	 */
+	public int passwd_check(DTO dto) {
+		String statement = this.NAMESPACE+".passwd_check";
+		User user = (User) dto;
+		LOG.debug("========================");
+		LOG.debug("01.param="+user);
+		LOG.debug("========================");
+		
+		LOG.debug("========================");
+		LOG.debug("02.statement="+statement);
+		LOG.debug("========================");
+		
+		int flag = this.sqlSessionTemplate.selectOne(statement, user);
+		
+		LOG.debug("========================");
+		LOG.debug("03.flag="+flag);
+		LOG.debug("========================");		
+		return flag;
+	}
+	
+	
+	/**
+	 * 아이디 체크
+	 * 0<return :성공
+	 * @param dto
+	 * @return
+	 */
+	public int id_check(DTO dto) {
+		String statement = this.NAMESPACE+".id_check";
+		User user = (User) dto;
+		LOG.debug("========================");
+		LOG.debug("01.param="+user);
+		LOG.debug("========================");
+		
+		LOG.debug("========================");
+		LOG.debug("02.statement="+statement);
+		LOG.debug("========================");
+		
+		int flag = this.sqlSessionTemplate.selectOne(statement, user);
+		
+		LOG.debug("========================");
+		LOG.debug("03.flag="+flag);
+		LOG.debug("========================");		
+		return flag;
+	}
+	
 	
 	@Override
 	public int do_update(DTO dto) {

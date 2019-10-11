@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,10 +58,20 @@ public class DaoUserTest {
 				);
 		
 	}
+
+	
+	@Test
+	@Ignore
+	public void getAll() throws SQLException {
+		List<User> list = daoImpl.getAll();
+		for(User user:list) {
+			LOG.debug(user.toString());
+		}
+	}
 	
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void get_retrieve() {
 		//---------------------------
 		//-기존Data삭제

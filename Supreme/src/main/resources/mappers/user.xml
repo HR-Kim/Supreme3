@@ -43,6 +43,23 @@
 			</choose>
 	</sql>
 	
+	<!-- 아이디 체크 -->
+	<select id="id_check" parameterType="User" >
+		SELECT COUNT(*) CNT
+		FROM USERS
+		WHERE id = #{id,jdbcType=VARCHAR}	
+	</select>
+	
+	<!-- 비번 체크 -->
+	<select id="passwd_check" parameterType="User" >
+		SELECT COUNT(*) CNT
+		FROM USERS
+		WHERE id = #{id,jdbcType=VARCHAR}	
+		AND pass = #{pass,jdbcType=VARCHAR}
+	</select> 
+		    
+	
+	
 	<!-- Id조회 -->
  	<select id="get_userIdList" parameterType="Search" resultType="User">
 		SELECT										
@@ -51,6 +68,16 @@
    			 USERS                             
 		WHERE id LIKE '%' || #{searchWord} || '%'
 	</select> 
+	
+	
+	<!-- 사용자 전체 조회 -->
+	<select id="get_all"  resultType="User">
+		 SELECT										
+		     <include refid="userColumns" />			
+		 FROM                                       
+		     USERS                                  
+		 ORDER BY reg_dt
+	</select>
 	
 	
 	<!-- 전체 조회 -->
