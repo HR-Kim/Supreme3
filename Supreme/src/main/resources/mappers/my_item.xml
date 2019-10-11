@@ -21,6 +21,49 @@
 		</choose>
 	</sql>
 
+	<!-- get_IdList -->
+	<select id="get_IdList" parameterType="Search"
+		resultType="MyItem">
+		SELECT
+		<include refid="myItemColums" />
+		FROM
+		MY_ITEM
+		WHERE ID LIKE '%' || #{searchWord} || '%'
+	</select>
+
+	<!-- get_retrieve -->
+	<select id="get_retrieve" parameterType="Search"
+		resultType="MyItem">
+		SELECT
+		<include refid="myItemColums" />
+		FROM
+		MY_ITEM
+		WHERE ID LIKE '%' || #{searchWord} || '%'
+		ORDER BY F_SEQ ASC
+	</select>
+
+	<insert id="do_save" parameterType="MyItem">
+		INSERT INTO MY_ITEM (
+		F_SEQ,
+		ID,
+		P_CODE,
+		REG_DT
+		) VALUES (
+		#{fSeq,jdbcType=NUMERIC},
+		#{id,jdbcType=VARCHAR},
+		#{pCode,jdbcType=NUMERIC},
+		SYSDATE
+		)
+	</insert>
+	
+	<!-- 삭제 -->
+	<delete id="do_delete" parameterType="MyItem">
+		<![CDATA[
+			DELETE FROM MY_ITEM WHERE F_SEQ = #{fSeq,jdbcType=NUMERIC}
+		]]>
+	</delete>
+	
+
 	
 
 
