@@ -2,6 +2,7 @@ package kr.co.supreme.user.service.web;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.annotation.Resources;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.View;
 
 import com.google.gson.Gson;
@@ -31,6 +33,14 @@ public class UserController {
 	
 	Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
+	
+	@Autowired
+	private LocaleResolver localeResolver;//SessionLocaleResolver
+	
+//	@Resource(name="downloadView")
+//	private View download;
+	
+	
 	@Autowired
 	UserService userService;
 	
@@ -39,6 +49,11 @@ public class UserController {
 	//view
 	private final String VIEW_LIST_NM ="user/user_list";
 	private final String VIEW_MNG_NM  ="user/user_mng";
+	
+	
+	
+	
+	
 	
 	/**수정 */
 	@RequestMapping(value="user/do_update.do",method = RequestMethod.POST
@@ -64,7 +79,7 @@ public class UserController {
 			message.setMsgMsg("수정 되었습니다.");
 		}else {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("수정 실패.");			
+			message.setMsgMsg("수정에 실패하였습니다.");			
 		}
 		
 		Gson gson=new Gson();
@@ -91,7 +106,7 @@ public class UserController {
 			message.setMsgMsg("삭제 되었습니다.");
 		}else {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("삭제 실패.");			
+			message.setMsgMsg("삭제에 실패하였습니다.");			
 		}
 		
 		Gson gson=new Gson();
@@ -127,7 +142,7 @@ public class UserController {
 			message.setMsgMsg("등록 되었습니다.");
 		}else {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("등록 실패.");			
+			message.setMsgMsg("등록에 실패하였습니다.");			
 		}
 		
 		Gson gson=new Gson();
@@ -139,6 +154,8 @@ public class UserController {
 		
 		return gsonStr;
 	}
+	
+	
 	/**단건조회 */
 	@RequestMapping(value="user/do_selectOne.do",method = RequestMethod.GET)
 	public String get_selectOne(User user,Model model) {

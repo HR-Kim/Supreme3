@@ -37,6 +37,9 @@
 					and NAME LIKE '%' || #{searchWord} || '%'
 				</when>
 				<when test="'30' == searchDiv">
+					and email LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'40' == searchDiv">
 					and TEL LIKE '%' || #{searchWord} || '%'
 				</when>
 				<otherwise></otherwise>							

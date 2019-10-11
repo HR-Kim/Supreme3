@@ -51,12 +51,27 @@ public class DaoUserWebTest {
 	
 	//Test Data
 	List<User> list;
+	List<String> headers;
 	
 	@Autowired
 	UserDaoImpl  userDaoImpl;
 	
 	@Before
 	public void setUp() {
+		headers = Arrays.asList("아이디"
+								,"비밀번호"
+								,"이름"
+								,"레벨"
+								,"닉네임"
+								,"이메일"
+								,"우편번호"
+								,"주소1"
+								,"주소2"
+								,"전화번호"
+								,"이미지주소"
+								,"등록일"
+								);
+		
 		list = Arrays.asList(
 				new User("test01_142", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
 				 new User("test02_142", "test", "test", "1", "test", "test", "11111", "test", "test", "test", "test", "19/10/01"),
@@ -69,9 +84,17 @@ public class DaoUserWebTest {
 	}
 	
 	
+	//id,pass 체크 
+	public void idPassCheck() {
+		User user01 = list.get(0);
+		
+	}
+	
+	
+	
 	//목록 조회
 	@Test
-	@Ignore
+//	@Ignore
 	public void do_retrieve() throws Exception{
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 찾고/삭제=");
@@ -110,7 +133,7 @@ public class DaoUserWebTest {
 	
 	//U
 	@Test
-	@Ignore
+//	@Ignore
 	public void update() throws Exception {
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 찾고/삭제=");
@@ -151,7 +174,7 @@ public class DaoUserWebTest {
 	
 	//CRD
 	@Test
-	@Ignore
+//	@Ignore
 	public void addAndGet() throws Exception {
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 삭제=");

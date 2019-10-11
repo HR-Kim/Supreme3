@@ -78,7 +78,7 @@ public class BoardWebTest {
 	
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void get_retrieve() throws Exception {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/board/get_retrieve.do")
 				.param("pageSize", "10")
@@ -99,7 +99,7 @@ public class BoardWebTest {
 	}
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void get_selectOne() throws Exception {
 		MockHttpServletRequestBuilder createMessage = 
 				   MockMvcRequestBuilders.get("/board/do_selectOne.do")
@@ -117,7 +117,7 @@ public class BoardWebTest {
 	}
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void do_update() throws Exception {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.post("/board/do_update.do")
 				.param("bTitle", "YJ0614YJ")
@@ -140,7 +140,7 @@ public class BoardWebTest {
 	
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void do_save() throws Exception {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.post("/board/do_save.do")
 				.param("bSeq", "15")

@@ -61,7 +61,7 @@ public class DaoUserTest {
 
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void getAll() throws SQLException {
 		List<User> list = daoImpl.getAll();
 		for(User user:list) {
