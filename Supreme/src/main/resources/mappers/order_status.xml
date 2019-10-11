@@ -4,14 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.co.supreme.orderStatus">
   <sql id="orderStatusColumns">
-  		U.NICKNAME 닉네임,
-		O3.DETAIL_CODE 주문상세번호 ,
-		O2.ORDER_CODE 주문번호 ,
+		O3.DETAIL_CODE as detail_code ,
+		O2.ORDER_CODE as order_code ,
 		P.P_IMAGE 이미지,
 		P.P_NAME 상품명,
 		P.P_CONTENT 상품설명,
 		O2.QUANTITY 수량,
-		O3.OD_STATUS 주문상태
+		O3.OD_STATUS as od_status,
+		O3.UDT_DT as udt_dt
   </sql>
   
  <sql id="baseCondition">
@@ -98,8 +98,8 @@
 			ON O3.DETAIL_CODE = O2.DETAIL_CODE
 			JOIN PRODUCT P 
 			ON O2.P_CODE = P.P_CODE
-		WHERE U.ID = 
-		#{ID,jdbcType=VARCHAR}
+		WHERE O3.DETAIL_CODE = 
+		#{detail_code,jdbcType=VARCHAR}
 	</select>
 	
 	<!-- 수정 -->
