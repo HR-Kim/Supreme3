@@ -5382,3 +5382,947 @@ Caused by: java.lang.IllegalArgumentException: No enum constant org.apache.ibati
 [2019-10-11 14:21:59.243] DEBUG DaoUserTest.getBean(DaoUserTest.java:293) - =userDaoImpl=kr.co.supreme.user.service.impl.UserDaoImpl@41de5768
 [2019-10-11 14:21:59.243] DEBUG DaoUserTest.getBean(DaoUserTest.java:294) - ====================
 [2019-10-11 14:21:59.248] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@370736d9: startup date [Fri Oct 11 14:21:58 KST 2019]; root of context hierarchy
+[2019-10-11 14:50:24.097] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-11 14:50:24.108] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5622fdf, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4883b407, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@7d9d1a19, org.springframework.test.context.support.DirtiesContextTestExecutionListener@39c0f4a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1794d431, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@42e26948]
+[2019-10-11 14:50:24.168] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-11 14:50:24.826] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-11 14:50:24.873] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Fri Oct 11 14:50:24 KST 2019]; root of context hierarchy
+[2019-10-11 14:50:24.998] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-11 14:50:25.265] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_update(kr.co.supreme.board.service.Board)
+[2019-10-11 14:50:25.266] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:50:25.266] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_save(kr.co.supreme.board.service.Board)
+[2019-10-11 14:50:25.267] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_delete(kr.co.supreme.board.service.Board)
+[2019-10-11 14:50:25.268] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.get_selectOne(kr.co.supreme.board.service.Board,org.springframework.ui.Model)
+[2019-10-11 14:50:25.269] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_update(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:50:25.270] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:50:25.270] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_save(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:50:25.270] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_delete(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:50:25.271] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.get_selectOne(kr.co.supreme.cart.service.Cart,org.springframework.ui.Model)
+[2019-10-11 14:50:25.273] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_update(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:50:25.273] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:50:25.274] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_save(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:50:25.274] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_delete(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:50:25.274] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.get_selectOne(kr.co.supreme.comments.service.Comments,org.springframework.ui.Model)
+[2019-10-11 14:50:25.276] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-11 14:50:25.278] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_update(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:50:25.278] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_save(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:50:25.279] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_delete(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:50:25.279] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.get_selectOne(kr.co.supreme.orderstatus.service.OrderStatus,org.springframework.ui.Model)
+[2019-10-11 14:50:25.280] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-11 14:50:25.282] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_update(kr.co.supreme.user.service.User)
+[2019-10-11 14:50:25.283] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:50:25.283] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_save(kr.co.supreme.user.service.User)
+[2019-10-11 14:50:25.283] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_delete(kr.co.supreme.user.service.User)
+[2019-10-11 14:50:25.284] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.get_selectOne(kr.co.supreme.user.service.User,org.springframework.ui.Model)
+[2019-10-11 14:50:25.361] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Fri Oct 11 14:50:24 KST 2019]; root of context hierarchy
+[2019-10-11 14:50:25.388] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Fri Oct 11 14:50:24 KST 2019]; root of context hierarchy
+[2019-10-11 14:50:25.444] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-11 14:50:25.800] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:107) - ================================
+[2019-10-11 14:50:25.801] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:108) - =1.기존Data삭제=
+[2019-10-11 14:50:25.801] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:109) - ================================
+[2019-10-11 14:50:25.801] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:89) - =========================
+[2019-10-11 14:50:25.801] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:90) - 1. param:Search [pageSize=0, pageNum=0, searchDiv=null, searchWord=123456789, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:50:25.801] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:91) - 2. statement:kr.co.supreme.orderStatus.get_orderStatusList
+[2019-10-11 14:50:26.038] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-11 14:50:26.038] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-11 14:50:26.039] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-11 14:50:26.041] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' || ? || '%' ORDER BY DETAIL_CODE ASC 
+[2019-10-11 14:50:26.098] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:50:26.098] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || ? || '%'
+		ORDER BY DETAIL_CODE ASC) returned net.sf.log4jdbc.PreparedStatementSpy@54dcbb9f
+[2019-10-11 14:50:26.105] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:50:26.105] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:50:26.106] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || '123456789' || '%'
+		ORDER BY DETAIL_CODE ASC
+[2019-10-11 14:50:26.127] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' 
+|| '123456789' || '%' ORDER BY DETAIL_CODE ASC  {executed in 21 msec}
+[2019-10-11 14:50:26.127] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned true
+[2019-10-11 14:50:26.135] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.new ResultSet returned 
+[2019-10-11 14:50:26.135] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getResultSet() returned net.sf.log4jdbc.ResultSetSpy@4463d9d3
+[2019-10-11 14:50:26.141] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@3fbfa96
+[2019-10-11 14:50:26.142] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getType() returned 1003
+[2019-10-11 14:50:26.142] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.next() returned true
+[2019-10-11 14:50:26.146] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(DETAIL_CODE) returned 123456789
+[2019-10-11 14:50:26.147] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.147] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(OD_STATUS) returned 2 
+[2019-10-11 14:50:26.147] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.148] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(REG_DT) returned 2019-10-10 15:47:52
+[2019-10-11 14:50:26.148] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.149] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(UDT_DT) returned 2019-10-10 15:47:52
+[2019-10-11 14:50:26.149] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.149] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.next() returned true
+[2019-10-11 14:50:26.149] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(DETAIL_CODE) returned 123456789987
+[2019-10-11 14:50:26.150] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.150] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(OD_STATUS) returned 10
+[2019-10-11 14:50:26.150] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.150] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(REG_DT) returned 2019-10-10 17:32:59
+[2019-10-11 14:50:26.150] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.151] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(UDT_DT) returned 2019-10-10 17:32:59
+[2019-10-11 14:50:26.151] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.152] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |-------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.152] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |DETAIL_CODE  |OD_STATUS |REG_DT              |UDT_DT              |
+[2019-10-11 14:50:26.153] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |-------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.153] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |123456789    |2         |2019-10-10 15:47:52 |2019-10-10 15:47:52 |
+[2019-10-11 14:50:26.153] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |123456789987 |10        |2019-10-10 17:32:59 |2019-10-10 17:32:59 |
+[2019-10-11 14:50:26.154] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |-------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.154] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.next() returned false
+[2019-10-11 14:50:26.154] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==      Total: 2
+[2019-10-11 14:50:26.154] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.close() returned null
+[2019-10-11 14:50:26.158] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getConnection() returned net.sf.log4jdbc.ConnectionSpy@511d5d04
+[2019-10-11 14:50:26.158] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getMetaData() returned org.apache.commons.dbcp.DelegatingDatabaseMetaData@27068a50
+[2019-10-11 14:50:26.158] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-11 14:50:26.159] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-11 14:50:26.160] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-11 14:50:26.160] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-11 14:50:26.160] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:93) - 3. list:[OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-10 15:47:52, udt_dt=2019-10-10 15:47:52, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]], OrderStatus [detail_code=123456789987, od_status=10, reg_dt=2019-10-10 17:32:59, udt_dt=2019-10-10 17:32:59, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]]
+[2019-10-11 14:50:26.161] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:94) - =========================
+[2019-10-11 14:50:26.161] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:50) - =========================
+[2019-10-11 14:50:26.161] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:51) - 1. param:OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-10 15:47:52, udt_dt=2019-10-10 15:47:52, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:50:26.161] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:52) - =========================
+[2019-10-11 14:50:26.161] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:54) - =========================
+[2019-10-11 14:50:26.161] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:55) - 2. statement:kr.co.supreme.orderStatus.do_delete
+[2019-10-11 14:50:26.162] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:56) - =========================
+[2019-10-11 14:50:26.162] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 2. Connection opened
+[2019-10-11 14:50:26.162] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.new Connection returned 
+[2019-10-11 14:50:26.162] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.getAutoCommit() returned true
+[2019-10-11 14:50:26.163] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: DELETE FROM ORDER_STATUS WHERE DETAIL_CODE=? 
+[2019-10-11 14:50:26.163] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:50:26.163] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.prepareStatement(DELETE FROM ORDER_STATUS WHERE DETAIL_CODE=?) returned net.sf.log4jdbc.PreparedStatementSpy@6e6fce47
+[2019-10-11 14:50:26.163] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:50:26.163] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:50:26.164] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : DELETE FROM ORDER_STATUS WHERE DETAIL_CODE='123456789'
+[2019-10-11 14:50:26.178] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - DELETE FROM ORDER_STATUS WHERE DETAIL_CODE='123456789'  {executed in 14 msec}
+[2019-10-11 14:50:26.179] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.execute() returned false
+[2019-10-11 14:50:26.179] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.getUpdateCount() returned 1
+[2019-10-11 14:50:26.179] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-11 14:50:26.179] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.isClosed() returned false
+[2019-10-11 14:50:26.180] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.close() returned 
+[2019-10-11 14:50:26.180] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 2. Connection closed
+[2019-10-11 14:50:26.180] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.close() returned 
+[2019-10-11 14:50:26.180] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:59) - =========================
+[2019-10-11 14:50:26.180] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:60) - 3. flag:1
+[2019-10-11 14:50:26.180] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:61) - =========================
+[2019-10-11 14:50:26.181] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:50) - =========================
+[2019-10-11 14:50:26.181] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:51) - 1. param:OrderStatus [detail_code=123456789987, od_status=10, reg_dt=2019-10-10 17:32:59, udt_dt=2019-10-10 17:32:59, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:50:26.181] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:52) - =========================
+[2019-10-11 14:50:26.181] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:54) - =========================
+[2019-10-11 14:50:26.181] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:55) - 2. statement:kr.co.supreme.orderStatus.do_delete
+[2019-10-11 14:50:26.181] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:56) - =========================
+[2019-10-11 14:50:26.181] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 3. Connection opened
+[2019-10-11 14:50:26.181] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.new Connection returned 
+[2019-10-11 14:50:26.181] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.getAutoCommit() returned true
+[2019-10-11 14:50:26.182] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: DELETE FROM ORDER_STATUS WHERE DETAIL_CODE=? 
+[2019-10-11 14:50:26.182] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:50:26.182] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.prepareStatement(DELETE FROM ORDER_STATUS WHERE DETAIL_CODE=?) returned net.sf.log4jdbc.PreparedStatementSpy@6443b128
+[2019-10-11 14:50:26.182] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(1, "123456789987") returned 
+[2019-10-11 14:50:26.182] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789987(String)
+[2019-10-11 14:50:26.183] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : DELETE FROM ORDER_STATUS WHERE DETAIL_CODE='123456789987'
+[2019-10-11 14:50:26.185] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - DELETE FROM ORDER_STATUS WHERE DETAIL_CODE='123456789987'  {executed in 2 msec}
+[2019-10-11 14:50:26.185] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.execute() returned false
+[2019-10-11 14:50:26.185] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.getUpdateCount() returned 1
+[2019-10-11 14:50:26.185] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-11 14:50:26.185] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.isClosed() returned false
+[2019-10-11 14:50:26.186] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.close() returned 
+[2019-10-11 14:50:26.186] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 3. Connection closed
+[2019-10-11 14:50:26.186] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.close() returned 
+[2019-10-11 14:50:26.186] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:59) - =========================
+[2019-10-11 14:50:26.186] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:60) - 3. flag:1
+[2019-10-11 14:50:26.186] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:61) - =========================
+[2019-10-11 14:50:26.186] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:118) - ======================================
+[2019-10-11 14:50:26.186] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:119) - =02. 데이터 추가=
+[2019-10-11 14:50:26.186] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:120) - ======================================
+[2019-10-11 14:50:26.187] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:71) - =========================
+[2019-10-11 14:50:26.187] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:72) - 1. param:OrderStatus [detail_code=123456789, od_status=0, reg_dt=no_date, udt_dt=20191007, order_code=1001010, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:50:26.187] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:73) - =========================
+[2019-10-11 14:50:26.187] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:75) - =========================
+[2019-10-11 14:50:26.187] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:76) - 2. statement:kr.co.supreme.orderStatus.do_save
+[2019-10-11 14:50:26.187] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:77) - =========================
+[2019-10-11 14:50:26.187] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 4. Connection opened
+[2019-10-11 14:50:26.187] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.new Connection returned 
+[2019-10-11 14:50:26.188] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.getAutoCommit() returned true
+[2019-10-11 14:50:26.188] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO ORDER_STATUS ( DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT ) VALUES ( ?, ?, SYSDATE, ? ) 
+[2019-10-11 14:50:26.188] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:50:26.188] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.prepareStatement(INSERT INTO ORDER_STATUS (
+		   DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT 
+		) VALUES (
+		    ?,
+		    ?,
+		    SYSDATE,
+		    ?
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@2f879bab
+[2019-10-11 14:50:26.188] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:50:26.188] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(2, "0") returned 
+[2019-10-11 14:50:26.189] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(3, "20191007") returned 
+[2019-10-11 14:50:26.189] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String), 0(String), 20191007(String)
+[2019-10-11 14:50:26.189] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO ORDER_STATUS (
+		   DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT 
+		) VALUES (
+		    '123456789',
+		    '0',
+		    SYSDATE,
+		    '20191007'
+		)
+[2019-10-11 14:50:26.194] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO ORDER_STATUS ( DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT ) VALUES ( '123456789', '0', 
+SYSDATE, '20191007' )  {executed in 5 msec}
+[2019-10-11 14:50:26.194] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.execute() returned false
+[2019-10-11 14:50:26.195] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.getUpdateCount() returned 1
+[2019-10-11 14:50:26.195] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-11 14:50:26.196] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.isClosed() returned false
+[2019-10-11 14:50:26.196] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.close() returned 
+[2019-10-11 14:50:26.197] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 4. Connection closed
+[2019-10-11 14:50:26.197] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.close() returned 
+[2019-10-11 14:50:26.198] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:80) - =========================
+[2019-10-11 14:50:26.198] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:81) - 3. flag:1
+[2019-10-11 14:50:26.198] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:82) - =========================
+[2019-10-11 14:50:26.203] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:89) - =========================
+[2019-10-11 14:50:26.203] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:90) - 1. param:Search [pageSize=0, pageNum=0, searchDiv=null, searchWord=123456789, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:50:26.203] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:91) - 2. statement:kr.co.supreme.orderStatus.get_orderStatusList
+[2019-10-11 14:50:26.204] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 5. Connection opened
+[2019-10-11 14:50:26.204] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.new Connection returned 
+[2019-10-11 14:50:26.204] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.getAutoCommit() returned true
+[2019-10-11 14:50:26.205] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' || ? || '%' ORDER BY DETAIL_CODE ASC 
+[2019-10-11 14:50:26.205] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:50:26.205] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.prepareStatement(SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || ? || '%'
+		ORDER BY DETAIL_CODE ASC) returned net.sf.log4jdbc.PreparedStatementSpy@21fff664
+[2019-10-11 14:50:26.206] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:50:26.206] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:50:26.206] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || '123456789' || '%'
+		ORDER BY DETAIL_CODE ASC
+[2019-10-11 14:50:26.208] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' 
+|| '123456789' || '%' ORDER BY DETAIL_CODE ASC  {executed in 1 msec}
+[2019-10-11 14:50:26.208] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.execute() returned true
+[2019-10-11 14:50:26.209] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.new ResultSet returned 
+[2019-10-11 14:50:26.209] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.getResultSet() returned net.sf.log4jdbc.ResultSetSpy@189b5fb1
+[2019-10-11 14:50:26.209] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@1ddd3478
+[2019-10-11 14:50:26.210] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.getType() returned 1003
+[2019-10-11 14:50:26.210] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.next() returned true
+[2019-10-11 14:50:26.210] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.getString(DETAIL_CODE) returned 123456789
+[2019-10-11 14:50:26.211] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.211] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.getString(OD_STATUS) returned 0 
+[2019-10-11 14:50:26.211] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.212] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.getString(REG_DT) returned 2019-10-11 14:50:27
+[2019-10-11 14:50:26.212] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.212] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.getString(UDT_DT) returned 2019-10-07 00:00:00
+[2019-10-11 14:50:26.212] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.213] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.213] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |DETAIL_CODE |OD_STATUS |REG_DT              |UDT_DT              |
+[2019-10-11 14:50:26.214] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.214] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |123456789   |0         |2019-10-11 14:50:27 |2019-10-07 00:00:00 |
+[2019-10-11 14:50:26.214] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.215] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.next() returned false
+[2019-10-11 14:50:26.215] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==      Total: 1
+[2019-10-11 14:50:26.215] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. ResultSet.close() returned null
+[2019-10-11 14:50:26.215] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.getConnection() returned net.sf.log4jdbc.ConnectionSpy@71178a52
+[2019-10-11 14:50:26.215] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.getMetaData() returned org.apache.commons.dbcp.DelegatingDatabaseMetaData@27068a50
+[2019-10-11 14:50:26.216] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.isClosed() returned false
+[2019-10-11 14:50:26.216] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.close() returned 
+[2019-10-11 14:50:26.216] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 5. Connection closed
+[2019-10-11 14:50:26.216] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.close() returned 
+[2019-10-11 14:50:26.216] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:93) - 3. list:[OrderStatus [detail_code=123456789, od_status=0 , reg_dt=2019-10-11 14:50:27, udt_dt=2019-10-07 00:00:00, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]]
+[2019-10-11 14:50:26.217] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:94) - =========================
+[2019-10-11 14:50:26.217] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:130) - ======================================
+[2019-10-11 14:50:26.217] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:131) - =03. 데이터 수정=
+[2019-10-11 14:50:26.217] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:132) - ======================================
+[2019-10-11 14:50:26.217] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:135) - ======================================
+[2019-10-11 14:50:26.217] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:136) - =03.01 데이터 수정=
+[2019-10-11 14:50:26.217] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:137) - ======================================
+[2019-10-11 14:50:26.218] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:30) - =========================
+[2019-10-11 14:50:26.218] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:31) - 1. param:OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-11 14:50:27, udt_dt=2019-10-07 00:00:00, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:50:26.218] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:32) - =========================
+[2019-10-11 14:50:26.218] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:34) - =========================
+[2019-10-11 14:50:26.218] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:35) - 2. statement:kr.co.supreme.orderStatus.do_update
+[2019-10-11 14:50:26.218] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:36) - =========================
+[2019-10-11 14:50:26.218] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 6. Connection opened
+[2019-10-11 14:50:26.218] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.new Connection returned 
+[2019-10-11 14:50:26.219] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.getAutoCommit() returned true
+[2019-10-11 14:50:26.219] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: UPDATE ORDER_STATUS SET OD_STATUS =?, UDT_DT = SYSDATE WHERE detail_code=? 
+[2019-10-11 14:50:26.219] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:50:26.219] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.prepareStatement(UPDATE ORDER_STATUS 
+	SET 
+		OD_STATUS =?,
+		UDT_DT = SYSDATE 
+	WHERE
+		detail_code=?) returned net.sf.log4jdbc.PreparedStatementSpy@29314cc9
+[2019-10-11 14:50:26.219] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.setString(1, "2 ") returned 
+[2019-10-11 14:50:26.220] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.setString(2, "123456789") returned 
+[2019-10-11 14:50:26.220] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 2 (String), 123456789(String)
+[2019-10-11 14:50:26.220] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : UPDATE ORDER_STATUS 
+	SET 
+		OD_STATUS ='2 ',
+		UDT_DT = SYSDATE 
+	WHERE
+		detail_code='123456789'
+[2019-10-11 14:50:26.225] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - UPDATE ORDER_STATUS SET OD_STATUS ='2 ', UDT_DT = SYSDATE WHERE detail_code='123456789'  {executed in 5 msec}
+[2019-10-11 14:50:26.225] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.execute() returned false
+[2019-10-11 14:50:26.225] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.getUpdateCount() returned 1
+[2019-10-11 14:50:26.225] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-11 14:50:26.225] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.isClosed() returned false
+[2019-10-11 14:50:26.226] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.close() returned 
+[2019-10-11 14:50:26.226] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 6. Connection closed
+[2019-10-11 14:50:26.226] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.close() returned 
+[2019-10-11 14:50:26.226] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:39) - =========================
+[2019-10-11 14:50:26.226] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:40) - 3. flag:1
+[2019-10-11 14:50:26.226] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:41) - =========================
+[2019-10-11 14:50:26.226] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:141) - ======================================
+[2019-10-11 14:50:26.227] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:142) - =04. 등록 DATA조회=
+[2019-10-11 14:50:26.227] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:143) - ======================================
+[2019-10-11 14:50:26.227] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:89) - =========================
+[2019-10-11 14:50:26.227] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:90) - 1. param:Search [pageSize=0, pageNum=0, searchDiv=null, searchWord=123456789, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:50:26.227] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:91) - 2. statement:kr.co.supreme.orderStatus.get_orderStatusList
+[2019-10-11 14:50:26.227] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 7. Connection opened
+[2019-10-11 14:50:26.227] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.new Connection returned 
+[2019-10-11 14:50:26.228] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.getAutoCommit() returned true
+[2019-10-11 14:50:26.228] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' || ? || '%' ORDER BY DETAIL_CODE ASC 
+[2019-10-11 14:50:26.228] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:50:26.228] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.prepareStatement(SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || ? || '%'
+		ORDER BY DETAIL_CODE ASC) returned net.sf.log4jdbc.PreparedStatementSpy@b558294
+[2019-10-11 14:50:26.228] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:50:26.228] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:50:26.229] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || '123456789' || '%'
+		ORDER BY DETAIL_CODE ASC
+[2019-10-11 14:50:26.231] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' 
+|| '123456789' || '%' ORDER BY DETAIL_CODE ASC  {executed in 2 msec}
+[2019-10-11 14:50:26.231] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.execute() returned true
+[2019-10-11 14:50:26.231] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.new ResultSet returned 
+[2019-10-11 14:50:26.231] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.getResultSet() returned net.sf.log4jdbc.ResultSetSpy@5f14a673
+[2019-10-11 14:50:26.231] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@5dc3fcb7
+[2019-10-11 14:50:26.232] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getType() returned 1003
+[2019-10-11 14:50:26.232] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.next() returned true
+[2019-10-11 14:50:26.232] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(DETAIL_CODE) returned 123456789
+[2019-10-11 14:50:26.232] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.232] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(OD_STATUS) returned 2 
+[2019-10-11 14:50:26.232] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.233] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(REG_DT) returned 2019-10-11 14:50:27
+[2019-10-11 14:50:26.233] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.233] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(UDT_DT) returned 2019-10-11 14:50:27
+[2019-10-11 14:50:26.233] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:50:26.234] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.234] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |DETAIL_CODE |OD_STATUS |REG_DT              |UDT_DT              |
+[2019-10-11 14:50:26.234] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.235] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |123456789   |2         |2019-10-11 14:50:27 |2019-10-11 14:50:27 |
+[2019-10-11 14:50:26.235] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:50:26.235] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.next() returned false
+[2019-10-11 14:50:26.235] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==      Total: 1
+[2019-10-11 14:50:26.235] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.close() returned null
+[2019-10-11 14:50:26.235] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.getConnection() returned net.sf.log4jdbc.ConnectionSpy@2ca6546f
+[2019-10-11 14:50:26.235] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.getMetaData() returned org.apache.commons.dbcp.DelegatingDatabaseMetaData@27068a50
+[2019-10-11 14:50:26.236] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.isClosed() returned false
+[2019-10-11 14:50:26.236] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.close() returned 
+[2019-10-11 14:50:26.236] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 7. Connection closed
+[2019-10-11 14:50:26.236] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.close() returned 
+[2019-10-11 14:50:26.236] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:93) - 3. list:[OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-11 14:50:27, udt_dt=2019-10-11 14:50:27, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]]
+[2019-10-11 14:50:26.236] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:94) - =========================
+[2019-10-11 14:50:26.236] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:146) - ======================================
+[2019-10-11 14:50:26.236] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:147) - =05. 비교=
+[2019-10-11 14:50:26.236] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:148) - ======================================
+[2019-10-11 14:50:26.238] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:158) - ====================
+[2019-10-11 14:50:26.238] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:159) - =context=org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Fri Oct 11 14:50:24 KST 2019]; root of context hierarchy
+[2019-10-11 14:50:26.238] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:160) - =boardDaoImpl=kr.co.supreme.orderstatus.service.impl.OrderStatusDaoImpl@783efb48
+[2019-10-11 14:50:26.238] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:161) - ====================
+[2019-10-11 14:50:26.240] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@13a5fe33: startup date [Fri Oct 11 14:50:24 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:06.795] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-11 14:51:06.805] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6093dd95, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5622fdf, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4883b407, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7d9d1a19, org.springframework.test.context.transaction.TransactionalTestExecutionListener@39c0f4a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1794d431]
+[2019-10-11 14:51:06.862] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml]
+[2019-10-11 14:51:07.376] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from file [C:\Users\sist\git\Supreme3\Supreme\src\main\webapp\WEB-INF\spring\root-context.xml]
+[2019-10-11 14:51:07.420] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@527740a2: startup date [Fri Oct 11 14:51:07 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:07.547] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-11 14:51:07.803] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_save(kr.co.supreme.board.service.Board)
+[2019-10-11 14:51:07.804] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_update(kr.co.supreme.board.service.Board)
+[2019-10-11 14:51:07.804] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_delete(kr.co.supreme.board.service.Board)
+[2019-10-11 14:51:07.804] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:07.805] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.get_selectOne(kr.co.supreme.board.service.Board,org.springframework.ui.Model)
+[2019-10-11 14:51:07.806] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_save(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:51:07.807] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_update(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:51:07.807] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_delete(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:51:07.807] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:07.808] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.get_selectOne(kr.co.supreme.cart.service.Cart,org.springframework.ui.Model)
+[2019-10-11 14:51:07.809] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_save(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:51:07.809] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_update(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:51:07.810] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_delete(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:51:07.810] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:07.810] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.get_selectOne(kr.co.supreme.comments.service.Comments,org.springframework.ui.Model)
+[2019-10-11 14:51:07.812] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-11 14:51:07.813] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_save(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:51:07.814] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_update(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:51:07.814] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_delete(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:51:07.814] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.get_selectOne(kr.co.supreme.orderstatus.service.OrderStatus,org.springframework.ui.Model)
+[2019-10-11 14:51:07.815] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-11 14:51:07.816] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_save(kr.co.supreme.user.service.User)
+[2019-10-11 14:51:07.817] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_update(kr.co.supreme.user.service.User)
+[2019-10-11 14:51:07.817] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_delete(kr.co.supreme.user.service.User)
+[2019-10-11 14:51:07.817] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:07.817] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.get_selectOne(kr.co.supreme.user.service.User,org.springframework.ui.Model)
+[2019-10-11 14:51:07.886] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@527740a2: startup date [Fri Oct 11 14:51:07 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:07.914] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@527740a2: startup date [Fri Oct 11 14:51:07 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:07.957] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-11 14:51:08.267] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:107) - ================================
+[2019-10-11 14:51:08.267] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:108) - =1.기존Data삭제=
+[2019-10-11 14:51:08.267] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:109) - ================================
+[2019-10-11 14:51:08.268] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:89) - =========================
+[2019-10-11 14:51:08.268] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:90) - 1. param:Search [pageSize=0, pageNum=0, searchDiv=null, searchWord=123456789, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.268] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:91) - 2. statement:kr.co.supreme.orderStatus.get_orderStatusList
+[2019-10-11 14:51:08.444] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 1. Connection opened
+[2019-10-11 14:51:08.444] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.new Connection returned 
+[2019-10-11 14:51:08.444] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getAutoCommit() returned true
+[2019-10-11 14:51:08.447] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' || ? || '%' ORDER BY DETAIL_CODE ASC 
+[2019-10-11 14:51:08.502] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:51:08.503] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.prepareStatement(SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || ? || '%'
+		ORDER BY DETAIL_CODE ASC) returned net.sf.log4jdbc.PreparedStatementSpy@5bb3131b
+[2019-10-11 14:51:08.509] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:51:08.510] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:51:08.510] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || '123456789' || '%'
+		ORDER BY DETAIL_CODE ASC
+[2019-10-11 14:51:08.522] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' 
+|| '123456789' || '%' ORDER BY DETAIL_CODE ASC  {executed in 12 msec}
+[2019-10-11 14:51:08.522] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.execute() returned true
+[2019-10-11 14:51:08.529] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.new ResultSet returned 
+[2019-10-11 14:51:08.531] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getResultSet() returned net.sf.log4jdbc.ResultSetSpy@6ad5923a
+[2019-10-11 14:51:08.537] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@7b60c3e
+[2019-10-11 14:51:08.537] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getType() returned 1003
+[2019-10-11 14:51:08.538] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.next() returned true
+[2019-10-11 14:51:08.542] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(DETAIL_CODE) returned 123456789
+[2019-10-11 14:51:08.542] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.542] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(OD_STATUS) returned 2 
+[2019-10-11 14:51:08.542] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.543] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(REG_DT) returned 2019-10-11 14:50:27
+[2019-10-11 14:51:08.543] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.543] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.getString(UDT_DT) returned 2019-10-11 14:50:27
+[2019-10-11 14:51:08.543] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.544] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.545] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |DETAIL_CODE |OD_STATUS |REG_DT              |UDT_DT              |
+[2019-10-11 14:51:08.545] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.545] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |123456789   |2         |2019-10-11 14:50:27 |2019-10-11 14:50:27 |
+[2019-10-11 14:51:08.545] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.546] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.next() returned false
+[2019-10-11 14:51:08.546] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==      Total: 1
+[2019-10-11 14:51:08.546] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. ResultSet.close() returned null
+[2019-10-11 14:51:08.546] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.getConnection() returned net.sf.log4jdbc.ConnectionSpy@286b39c2
+[2019-10-11 14:51:08.546] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.getMetaData() returned org.apache.commons.dbcp.DelegatingDatabaseMetaData@75f2099
+[2019-10-11 14:51:08.547] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.isClosed() returned false
+[2019-10-11 14:51:08.547] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. PreparedStatement.close() returned 
+[2019-10-11 14:51:08.548] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 1. Connection closed
+[2019-10-11 14:51:08.548] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 1. Connection.close() returned 
+[2019-10-11 14:51:08.548] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:93) - 3. list:[OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-11 14:50:27, udt_dt=2019-10-11 14:50:27, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]]
+[2019-10-11 14:51:08.548] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:94) - =========================
+[2019-10-11 14:51:08.551] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:50) - =========================
+[2019-10-11 14:51:08.551] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:51) - 1. param:OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-11 14:50:27, udt_dt=2019-10-11 14:50:27, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.551] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:52) - =========================
+[2019-10-11 14:51:08.552] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:54) - =========================
+[2019-10-11 14:51:08.552] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:55) - 2. statement:kr.co.supreme.orderStatus.do_delete
+[2019-10-11 14:51:08.552] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:56) - =========================
+[2019-10-11 14:51:08.552] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 2. Connection opened
+[2019-10-11 14:51:08.552] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.new Connection returned 
+[2019-10-11 14:51:08.552] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.getAutoCommit() returned true
+[2019-10-11 14:51:08.553] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: DELETE FROM ORDER_STATUS WHERE DETAIL_CODE=? 
+[2019-10-11 14:51:08.553] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:51:08.553] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.prepareStatement(DELETE FROM ORDER_STATUS WHERE DETAIL_CODE=?) returned net.sf.log4jdbc.PreparedStatementSpy@3e9803c2
+[2019-10-11 14:51:08.553] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:51:08.553] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:51:08.554] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : DELETE FROM ORDER_STATUS WHERE DETAIL_CODE='123456789'
+[2019-10-11 14:51:08.556] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - DELETE FROM ORDER_STATUS WHERE DETAIL_CODE='123456789'  {executed in 2 msec}
+[2019-10-11 14:51:08.556] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.execute() returned false
+[2019-10-11 14:51:08.557] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.getUpdateCount() returned 1
+[2019-10-11 14:51:08.557] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-11 14:51:08.557] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.isClosed() returned false
+[2019-10-11 14:51:08.558] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. PreparedStatement.close() returned 
+[2019-10-11 14:51:08.558] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 2. Connection closed
+[2019-10-11 14:51:08.558] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 2. Connection.close() returned 
+[2019-10-11 14:51:08.558] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:59) - =========================
+[2019-10-11 14:51:08.558] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:60) - 3. flag:1
+[2019-10-11 14:51:08.558] DEBUG OrderStatusDaoImpl.do_delete(OrderStatusDaoImpl.java:61) - =========================
+[2019-10-11 14:51:08.559] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:118) - ======================================
+[2019-10-11 14:51:08.559] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:119) - =02. 데이터 추가=
+[2019-10-11 14:51:08.559] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:120) - ======================================
+[2019-10-11 14:51:08.559] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:71) - =========================
+[2019-10-11 14:51:08.559] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:72) - 1. param:OrderStatus [detail_code=123456789, od_status=0, reg_dt=no_date, udt_dt=20191007, order_code=1001010, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.559] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:73) - =========================
+[2019-10-11 14:51:08.559] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:75) - =========================
+[2019-10-11 14:51:08.559] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:76) - 2. statement:kr.co.supreme.orderStatus.do_save
+[2019-10-11 14:51:08.559] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:77) - =========================
+[2019-10-11 14:51:08.560] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 3. Connection opened
+[2019-10-11 14:51:08.560] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.new Connection returned 
+[2019-10-11 14:51:08.560] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.getAutoCommit() returned true
+[2019-10-11 14:51:08.560] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: INSERT INTO ORDER_STATUS ( DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT ) VALUES ( ?, ?, SYSDATE, ? ) 
+[2019-10-11 14:51:08.560] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:51:08.560] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.prepareStatement(INSERT INTO ORDER_STATUS (
+		   DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT 
+		) VALUES (
+		    ?,
+		    ?,
+		    SYSDATE,
+		    ?
+		)) returned net.sf.log4jdbc.PreparedStatementSpy@3703bf3c
+[2019-10-11 14:51:08.561] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:51:08.561] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(2, "0") returned 
+[2019-10-11 14:51:08.561] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.setString(3, "20191007") returned 
+[2019-10-11 14:51:08.561] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String), 0(String), 20191007(String)
+[2019-10-11 14:51:08.561] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : INSERT INTO ORDER_STATUS (
+		   DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT 
+		) VALUES (
+		    '123456789',
+		    '0',
+		    SYSDATE,
+		    '20191007'
+		)
+[2019-10-11 14:51:08.566] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - INSERT INTO ORDER_STATUS ( DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT ) VALUES ( '123456789', '0', 
+SYSDATE, '20191007' )  {executed in 4 msec}
+[2019-10-11 14:51:08.567] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.execute() returned false
+[2019-10-11 14:51:08.567] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.getUpdateCount() returned 1
+[2019-10-11 14:51:08.567] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-11 14:51:08.567] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.isClosed() returned false
+[2019-10-11 14:51:08.567] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. PreparedStatement.close() returned 
+[2019-10-11 14:51:08.568] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 3. Connection closed
+[2019-10-11 14:51:08.568] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 3. Connection.close() returned 
+[2019-10-11 14:51:08.568] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:80) - =========================
+[2019-10-11 14:51:08.568] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:81) - 3. flag:1
+[2019-10-11 14:51:08.568] DEBUG OrderStatusDaoImpl.do_save(OrderStatusDaoImpl.java:82) - =========================
+[2019-10-11 14:51:08.570] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:89) - =========================
+[2019-10-11 14:51:08.570] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:90) - 1. param:Search [pageSize=0, pageNum=0, searchDiv=null, searchWord=123456789, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.570] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:91) - 2. statement:kr.co.supreme.orderStatus.get_orderStatusList
+[2019-10-11 14:51:08.571] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 4. Connection opened
+[2019-10-11 14:51:08.571] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.new Connection returned 
+[2019-10-11 14:51:08.571] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.getAutoCommit() returned true
+[2019-10-11 14:51:08.571] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' || ? || '%' ORDER BY DETAIL_CODE ASC 
+[2019-10-11 14:51:08.571] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:51:08.571] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.prepareStatement(SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || ? || '%'
+		ORDER BY DETAIL_CODE ASC) returned net.sf.log4jdbc.PreparedStatementSpy@46c00568
+[2019-10-11 14:51:08.572] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:51:08.572] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:51:08.572] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || '123456789' || '%'
+		ORDER BY DETAIL_CODE ASC
+[2019-10-11 14:51:08.573] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' 
+|| '123456789' || '%' ORDER BY DETAIL_CODE ASC  {executed in 1 msec}
+[2019-10-11 14:51:08.574] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.execute() returned true
+[2019-10-11 14:51:08.574] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.new ResultSet returned 
+[2019-10-11 14:51:08.574] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.getResultSet() returned net.sf.log4jdbc.ResultSetSpy@59712875
+[2019-10-11 14:51:08.574] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@59942b48
+[2019-10-11 14:51:08.574] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.getType() returned 1003
+[2019-10-11 14:51:08.575] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.next() returned true
+[2019-10-11 14:51:08.575] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.getString(DETAIL_CODE) returned 123456789
+[2019-10-11 14:51:08.575] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.575] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.getString(OD_STATUS) returned 0 
+[2019-10-11 14:51:08.575] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.576] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.getString(REG_DT) returned 2019-10-11 14:51:09
+[2019-10-11 14:51:08.576] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.576] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.getString(UDT_DT) returned 2019-10-07 00:00:00
+[2019-10-11 14:51:08.576] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.576] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.577] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |DETAIL_CODE |OD_STATUS |REG_DT              |UDT_DT              |
+[2019-10-11 14:51:08.577] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.577] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |123456789   |0         |2019-10-11 14:51:09 |2019-10-07 00:00:00 |
+[2019-10-11 14:51:08.577] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.578] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.next() returned false
+[2019-10-11 14:51:08.578] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==      Total: 1
+[2019-10-11 14:51:08.578] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. ResultSet.close() returned null
+[2019-10-11 14:51:08.578] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.getConnection() returned net.sf.log4jdbc.ConnectionSpy@6df7988f
+[2019-10-11 14:51:08.578] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.getMetaData() returned org.apache.commons.dbcp.DelegatingDatabaseMetaData@75f2099
+[2019-10-11 14:51:08.578] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.isClosed() returned false
+[2019-10-11 14:51:08.578] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. PreparedStatement.close() returned 
+[2019-10-11 14:51:08.579] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 4. Connection closed
+[2019-10-11 14:51:08.579] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 4. Connection.close() returned 
+[2019-10-11 14:51:08.579] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:93) - 3. list:[OrderStatus [detail_code=123456789, od_status=0 , reg_dt=2019-10-11 14:51:09, udt_dt=2019-10-07 00:00:00, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]]
+[2019-10-11 14:51:08.579] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:94) - =========================
+[2019-10-11 14:51:08.579] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:130) - ======================================
+[2019-10-11 14:51:08.579] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:131) - =03. 데이터 수정=
+[2019-10-11 14:51:08.579] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:132) - ======================================
+[2019-10-11 14:51:08.579] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:135) - ======================================
+[2019-10-11 14:51:08.580] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:136) - =03.01 데이터 수정=
+[2019-10-11 14:51:08.580] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:137) - ======================================
+[2019-10-11 14:51:08.580] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:30) - =========================
+[2019-10-11 14:51:08.580] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:31) - 1. param:OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-11 14:51:09, udt_dt=2019-10-07 00:00:00, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.580] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:32) - =========================
+[2019-10-11 14:51:08.580] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:34) - =========================
+[2019-10-11 14:51:08.580] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:35) - 2. statement:kr.co.supreme.orderStatus.do_update
+[2019-10-11 14:51:08.580] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:36) - =========================
+[2019-10-11 14:51:08.581] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 5. Connection opened
+[2019-10-11 14:51:08.581] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.new Connection returned 
+[2019-10-11 14:51:08.581] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.getAutoCommit() returned true
+[2019-10-11 14:51:08.581] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: UPDATE ORDER_STATUS SET OD_STATUS =?, UDT_DT = SYSDATE WHERE detail_code=? 
+[2019-10-11 14:51:08.581] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:51:08.581] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.prepareStatement(UPDATE ORDER_STATUS 
+	SET 
+		OD_STATUS =?,
+		UDT_DT = SYSDATE 
+	WHERE
+		detail_code=?) returned net.sf.log4jdbc.PreparedStatementSpy@703feacd
+[2019-10-11 14:51:08.582] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.setString(1, "2 ") returned 
+[2019-10-11 14:51:08.582] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.setString(2, "123456789") returned 
+[2019-10-11 14:51:08.582] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 2 (String), 123456789(String)
+[2019-10-11 14:51:08.582] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : UPDATE ORDER_STATUS 
+	SET 
+		OD_STATUS ='2 ',
+		UDT_DT = SYSDATE 
+	WHERE
+		detail_code='123456789'
+[2019-10-11 14:51:08.583] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - UPDATE ORDER_STATUS SET OD_STATUS ='2 ', UDT_DT = SYSDATE WHERE detail_code='123456789'  {executed in 1 msec}
+[2019-10-11 14:51:08.583] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.execute() returned false
+[2019-10-11 14:51:08.584] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.getUpdateCount() returned 1
+[2019-10-11 14:51:08.584] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==    Updates: 1
+[2019-10-11 14:51:08.584] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.isClosed() returned false
+[2019-10-11 14:51:08.584] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. PreparedStatement.close() returned 
+[2019-10-11 14:51:08.584] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 5. Connection closed
+[2019-10-11 14:51:08.584] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 5. Connection.close() returned 
+[2019-10-11 14:51:08.584] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:39) - =========================
+[2019-10-11 14:51:08.585] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:40) - 3. flag:1
+[2019-10-11 14:51:08.585] DEBUG OrderStatusDaoImpl.do_update(OrderStatusDaoImpl.java:41) - =========================
+[2019-10-11 14:51:08.585] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:141) - ======================================
+[2019-10-11 14:51:08.585] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:142) - =04. 등록 DATA조회=
+[2019-10-11 14:51:08.585] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:143) - ======================================
+[2019-10-11 14:51:08.585] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:89) - =========================
+[2019-10-11 14:51:08.585] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:90) - 1. param:Search [pageSize=0, pageNum=0, searchDiv=null, searchWord=123456789, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.585] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:91) - 2. statement:kr.co.supreme.orderStatus.get_orderStatusList
+[2019-10-11 14:51:08.586] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 6. Connection opened
+[2019-10-11 14:51:08.586] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.new Connection returned 
+[2019-10-11 14:51:08.586] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.getAutoCommit() returned true
+[2019-10-11 14:51:08.586] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' || ? || '%' ORDER BY DETAIL_CODE ASC 
+[2019-10-11 14:51:08.587] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:51:08.587] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.prepareStatement(SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || ? || '%'
+		ORDER BY DETAIL_CODE ASC) returned net.sf.log4jdbc.PreparedStatementSpy@78411116
+[2019-10-11 14:51:08.587] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.setString(1, "123456789") returned 
+[2019-10-11 14:51:08.587] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 123456789(String)
+[2019-10-11 14:51:08.588] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : SELECT
+		   	DETAIL_CODE,  
+			OD_STATUS,     
+			REG_DT,        
+			UDT_DT  
+		FROM
+		    ORDER_STATUS
+		WHERE DETAIL_CODE LIKE '%' || '123456789' || '%'
+		ORDER BY DETAIL_CODE ASC
+[2019-10-11 14:51:08.590] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - SELECT DETAIL_CODE, OD_STATUS, REG_DT, UDT_DT FROM ORDER_STATUS WHERE DETAIL_CODE LIKE '%' 
+|| '123456789' || '%' ORDER BY DETAIL_CODE ASC  {executed in 2 msec}
+[2019-10-11 14:51:08.590] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.execute() returned true
+[2019-10-11 14:51:08.590] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.new ResultSet returned 
+[2019-10-11 14:51:08.590] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.getResultSet() returned net.sf.log4jdbc.ResultSetSpy@2d6aca33
+[2019-10-11 14:51:08.590] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@29314cc9
+[2019-10-11 14:51:08.591] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.getType() returned 1003
+[2019-10-11 14:51:08.591] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.next() returned true
+[2019-10-11 14:51:08.591] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.getString(DETAIL_CODE) returned 123456789
+[2019-10-11 14:51:08.591] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.591] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.getString(OD_STATUS) returned 2 
+[2019-10-11 14:51:08.591] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.592] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.getString(REG_DT) returned 2019-10-11 14:51:09
+[2019-10-11 14:51:08.592] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.592] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.getString(UDT_DT) returned 2019-10-11 14:51:09
+[2019-10-11 14:51:08.592] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.592] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.593] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |DETAIL_CODE |OD_STATUS |REG_DT              |UDT_DT              |
+[2019-10-11 14:51:08.593] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.593] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |123456789   |2         |2019-10-11 14:51:09 |2019-10-11 14:51:09 |
+[2019-10-11 14:51:08.593] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |------------|----------|--------------------|--------------------|
+[2019-10-11 14:51:08.594] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.next() returned false
+[2019-10-11 14:51:08.594] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==      Total: 1
+[2019-10-11 14:51:08.594] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. ResultSet.close() returned null
+[2019-10-11 14:51:08.594] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.getConnection() returned net.sf.log4jdbc.ConnectionSpy@6075b2d3
+[2019-10-11 14:51:08.594] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.getMetaData() returned org.apache.commons.dbcp.DelegatingDatabaseMetaData@75f2099
+[2019-10-11 14:51:08.594] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.isClosed() returned false
+[2019-10-11 14:51:08.594] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. PreparedStatement.close() returned 
+[2019-10-11 14:51:08.595] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 6. Connection closed
+[2019-10-11 14:51:08.595] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 6. Connection.close() returned 
+[2019-10-11 14:51:08.595] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:93) - 3. list:[OrderStatus [detail_code=123456789, od_status=2 , reg_dt=2019-10-11 14:51:09, udt_dt=2019-10-11 14:51:09, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]]
+[2019-10-11 14:51:08.595] DEBUG OrderStatusDaoImpl.get_orderStatusList(OrderStatusDaoImpl.java:94) - =========================
+[2019-10-11 14:51:08.595] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:146) - ======================================
+[2019-10-11 14:51:08.595] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:147) - =05. 비교=
+[2019-10-11 14:51:08.595] DEBUG DaoOrderStatusTest.do_update(DaoOrderStatusTest.java:148) - ======================================
+[2019-10-11 14:51:08.597] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:158) - ====================
+[2019-10-11 14:51:08.597] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:159) - =context=org.springframework.web.context.support.GenericWebApplicationContext@527740a2: startup date [Fri Oct 11 14:51:07 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:08.597] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:160) - =boardDaoImpl=kr.co.supreme.orderstatus.service.impl.OrderStatusDaoImpl@5467eea4
+[2019-10-11 14:51:08.597] DEBUG DaoOrderStatusTest.getBean(DaoOrderStatusTest.java:161) - ====================
+[2019-10-11 14:51:08.598] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:114) - =========================
+[2019-10-11 14:51:08.599] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:115) - 1. param:Search [pageSize=10, pageNum=1, searchDiv=, searchWord=, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.599] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:116) - =========================
+[2019-10-11 14:51:08.599] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:118) - =========================
+[2019-10-11 14:51:08.599] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:119) - 2. statement:kr.co.supreme.orderStatus.get_retrieve
+[2019-10-11 14:51:08.599] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:120) - =========================
+[2019-10-11 14:51:08.599] INFO  Slf4jSpyLogDelegator.connectionOpened(Slf4jSpyLogDelegator.java:524) - 7. Connection opened
+[2019-10-11 14:51:08.599] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.new Connection returned 
+[2019-10-11 14:51:08.599] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.getAutoCommit() returned true
+[2019-10-11 14:51:08.600] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==>  Preparing: SELECT T1.*,T2.* FROM ( SELECT * FROM ( SELECT ROWNUM AS rnum, A.* FROM ( SELECT U.NICKNAME as nickname, O1.ORDER_CODE as order_code, O3.DETAIL_CODE as detail_code , P.P_IMAGE as pImage, P.P_NAME as pName, P.P_CONTENT as pContent, O3.OD_STATUS as od_status FROM USERS U JOIN ORDERS O1 ON U.ID = O1.ID JOIN ORDER_DETAIL O2 ON O1.ORDER_CODE = O2.ORDER_CODE JOIN ORDER_STATUS O3 ON O3.DETAIL_CODE = O2.DETAIL_CODE JOIN PRODUCT P ON O2.P_CODE = P.P_CODE AND udt_dt > to_date('19700101','yyyymmdd') ORDER BY udt_dt DESC )A WHERE ROWNUM <= (? * (?-1)+?) ) B WHERE B.rnum >= (? * (?-1)+1) )T1 NATURAL JOIN ( SELECT COUNT(*) totalCnt FROM order_Status WHERE 1=1 )T2 
+[2019-10-11 14:51:08.600] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.new PreparedStatement returned 
+[2019-10-11 14:51:08.600] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.prepareStatement(SELECT T1.*,T2.*													
+		  FROM                                                              
+			  (                                                           
+			  	SELECT *            
+		      FROM                                                           
+			  	( 	SELECT ROWNUM AS rnum, A.*         
+		           FROM 
+		           ( SELECT 
+		             U.NICKNAME as nickname,
+		             O1.ORDER_CODE as order_code,
+		             O3.DETAIL_CODE as detail_code ,
+		             P.P_IMAGE as pImage,
+		             P.P_NAME as pName,
+		             P.P_CONTENT as pContent, 
+		             O3.OD_STATUS as od_status                                                            
+			  			FROM   
+						  USERS U JOIN ORDERS O1
+							ON U.ID = O1.ID         
+							JOIN ORDER_DETAIL O2
+							ON O1.ORDER_CODE = O2.ORDER_CODE
+							JOIN ORDER_STATUS O3
+							ON O3.DETAIL_CODE = O2.DETAIL_CODE
+							JOIN PRODUCT P 
+							ON O2.P_CODE = P.P_CODE		                     
+			  			AND udt_dt   >    to_date('19700101','yyyymmdd')     
+			  			ORDER BY udt_dt DESC                                   
+			  		)A                                                         
+			  	   WHERE ROWNUM   <=  (? * (?-1)+?)   						       
+			  	) B                                                            
+			  	WHERE B.rnum   >=   (? * (?-1)+1)                    				   
+			  )T1
+			  NATURAL JOIN                                                      
+			  (                                                                 
+			      SELECT COUNT(*) totalCnt                                     
+		         FROM order_Status       
+		         WHERE  1=1      
+		                                                    		                               
+		  )T2) returned net.sf.log4jdbc.PreparedStatementSpy@2ca6546f
+[2019-10-11 14:51:08.600] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.setInt(1, 10) returned 
+[2019-10-11 14:51:08.600] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.setInt(2, 1) returned 
+[2019-10-11 14:51:08.600] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.setInt(3, 10) returned 
+[2019-10-11 14:51:08.601] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.setInt(4, 10) returned 
+[2019-10-11 14:51:08.601] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.setInt(5, 1) returned 
+[2019-10-11 14:51:08.601] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - ==> Parameters: 10(Integer), 1(Integer), 10(Integer), 10(Integer), 1(Integer)
+[2019-10-11 14:51:08.601] INFO  Log4JdbcCustomFormatter.sqlOccured(Log4JdbcCustomFormatter.java:74) - HR_SQL] : SELECT T1.*,T2.*													
+		  FROM                                                              
+			  (                                                           
+			  	SELECT *            
+		      FROM                                                           
+			  	( 	SELECT ROWNUM AS rnum, A.*         
+		           FROM 
+		           ( SELECT 
+		             U.NICKNAME as nickname,
+		             O1.ORDER_CODE as order_code,
+		             O3.DETAIL_CODE as detail_code ,
+		             P.P_IMAGE as pImage,
+		             P.P_NAME as pName,
+		             P.P_CONTENT as pContent, 
+		             O3.OD_STATUS as od_status                                                            
+			  			FROM   
+						  USERS U JOIN ORDERS O1
+							ON U.ID = O1.ID         
+							JOIN ORDER_DETAIL O2
+							ON O1.ORDER_CODE = O2.ORDER_CODE
+							JOIN ORDER_STATUS O3
+							ON O3.DETAIL_CODE = O2.DETAIL_CODE
+							JOIN PRODUCT P 
+							ON O2.P_CODE = P.P_CODE		                     
+			  			AND udt_dt   >    to_date('19700101','yyyymmdd')     
+			  			ORDER BY udt_dt DESC                                   
+			  		)A                                                         
+			  	   WHERE ROWNUM   <=  (10 * (1-1)+10)   						       
+			  	) B                                                            
+			  	WHERE B.rnum   >=   (10 * (1-1)+1)                    				   
+			  )T1
+			  NATURAL JOIN                                                      
+			  (                                                                 
+			      SELECT COUNT(*) totalCnt                                     
+		         FROM order_Status       
+		         WHERE  1=1      
+		                                                    		                               
+		  )T2
+[2019-10-11 14:51:08.637] INFO  Slf4jSpyLogDelegator.sqlTimingOccured(Slf4jSpyLogDelegator.java:357) - SELECT T1.*,T2.* FROM ( SELECT * FROM ( SELECT ROWNUM AS rnum, A.* FROM ( SELECT U.NICKNAME 
+as nickname, O1.ORDER_CODE as order_code, O3.DETAIL_CODE as detail_code , P.P_IMAGE as pImage, 
+P.P_NAME as pName, P.P_CONTENT as pContent, O3.OD_STATUS as od_status FROM USERS U JOIN ORDERS 
+O1 ON U.ID = O1.ID JOIN ORDER_DETAIL O2 ON O1.ORDER_CODE = O2.ORDER_CODE JOIN ORDER_STATUS 
+O3 ON O3.DETAIL_CODE = O2.DETAIL_CODE JOIN PRODUCT P ON O2.P_CODE = P.P_CODE AND udt_dt > to_date('19700101','yyyymmdd') 
+ORDER BY udt_dt DESC )A WHERE ROWNUM <= (10 * (1-1)+10) ) B WHERE B.rnum >= (10 * (1-1)+1) 
+)T1 NATURAL JOIN ( SELECT COUNT(*) totalCnt FROM order_Status WHERE 1=1 )T2  {executed in 36 msec}
+[2019-10-11 14:51:08.637] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.execute() returned true
+[2019-10-11 14:51:08.638] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.new ResultSet returned 
+[2019-10-11 14:51:08.638] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.getResultSet() returned net.sf.log4jdbc.ResultSetSpy@4c0884e8
+[2019-10-11 14:51:08.638] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getMetaData() returned oracle.jdbc.driver.OracleResultSetMetaData@11841b15
+[2019-10-11 14:51:08.638] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getType() returned 1003
+[2019-10-11 14:51:08.638] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.next() returned true
+[2019-10-11 14:51:08.638] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(ORDER_CODE) returned 20191002
+[2019-10-11 14:51:08.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(DETAIL_CODE) returned 123456789
+[2019-10-11 14:51:08.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(OD_STATUS) returned 2 
+[2019-10-11 14:51:08.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.639] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getInt(TOTALCNT) returned 3
+[2019-10-11 14:51:08.640] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.640] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.next() returned true
+[2019-10-11 14:51:08.640] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(ORDER_CODE) returned 20191005
+[2019-10-11 14:51:08.640] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.640] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(DETAIL_CODE) returned 987456123
+[2019-10-11 14:51:08.641] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.641] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(OD_STATUS) returned 0 
+[2019-10-11 14:51:08.641] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.641] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getInt(TOTALCNT) returned 3
+[2019-10-11 14:51:08.641] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.641] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.next() returned true
+[2019-10-11 14:51:08.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(ORDER_CODE) returned 20191003
+[2019-10-11 14:51:08.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(DETAIL_CODE) returned 123789
+[2019-10-11 14:51:08.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getString(OD_STATUS) returned 2 
+[2019-10-11 14:51:08.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.642] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.getInt(TOTALCNT) returned 3
+[2019-10-11 14:51:08.643] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.wasNull() returned false
+[2019-10-11 14:51:08.643] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |---------|---------|-----------|------------|---------|---------|---------|----------|---------|
+[2019-10-11 14:51:08.643] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |RNUM     |NICKNAME |ORDER_CODE |DETAIL_CODE |PIMAGE   |PNAME    |PCONTENT |OD_STATUS |TOTALCNT |
+[2019-10-11 14:51:08.643] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |---------|---------|-----------|------------|---------|---------|---------|----------|---------|
+[2019-10-11 14:51:08.644] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |[unread] |[unread] |20191002   |123456789   |[unread] |[unread] |[unread] |2         |3        |
+[2019-10-11 14:51:08.644] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |[unread] |[unread] |20191005   |987456123   |[unread] |[unread] |[unread] |0         |3        |
+[2019-10-11 14:51:08.644] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |[unread] |[unread] |20191003   |123789      |[unread] |[unread] |[unread] |2         |3        |
+[2019-10-11 14:51:08.645] INFO  ResultSetCollectorPrinter.println(ResultSetCollectorPrinter.java:108) - |---------|---------|-----------|------------|---------|---------|---------|----------|---------|
+[2019-10-11 14:51:08.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.next() returned false
+[2019-10-11 14:51:08.645] DEBUG BaseJdbcLogger.debug(BaseJdbcLogger.java:159) - <==      Total: 3
+[2019-10-11 14:51:08.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. ResultSet.close() returned null
+[2019-10-11 14:51:08.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.getConnection() returned net.sf.log4jdbc.ConnectionSpy@66596a88
+[2019-10-11 14:51:08.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.getMetaData() returned org.apache.commons.dbcp.DelegatingDatabaseMetaData@75f2099
+[2019-10-11 14:51:08.645] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.isClosed() returned false
+[2019-10-11 14:51:08.646] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. PreparedStatement.close() returned 
+[2019-10-11 14:51:08.646] INFO  Slf4jSpyLogDelegator.connectionClosed(Slf4jSpyLogDelegator.java:543) - 7. Connection closed
+[2019-10-11 14:51:08.646] INFO  Slf4jSpyLogDelegator.methodReturned(Slf4jSpyLogDelegator.java:171) - 7. Connection.close() returned 
+[2019-10-11 14:51:08.646] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:123) - =========================
+[2019-10-11 14:51:08.646] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:124) - 3. list:[OrderStatus [detail_code=123456789, od_status=2 , reg_dt=null, udt_dt=null, order_code=20191002, toString()=DTO [lang=null, totalCnt=3, num=0]], OrderStatus [detail_code=987456123, od_status=0 , reg_dt=null, udt_dt=null, order_code=20191005, toString()=DTO [lang=null, totalCnt=3, num=0]], OrderStatus [detail_code=123789, od_status=2 , reg_dt=null, udt_dt=null, order_code=20191003, toString()=DTO [lang=null, totalCnt=3, num=0]]]
+[2019-10-11 14:51:08.646] DEBUG OrderStatusDaoImpl.get_retrieve(OrderStatusDaoImpl.java:125) - =========================
+[2019-10-11 14:51:08.646] DEBUG DaoOrderStatusTest.get_retrieve(DaoOrderStatusTest.java:69) - OrderStatus [detail_code=123456789, od_status=0, reg_dt=no_date, udt_dt=20191007, order_code=1001010, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:08.647] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@527740a2: startup date [Fri Oct 11 14:51:07 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:29.030] INFO  AbstractTestContextBootstrapper.getDefaultTestExecutionListenerClassNames(AbstractTestContextBootstrapper.java:260) - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2019-10-11 14:51:29.041] INFO  AbstractTestContextBootstrapper.getTestExecutionListeners(AbstractTestContextBootstrapper.java:187) - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1794d431, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@42e26948, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@57baeedf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@343f4d3d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@53b32d7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5442a311]
+[2019-10-11 14:51:29.094] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:src/main/webapp/WEB-INF/spring/root-context.xml]
+[2019-10-11 14:51:29.499] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317) - Loading XML bean definitions from URL [file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml]
+[2019-10-11 14:51:29.703] INFO  AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:583) - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@63753b6d: startup date [Fri Oct 11 14:51:29 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:29.824] INFO  AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:155) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[2019-10-11 14:51:30.307] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_save(kr.co.supreme.board.service.Board)
+[2019-10-11 14:51:30.307] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_update(kr.co.supreme.board.service.Board)
+[2019-10-11 14:51:30.308] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.get_selectOne(kr.co.supreme.board.service.Board,org.springframework.ui.Model)
+[2019-10-11 14:51:30.308] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:30.309] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/board/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.board.web.BoardController.do_delete(kr.co.supreme.board.service.Board)
+[2019-10-11 14:51:30.310] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_save(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:51:30.310] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_update(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:51:30.311] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.get_selectOne(kr.co.supreme.cart.service.Cart,org.springframework.ui.Model)
+[2019-10-11 14:51:30.311] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:30.311] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/cart/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.cart.web.CartController.do_delete(kr.co.supreme.cart.service.Cart)
+[2019-10-11 14:51:30.312] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_save(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:51:30.313] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_update(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:51:30.313] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.get_selectOne(kr.co.supreme.comments.service.Comments,org.springframework.ui.Model)
+[2019-10-11 14:51:30.313] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:30.314] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/comments/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.comments.service.web.CommentsController.do_delete(kr.co.supreme.comments.service.Comments)
+[2019-10-11 14:51:30.315] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/],methods=[GET]}" onto public java.lang.String kr.co.supreme.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[2019-10-11 14:51:30.316] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_save(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:51:30.316] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_update(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:51:30.317] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.get_selectOne(kr.co.supreme.orderstatus.service.OrderStatus,org.springframework.ui.Model)
+[2019-10-11 14:51:30.317] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/orderStauts/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.orderstatus.service.web.OrderStatusController.do_delete(kr.co.supreme.orderstatus.service.OrderStatus)
+[2019-10-11 14:51:30.318] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/template/index.do]}" onto public java.lang.String kr.co.supreme.template.HelloBootController.helloBootView()
+[2019-10-11 14:51:30.319] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_save.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_save(kr.co.supreme.user.service.User)
+[2019-10-11 14:51:30.319] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_update.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_update(kr.co.supreme.user.service.User)
+[2019-10-11 14:51:30.319] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_selectOne.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.get_selectOne(kr.co.supreme.user.service.User,org.springframework.ui.Model)
+[2019-10-11 14:51:30.319] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/get_retrieve.do],methods=[GET]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.get_retrieve(javax.servlet.http.HttpServletRequest,kr.co.supreme.cmn.Search,org.springframework.ui.Model)
+[2019-10-11 14:51:30.320] INFO  AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:543) - Mapped "{[/user/do_delete.do],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.String kr.co.supreme.user.service.web.UserController.do_delete(kr.co.supreme.user.service.User)
+[2019-10-11 14:51:30.383] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@63753b6d: startup date [Fri Oct 11 14:51:29 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:30.408] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:534) - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@63753b6d: startup date [Fri Oct 11 14:51:29 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:30.443] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:362) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[2019-10-11 14:51:30.535] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:62) - ^^^^^^^^^^^^^^^^^^
+[2019-10-11 14:51:30.535] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:63) - setUp()
+[2019-10-11 14:51:30.535] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:64) - ^^^^^^^^^^^^^^^^^^
+[2019-10-11 14:51:30.545] INFO  MockServletContext.log(MockServletContext.java:440) - Initializing Spring FrameworkServlet ''
+[2019-10-11 14:51:30.546] INFO  FrameworkServlet.initServletBean(FrameworkServlet.java:489) - FrameworkServlet '': initialization started
+[2019-10-11 14:51:30.561] INFO  FrameworkServlet.initServletBean(FrameworkServlet.java:508) - FrameworkServlet '': initialization completed in 15 ms
+[2019-10-11 14:51:30.562] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:70) - ===============================
+[2019-10-11 14:51:30.562] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:71) - =context=org.springframework.web.context.support.GenericWebApplicationContext@63753b6d: startup date [Fri Oct 11 14:51:29 KST 2019]; root of context hierarchy
+[2019-10-11 14:51:30.562] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:72) - =mockMvc=org.springframework.test.web.servlet.MockMvc@aa5455e
+[2019-10-11 14:51:30.563] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:73) - =dao=kr.co.supreme.orderstatus.service.impl.OrderStatusDaoImpl@5dda14d0
+[2019-10-11 14:51:30.563] DEBUG DaoOrderStatusWebTest.setUp(DaoOrderStatusWebTest.java:74) - ===============================
+[2019-10-11 14:51:30.600] DEBUG OrderStatusController.do_save(OrderStatusController.java:93) - ============================
+[2019-10-11 14:51:30.601] DEBUG OrderStatusController.do_save(OrderStatusController.java:94) - =inVO=OrderStatus [detail_code=987456123, od_status=0, reg_dt=null, udt_dt=null, order_code=null, toString()=DTO [lang=null, totalCnt=0, num=0]]
+[2019-10-11 14:51:30.601] DEBUG OrderStatusController.do_save(OrderStatusController.java:95) - ============================
+[2019-10-11 14:51:30.604] DEBUG OrderStatusController.do_save(OrderStatusController.java:110) - ============================
+[2019-10-11 14:51:30.604] DEBUG OrderStatusController.do_save(OrderStatusController.java:111) - =gsonStr={"msgId":"0","msgMsg":"등록 실패.","totalCnt":0,"num":0}
+[2019-10-11 14:51:30.605] DEBUG OrderStatusController.do_save(OrderStatusController.java:112) - ============================
+[2019-10-11 14:51:30.644] DEBUG DaoOrderStatusWebTest.tearDown(DaoOrderStatusWebTest.java:150) - ^^^^^^^^^^^^^^^^^^
+[2019-10-11 14:51:30.644] DEBUG DaoOrderStatusWebTest.tearDown(DaoOrderStatusWebTest.java:151) - =tearDown=
+[2019-10-11 14:51:30.644] DEBUG DaoOrderStatusWebTest.tearDown(DaoOrderStatusWebTest.java:152) - ^^^^^^^^^^^^^^^^^^
+[2019-10-11 14:51:30.648] INFO  AbstractApplicationContext.doClose(AbstractApplicationContext.java:984) - Closing org.springframework.web.context.support.GenericWebApplicationContext@63753b6d: startup date [Fri Oct 11 14:51:29 KST 2019]; root of context hierarchy

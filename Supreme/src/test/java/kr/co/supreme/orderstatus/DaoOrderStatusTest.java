@@ -60,6 +60,7 @@ public class DaoOrderStatusTest{
 				
 	}
 	@Test
+
 	public void get_retrieve() {
 		Search search = new Search(10,1,"",""); //생성자 참고해서 하드코딩
 		List<OrderStatus> orderlist = (List<OrderStatus>) daoImpl.get_retrieve(search); 
@@ -98,7 +99,7 @@ public class DaoOrderStatusTest{
 //		 	assertThat(1,is(addlistData.size()));
 //	}
 	@Test
-	@Ignore
+	
 	public void do_update() {
 		//---------------------------
 		//-기존Data삭제
@@ -147,7 +148,7 @@ public class DaoOrderStatusTest{
 		LOG.debug("======================================");
 		this.checkData(changeData, addlistData.get(0));
 	}
-
+	
 	private void checkData(OrderStatus org, OrderStatus vs) {
 		assertThat(org.getOd_status(), is(vs.getOd_status()));
 		
