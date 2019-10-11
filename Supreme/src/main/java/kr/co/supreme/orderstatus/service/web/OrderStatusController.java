@@ -3,6 +3,7 @@ package kr.co.supreme.orderstatus.service.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import kr.co.supreme.cmn.Message;
+import kr.co.supreme.cmn.Search;
+import kr.co.supreme.cmn.StringUtil;
 import kr.co.supreme.code.service.CodeService;
 import kr.co.supreme.orderstatus.service.OrderStatus;
 import kr.co.supreme.orderstatus.service.OrderStatusService;
@@ -24,7 +27,7 @@ import kr.co.supreme.orderstatus.service.OrderStatusService;
 @Controller
 public class OrderStatusController {
 
-	private final String VIEW_MNG_NM = null;
+	private final String VIEW_MNG_NM = "template/orderview";
 
 	Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
@@ -35,7 +38,32 @@ public class OrderStatusController {
 	private CodeService codeService;
 	
 	
-	
+	/**전체조회*/
+	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
+	public String get_retrieve(HttpServletRequest req, Search search, Model model) {
+		//param
+		if(search.getPageSize()==0) {
+			search.setPageSize(10);
+		}
+		if(search.getPageNum()==0) {
+			search.setPageNum(1);
+		}
+		
+		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+		model.addAttribute("vo",search);
+		
+		LOG.debug("=========================");
+		LOG.debug("====SEARCH====="+search);
+		LOG.debug("=========================");
+		
+		//목록조회 
+		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);
+		model.addAttribute("list",list);
+		
+		
+		return VIEW_MNG_NM;
+	}
 	/**단건조회*/
 	@RequestMapping(value="orderStauts/do_selectOne.do",method = RequestMethod.GET)
 	public String get_selectOne(OrderStatus inVO,Model model) {
@@ -50,6 +78,7 @@ public class OrderStatusController {
 		OrderStatus outVO = (OrderStatus) Service.get_selectOne(inVO);
 		model.addAttribute("vo",outVO);
 	
+
 		return VIEW_MNG_NM;
 		
 	}

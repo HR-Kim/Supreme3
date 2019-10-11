@@ -10,6 +10,7 @@
 		P.P_NAME 상품명,
 		P.P_CONTENT 상품설명,
 		O2.QUANTITY 수량,
+		02.UNIT_PRICE 단가,
 		O3.OD_STATUS as od_status,
 		O3.UDT_DT as udt_dt
   </sql>
@@ -44,6 +45,8 @@
 		             P.P_IMAGE as pImage,
 		             P.P_NAME as pName,
 		             P.P_CONTENT as pContent, 
+		             O3.UDT_DT as udt_dt,
+		             O3.REG_DT as reg_dt,
 		             O3.OD_STATUS as od_status                                                            
 			  			FROM   
 						  USERS U JOIN ORDERS O1

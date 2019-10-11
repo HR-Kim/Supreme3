@@ -65,7 +65,7 @@ public class DaoOrderStatusWebTest {
 		
 		
 		list  = Arrays.asList(
-				new OrderStatus("","","", null, null));
+				new OrderStatus("","","", null, null, null, null, null, null, null));
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 		LOG.debug("===============================");
 		LOG.debug("=context="+context);
@@ -73,14 +73,16 @@ public class DaoOrderStatusWebTest {
 		LOG.debug("=dao="+dao);
 		LOG.debug("===============================");
 	}
+	
+
 	@Test
 	@Ignore
 	public void get_retrieve() throws Exception {
-		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("orderStauts/get_retrieve.do")
+		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_retrieve.do")
 				.param("pageSize", "10")
 				.param("pageNum", "1")
 				.param("searchDiv", "10")
-				.param("searchWord", "_139")
+				.param("searchWord", "123456789")
 				;
 		ResultActions resultActions = mockMvc.perform(createMessage)		
 				.andExpect(status().isOk()) ;
@@ -130,7 +132,7 @@ public class DaoOrderStatusWebTest {
 			}
 		
 	@Test
-	
+
 	public void get_selectOne() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/do_selectOne.do")
 		.param("detail_code", "123789");

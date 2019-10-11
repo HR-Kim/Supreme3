@@ -43,8 +43,7 @@ public class OrderStatusServiceImpl implements OrderStatusService {
 
 	@Override
 	public List<?> get_retrieve(DTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderStatusDaoImpl.get_retrieve(dto);
 	}
 
 }
