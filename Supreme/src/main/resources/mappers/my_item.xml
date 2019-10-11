@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.supreme.myitem">
 
+	<sql id="myItemColums">
+		F_SEQ as fSeq,
+		ID as id,
+		P_CODE as pCode,
+		REG_DT as regDt
+	</sql>
+
+	<sql id="baseCondition">
+		<choose>
+			<when test="'20' == searchDiv">
+				and F_SEQ LIKE '%' || #{searchWord} || '%'
+			</when>
+			<when test="'10' == searchDiv">
+				and ID LIKE '%' || #{searchWord} || '%'
+			</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql>
+
+	
 
 
 </mapper>
