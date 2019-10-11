@@ -124,7 +124,7 @@ public class DaoCartTest {
 		LOG.debug("================================");
 		
 		Search search = new Search();
-		search.setSearchWord("test");
+		search.setSearchWord("");
 		List<Cart> getIdList = (List<Cart>) cartDaoImpl.get_IdList(search);
 		
 		
