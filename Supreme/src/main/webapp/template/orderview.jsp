@@ -179,8 +179,8 @@
 							<td class="price text-center"><strong>$<c:out value="${vo.unit_price}"/></strong></td>
 							<td class="total text-center"><strong class="primary-color"><c:out value="${vo.quantitiy * vo.unit_price}"/></strong></td>
 							<td class="total text-center">
-							<button class="icon-btn.main-btn" name="refund" id="refund" >환불</button>
-							<button class="icon-btn.main-btn" name="change" id="change" onclick="window.open('changepopup','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">교환</button>
+							<button class="icon-btn.main-btn" name="refund" id="refund" onclick="window.open('../template/refund_popup.jsp','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">환불</button>
+							<button class="icon-btn.main-btn" name="change" id="change" onclick="window.open('../template/change_popup.jsp','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">교환</button>
 							</td>
 						</tr>
 							</c:forEach>
@@ -197,13 +197,26 @@
 	<!-- /section -->
 	
 	<script>
-	//	$("#refund").on('click',function(){
+		function onePopup(){
+			var url    ="../template/change_popup.jsp";
+			var name   ="refund_popup";
+			var option ="width=500, height=500, top=100, left=200, location=no";
+		}
+		
+		//grid click
+		$("#refund").on("click","tr",function(){
+			alert("listTable");
+			var trs = $(this);
+			var td  = trs.children();
 			
-	//		var url    ="refund_popup.jsp";
-	//		var name   ="refund_popup";
-	//		var option ="width=500, height=500, top=100, left=200, location=no"
-	//		window.open(wrl,name,option);
-	//	}
+			var boardId = td.eq(0).text();
+			//console.log("boardId:"+boardId);
+			var frm = document.boardFrm;
+			frm.boardId.value=boardId;
+			frm.action = "${context}/board/do_selectOne.do";
+			frm.submit();
+			
+		});
 	</script>
 	
 	
