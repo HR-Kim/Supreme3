@@ -52,12 +52,79 @@ public class ProductWebTest {
 	
 	private MockMvc mockMvc;
 	
+	
+	List<Product> list;
+	List<String> headers;
+	
 	@Before
 	public void setUp() {
+		headers = Arrays.asList("1"
+								,"2"
+								,"3"
+								,"test"
+								,"test"
+								,"33000"
+								,"test.jpg"
+								,"test"
+								,"30"
+								,"test"
+								,"test"
+								,"test"
+								,"test"
+								,"test"
+								,"40"
+								,"test"
+				);
+		
+		list = Arrays.asList(
+				new Product(1,"12","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"),
+				new Product(2,"13","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"),
+				new Product(3,"14","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"),
+				new Product(4,"15","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"));
+		
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
+		
 	}
 	
 	@Test
+	public void do_save(Product vo) throws Exception{
+		
+		
+		
+		MockHttpServletRequestBuilder createMessage =
+				MockMvcRequestBuilders.post("/product/do_save.do")
+				.param("pCode", String.valueOf(vo.getP_code())) 
+				.param("hCode", vo.getH_code())
+				.param("lCode", vo.getL_code())
+				.param("pName", vo.getP_name())
+				.param("pCompany", vo.getP_company())
+				.param("pPrice", String.valueOf(vo.getP_price()))
+				.param("pImage", vo.getP_image())
+				.param("stock", String.valueOf(vo.getStock()))
+				.param("unitsales", String.valueOf(vo.getUnit_sales()))
+				.param("status", vo.getStatus())
+				.param("pNew", vo.getP_new())
+				.param("pBest", vo.getP_best())
+				.param("pSale", vo.getP_sale())
+				.param("pContent", vo.getP_content())
+				.param("salePercent", String.valueOf(vo.getSale_percent()))
+				.param("regDt", vo.getReg_dt());
+		
+		ResultActions resultActions = mockMvc.perform(createMessage)
+				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.msgId", is("1")));	
+		
+		String result = resultActions.andDo(print())
+				.andReturn()
+				.getResponse().getContentAsString();
+		
+		LOG.debug("=====================================");
+		LOG.debug("=result="+result);
+		LOG.debug("=====================================");
+	}
+	
+	@Test
+	@Ignore
 	public void get_retrieve() throws Exception {
 		//url,param,post/get
 		MockHttpServletRequestBuilder createMessage = 
@@ -78,6 +145,11 @@ public class ProductWebTest {
 		LOG.debug("=====================================");
 		LOG.debug("=result="+result);
 		LOG.debug("=====================================");			
+	}
+	
+	@After
+	public void tearDown() {
+	
 	}
 }
 

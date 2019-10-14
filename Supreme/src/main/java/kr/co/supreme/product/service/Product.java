@@ -4,79 +4,101 @@ import kr.co.supreme.cmn.DTO;
 
 public class Product extends DTO{
 
-	private int pCode        ; 
-	private String hCode        ;
-	private String lCode        ;
-	private String pName        ;
-	private String pCompany     ; 
-	private int pPrice       ; 
-	private String pImage       ; 
-	private int stock         ; 
-	private int unitSales    ; 
-	private String status        ; 
-	private String pNew         ;
-	private String pBest        ;
-	private String pSale        ;
-	private String pContent     ; 
-	private int salePercent  ; 
-	private String regDt        ;
+	private int p_code;
+	private String	h_code;
+	private String	l_code;
+	private String	p_name;
+	private String	p_company;
+	private int	p_price;
+	private String	p_image;
+	private int	stock;
+	private int	unit_sales;
+	private String	status;
+	private String	p_new;
+	private String	p_best;
+	private String	p_sale;
+	private String	p_content;
+	private int	sale_percent;
+	private String	reg_dt;
 	
 	public Product() {}
 
-	public int getpCode() {
-		return pCode;
+	public Product(int p_code, String h_code, String l_code, String p_name, String p_company, int p_price,
+			String p_image, int stock, int unit_sales, String status, String p_new, String p_best, String p_sale,
+			String p_content, int sale_percent, String reg_dt) {
+		super();
+		this.p_code = p_code;
+		this.h_code = h_code;
+		this.l_code = l_code;
+		this.p_name = p_name;
+		this.p_company = p_company;
+		this.p_price = p_price;
+		this.p_image = p_image;
+		this.stock = stock;
+		this.unit_sales = unit_sales;
+		this.status = status;
+		this.p_new = p_new;
+		this.p_best = p_best;
+		this.p_sale = p_sale;
+		this.p_content = p_content;
+		this.sale_percent = sale_percent;
+		this.reg_dt = reg_dt;
 	}
 
-	public void setpCode(int pCode) {
-		this.pCode = pCode;
+	public int getP_code() {
+		return p_code;
 	}
 
-	public String gethCode() {
-		return hCode;
+	public void setP_code(int p_code) {
+		this.p_code = p_code;
 	}
 
-	public void sethCode(String hCode) {
-		this.hCode = hCode;
+	public String getH_code() {
+		return h_code;
 	}
 
-	public String getlCode() {
-		return lCode;
+	public void setH_code(String h_code) {
+		this.h_code = h_code;
 	}
 
-	public void setlCode(String lCode) {
-		this.lCode = lCode;
+	public String getL_code() {
+		return l_code;
 	}
 
-	public String getpName() {
-		return pName;
+	public void setL_code(String l_code) {
+		this.l_code = l_code;
 	}
 
-	public void setpName(String pName) {
-		this.pName = pName;
+	public String getP_name() {
+		return p_name;
 	}
 
-	public String getpCompany() {
-		return pCompany;
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 
-	public void setpCompany(String pCompany) {
-		this.pCompany = pCompany;
+	public String getP_company() {
+		return p_company;
 	}
 
-	public int getpPrice() {
-		return pPrice;
+	public void setP_company(String p_company) {
+		this.p_company = p_company;
 	}
 
-	public void setpPrice(int pPrice) {
-		this.pPrice = pPrice;
+	public int getP_price() {
+		return p_price;
 	}
 
-	public String getpImage() {
-		return pImage;
+	public void setP_price(int p_price) {
+		this.p_price = p_price;
 	}
 
-	public void setpImage(String pImage) {
-		this.pImage = pImage;
+	public String getP_image() {
+		return p_image;
+	}
+
+	public void setP_image(String p_image) {
+		this.p_image = p_image;
 	}
 
 	public int getStock() {
@@ -87,12 +109,12 @@ public class Product extends DTO{
 		this.stock = stock;
 	}
 
-	public int getUnitSales() {
-		return unitSales;
+	public int getUnit_sales() {
+		return unit_sales;
 	}
 
-	public void setUnitSales(int unitSales) {
-		this.unitSales = unitSales;
+	public void setUnit_sales(int unit_sales) {
+		this.unit_sales = unit_sales;
 	}
 
 	public String getStatus() {
@@ -103,83 +125,63 @@ public class Product extends DTO{
 		this.status = status;
 	}
 
-	public String getpNew() {
-		return pNew;
+	public String getP_new() {
+		return p_new;
 	}
 
-	public void setpNew(String pNew) {
-		this.pNew = pNew;
+	public void setP_new(String p_new) {
+		this.p_new = p_new;
 	}
 
-	public String getpBest() {
-		return pBest;
+	public String getP_best() {
+		return p_best;
 	}
 
-	public void setpBest(String pBest) {
-		this.pBest = pBest;
+	public void setP_best(String p_best) {
+		this.p_best = p_best;
 	}
 
-	public String getpSale() {
-		return pSale;
+	public String getP_sale() {
+		return p_sale;
 	}
 
-	public void setpSale(String pSale) {
-		this.pSale = pSale;
+	public void setP_sale(String p_sale) {
+		this.p_sale = p_sale;
 	}
 
-	public String getpContent() {
-		return pContent;
+	public String getP_content() {
+		return p_content;
 	}
 
-	public void setpContent(String pContent) {
-		this.pContent = pContent;
+	public void setP_content(String p_content) {
+		this.p_content = p_content;
 	}
 
-	public int getSalePercent() {
-		return salePercent;
+	public int getSale_percent() {
+		return sale_percent;
 	}
 
-	public void setSalePercent(int salePercent) {
-		this.salePercent = salePercent;
+	public void setSale_percent(int sale_percent) {
+		this.sale_percent = sale_percent;
 	}
 
-	public String getRegDt() {
-		return regDt;
+	public String getReg_dt() {
+		return reg_dt;
 	}
 
-	public void setRegDt(String regDt) {
-		this.regDt = regDt;
+	public void setReg_dt(String reg_dt) {
+		this.reg_dt = reg_dt;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [pCode=" + pCode + ", hCode=" + hCode + ", lCode=" + lCode + ", pName=" + pName + ", pCompany="
-				+ pCompany + ", pPrice=" + pPrice + ", pImage=" + pImage + ", stock=" + stock + ", unitSales="
-				+ unitSales + ", status=" + status + ", pNew=" + pNew + ", pBest=" + pBest + ", pSale=" + pSale
-				+ ", pContent=" + pContent + ", salePercent=" + salePercent + ", regDt=" + regDt + "]";
+		return "Product [p_code=" + p_code + ", h_code=" + h_code + ", l_code=" + l_code + ", p_name=" + p_name
+				+ ", p_company=" + p_company + ", p_price=" + p_price + ", p_image=" + p_image + ", stock=" + stock
+				+ ", unit_sales=" + unit_sales + ", status=" + status + ", p_new=" + p_new + ", p_best=" + p_best
+				+ ", p_sale=" + p_sale + ", p_content=" + p_content + ", sale_percent=" + sale_percent + ", reg_dt="
+				+ reg_dt + ", toString()=" + super.toString() + "]";
 	}
-
-	public Product(int pCode, String hCode, String lCode, String pName, String pCompany, int pPrice, String pImage,
-			int stock, int unitSales, String status, String pNew, String pBest, String pSale, String pContent,
-			int salePercent, String regDt) {
-		super();
-		this.pCode = pCode;
-		this.hCode = hCode;
-		this.lCode = lCode;
-		this.pName = pName;
-		this.pCompany = pCompany;
-		this.pPrice = pPrice;
-		this.pImage = pImage;
-		this.stock = stock;
-		this.unitSales = unitSales;
-		this.status = status;
-		this.pNew = pNew;
-		this.pBest = pBest;
-		this.pSale = pSale;
-		this.pContent = pContent;
-		this.salePercent = salePercent;
-		this.regDt = regDt;
-	}
-
+	
+	
 	
 }

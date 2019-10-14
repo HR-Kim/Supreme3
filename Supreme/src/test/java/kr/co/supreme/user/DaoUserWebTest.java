@@ -49,7 +49,6 @@ public class DaoUserWebTest {
 	
 	private MockMvc mockMvc;//테스트할 컨텍스트를 지정한 MockMvc를 생성
 	
-	@Autowired
 	
 	//Test Data
 	List<User> list;

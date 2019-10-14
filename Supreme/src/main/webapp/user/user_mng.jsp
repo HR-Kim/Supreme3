@@ -18,6 +18,9 @@
 	/** 확장자 */
 	String ext = "xls" ;	
 	
+	String userLvl = "1"; 
+	
+	
 	Search vo = (Search)request.getAttribute("vo");
 	
 	if(null !=vo){
@@ -48,6 +51,8 @@
 	//pageCode	
 	List<Code> excelList = (request.getAttribute("excelList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("excelList");
 	
+	//userLvL
+	List<Code> codeLvlList = (request.getAttribute("codeLvlList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeLvlList");
 	
 	int maxNum      = 0;
     int bottomCount = 10;
@@ -98,6 +103,7 @@
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
 					<div class="form-group">
 					    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
+					    <%=StringUtil.makeSelectBox(codeLvlList, "userLvl", userLvl, false) %>
 					    <%=StringUtil.makeSelectBox(codeSearchList, "searchDiv", searchDiv, true) %>
 						<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

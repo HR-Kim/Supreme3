@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.supreme.order">
+	<sql id="orderColumns">
+		ORDER_CODE AS orderCode,
+		ID AS id,
+		R_NAME AS rName,
+		R_POSTCODE AS rPostcode,
+		R_ADDRESS1 AS rAddress1,
+		R_ADDRESS2 AS rAddress2,
+		R_TEL AS rTel,
+		REQUEST AS request,
+		PAY_METHOD AS payMethod,
+		BANK AS bank,
+		DEPOSIT_NAME AS depositName,
+		TO_CHAR(DEPOSIT_DATE, 'yyyy/mm/dd HH24:MI:SS') AS depositDate,
+		TO_CHAR(ORDER_DATE, 'yyyy/mm/dd HH24:MI:SS') AS orderDate
+	</sql>
+	
+	<sql id="baseCondition">
+			<choose>
+				<when test="'10' == searchDiv">
+					and ORDER_CODE LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'20' == searchDiv">
+					and R_NAME LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'30' == searchDiv">
+					and ID LIKE '%' || #{searchWord} || '%'
+				</when>
+				<otherwise></otherwise>							
+			</choose>
+	</sql>
+
+	<!-- get_IdList -->
+	<select id="get_IdList" parameterType="Search" resultType="Order">
+		SELECT
+		    <include refid="orderColumns" />
+		FROM
+		    ORDERS
+		WHERE id = #{searchWord} 
+		ORDER BY id ASC
+	</select>
+	
+	
+	<!-- 목록조회 -->
+	<select id="get_retrieve" parameterType="Search" resultType="Order">
+		  SELECT T1.*,T2.*													
+	  FROM                                                              
+	  (                                                           
+	  	SELECT                      
+            ORDER_CODE AS orderCode,
+            ID AS id,
+            R_NAME AS rName,
+            R_POSTCODE AS rPostcode,
+            R_ADDRESS1 AS rAddress1,
+            R_ADDRESS2 AS rAddress2,
+            R_TEL AS rTel,
+            REQUEST AS request,
+            PAY_METHOD AS payMethod,
+            BANK AS bank,
+            DEPOSIT_NAME AS depositName,
+	  		CASE TO_CHAR(B.DEPOSIT_DATE, 'yyyy/mm/dd') when TO_CHAR(sysdate, 'yyyy/mm/dd') THEN TO_CHAR(sysdate, 'HH24:MI')
+	  		ELSE TO_CHAR(B.DEPOSIT_DATE, 'yyyy/mm/dd') END AS depositDate,
+	  		CASE TO_CHAR(B.ORDER_DATE, 'yyyy/mm/dd') when TO_CHAR(sysdate, 'yyyy/mm/dd') THEN TO_CHAR(sysdate, 'HH24:MI')
+	  		ELSE TO_CHAR(B.ORDER_DATE, 'yyyy/mm/dd') END AS orderDate,
+	  		B.rnum  as num                       
+	  	FROM                                                           
+	  	( 	SELECT ROWNUM AS rnum, A.*                                 
+	  		FROM                                                       
+	  		(                                                           
+	  			SELECT  *                                              
+	  			FROM   orders    
+	  			WHERE  1=1                          
+	  			AND DEPOSIT_DATE <![CDATA[ > ]]> to_date('19700101','yyyymmdd')
+                <include refid="baseCondition"/>                           
+	  			ORDER BY DEPOSIT_DATE DESC                                   
+	  		)A                                                         
+	  	   WHERE rownum <![CDATA[ <= ]]> (10 * (1-1)+10)    						       
+	  	) B                                                            
+	  	WHERE B.rnum <![CDATA[ >= ]]>  (10 * (1-1)+1)                  				   
+	  )T1
+	  NATURAL JOIN                                                      
+	  (                                                                 
+	      SELECT COUNT(*) totalCnt                                     
+	      FROM orders       
+	      WHERE  1=1
+		  <include refid="baseCondition"/> 		                             
+	  )T2
+	</select>
+
+	<!-- ReadCount증가 -->
+	<update id="do_updateReadCnt" parameterType="Order">
+		UPDATE BOARD
+		SET  READ_CNT = (SELECT NVL(MAX(READ_CNT),0)+1 FROM BOARD WHERE ID = #{Id,jdbcType=VARCHAR})
+		WHERE ID = #{Id,jdbcType=VARCHAR}
+	</update>
+	
+	
+	<!-- 수정 -->
+	<update id="do_update" parameterType="Order">
+		UPDATE orders
+		SET
+		    order_code = #{orderCode,jdbcType=NUMERIC}, 
+		    id = #{id,jdbcType=VARCHAR},  
+		    r_name = #{rName,jdbcType=VARCHAR}, 
+		    r_postcode = #{rPostcode,jdbcType=VARCHAR}, 
+		    r_address1 = #{rAddress1,jdbcType=VARCHAR}, 
+		    r_address2 = #{rAddress2,jdbcType=VARCHAR}, 
+		    r_tel = #{rTel,jdbcType=VARCHAR}, 
+		    request = #{request,jdbcType=VARCHAR},
+		    pay_method = #{payMethod,jdbcType=VARCHAR}, 
+		    bank = #{bank,jdbcType=VARCHAR}, 
+		    deposit_name = #{depositName,jdbcType=VARCHAR}, 
+		    deposit_date = sysdate,
+		    order_date = sysdate
+		WHERE order_code = #{orderCode,jdbcType=NUMERIC}
+	</update>
+
+
+	<!-- 단건조회 -->
+	<select id="get_selectOne" parameterType="Order"
+		resultType="Order">
+		SELECT
+		<include refid="orderColumns" />
+		FROM ORDERS
+		WHERE order_code = #{orderCode,jdbcType=NUMERIC}
+	</select>
+
+
+	<!-- 등록 -->
+	<insert id="do_save" parameterType="Order">
+		INSERT INTO orders (
+		    order_code,
+		    id,
+		    r_name,
+		    r_postcode,
+		    r_address1,
+		    r_address2,
+		    r_tel,
+		    request,
+		    pay_method,
+		    bank,
+		    deposit_name,
+		    deposit_date,
+		    order_date
+		) VALUES (
+			#{orderCode,jdbcType=NUMERIC},              	    
+			#{id,jdbcType=VARCHAR},  
+			#{rName,jdbcType=VARCHAR}, 
+			#{rPostcode,jdbcType=VARCHAR}, 
+			#{rAddress1,jdbcType=VARCHAR}, 
+			#{rAddress2,jdbcType=VARCHAR}, 
+			#{rTel,jdbcType=VARCHAR}, 
+			#{request,jdbcType=VARCHAR}, 
+			#{payMethod,jdbcType=VARCHAR}, 
+			#{bank,jdbcType=VARCHAR}, 
+			#{depositName,jdbcType=VARCHAR}, 
+		    SYSDATE,
+		    SYSDATE
+		)
+	</insert>
+
+	<!-- 삭제 -->
+	<delete id="do_delete"
+		parameterType="Order">
+		<![CDATA[
+			DELETE FROM ORDERS WHERE order_code = #{orderCode,jdbcType=NUMERIC}
+		]]>
+	</delete>
+	
+	
+</mapper>

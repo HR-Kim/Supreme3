@@ -135,8 +135,8 @@ public class DaoProductTest {
 	      LOG.debug("======================================");
 	      Product product = addlistData.get(0);
 	      
-	      product.setpBest("20");
-	      product.setpSale("20");
+	      product.setP_best("20");
+	      product.setP_sale("20");
 
 	      
 	      LOG.debug("======================================");
@@ -193,29 +193,31 @@ public class DaoProductTest {
 	      }
 	   }
 	   @Test
-	   //@Ignore
 	   public void get_retrieve() {
 	      LOG.debug("======================================");
 	      LOG.debug("=01. 기존 데이터 삭제=");
 	      LOG.debug("======================================");   
 	      Search search=new Search();
-	      search.setSearchWord("");
+	      search.setSearchWord("test");
 	      List<Product> getList = (List<Product>) dao.get_productIdList(search);
+	      LOG.debug("======================================");
+	      LOG.debug("=01.getList1232132131231="+getList);
+	      LOG.debug("======================================");
 	      for(Product vo:getList) {
 	    	  dao.do_delete(vo);
 	      }   
 	      
-//	      LOG.debug("======================================");
-//	      LOG.debug("=02. 데이터 추가=");
-//	      LOG.debug("======================================");   
+	      LOG.debug("======================================");
+	      LOG.debug("=02. 데이터 추가=");
+	      LOG.debug("======================================");   
 	      for(Product vo:list) { 
 	         int flag = dao.do_save(vo);
 	         assertThat(1, is(flag));
 	      }      
-//	      
-	      //=====================================
-	      //2.01 등록Data조회
-	      //=====================================
+	      
+//	      =====================================
+//	      2.01 등록Data조회
+//	      =====================================
 	      search.setSearchDiv("10");
 	      search.setPageSize(10);
 	      search.setPageNum(1);
@@ -228,19 +230,19 @@ public class DaoProductTest {
 	
 
 	private void checkData(Product org, Product vs) {
-		assertThat(org.getpCode(),is(vs.getpCode()));
-		assertThat(org.gethCode(),is(vs.gethCode()));
-		assertThat(org.getlCode(),is(vs.getlCode()));
-		assertThat(org.getpName(),is(vs.getpName()));
-		assertThat(org.getpCompany(),is(vs.getpCompany()));
-		assertThat(org.getpPrice(),is(vs.getpPrice()));
-		assertThat(org.getpImage(),is(vs.getpImage()));
+		assertThat(org.getP_code(),is(vs.getP_code()));
+		assertThat(org.getH_code(),is(vs.getH_code()));
+		assertThat(org.getL_code(),is(vs.getL_code()));
+		assertThat(org.getP_name(),is(vs.getP_name()));
+		assertThat(org.getP_company(),is(vs.getP_company()));
+		assertThat(org.getP_price(),is(vs.getP_price()));
+		assertThat(org.getP_image(),is(vs.getP_image()));
 		assertThat(org.getStock(),is(vs.getStock()));
-		assertThat(org.getpNew(),is(vs.getpNew()));
-		assertThat(org.getpBest(),is(vs.getpBest()));
-		assertThat(org.getpSale(),is(vs.getpSale()));
-		assertThat(org.getpContent(),is(vs.getpContent()));
-		assertThat(org.getSalePercent(),is(vs.getSalePercent()));
+		assertThat(org.getP_new(),is(vs.getP_new()));
+		assertThat(org.getP_best(),is(vs.getP_best()));
+		assertThat(org.getP_code(),is(vs.getP_code()));
+		assertThat(org.getP_content(),is(vs.getP_content()));
+		assertThat(org.getSale_percent(),is(vs.getSale_percent()));
 	}
 
 	@Test
