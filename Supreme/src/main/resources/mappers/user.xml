@@ -144,7 +144,6 @@
 		SET
 		    pass = #{pass,jdbcType=VARCHAR},
 		    name = #{name,jdbcType=VARCHAR},
-		    lvl = #{lvl,jdbcType=VARCHAR},
 		    nickname = #{nickname,jdbcType=VARCHAR},
 		    email = #{email,jdbcType=VARCHAR},
 		    postcode = #{postcode,jdbcType=VARCHAR},

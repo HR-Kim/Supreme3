@@ -71,7 +71,7 @@ public class DaoUserTest {
 	
 	
 	@Test
-	@Ignore
+//	@Ignore
 	public void get_retrieve() {
 		//---------------------------
 		//-기존Data삭제
