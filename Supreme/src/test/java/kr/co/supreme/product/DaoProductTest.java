@@ -26,8 +26,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 
 import kr.co.supreme.cmn.Search;
-import kr.co.supreme.product.impl.ProductDaoImpl;
+
 import kr.co.supreme.product.service.Product;
+import kr.co.supreme.product.service.impl.ProductDaoImpl;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)

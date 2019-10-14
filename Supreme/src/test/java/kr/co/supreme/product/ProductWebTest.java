@@ -33,7 +33,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.google.gson.Gson;
 
 
-import kr.co.supreme.product.impl.ProductDaoImpl;
+
 import kr.co.supreme.product.service.Product;
 
 

@@ -1,4 +1,4 @@
-package kr.co.supreme.product.impl;
+package kr.co.supreme.product.service.impl;
 
 import java.util.List;
 
