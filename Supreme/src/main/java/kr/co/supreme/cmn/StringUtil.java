@@ -252,6 +252,9 @@ public class StringUtil {
 		// <option value="1" selected>일반사용자</option>
 		for (Code dto : list) {
 			Code vo = dto;
+			LOG.debug("------------------------");
+			LOG.debug("vo"+vo);
+			LOG.debug("------------------------");
 			sb.append("\t<option value='" + vo.getCodeId() + "' ");
 			if (selectedNm.equals(vo.getCodeId())) {
 				sb.append("selected='selected' ");

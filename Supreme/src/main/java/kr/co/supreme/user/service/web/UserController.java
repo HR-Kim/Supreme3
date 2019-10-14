@@ -186,6 +186,9 @@ public class UserController {
 			
 			/** 확장자 */
 			String ext = StringUtil.nvl(req.getParameter("ext"));	
+			
+			/** 회원등급*/
+			String userLvl = StringUtil.nvl(req.getParameter("userLvl"));	
 			//페이지 사이즈:10
 			//페이지 번호:1
 			if(search.getPageSize()==0) {
@@ -202,11 +205,15 @@ public class UserController {
 			LOG.debug("2=param="+search);
 			LOG.debug("2=========================");
 			model.addAttribute("vo", search);
+			model.addAttribute("userLvl", userLvl);
 			model.addAttribute("ext", ext);
 			//Code:PAGE_SIZE
 			Code code=new Code();
 			code.setCodeId("PAGE_SIZE");
 			//Code정보조회
+			LOG.debug("------------------------");
+			LOG.debug("code가아아아아"+code);
+			LOG.debug("------------------------");
 			List<Code> codeList = (List<Code>) codeService.get_retrieve(code);
 			model.addAttribute("codeList", codeList);
 			
@@ -214,6 +221,15 @@ public class UserController {
 			//Code정보조회
 			List<Code> codeSearchList = (List<Code>) codeService.get_retrieve(code);
 			model.addAttribute("codeSearchList", codeSearchList);
+			
+			code.setCodeId("USER_LVL");
+			LOG.debug("------------------------");
+			LOG.debug("code가아아아아"+code);
+			LOG.debug("------------------------");
+			//Code정보조회
+			List<Code> codeLvlList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeLvlList", codeLvlList);
+			
 			
 			code.setCodeId("EXCEL_TYPE");
 			//엑셀유형Code정보조회
