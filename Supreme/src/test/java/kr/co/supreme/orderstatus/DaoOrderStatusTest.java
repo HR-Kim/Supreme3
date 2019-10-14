@@ -54,7 +54,7 @@ public class DaoOrderStatusTest{
 	@Before
 	public void setUp() {
 		list = Arrays.asList(
-				new OrderStatus("123456789","0","no_date","20191007","10010101", "1", "1000", "캣타워", "캣타워입니다", "test", null)
+				new OrderStatus("123456789","0","no_date","20191007","10010101", "1", "1000", "캣타워", "캣타워입니다", "test", null, null)
 		);
 				
 				

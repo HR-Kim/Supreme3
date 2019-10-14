@@ -8,6 +8,7 @@
 		O2.ORDER_CODE as order_code ,
 		P.P_IMAGE as p_image,
 		P.P_NAME as p_name,
+		P.P_PRICE as p_price,
 		P.P_CONTENT as p_content,
    		O2.QUANTITY as quantitiy,
     	02.UNIT_PRICE,
@@ -42,14 +43,16 @@
 		           ( SELECT 
 		             U.NICKNAME as nickname,
 		             O1.ORDER_CODE as order_code,
-		             O3.DETAIL_CODE as detail_code ,
+		             O3.DETAIL_CODE as detail_code,
+		             P.P_PRICE as p_price,
+		             O2.UNIT_PRICE as unit_price,
 		             P.P_IMAGE as p_image,
 		             P.P_NAME as p_name,
 		             P.P_CONTENT as p_content, 
+					 O2.QUANTITY as quantitiy,
 		             O3.UDT_DT as udt_dt,
 		             O3.REG_DT as reg_dt,
-		             O3.OD_STA
-		             TUS as od_status                                                            
+		            DECODE(O3.OD_STATUS,0,'주문완료',1,'결제대기',2,'배송준비',3,'배송중',4,'배송완료',5,'환불접수',6,'환불완료',7,'교환신청접수',9,'취소') as od_status                                            
 			  			FROM   
 						  USERS U JOIN ORDERS O1
 							ON U.ID = O1.ID         

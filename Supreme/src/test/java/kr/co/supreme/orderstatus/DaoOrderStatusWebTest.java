@@ -65,7 +65,7 @@ public class DaoOrderStatusWebTest {
 		
 		
 		list  = Arrays.asList(
-				new OrderStatus("","","", null, null, null, null, null, null, null, null));
+				new OrderStatus("","","", null, null, null, null, null, null, null, null, null));
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 		LOG.debug("===============================");
 		LOG.debug("=context="+context);
