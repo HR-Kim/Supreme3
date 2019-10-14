@@ -20,6 +20,7 @@
 		<typeAlias type="kr.co.supreme.orderstatus.service.OrderStatus" alias="OrderStatus"/>
 		<typeAlias type="kr.co.supreme.myitem.service.MyItem" alias="MyItem" />  
 		<typeAlias type="kr.co.supreme.file.service.File" alias="File" />
+		<typeAlias type="kr.co.supreme.order.service.Order" alias="Order" />
 	</typeAliases>
 
 </configuration>  
