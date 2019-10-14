@@ -18,11 +18,15 @@ public class OrderStatus extends DTO {
 	private String p_name		 ; /*상품명*/
 	private String p_content	 ; /*상품설명*/
 	private String p_image		 ; /*상품이미지*/
-	
+
+
+	private String nickname		 ; /*닉네임*/
 	
 	public OrderStatus() {}
+	
+
 	public OrderStatus(String detail_code, String od_status, String reg_dt, String udt_dt, String order_code,
-			String quantitiy, String unit_price, String p_name, String p_content, String p_image) {
+			String quantitiy, String unit_price, String p_name, String p_content, String p_image, String nickname) {
 		super();
 		this.detail_code = detail_code;
 		this.od_status = od_status;
@@ -34,15 +38,18 @@ public class OrderStatus extends DTO {
 		this.p_name = p_name;
 		this.p_content = p_content;
 		this.p_image = p_image;
+		this.nickname = nickname;
 	}
+
 
 	@Override
 	public String toString() {
 		return "OrderStatus [detail_code=" + detail_code + ", od_status=" + od_status + ", reg_dt=" + reg_dt
 				+ ", udt_dt=" + udt_dt + ", order_code=" + order_code + ", quantitiy=" + quantitiy + ", unit_price="
 				+ unit_price + ", p_name=" + p_name + ", p_content=" + p_content + ", p_image=" + p_image
-				+ ", toString()=" + super.toString() + "]";
+				+ ", nickname=" + nickname + ", toString()=" + super.toString() + "]";
 	}
+
 
 	public String getDetail_code() {
 		return detail_code;
@@ -123,7 +130,13 @@ public class OrderStatus extends DTO {
 	public void setP_image(String p_image) {
 		this.p_image = p_image;
 	}
-
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 
 	
 }

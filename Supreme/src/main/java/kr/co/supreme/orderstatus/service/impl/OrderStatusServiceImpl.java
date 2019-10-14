@@ -22,7 +22,7 @@ public class OrderStatusServiceImpl implements OrderStatusService {
 	@Override
 	public int do_save(DTO dto) {
 		
-		return 0;
+		return orderStatusDaoImpl.do_save(dto);
 	}
 
 	@Override

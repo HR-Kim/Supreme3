@@ -65,7 +65,7 @@ public class DaoOrderStatusWebTest {
 		
 		
 		list  = Arrays.asList(
-				new OrderStatus("","","", null, null, null, null, null, null, null));
+				new OrderStatus("","","", null, null, null, null, null, null, null, null));
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 		LOG.debug("===============================");
 		LOG.debug("=context="+context);
@@ -76,7 +76,7 @@ public class DaoOrderStatusWebTest {
 	
 
 	@Test
-	@Ignore
+
 	public void get_retrieve() throws Exception {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_retrieve.do")
 				.param("pageSize", "10")
@@ -98,8 +98,17 @@ public class DaoOrderStatusWebTest {
 	@Ignore
 	public void do_save() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.post("/orderStauts/do_save.do")
-				.param("detail_code", "987456123")
-				.param("od_status", "0");
+				.param("detail_code", "456123789")
+				.param("od_status", "0")
+				.param("reg_dt","2019-10-14")
+				.param("udt_dt","2019-10-14")
+				.param("order_code","20191006")
+				.param("quantitiy","2")
+				.param("unit_price","2000")
+				.param("p_name","test")
+				.param("p_content","test01")
+				.param("p_image","test01")
+				.param("nickname","000");
 		ResultActions resultActions = mockMvc.perform(createMessage)
 				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))		
 				.andExpect(MockMvcResultMatchers.jsonPath("$.msgId", is("1"))) ;
@@ -118,6 +127,7 @@ public class DaoOrderStatusWebTest {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.post("/orderStauts/do_update.do")
 				.param("od_status", "1")
 				.param("detail_code", "123456789");
+				
 
 		ResultActions resultActions = mockMvc.perform(createMessage)
 				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))		
@@ -132,7 +142,7 @@ public class DaoOrderStatusWebTest {
 			}
 		
 	@Test
-
+	@Ignore
 	public void get_selectOne() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/do_selectOne.do")
 		.param("detail_code", "123789");
