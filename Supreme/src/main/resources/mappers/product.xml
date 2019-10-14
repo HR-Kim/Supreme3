@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.supreme.product">
+
+	<sql id="proColumns">
+		p_code,
+		h_code,
+		l_code,
+		p_name,
+		p_company,
+		p_price,
+		p_image,
+		stock,
+		unit_sales,
+		status,
+		p_new,
+		p_best,
+		p_sale,
+		p_content,
+		sale_percent,
+		TO_CHAR(reg_dt, 'yyyy/mm/dd') reg_dt
+	</sql>
+	
+	<sql id="baseCondition">
+			<choose>
+				<when test="'10' == searchDiv">
+					and p_code LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'20' == searchDiv">
+					and h_code LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'30' == searchDiv">
+					and l_code LIKE '%' || #{searchWord} || '%'
+				</when>
+				<when test="'40' == searchDiv">
+					and p_name LIKE '%' || #{searchWord} || '%'
+				</when>
+				<otherwise></otherwise>							
+			</choose>
+	</sql>
+	
+	<select id="get_retrieve" parameterType="Search" resultType="Product">
+		SELECT T1.*,T2.*													
+		FROM 
+		(SELECT 
+            rnum as num,
+		    B.p_code as pCode,
+			B.h_code as hCode,
+			B.l_code as lCode,
+			B.p_name as pName,
+			B.p_company as pCompany,
+			B.p_price as pPrice,
+			B.p_image as pImage,
+			B.stock as stock, 
+			B.unit_sales as unitsales,
+			B.status as status,
+			B.p_new as pNew,
+			B.p_best as pBest,
+			B.p_sale as pSale,
+			B.p_content as pContent,
+			B.sale_percent as salePercent,
+			TO_CHAR(B.reg_dt, 'yyyy/mm/dd') reg_dt
+		    FROM
+		        (SELECT ROWNUM as rnum, A.*
+		        FROM
+		            (SELECT *
+		             FROM PRODUCT
+		             WHERE  1=1 
+					  <include refid="baseCondition"/>
+		             ORDER BY reg_dt DESC
+		            )A
+		            WHERE <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
+		        )B    
+		        WHERE b.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)
+		)T1  
+		NATURAL JOIN                                                      
+		(                                                                 
+		  SELECT COUNT(*) totalCnt                                     
+		  FROM PRODUCT
+		  WHERE  1=1 
+		  <include refid="baseCondition"/>
+		)T2
+	</select>
+
+	<delete id="do_delete" parameterType="Product">
+		DELETE FROM product WHERE p_code = #{p_code,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="do_save" parameterType="Product">
+		INSERT INTO USERS (
+		    P_CODE,
+			H_CODE,
+			L_CODE,
+			P_NAME,
+			P_COMPANY,
+			P_PRICE,
+			P_IMAGE,
+			STOCK,
+			UNIT_SALES,
+			STATUS,
+			P_NEW,
+			P_BEST,
+			P_SALE,
+			P_CONTENT,
+			SALE_PERCENT,
+			REG_DT
+		) VALUES (
+		    #{P_CODE,jdbcType=NUMERIC},
+		    #{H_CODE,jdbcType=VARCHAR},
+		    #{L_CODE,jdbcType=VARCHAR},
+		    #{P_NAME,jdbcType=VARCHAR},
+		    #{P_COMPANY,jdbcType=VARCHAR},
+		    #{P_PRICE,jdbcType=NUMERIC},
+		    #{P_IMAGE,jdbcType=VARCHAR},
+		    #{STOCK,jdbcType=NUMERIC},
+		    #{UNIT_SALES,jdbcType=NUMERIC},
+		    #{STATUS,jdbcType=VARCHAR},
+		    #{P_NEW,jdbcType=VARCHAR},
+			#{P_BEST,jdbcType=VARCHAR},
+			#{P_SALE,jdbcType=VARCHAR},
+			#{P_CONTENT,jdbcType=VARCHAR},
+			#{SALE_PERCENT,jdbcType=NUMERIC},
+			#{P_SALE,jdbcType=VARCHAR},
+		    SYSDATE
+		) 
+	</insert>
+	
+	<update id="do_update" parameterType="Product">
+		UPDATE product
+		SET
+			h_code  = #{h_code,jdbcType=VARCHAR},
+			l_code = #{l_code,jdbcType=VARCHAR},
+			p_name = #{p_name,jdbcType=VARCHAR},
+			p_company = #{p_company,jdbcType=VARCHAR},
+			p_price = #{p_price,jdbcType=NUMERIC},
+			p_image = #{p_image,jdbcType=VARCHAR},
+			stock = #{stock,jdbcType=VARCHAR},
+			unit_sales = #{unit_sales,jdbcType=NUMERIC},
+			status = #{status,jdbcType=VARCHAR},
+			p_new = #{p_new,jdbcType=VARCHAR},
+			p_best = #{p_best,jdbcType=VARCHAR},
+			p_sale = #{p_sale,jdbcType=VARCHAR},
+			p_content = #{p_content,jdbcType=VARCHAR},
+			sale_percent = #{sale_percent,jdbcType=NUMERIC},
+			reg_dt = SYSDATE
+		WHERE
+		    p_code = #{p_code,jdbcType=VARCHAR}
+	</update>
+	
+	<select id="get_productIdList" parameterType="Search" resultType="Product">
+		SELECT										
+		    <include refid="proColumns"/>                  
+		FROM
+   			 PRODUCT                             
+		WHERE id LIKE '%' || #{searchWord} || '%'
+	</select> 
+</mapper>

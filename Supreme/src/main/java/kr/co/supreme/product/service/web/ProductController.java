@@ -43,14 +43,14 @@ public class ProductController {
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");      
-	      if(null == product.gethCode() || "".equals(product.gethCode().trim())) {
+	      if(null == product.getH_code() || "".equals(product.getH_code().trim())) {
 		         throw new IllegalArgumentException("대분류 번호를 입력하세요.");
 		  }
 		      
-		  if(null == product.getlCode() || "".equals(product.getlCode().trim())) {
+		  if(null == product.getL_code() || "".equals(product.getL_code().trim())) {
 		         throw new IllegalArgumentException("소분류 번호를 입력하세요.");
 		  }
-		  if(null == product.getpName() || "".equals(product.getpName().trim())) {
+		  if(null == product.getP_name() || "".equals(product.getP_name().trim())) {
 			     throw new IllegalArgumentException("상품명을 입력하세요.");
 		  }      
 	      
@@ -112,14 +112,14 @@ public class ProductController {
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");
 	      
-	      if(null == product.gethCode() || "".equals(product.gethCode().trim())) {
+	      if(null == product.getH_code() || "".equals(product.getH_code().trim())) {
 	         throw new IllegalArgumentException("대분류 번호를 입력하세요.");
 	      }
 	      
-	      if(null == product.getlCode() || "".equals(product.getlCode().trim())) {
+	      if(null == product.getL_code() || "".equals(product.getL_code().trim())) {
 	         throw new IllegalArgumentException("소분류 번호를 입력하세요.");
 	      }
-	      if(null == product.getpName() || "".equals(product.getpName().trim())) {
+	      if(null == product.getP_name() || "".equals(product.getP_name().trim())) {
 		         throw new IllegalArgumentException("상품명을 입력하세요.");
 		  } 
 
@@ -152,7 +152,7 @@ public class ProductController {
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");
 	      
-	      if(null == product.getpName() || "".equals(product.getpName())) {
+	      if(null == product.getP_name() || "".equals(product.getP_name())) {
 	         throw new IllegalArgumentException("상품명을 입력하세요.");
 	      }
 	      
