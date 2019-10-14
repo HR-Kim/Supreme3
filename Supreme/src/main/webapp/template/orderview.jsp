@@ -203,6 +203,7 @@
 			var option ="width=500, height=500, top=100, left=200, location=no";
 		}
 		
+		
 		//grid click
 		$("#refund").on("click","tr",function(){
 			alert("listTable");
