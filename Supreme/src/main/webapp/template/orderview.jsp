@@ -109,11 +109,11 @@
 					<thead>
 						<tr>
 							<th>Product</th>
-							<th></th>
+							<th class="text-left">Status</th>
 							<th class="text-center">Price</th>
 							<th class="text-center">Quantity</th>
 							<th class="text-center">Total</th>
-							<th class="text-right">Status</th>
+							<th class="text-center">Select</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -122,18 +122,21 @@
 								<c:forEach var="vo" items="${list}">
 							<% System.out.print(vo); %>
 						<tr>
-							<td class="thumb"><img src="../resources/img/thumb-product01.jpg" alt=""></td>
+							<td class="thumb"><img value="${vo.p_image}" alt=""></td>
 							
 							<td class="details">
-								<a href="#"><c:out value="${vo.pname}" /></a>
+								<a href="#"><c:out value="${vo.p_name}" /></a>
 									<ul>
 										<li><span><c:out value="${vo.od_status}"/></span></li>
 									</ul>
 							</td>
 							
-							<td class="price text-center"><strong><c:out value= "${vo.pprice}"/></strong><br><del class="font-weak"><small>"${vo.unitprice}"</small></del></td>
-							<td class="qty text-center"><input class="input" type="number"/> <c:out value="${vo.quantity}"/></td>
-							<td class="total text-center"><strong class="primary-color">$32.50</strong></td>
+							<td class="price text-center"><strong>$<c:out value="${vo.unit_price}"/></strong><br><del class="font-weak"><small>$<c:out value="${vo.p_price}"/></small></del></td>
+							<td class="price text-center"><c:out value="${vo.quantitiy}"/></td>
+							<td class="total text-center"><strong class="primary-color"><c:out value="${vo.quantitiy * vo.unit_price}"/></strong></td>
+							<td class="total text-center">
+							<input type="checkbox" name="checkOrder" value="check"/>
+							</td>
 						</tr>
 							</c:forEach>
 						</c:when>
@@ -155,63 +158,36 @@
 					<thead>
 						<tr>
 							<th>Product</th>
-							<th></th>
+							<th class="text-left">Product name</th>
 							<th class="text-center">Price</th>
-							<th class="text-center">Quantity</th>
 							<th class="text-center">Total</th>
-							<th class="text-right">Status</th>
+							<th class="text-center">Status</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:choose>
+							<c:when test="${list.size()>0}">
+								<c:forEach var="vo" items="${list}">
+							<% System.out.print(vo); %>
 						<tr>
-							<td class="thumb"><img src="../resources/img/thumb-product01.jpg" alt=""></td>
+							<td class="thumb"><img value="${vo.p_image}" alt=""></td>
 							
 							<td class="details">
-								<a href="#">Product Name Goes Here</a>
-								<ul>
-									<li><span>Size: XL</span></li>
-									<li><span>Color: Camelot</span></li>
-								</ul>
+								<a href="#"><c:out value="${vo.p_name}" /></a>
 							</td>
 							
-							<td class="price text-center"><strong>$32.50</strong><br><del class="font-weak"><small>$40.00</small></del></td>
-							<td class="qty text-center"><input class="input" type="number" value="1"></td>
-							<td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-							
-						</tr>
-						<tr>
-							<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-							<td class="details">
-								<a href="#">Product Name Goes Here</a>
-								<ul>
-									<li><span>Size: XL</span></li>
-									<li><span>Color: Camelot</span></li>
-								</ul>
+							<td class="price text-center"><strong>$<c:out value="${vo.unit_price}"/></strong></td>
+							<td class="total text-center"><strong class="primary-color"><c:out value="${vo.quantitiy * vo.unit_price}"/></strong></td>
+							<td class="total text-center">
+							<button class="icon-btn.main-btn" name="refund" id="refund" >환불</button>
+							<button class="icon-btn.main-btn" name="change" id="change" onclick="window.open('changepopup','window_name','width=430,height=500,location=no,status=no,scrollbars=yes');">교환</button>
 							</td>
-							<td class="price text-center"><strong>$32.50</strong></td>
-							<td class="qty text-center"><input class="input" type="number" value="1"></td>
-							<td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-							<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
 						</tr>
-						<tr>
-							<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-							<td class="details">
-								<a href="#">Product Name Goes Here</a>
-								<ul>
-									<li><span>Size: XL</span></li>
-									<li><span>Color: Camelot</span></li>
-								</ul>
-							</td>
-							<td class="price text-center"><strong>$32.50</strong></td>
-							<td class="qty text-center"><input class="input" type="number" value="1"></td>
-							<td class="total text-center"><strong class="primary-color">$32.50</strong></td>
-							<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-						</tr>
+							</c:forEach>
+						</c:when>
+					</c:choose>
 					</tbody>
 				</table>
-				<div class="pull-right">
-				<button class="primary-btn">Refund</button>
-			</div>
 			<!-- /row -->
 			</div>
 			</div>
@@ -219,6 +195,19 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
+	
+	<script>
+	//	$("#refund").on('click',function(){
+			
+	//		var url    ="refund_popup.jsp";
+	//		var name   ="refund_popup";
+	//		var option ="width=500, height=500, top=100, left=200, location=no"
+	//		window.open(wrl,name,option);
+	//	}
+	</script>
+	
+	
+	
 	<!-- FOOTER -->
 	<%@include file ="footer.jsp" %>
 	<!-- /FOOTER -->
