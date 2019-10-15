@@ -38,7 +38,7 @@
 		<include refid="myItemColums" />
 		FROM
 		MY_ITEM
-		WHERE ID LIKE '%' || #{searchWord} || '%'
+		WHERE ID = #{searchWord}
 		ORDER BY F_SEQ ASC
 	</select>
 
