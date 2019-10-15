@@ -34,7 +34,8 @@ public class ProductDaoImpl implements WorkDiv {
 		LOG.debug("2. statement:"+statement);
 		LOG.debug("=========================");	
 		
-
+		
+		
 		int flag = this.sqlSessionTemplate.update(statement,product);
 		LOG.debug("=========================");
 		LOG.debug("3. flag:"+flag);

@@ -28,13 +28,15 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.google.gson.Gson;
 
-
-
+import kr.co.supreme.cmn.Search;
 import kr.co.supreme.product.service.Product;
+import kr.co.supreme.product.service.impl.ProductDaoImpl;
 
 
 
@@ -54,27 +56,13 @@ public class ProductWebTest {
 	
 	
 	List<Product> list;
-	List<String> headers;
+	
+	@Autowired
+	ProductDaoImpl productDaoImpl;
 	
 	@Before
 	public void setUp() {
-		headers = Arrays.asList("1"
-								,"2"
-								,"3"
-								,"test"
-								,"test"
-								,"33000"
-								,"test.jpg"
-								,"test"
-								,"30"
-								,"test"
-								,"test"
-								,"test"
-								,"test"
-								,"test"
-								,"40"
-								,"test"
-				);
+		
 		
 		list = Arrays.asList(
 				new Product(1,"12","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"),
@@ -87,64 +75,128 @@ public class ProductWebTest {
 	}
 	
 	@Test
-	public void do_save(Product vo) throws Exception{
+	@Ignore
+	public void do_save() throws Exception{
 		
-		
-		
-		MockHttpServletRequestBuilder createMessage =
+		MockHttpServletRequestBuilder createMessage = 
 				MockMvcRequestBuilders.post("/product/do_save.do")
-				.param("pCode", String.valueOf(vo.getP_code())) 
-				.param("hCode", vo.getH_code())
-				.param("lCode", vo.getL_code())
-				.param("pName", vo.getP_name())
-				.param("pCompany", vo.getP_company())
-				.param("pPrice", String.valueOf(vo.getP_price()))
-				.param("pImage", vo.getP_image())
-				.param("stock", String.valueOf(vo.getStock()))
-				.param("unitsales", String.valueOf(vo.getUnit_sales()))
-				.param("status", vo.getStatus())
-				.param("pNew", vo.getP_new())
-				.param("pBest", vo.getP_best())
-				.param("pSale", vo.getP_sale())
-				.param("pContent", vo.getP_content())
-				.param("salePercent", String.valueOf(vo.getSale_percent()))
-				.param("regDt", vo.getReg_dt());
+				.param("p_code","55")
+				.param("h_code","21")
+				.param("l_code","22")
+				.param("p_name","test")
+				.param("p_company","test")
+				.param("p_price", "44000")
+				.param("p_image","test")
+				.param("stock","555")
+				.param("unit_sales","777")
+				.param("status","1")
+				.param("p_new","tt")
+				.param("p_best","tt")
+				.param("p_sale","tt")
+				.param("p_content","test")
+				.param("sale_percent","50")
+				;
 		
 		ResultActions resultActions = mockMvc.perform(createMessage)
 				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
-				.andExpect(MockMvcResultMatchers.jsonPath("$.msgId", is("1")));	
+				.andExpect(MockMvcResultMatchers.jsonPath("$.msgId", is("1")));
+		String result = resultActions.andDo(print())
+						.andReturn()
+						.getResponse().getContentAsString();
+	}
+	
+	
+	@Test
+	@Ignore
+	public void do_delete() throws Exception{
+		MockHttpServletRequestBuilder createMessage =
+				MockMvcRequestBuilders.post("/product/do_delete.do")
+				.param("p_code", "55");
+		
+		ResultActions resultActions = mockMvc.perform(createMessage)
+				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))		
+				.andExpect(MockMvcResultMatchers.jsonPath("$.msgId", is("1"))) ;
 		
 		String result = resultActions.andDo(print())
 				.andReturn()
 				.getResponse().getContentAsString();
-		
-		LOG.debug("=====================================");
+		LOG.debug("===============================");
 		LOG.debug("=result="+result);
-		LOG.debug("=====================================");
+		LOG.debug("===============================");
+	}
+	
+	
+	@Test
+	@Ignore
+	public void get_selectOne() throws Exception{
+		MockHttpServletRequestBuilder createMessage =
+				MockMvcRequestBuilders.get("/product/do_selectOne.do")
+				.param("p_name", "cc");
+		
+		ResultActions resultActions = mockMvc.perform(createMessage)
+                .andExpect(status().isOk());
+                
+		String result = resultActions.andDo(print())
+		.andReturn()
+		.getResponse().getContentAsString();
+		
+		
+		LOG.debug("===============================");
+		LOG.debug("=result="+result);
+		LOG.debug("===============================");
 	}
 	
 	@Test
 	@Ignore
-	public void get_retrieve() throws Exception {
-		//url,param,post/get
+	public void get_retrieve() throws Exception{
 		MockHttpServletRequestBuilder createMessage = 
 				MockMvcRequestBuilders.get("/product/get_retrieve.do")
-				.param("searchDiv", "10")
-				.param("searchWord", "test")
-				.param("pageSize", "10")
-				.param("pageNum", "1");
-				
-		//url call 결과 return
-		ResultActions resultActions = mockMvc.perform(createMessage)
-				                     .andExpect(status().isOk());		
+				.param("searchWord", "01")
+				;
 		
+		ResultActions resultActions = mockMvc.perform(createMessage)		
+		.andExpect(status().isOk()) ;
+		        		
 		String result = resultActions.andDo(print())
 				.andReturn()
 				.getResponse().getContentAsString();
-		
-		LOG.debug("=====================================");
+		LOG.debug("===============================");
 		LOG.debug("=result="+result);
-		LOG.debug("=====================================");			
+		LOG.debug("===============================");
+	}
+	
+	@Test
+	@Ignore
+	public void do_update() throws Exception{
+		MockHttpServletRequestBuilder createMessage = 
+				MockMvcRequestBuilders.post("/product/do_update.do")
+				.param("h_code", "02")
+				.param("l_code", "03")
+				.param("p_name","cc")
+				.param("p_company", "cc")
+				.param("p_price", "23")
+				.param("p_image", "cc")
+				.param("stock", "50")
+				.param("unit_sales", "44")
+				.param("status", "70")
+				.param("p_new", "34")
+				.param("p_best", "34")
+				.param("p_sale", "34")
+				.param("p_content", "cc")
+				.param("sale_percent", "40")
+				.param("p_code","30")
+				;
+		
+		ResultActions resultActions = mockMvc.perform(createMessage)
+				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))		
+				.andExpect(MockMvcResultMatchers.jsonPath("$.msgId", is("1"))) ;
+		        		
+				String result = resultActions.andDo(print())
+						.andReturn()
+						.getResponse().getContentAsString();
+				LOG.debug("===============================");
+				LOG.debug("=result="+result);
+				LOG.debug("===============================");		
 	}
 	
 	@After
