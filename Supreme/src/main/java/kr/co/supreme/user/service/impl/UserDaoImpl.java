@@ -10,9 +10,10 @@ import org.springframework.stereotype.Repository;
 
 
 import kr.co.supreme.cmn.DTO;
-import kr.co.supreme.cmn.Search;
+
 import kr.co.supreme.cmn.WorkDiv;
 import kr.co.supreme.user.service.User;
+import kr.co.supreme.user.service.UserSearch;
 
 @Repository
 public class UserDaoImpl implements WorkDiv {
@@ -169,7 +170,7 @@ public class UserDaoImpl implements WorkDiv {
 	/** Test위해 존재: Like (ID추출) */
 	public List<?> get_userIdList(DTO dto) {
 		String statement = this.NAMESPACE+".get_userIdList";
-		Search search = (Search) dto;		
+		UserSearch search = (UserSearch) dto;		
 		LOG.debug("=========================");
 		LOG.debug("1. param:"+search);
 		LOG.debug("2. statement:"+statement);
@@ -184,7 +185,8 @@ public class UserDaoImpl implements WorkDiv {
 	@Override
 	public List<?> get_retrieve(DTO dto) {
 		String statement = this.NAMESPACE+".get_retrieve";
-		Search search = (Search) dto;
+		UserSearch search = (UserSearch) dto;
+		String userLvl = "";
 		LOG.debug("=========================");
 		LOG.debug("1. param:"+search);
 		LOG.debug("2. statement:"+statement);

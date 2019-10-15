@@ -49,15 +49,25 @@
 			</choose>
 	</sql>
 	
+	<sql id="lvlCondition">
+			<choose>
+				<when test="'' == userLvl">
+				</when>
+				<otherwise>
+				and LVL = #{userLvl}
+				</otherwise>							
+			</choose>
+	</sql>
+	
 	<!-- 아이디 체크 -->
-	<select id="id_check" parameterType="User" >
+	<select id="id_check" parameterType="User" resultType="int">
 		SELECT COUNT(*) CNT
 		FROM USERS
 		WHERE id = #{id,jdbcType=VARCHAR}	
 	</select>
 	
 	<!-- 비번 체크 -->
-	<select id="passwd_check" parameterType="User" >
+	<select id="passwd_check" parameterType="User" resultType="int">
 		SELECT COUNT(*) CNT
 		FROM USERS
 		WHERE id = #{id,jdbcType=VARCHAR}	
@@ -114,6 +124,7 @@
 		             FROM USERS
 		             WHERE  1=1 
 		             <include refid="baseCondition"/>
+		             <include refid="lvlCondition"/> 
 		             ORDER BY reg_dt DESC
 		            )A
 		            WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
@@ -126,6 +137,7 @@
 		  FROM USERS
 		  WHERE  1=1 
 		  <include refid="baseCondition"/>
+		  <include refid="lvlCondition"/> 
 		)T2
 	</select>
 	 

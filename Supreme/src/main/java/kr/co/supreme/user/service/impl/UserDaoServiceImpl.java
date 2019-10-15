@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 import kr.co.supreme.cmn.DTO;
 import kr.co.supreme.cmn.ExcelWriter;
 import kr.co.supreme.cmn.Message;
-import kr.co.supreme.cmn.Search;
+
 import kr.co.supreme.user.service.User;
+import kr.co.supreme.user.service.UserSearch;
 import kr.co.supreme.user.service.UserService;
 
 @Service
@@ -28,7 +29,7 @@ public class UserDaoServiceImpl implements UserService{
 //	private ExcelWriter excelWriter;
 	
 	@Override
-	public String excelDown(Search vo, String ext) {
+	public String excelDown(UserSearch vo, String ext) {
 		return null;
 		
 	}
@@ -129,6 +130,12 @@ public class UserDaoServiceImpl implements UserService{
 	public void tx_upgradeLevels() throws SQLException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int id_check(DTO dto) {
+		// TODO Auto-generated method stub
+		return userDaoImpl.id_check(dto);
 	}
 
 }

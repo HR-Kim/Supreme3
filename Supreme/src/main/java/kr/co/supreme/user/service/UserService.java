@@ -17,7 +17,7 @@ public interface UserService {
 	/**수정 */
 	public int do_update(DTO dto);
 	/**ExcelDown */
-	public String excelDown(Search vo,String ext);	
+	public String excelDown(UserSearch vo,String ext);	
 	/**목록조회 */
 	public List<?> get_retrieve(DTO dto);
 	/**삭제 */
@@ -28,4 +28,6 @@ public interface UserService {
 	public int do_save(DTO dto);
 	/**등업*/
 	public void tx_upgradeLevels() throws SQLException;
+	
+	public int id_check(DTO dto);
 }

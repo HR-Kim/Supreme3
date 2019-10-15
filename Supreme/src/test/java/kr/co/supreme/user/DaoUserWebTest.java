@@ -32,8 +32,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.supreme.cmn.Search;
+
 import kr.co.supreme.user.service.User;
+import kr.co.supreme.user.service.UserSearch;
 import kr.co.supreme.user.service.impl.UserDaoImpl;
 
 @WebAppConfiguration  //테스트할 DI 컨테이너를 웹 애플리케이션 전용 DI 컨테이너로 처리
@@ -85,22 +86,52 @@ public class DaoUserWebTest {
 	}
 	
 	
-	//id,pass 체크 
-	public void idPassCheck() {
-		User user01 = list.get(0);
-		
-	}
+	
+	
+//	//id 체크 
+//	@Test
+//	public void id_check() throws Exception {
+//		
+//		LOG.debug("======================================");
+//		LOG.debug("=01. 기존 데이터 찾고/삭제=");
+//		LOG.debug("======================================");
+//		UserSearch search=new UserSearch();
+//		search.setSearchWord("_142");
+//		List<User> getIdList = (List<User>) userDaoImpl.get_userIdList(search);
+//		for(User vo : getIdList) {
+//			do_delete(vo);
+//		}
+//		
+//		LOG.debug("======================================");
+//		LOG.debug("=02. 단건등록=");
+//		LOG.debug("======================================");
+//		for(User vo : list) {
+//			do_save(vo);
+//		}
+//		
+//		LOG.debug("======================================");
+//		LOG.debug("=03. 조회=");
+//		LOG.debug("======================================");
+//		User user01 = list.get(0);
+//		
+//		id_check(user01);
+//		
+//		
+//		
+//		
+//		
+//	}
 	
 	
 	
 	//목록 조회
 	@Test
-//	@Ignore
+	@Ignore
 	public void do_retrieve() throws Exception{
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 찾고/삭제=");
 		LOG.debug("======================================");
-		Search search=new Search();
+		UserSearch search=new UserSearch();
 		search.setSearchWord("_142");
 		List<User> getIdList = (List<User>) userDaoImpl.get_userIdList(search);
 		for(User vo : getIdList) {
@@ -134,12 +165,12 @@ public class DaoUserWebTest {
 	
 	//U
 	@Test
-//	@Ignore
+	@Ignore
 	public void update() throws Exception {
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 찾고/삭제=");
 		LOG.debug("======================================");
-		Search search=new Search();
+		UserSearch search=new UserSearch();
 		search.setSearchWord("_142");
 		//기존Data찾기
 		List<User> getIdList = (List<User>) userDaoImpl.get_userIdList(search);
@@ -175,12 +206,12 @@ public class DaoUserWebTest {
 	
 	//CRD
 	@Test
-//	@Ignore
+	@Ignore
 	public void addAndGet() throws Exception {
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 삭제=");
 		LOG.debug("======================================");
-		Search search=new Search();
+		UserSearch search=new UserSearch();
 		search.setSearchWord("_142");
 		List<User> getIdList = (List<User>) userDaoImpl.get_userIdList(search);
 		for(User vo : getIdList) {
@@ -215,7 +246,7 @@ public class DaoUserWebTest {
 	}
 	
 	
-	private List<User> get_retrieve(Search inVO) throws Exception {
+	private List<User> get_retrieve(UserSearch inVO) throws Exception {
 		//url,param,post/get
 		MockHttpServletRequestBuilder createMessage = 
 				MockMvcRequestBuilders.get("/user/get_retrieve.do")
@@ -342,6 +373,34 @@ public class DaoUserWebTest {
 		LOG.debug("=====================================");
 		LOG.debug("=result="+result);
 		LOG.debug("=====================================");	
+	}
+	
+	//id 중복 체크
+	@Test
+	public void id_check() throws Exception {
+		
+		//url,param
+		MockHttpServletRequestBuilder createMessage = 
+				MockMvcRequestBuilders.post("/user/id_check.do")
+				.param("id", "test01_142_");
+		//url call 결과 return
+		
+		MvcResult result = mockMvc.perform(createMessage)
+				                   .andExpect(status().isOk())
+				                   .andReturn()
+				                   ;
+		
+		//result:return VO 객체로 됨.(결과 출력 않됨.)
+		ModelAndView  modelAndView=result.getModelAndView();
+		
+		int flag = (int) modelAndView.getModel().get("vo");
+		
+		LOG.debug("=====================================");
+		LOG.debug("=flag="+flag);
+		LOG.debug("=====================================");		
+		
+		
+		
 	}
 	
 	

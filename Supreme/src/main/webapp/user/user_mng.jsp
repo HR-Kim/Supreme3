@@ -1,3 +1,4 @@
+<%@page import="kr.co.supreme.user.service.UserSearch"%>
 <%@page import="kr.co.supreme.cmn.Search"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
@@ -18,22 +19,27 @@
 	/** 확장자 */
 	String ext = "xls" ;	
 	
-	String userLvl = "1"; 
+	String userLvl = ""; 
 	
 	
-	Search vo = (Search)request.getAttribute("vo");
+	UserSearch vo = (UserSearch)request.getAttribute("vo");
+	
+	
+	
 	
 	if(null !=vo){
 		pageSize = StringUtil.nvl(vo.getPageSize()+"","10");
 		pageNum = StringUtil.nvl(vo.getPageNum()+"","1");
 		searchDiv = StringUtil.nvl(vo.getSearchDiv(),"");
 		searchWord = StringUtil.nvl(vo.getSearchWord(),"");
+		userLvl = StringUtil.nvl(vo.getUserLvl(),"");
 		
 	}else{
 		pageSize = "10";
 		pageNum  = "1";
 		searchDiv = "";
 		searchWord = "";
+		userLvl="";
 	}
 	
 	String extParam = (String)request.getAttribute("ext");
@@ -93,6 +99,7 @@
 		<!-- div title -->
 		<div class="page-header">
 			<h1>사용자 관리</h1>
+			
 		</div>
 		<!--// div title -->
 		
@@ -101,9 +108,10 @@
 			<div class="col-md-12 text-right">
 				<form class="form-inline" name="frm" id="frm" method="get">
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
+					
 					<div class="form-group">
 					    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
-					    <%=StringUtil.makeSelectBox(codeLvlList, "userLvl", userLvl, false) %>
+					    <%=StringUtil.makeSelectBox(codeLvlList, "userLvl", userLvl, true) %>
 					    <%=StringUtil.makeSelectBox(codeSearchList, "searchDiv", searchDiv, true) %>
 						<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

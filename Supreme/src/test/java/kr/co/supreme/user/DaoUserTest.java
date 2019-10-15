@@ -24,8 +24,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.context.WebApplicationContext;
 
-import kr.co.supreme.cmn.Search;
+
 import kr.co.supreme.user.service.User;
+import kr.co.supreme.user.service.UserSearch;
 import kr.co.supreme.user.service.impl.UserDaoImpl;
 
 @WebAppConfiguration
@@ -61,7 +62,7 @@ public class DaoUserTest {
 
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void getAll() throws SQLException {
 		List<User> list = daoImpl.getAll();
 		for(User user:list) {
@@ -71,7 +72,7 @@ public class DaoUserTest {
 	
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void get_retrieve() {
 		//---------------------------
 		//-기존Data삭제
@@ -80,7 +81,7 @@ public class DaoUserTest {
 		LOG.debug("=1.기존Data삭제=");
 		LOG.debug("================================");
 		
-		Search search = new Search();
+		UserSearch search = new UserSearch();
 		search.setSearchWord("_142");
 		List<User> getIdList = (List<User>) daoImpl.get_userIdList(search);
 		for(User vo: getIdList) {
@@ -126,7 +127,7 @@ public class DaoUserTest {
 		LOG.debug("=1.기존Data삭제=");
 		LOG.debug("================================");
 		
-		Search search = new Search();
+		UserSearch search = new UserSearch();
 		search.setSearchWord("test");
 		List<User> getIdList = (List<User>) daoImpl.get_userIdList(search);
 		for(User vo: getIdList) {
@@ -179,7 +180,7 @@ public class DaoUserTest {
 		LOG.debug("=1.ID값 찾기: ID LIKE=");
 		LOG.debug("================================");
 		
-		Search search = new Search();
+		UserSearch search = new UserSearch();
 		search.setSearchWord("test");
 		List<User> getIdList = (List<User>) daoImpl.get_userIdList(search);
 		
@@ -242,7 +243,7 @@ public class DaoUserTest {
 		LOG.debug("=ID값 찾기: ID LIKE=");
 		LOG.debug("================================");
 		
-		Search search = new Search();
+		UserSearch search = new UserSearch();
 		search.setSearchWord("test");
 		List<User> getIdList = (List<User>) daoImpl.get_userIdList(search);
 		
@@ -285,6 +286,43 @@ public class DaoUserTest {
 	}
 	
 	
+	@Test
+	public void id_check() {
+		//---------------------------
+		//-기존Data삭제
+		//---------------------------
+		LOG.debug("================================");
+		LOG.debug("=1.기존Data삭제=");
+		LOG.debug("================================");
+		
+		UserSearch search = new UserSearch();
+		search.setSearchWord("_142");
+		List<User> getIdList = (List<User>) daoImpl.get_userIdList(search);
+		for(User vo: getIdList) {
+			daoImpl.do_delete(vo);
+		}
+		//-------------------------------------------
+		//-등록
+		//-------------------------------------------
+		LOG.debug("================================");
+		LOG.debug("=2.등록=");
+		LOG.debug("================================");
+		for(User vo: list) {
+			daoImpl.do_save(vo);
+			assertThat(1, is(1));
+		}		
+		
+		LOG.debug("#####id_check");
+		User vo = list.get(0);
+		int check = daoImpl.id_check(vo);
+		
+		if(check==0) {
+			LOG.debug("중복된 아이디가 없습니다.");
+		}else{
+			LOG.debug("이 아이디를 사용할 수 없습니다.");
+		}
+		
+	}
 	
 	@Test
 	public void getBean() {

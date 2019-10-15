@@ -14,5 +14,6 @@ public interface UserDao {
 	public int deleteUser(User user);
 	public int add(User user);
 	public User get(String id);
+	public int id_check(User user);
 	
 }
