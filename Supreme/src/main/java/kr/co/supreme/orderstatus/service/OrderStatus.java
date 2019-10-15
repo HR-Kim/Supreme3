@@ -22,8 +22,36 @@ public class OrderStatus extends DTO {
 
 
 	private String nickname		 ; /*닉네임*/
+	private String u_id			 ; /*유저아이디*/
 	
 	public OrderStatus() {}
+
+	@Override
+	public String toString() {
+		return "OrderStatus [detail_code=" + detail_code + ", od_status=" + od_status + ", reg_dt=" + reg_dt
+				+ ", udt_dt=" + udt_dt + ", order_code=" + order_code + ", quantitiy=" + quantitiy + ", unit_price="
+				+ unit_price + ", p_name=" + p_name + ", p_content=" + p_content + ", p_image=" + p_image + ", p_price="
+				+ p_price + ", nickname=" + nickname + ", u_id=" + u_id + ", toString()=" + super.toString() + "]";
+	}
+
+	public OrderStatus(String detail_code, String od_status, String reg_dt, String udt_dt, String order_code,
+			String quantitiy, String unit_price, String p_name, String p_content, String p_image, String p_price,
+			String nickname, String u_id) {
+		super();
+		this.detail_code = detail_code;
+		this.od_status = od_status;
+		this.reg_dt = reg_dt;
+		this.udt_dt = udt_dt;
+		this.order_code = order_code;
+		this.quantitiy = quantitiy;
+		this.unit_price = unit_price;
+		this.p_name = p_name;
+		this.p_content = p_content;
+		this.p_image = p_image;
+		this.p_price = p_price;
+		this.nickname = nickname;
+		this.u_id = u_id;
+	}
 
 	public String getDetail_code() {
 		return detail_code;
@@ -121,30 +149,14 @@ public class OrderStatus extends DTO {
 		this.nickname = nickname;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderStatus [detail_code=" + detail_code + ", od_status=" + od_status + ", reg_dt=" + reg_dt
-				+ ", udt_dt=" + udt_dt + ", order_code=" + order_code + ", quantitiy=" + quantitiy + ", unit_price="
-				+ unit_price + ", p_name=" + p_name + ", p_content=" + p_content + ", p_image=" + p_image + ", p_price="
-				+ p_price + ", nickname=" + nickname + ", toString()=" + super.toString() + "]";
+	public String getU_id() {
+		return u_id;
 	}
 
-	public OrderStatus(String detail_code, String od_status, String reg_dt, String udt_dt, String order_code,
-			String quantitiy, String unit_price, String p_name, String p_content, String p_image, String p_price,
-			String nickname) {
-		super();
-		this.detail_code = detail_code;
-		this.od_status = od_status;
-		this.reg_dt = reg_dt;
-		this.udt_dt = udt_dt;
-		this.order_code = order_code;
-		this.quantitiy = quantitiy;
-		this.unit_price = unit_price;
-		this.p_name = p_name;
-		this.p_content = p_content;
-		this.p_image = p_image;
-		this.p_price = p_price;
-		this.nickname = nickname;
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
 	}
+
+	
 	
 }

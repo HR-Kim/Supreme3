@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.co.supreme.orderStatus">
   <sql id="orderStatusColumns">
+  		U.NICKNAME as nickname,
+		U.ID as u_id,
   		O3.DETAIL_CODE as detail_code ,
 		O2.ORDER_CODE as order_code ,
 		P.P_IMAGE as p_image,
@@ -42,6 +44,7 @@
 		           FROM 
 		           ( SELECT 
 		             U.NICKNAME as nickname,
+		             U.ID as u_id,
 		             O1.ORDER_CODE as order_code,
 		             O3.DETAIL_CODE as detail_code,
 		             P.P_PRICE as p_price,

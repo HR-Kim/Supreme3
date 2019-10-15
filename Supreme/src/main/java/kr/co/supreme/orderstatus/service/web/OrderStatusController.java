@@ -37,6 +37,33 @@ public class OrderStatusController {
 	@Autowired
 	private CodeService codeService;
 	
+	/**지난주문 조회 */
+	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
+	public String get_previous_retrieve(HttpServletRequest req, Search search, Model model, OrderStatus inVO) {
+	
+		//param
+		if(search.getPageSize()==0) {
+			search.setPageSize(10);
+		}
+		if(search.getPageNum()==0) {
+			search.setPageNum(1);
+		}
+		if(inVO.getOd_status()=="4" || inVO.getOd_status()=="9") {
+			
+		}
+		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+		model.addAttribute("vo",search);
+		
+		
+		
+		//목록조회 
+		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);
+		model.addAttribute("list",list);
+		return VIEW_MNG_NM;
+	}
+	
+	/**현재주문 조회 */
 	
 	/**전체조회*/
 	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
@@ -64,6 +91,7 @@ public class OrderStatusController {
 		
 		return VIEW_MNG_NM;
 	}
+	
 	/**단건조회*/
 	@RequestMapping(value="orderStauts/do_selectOne.do",method = RequestMethod.GET)
 	public String get_selectOne(OrderStatus inVO,Model model) {
