@@ -74,9 +74,48 @@ public class DaoOrderStatusWebTest {
 		LOG.debug("===============================");
 	}
 	
+	@Test
+	@Ignore
+	public void get_previous_retrieve() throws Exception{
+		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_previous_retrieve.do")
+				.param("pageSize", "10")
+				.param("pageNum", "1")
+				.param("searchDiv", "10")
+				.param("searchWord", "123456789")
+				;
+				ResultActions resultActions = mockMvc.perform(createMessage)		
+				.andExpect(status().isOk()) ;
+		        		
+				String result = resultActions.andDo(print())
+						.andReturn()
+						.getResponse().getContentAsString();
+				LOG.debug("===============================");
+				LOG.debug("=result="+result);
+				LOG.debug("===============================");			
+			}
 
 	@Test
 
+	public void get_current_retrieve() throws Exception{
+		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_current_retrieve.do")
+				.param("pageSize", "10")
+				.param("pageNum", "1")
+				.param("searchDiv", "10")
+				.param("searchWord", "123456789")
+				;
+				ResultActions resultActions = mockMvc.perform(createMessage)		
+				.andExpect(status().isOk()) ;
+		        		
+				String result = resultActions.andDo(print())
+						.andReturn()
+						.getResponse().getContentAsString();
+				LOG.debug("===============================");
+				LOG.debug("=result="+result);
+				LOG.debug("===============================");			
+			}
+
+	@Test
+	@Ignore
 	public void get_retrieve() throws Exception {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_retrieve.do")
 				.param("pageSize", "10")

@@ -94,6 +94,29 @@ public class OrderStatusDaoImpl implements WorkDiv {
 		LOG.debug("=========================");
 		return list;		
 	}
+	public List<?> get_current_retrieve(DTO dto){
+		String statement = this.NAMESPACE+".get_current_retrieve";
+		Search search = (Search) dto;		
+		LOG.debug("=========================");
+		LOG.debug("1. param:"+search);
+		LOG.debug("2. statement:"+statement);
+		List<OrderStatus> list=this.sqlSessionTemplate.selectList(statement,search);
+		LOG.debug("3. list:"+list);
+		LOG.debug("=========================");
+		return list;		
+	}
+	public List<?> get_previous_retrieve(DTO dto){
+		String statement = this.NAMESPACE+".get_previous_retrieve";
+		Search search = (Search) dto;		
+		LOG.debug("=========================");
+		LOG.debug("1. param:"+search);
+		LOG.debug("2. statement:"+statement);
+		List<OrderStatus> list=this.sqlSessionTemplate.selectList(statement,search);
+		LOG.debug("3. list:"+list);
+		LOG.debug("=========================");
+		return list;		
+	}
+	
 	@Override
 	public DTO get_selectOne(DTO dto) {
 		String statement = this.NAMESPACE+".get_selectOne";

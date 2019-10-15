@@ -33,6 +33,65 @@
 				<otherwise></otherwise>							
 			</choose>
 	</sql>
+		<!-- 현재진행중인 주문 조회  -->
+   <select id="get_current_retrieve" parameterType="Search" resultType="OrderStatus">
+          SELECT 
+			U.NICKNAME as nickname,
+			U.ID as u_id,
+			O1.ORDER_CODE as order_code,
+			O3.DETAIL_CODE as detail_code,
+			P.P_PRICE as p_price,
+			O2.UNIT_PRICE as unit_price,
+			P.P_IMAGE as p_image,
+			P.P_NAME as p_name,
+			P.P_CONTENT as p_content, 
+			O2.QUANTITY as quantitiy,
+			O3.UDT_DT as udt_dt,
+			O3.REG_DT as reg_dt,
+			DECODE(O3.OD_STATUS,0,'주문완료',1,'결제대기',2,'배송준비',3,'배송중',4,'배송완료',5,'환불접수',6,'환불완료',7,'교환신청접수',9,'취소') as od_status                                            
+		FROM   
+			USERS U JOIN ORDERS O1
+			ON U.ID = O1.ID         
+			JOIN ORDER_DETAIL O2
+			ON O1.ORDER_CODE = O2.ORDER_CODE
+			JOIN ORDER_STATUS O3
+			ON O3.DETAIL_CODE = O2.DETAIL_CODE
+			JOIN PRODUCT P 
+			ON O2.P_CODE = P.P_CODE		  
+	WHERE O3.OD_STATUS != '1' OR  O3.OD_STATUS != '9'
+
+   </select>
+   
+   
+	<!-- 지난 주문 조회  -->
+   <select id="get_previous_retrieve" parameterType="Search" resultType="OrderStatus">
+          SELECT 
+			U.NICKNAME as nickname,
+			U.ID as u_id,
+			O1.ORDER_CODE as order_code,
+			O3.DETAIL_CODE as detail_code,
+			P.P_PRICE as p_price,
+			O2.UNIT_PRICE as unit_price,
+			P.P_IMAGE as p_image,
+			P.P_NAME as p_name,
+			P.P_CONTENT as p_content, 
+			O2.QUANTITY as quantitiy,
+			O3.UDT_DT as udt_dt,
+			O3.REG_DT as reg_dt,
+			DECODE(O3.OD_STATUS,0,'주문완료',1,'결제대기',2,'배송준비',3,'배송중',4,'배송완료',5,'환불접수',6,'환불완료',7,'교환신청접수',9,'취소') as od_status                                            
+		FROM   
+			USERS U JOIN ORDERS O1
+			ON U.ID = O1.ID         
+			JOIN ORDER_DETAIL O2
+			ON O1.ORDER_CODE = O2.ORDER_CODE
+			JOIN ORDER_STATUS O3
+			ON O3.DETAIL_CODE = O2.DETAIL_CODE
+			JOIN PRODUCT P 
+			ON O2.P_CODE = P.P_CODE		  
+	WHERE O3.OD_STATUS = '1' OR  O3.OD_STATUS = '9'
+
+   </select>
+	
 	<!-- 목록조회 -->
    <select id="get_retrieve" parameterType="Search" resultType="OrderStatus">
           SELECT T1.*,T2.*													

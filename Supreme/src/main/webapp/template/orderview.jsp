@@ -16,7 +16,7 @@
 	/** 검색조건 */
 	String searchDiv  = "" ;
 	/** 검색어 */
-	String searchWord = "test01" ;
+	String searchWord = "" ;
 	/** 확장자 */
 	String ext = "xls" ;	
 	
@@ -25,7 +25,7 @@
 		pageSize   = StringUtil.nvl(vo.getPageSize()+"","10");
 		pageNum    = StringUtil.nvl(vo.getPageNum()+"","1");
 		searchDiv  = StringUtil.nvl(vo.getSearchDiv(),"");
-		searchWord = StringUtil.nvl(vo.getSearchWord(),"test01");		
+		searchWord = StringUtil.nvl(vo.getSearchWord(),"");		
 	}else{
 		pageSize   = "10";
 		pageNum    = "1";
@@ -170,18 +170,18 @@
 					</thead>
 					<tbody>
 						<c:choose>
-							<c:when test="${list.size()>0}">
-								<c:forEach var="vo" items="${list}">
+							<c:when test="${prelist.size()>0}">
+								<c:forEach var="pvo" items="${prelist}">
 							<% System.out.print(vo); %>
 						<tr>
-							<td class="thumb"><img value="${vo.p_image}" alt=""></td>
+							<td class="thumb"><img value="${pvo.p_image}" alt=""></td>
 							
 							<td class="details">
-								<a href="#"><c:out value="${vo.p_name}" /></a>
+								<a href="#"><c:out value="${pvo.p_name}" /></a>
 							</td>
 							
-							<td class="price text-center"><strong>$<c:out value="${vo.unit_price}"/></strong></td>
-							<td class="total text-center"><strong class="primary-color"><c:out value="${vo.quantitiy * vo.unit_price}"/></strong></td>
+							<td class="price text-center"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
+							<td class="total text-center"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
 							<td class="total text-center">
 							<button class="icon-btn.main-btn" name="refund" id="refund" onclick="window.open('../template/refund_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');">환불</button>
 							<button class="icon-btn.main-btn" name="change" id="change" onclick="window.open('../template/change_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');">교환</button>

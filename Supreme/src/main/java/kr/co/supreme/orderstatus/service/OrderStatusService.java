@@ -15,4 +15,8 @@ public interface OrderStatusService {
 	public DTO get_selectOne(DTO dto);
 	/**목록조회 */
 	public List<?> get_retrieve(DTO dto);
+	/**과거목록*/
+	public List<?> get_previous_retrieve(DTO dto);
+	/**현재 진행주문*/
+	public List<?> get_current_retrieve(DTO dto);
 }

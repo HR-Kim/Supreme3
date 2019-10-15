@@ -46,4 +46,14 @@ public class OrderStatusServiceImpl implements OrderStatusService {
 		return orderStatusDaoImpl.get_retrieve(dto);
 	}
 
+	@Override
+	public List<?> get_previous_retrieve(DTO dto) {
+		return orderStatusDaoImpl.get_previous_retrieve(dto);
+	}
+
+	@Override
+	public List<?> get_current_retrieve(DTO dto) {
+		return orderStatusDaoImpl.get_current_retrieve(dto);
+	}
+
 }

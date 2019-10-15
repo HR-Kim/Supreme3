@@ -38,9 +38,8 @@ public class OrderStatusController {
 	private CodeService codeService;
 	
 	/**지난주문 조회 */
-	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
-	public String get_previous_retrieve(HttpServletRequest req, Search search, Model model, OrderStatus inVO) {
-	
+	@RequestMapping(value="orderStauts/get_previous_retrieve.do",method = RequestMethod.GET)
+	public String get_previous(HttpServletRequest req, Search search, Model model) {
 		//param
 		if(search.getPageSize()==0) {
 			search.setPageSize(10);
@@ -48,22 +47,49 @@ public class OrderStatusController {
 		if(search.getPageNum()==0) {
 			search.setPageNum(1);
 		}
-		if(inVO.getOd_status()=="4" || inVO.getOd_status()=="9") {
-			
-		}
+		
 		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
 		model.addAttribute("vo",search);
 		
-		
+		LOG.debug("=========================");
+		LOG.debug("====SEARCH====="+search);
+		LOG.debug("=========================");
 		
 		//목록조회 
-		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);
+		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_previous_retrieve(search);
 		model.addAttribute("list",list);
+		
+		
 		return VIEW_MNG_NM;
 	}
 	
 	/**현재주문 조회 */
+	@RequestMapping(value="orderStauts/get_current_retrieve.do",method = RequestMethod.GET)
+	public String get_current_retrieve(HttpServletRequest req, Search search, Model model) {
+		//param
+		if(search.getPageSize()==0) {
+			search.setPageSize(10);
+		}
+		if(search.getPageNum()==0) {
+			search.setPageNum(1);
+		}
+		
+		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+		model.addAttribute("vo",search);
+		
+		LOG.debug("=========================");
+		LOG.debug("====SEARCH====="+search);
+		LOG.debug("=========================");
+		
+		//현재 주문 목록조회 
+		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_current_retrieve(search);
+		model.addAttribute("list",list);
+		
+		
+		return VIEW_MNG_NM;
+	}
 	
 	/**전체조회*/
 	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
@@ -87,7 +113,13 @@ public class OrderStatusController {
 		//목록조회 
 		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);
 		model.addAttribute("list",list);
-		
+		//현재 주문 목록조회 
+		List<OrderStatus> currentlist = (List<OrderStatus>) this.Service.get_current_retrieve(search);
+		model.addAttribute("currentlist",currentlist);
+		//목록조회 
+		List<OrderStatus> prelist = (List<OrderStatus>) this.Service.get_previous_retrieve(search);
+		model.addAttribute("prelist",prelist);
+				
 		
 		return VIEW_MNG_NM;
 	}
