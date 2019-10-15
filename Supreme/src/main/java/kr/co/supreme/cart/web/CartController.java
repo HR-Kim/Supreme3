@@ -69,6 +69,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		return gsonStr;
 		
 	}
+	
 	/**삭제 */
 	@RequestMapping(value="cart/do_delete.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")
@@ -98,6 +99,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		
 		return gsonStr;
 	}
+	
 	/**저장 */
 	@RequestMapping(value="cart/do_save.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")
@@ -133,6 +135,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		
 		return gsonStr;
 	}
+	
 	/**단건조회 */
 	@RequestMapping(value="cart/do_selectOne.do",method = RequestMethod.GET)
 	public String get_selectOne(Cart cart,Model model) {
@@ -140,12 +143,16 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		LOG.debug("=cart="+cart);
 		LOG.debug("============================");
 		
-		if(null == cart.getId() || "".equals(cart.getId())) {
-			throw new IllegalArgumentException("ID를 입력 하세요.");
+		String nullck = Integer.toString(cart.getCartCode());
+		
+		if(nullck == null || "".equals(nullck)) {
+			throw new IllegalArgumentException("Cart_Num를 입력 하세요.");
 		}
 		
 		Cart outVO= (Cart) this.cartService.get_selectOne(cart);
 		model.addAttribute("vo", outVO);
+		
+		LOG.debug("=outVO="+outVO);
 		
 		return VIEW_MNG_NM;
 	}
