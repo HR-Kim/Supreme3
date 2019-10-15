@@ -11,7 +11,7 @@ import kr.co.supreme.cmn.Search;
 
 public interface ProductService {
 
-	public String excelDown(Search vo, String ext);
+	
 
 	/** 수정 */
 	public int do_update(DTO dto);

@@ -22,11 +22,7 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDaoImpl productDaoImpl;
 	
 	
-	@Override
-	public String excelDown(Search vo, String ext) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public int do_update(DTO dto) {

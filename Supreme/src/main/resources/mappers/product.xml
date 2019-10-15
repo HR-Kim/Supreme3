@@ -45,23 +45,23 @@
 		SELECT T1.*,T2.*													
 		FROM 
 		(SELECT 
-            rnum as num,
-		    B.p_code as pCode,
-			B.h_code as hCode,
-			B.l_code as lCode,
-			B.p_name as pName,
-			B.p_company as pCompany,
-			B.p_price as pPrice,
-			B.p_image as pImage,
-			B.stock as stock, 
-			B.unit_sales as unitsales,
-			B.status as status,
-			B.p_new as pNew,
-			B.p_best as pBest,
-			B.p_sale as pSale,
-			B.p_content as pContent,
-			B.sale_percent as salePercent,
-			TO_CHAR(B.reg_dt, 'yyyy/mm/dd') reg_dt
+            rnum ,
+		    B.p_code ,
+			B.h_code ,
+			B.l_code ,
+			B.p_name ,
+			B.p_company ,
+			B.p_price ,
+			B.p_image ,
+			B.stock , 
+			B.unit_sales ,
+			B.status ,
+			B.p_new ,
+			B.p_best ,
+			B.p_sale ,
+			B.p_content ,
+			B.sale_percent ,
+			TO_CHAR(B.reg_dt, 'yyyy/mm/dd')
 		    FROM
 		        (SELECT ROWNUM as rnum, A.*
 		        FROM
@@ -71,7 +71,7 @@
 					  <include refid="baseCondition"/>
 		             ORDER BY reg_dt DESC
 		            )A
-		            WHERE <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
+		            WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
 		        )B    
 		        WHERE b.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)
 		)T1  
@@ -89,40 +89,39 @@
 	</delete>
 
 	<insert id="do_save" parameterType="Product">
-		INSERT INTO USERS (
-		    P_CODE,
-			H_CODE,
-			L_CODE,
-			P_NAME,
-			P_COMPANY,
-			P_PRICE,
-			P_IMAGE,
-			STOCK,
-			UNIT_SALES,
-			STATUS,
-			P_NEW,
-			P_BEST,
-			P_SALE,
-			P_CONTENT,
-			SALE_PERCENT,
-			REG_DT
+		INSERT INTO PRODUCT (
+		    p_code,
+			h_code,
+			l_code,
+			p_name,
+			p_company,
+			p_price,
+			p_image,
+			stock,
+			unit_sales,
+			status,
+			p_new,
+			p_best,
+			p_sale,
+			p_content,
+			sale_percent,
+			reg_dt
 		) VALUES (
-		    #{P_CODE,jdbcType=NUMERIC},
-		    #{H_CODE,jdbcType=VARCHAR},
-		    #{L_CODE,jdbcType=VARCHAR},
-		    #{P_NAME,jdbcType=VARCHAR},
-		    #{P_COMPANY,jdbcType=VARCHAR},
-		    #{P_PRICE,jdbcType=NUMERIC},
-		    #{P_IMAGE,jdbcType=VARCHAR},
-		    #{STOCK,jdbcType=NUMERIC},
-		    #{UNIT_SALES,jdbcType=NUMERIC},
-		    #{STATUS,jdbcType=VARCHAR},
-		    #{P_NEW,jdbcType=VARCHAR},
-			#{P_BEST,jdbcType=VARCHAR},
-			#{P_SALE,jdbcType=VARCHAR},
-			#{P_CONTENT,jdbcType=VARCHAR},
-			#{SALE_PERCENT,jdbcType=NUMERIC},
-			#{P_SALE,jdbcType=VARCHAR},
+		    #{p_code,jdbcType=NUMERIC},
+		    #{h_code,jdbcType=VARCHAR},
+		    #{l_code,jdbcType=VARCHAR},
+		    #{p_name,jdbcType=VARCHAR},
+		    #{p_company,jdbcType=VARCHAR},
+		    #{p_price,jdbcType=NUMERIC},
+		    #{p_image,jdbcType=VARCHAR},
+		    #{stock,jdbcType=NUMERIC},
+		    #{unit_sales,jdbcType=NUMERIC},
+		    #{status,jdbcType=VARCHAR},
+		    #{p_new,jdbcType=VARCHAR},
+			#{p_best,jdbcType=VARCHAR},
+			#{p_sale,jdbcType=VARCHAR},
+			#{p_content,jdbcType=VARCHAR},
+			#{sale_percent,jdbcType=NUMERIC},
 		    SYSDATE
 		) 
 	</insert>
@@ -146,14 +145,22 @@
 			sale_percent = #{sale_percent,jdbcType=NUMERIC},
 			reg_dt = SYSDATE
 		WHERE
-		    p_code = #{p_code,jdbcType=VARCHAR}
+		    p_code = #{p_code,jdbcType=VARCHAR} 
 	</update>
+	
+	<select id="get_selectOne" parameterType="Search" resultType="Product" >
+		SELECT										
+		    <include refid="proColumns"/>                  
+		FROM
+   			 PRODUCT                             
+		WHERE p_name = #{p_name,jdbcType=VARCHAR}
+	</select> 
 	
 	<select id="get_productIdList" parameterType="Search" resultType="Product">
 		SELECT										
 		    <include refid="proColumns"/>                  
 		FROM
    			 PRODUCT                             
-		WHERE id LIKE '%' || #{searchWord} || '%'
+		WHERE p_code LIKE '%' || #{searchWord} || '%'
 	</select> 
 </mapper>

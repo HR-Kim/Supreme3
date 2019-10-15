@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.LocaleResolver;
 
 import com.google.gson.Gson;
 
@@ -27,9 +28,12 @@ public class ProductController {
 	Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
+	private LocaleResolver localeResolver;
+	
+	@Autowired
 	ProductService productService;
 	
-	private final String VIEW_LIST_NM ="product/product_list";
+	private final String VIEW_LIST_NM  ="product/product_list";
 	private final String VIEW_MNG_NM  ="product/product_mng";
 	
 	
@@ -43,16 +47,16 @@ public class ProductController {
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");      
-	      if(null == product.getH_code() || "".equals(product.getH_code().trim())) {
-		         throw new IllegalArgumentException("대분류 번호를 입력하세요.");
-		  }
-		      
-		  if(null == product.getL_code() || "".equals(product.getL_code().trim())) {
-		         throw new IllegalArgumentException("소분류 번호를 입력하세요.");
-		  }
-		  if(null == product.getP_name() || "".equals(product.getP_name().trim())) {
-			     throw new IllegalArgumentException("상품명을 입력하세요.");
-		  }      
+//	      if(null == product.getH_code() || "".equals(product.getH_code().trim())) {
+//		         throw new IllegalArgumentException("대분류 번호를 입력하세요.");
+//		  }
+//		      
+//		  if(null == product.getL_code() || "".equals(product.getL_code().trim())) {
+//		         throw new IllegalArgumentException("소분류 번호를 입력하세요.");
+//		  }
+//		  if(null == product.getP_name() || "".equals(product.getP_name().trim())) {
+//			     throw new IllegalArgumentException("상품명을 입력하세요.");
+//		  }      
 	      
 	      int flag = this.productService.do_update(product);
 	      Message  message=new Message();
