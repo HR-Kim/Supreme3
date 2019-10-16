@@ -10,51 +10,84 @@ public class Cart extends DTO{
 	private int unitPrice ;    //단가
 	private String id     ;    //회원아이디
 	
-	public Cart() {};
+	private String pImage; //상품이미지
+	private String pName; //상품이름
 	
-	public int getCartCode() {
-		return cartCode;
-	}
-	public void setCartCode(int cartCode) {
-		this.cartCode = cartCode;
-	}
-	public int getpCode() {
-		return pCode;
-	}
-	public void setpCode(int pCode) {
-		this.pCode = pCode;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public int getUnitPrice() {
-		return unitPrice;
-	}
-	public void setUnitPrice(int unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	@Override
-	public String toString() {
-		return "Cart [cartCode=" + cartCode + ", pCode=" + pCode + ", quantity=" + quantity + ", unitPrice=" + unitPrice
-				+ ", id=" + id + ", toString()=" + super.toString() + "]";
-	}
-	public Cart(int cartCode, int pCode, int quantity, int unitPrice, String id) {
+	public Cart() {}
+
+	public Cart(int cartCode, int pCode, int quantity, int unitPrice, String id, String pImage, String pName) {
 		super();
 		this.cartCode = cartCode;
 		this.pCode = pCode;
 		this.quantity = quantity;
 		this.unitPrice = unitPrice;
 		this.id = id;
+		this.pImage = pImage;
+		this.pName = pName;
 	}
+
+	public int getCartCode() {
+		return cartCode;
+	}
+
+	public void setCartCode(int cartCode) {
+		this.cartCode = cartCode;
+	}
+
+	public int getpCode() {
+		return pCode;
+	}
+
+	public void setpCode(int pCode) {
+		this.pCode = pCode;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public int getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getpImage() {
+		return pImage;
+	}
+
+	public void setpImage(String pImage) {
+		this.pImage = pImage;
+	}
+
+	public String getpName() {
+		return pName;
+	}
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [cartCode=" + cartCode + ", pCode=" + pCode + ", quantity=" + quantity + ", unitPrice=" + unitPrice
+				+ ", id=" + id + ", pImage=" + pImage + ", pName=" + pName + ", toString()=" + super.toString() + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,10 +95,13 @@ public class Cart extends DTO{
 		result = prime * result + cartCode;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + pCode;
+		result = prime * result + ((pImage == null) ? 0 : pImage.hashCode());
+		result = prime * result + ((pName == null) ? 0 : pName.hashCode());
 		result = prime * result + quantity;
 		result = prime * result + unitPrice;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -84,12 +120,23 @@ public class Cart extends DTO{
 			return false;
 		if (pCode != other.pCode)
 			return false;
+		if (pImage == null) {
+			if (other.pImage != null)
+				return false;
+		} else if (!pImage.equals(other.pImage))
+			return false;
+		if (pName == null) {
+			if (other.pName != null)
+				return false;
+		} else if (!pName.equals(other.pName))
+			return false;
 		if (quantity != other.quantity)
 			return false;
 		if (unitPrice != other.unitPrice)
 			return false;
 		return true;
-	}
+	};
+	
 	
 	
 	

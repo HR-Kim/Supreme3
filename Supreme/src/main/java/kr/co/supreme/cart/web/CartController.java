@@ -173,6 +173,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
 		model.addAttribute("vo", search);
 		
+		
 		LOG.debug("============================");
 		LOG.debug("=search="+search);
 		LOG.debug("============================");		

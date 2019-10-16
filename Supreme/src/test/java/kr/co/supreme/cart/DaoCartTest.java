@@ -47,10 +47,10 @@ public class DaoCartTest {
 	@Before
 	public void setUp() {
 		list = Arrays.asList(
-				new Cart(191010001,10110001,1,10000,"test01"),
-				new Cart(191010002,10110001,3,10000,"test02"),
-				new Cart(191010003,10110002,1,20000,"test02"),
-				new Cart(191010004,10110002,1,20000,"test01")
+				new Cart(191010001,10110001,1,10000,"test01","",""),
+				new Cart(191010002,10110001,3,10000,"test02","",""),
+				new Cart(191010003,10110002,1,20000,"test02","",""),
+				new Cart(191010004,10110002,1,20000,"test01","","")
 				);
 				
 		LOG.debug("#####setUp");

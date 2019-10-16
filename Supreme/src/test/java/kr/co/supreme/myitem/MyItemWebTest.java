@@ -54,10 +54,10 @@ public class MyItemWebTest {
 		LOG.debug("^^^^^^^^^^^^^^^^^^");
 	
 	list = Arrays.asList(
-			new MyItem(000001,"test01",95,""),
-			new MyItem(000002,"test02",95,""),
-			new MyItem(000003,"test01",96,""),
-			new MyItem(000004,"test02",96,"")
+			new MyItem(000001,"test01",95,"","","",0),
+			new MyItem(000002,"test02",95,"","","",0),
+			new MyItem(000003,"test01",96,"","","",0),
+			new MyItem(000004,"test02",96,"","","",0)
 			);
 	
 	mockMvc = MockMvcBuilders.webAppContextSetup(context).build();

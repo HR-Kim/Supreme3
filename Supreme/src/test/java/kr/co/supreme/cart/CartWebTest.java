@@ -54,10 +54,10 @@ public class CartWebTest {
 		LOG.debug("^^^^^^^^^^^^^^^^^^");
 	
 	list = Arrays.asList(
-			new Cart(191010001,95,1,10000,"test01"),
-			new Cart(191010002,95,3,10000,"test02"),
-			new Cart(191010003,96,1,20000,"test02"),
-			new Cart(191010004,96,1,20000,"test01")
+			new Cart(191010001,95,1,10000,"test01","",""),
+			new Cart(191010002,95,3,10000,"test02","",""),
+			new Cart(191010003,96,1,20000,"test02","",""),
+			new Cart(191010004,96,1,20000,"test01","","")
 			);
 	mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 		LOG.debug("===============================");
@@ -92,7 +92,7 @@ public class CartWebTest {
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void get_retrieve() throws Exception {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/cart/get_retrieve.do")
 				.param("searchWord", "test01")

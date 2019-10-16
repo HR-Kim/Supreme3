@@ -155,6 +155,7 @@ public class MyItemController {
 		return VIEW_MNG_NM;
 	}
 	
+	//http://localhost:8080/supreme/myitem/get_retrieve.do?searchWord=test01
 	/**목록조회 */
 	@RequestMapping(value="myitem/get_retrieve.do",method = RequestMethod.GET)
 	public String get_retrieve(HttpServletRequest req,Search search, Model model) {

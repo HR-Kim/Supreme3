@@ -46,10 +46,10 @@ public class DaoMyItemTest {
 	public void setUp() {
 		
 		list = Arrays.asList(
-				new MyItem(000001,"test01",95,"19/10/11"),
-				new MyItem(000002,"test01",96,"19/10/11"),
-				new MyItem(000003,"test02",95,"19/10/11"),
-				new MyItem(000004,"test02",96,"19/10/11")
+				new MyItem(000001,"test01",95,"19/10/11","","",0),
+				new MyItem(000002,"test01",96,"19/10/11","","",0),
+				new MyItem(000003,"test02",95,"19/10/11","","",0),
+				new MyItem(000004,"test02",96,"19/10/11","","",0)
 				);
 		
 		
