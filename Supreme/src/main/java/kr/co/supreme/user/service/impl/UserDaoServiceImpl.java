@@ -138,4 +138,10 @@ public class UserDaoServiceImpl implements UserService{
 		return userDaoImpl.id_check(dto);
 	}
 
+	@Override
+	public int passwd_check(DTO dto) {
+		// TODO Auto-generated method stub
+		return userDaoImpl.passwd_check(dto);
+	}
+
 }

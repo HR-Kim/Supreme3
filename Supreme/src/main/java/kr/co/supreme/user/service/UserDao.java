@@ -15,5 +15,5 @@ public interface UserDao {
 	public int add(User user);
 	public User get(String id);
 	public int id_check(User user);
-	
+	public int passwd_check(User user);
 }

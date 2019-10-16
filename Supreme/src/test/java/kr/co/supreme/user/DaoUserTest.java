@@ -287,6 +287,7 @@ public class DaoUserTest {
 	
 	
 	@Test
+	@Ignore
 	public void id_check() {
 		//---------------------------
 		//-기존Data삭제
@@ -320,6 +321,44 @@ public class DaoUserTest {
 			LOG.debug("중복된 아이디가 없습니다.");
 		}else{
 			LOG.debug("이 아이디를 사용할 수 없습니다.");
+		}
+		
+	}
+	
+	@Test
+	public void passwd_check() {
+		//---------------------------
+		//-기존Data삭제
+		//---------------------------
+		LOG.debug("================================");
+		LOG.debug("=1.기존Data삭제=");
+		LOG.debug("================================");
+		
+		UserSearch search = new UserSearch();
+		search.setSearchWord("_142");
+		List<User> getIdList = (List<User>) daoImpl.get_userIdList(search);
+		for(User vo: getIdList) {
+			daoImpl.do_delete(vo);
+		}
+		//-------------------------------------------
+		//-등록
+		//-------------------------------------------
+		LOG.debug("================================");
+		LOG.debug("=2.등록=");
+		LOG.debug("================================");
+		for(User vo: list) {
+			daoImpl.do_save(vo);
+			assertThat(1, is(1));
+		}		
+		
+		LOG.debug("#####id_check");
+		User vo = list.get(0);
+		int check = daoImpl.passwd_check(vo);
+		
+		if(check==1) {
+			LOG.debug("비밀번호가 맞습니다.");
+		}else{
+			LOG.debug("비밀번호가 잘못되었습니다.");
 		}
 		
 	}

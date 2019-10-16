@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-<title>회원 가입</title>
+<title>회원 정보 수정</title>
 <!-- 부트스트랩 -->
 <link href="${context}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -24,7 +24,7 @@
 	<div class="container">
 		<!-- div title -->
 		<div class="page-header">
-			<h1>회원 가입</h1>
+			<h1>회원 정보 수정</h1>
 		</div>
 		<!--// div title -->
 	
@@ -36,21 +36,23 @@
 			<div class="form-group">
 				<label for="u_id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-6">
-					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id">
+					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id" disabled="disabled" value="test01_142">
 				</div>
-				<div class="text-right col-sm-2">
-					<button type="button" class="btn btn-default btn-sm" id="idCheck">ID 중복 확인</button>
-				</div>	
-				<input type="hidden" id="idDuplication" value="id_UnCheck">
 			</div>
 			<div class="form-group">
-				<label for="passwd" class="col-sm-2 control-label">비밀번호</label>
+				<label for="passwd" class="col-sm-2 control-label">기존 비밀번호</label>
 				<div class="col-sm-8">
 					<input type="password" maxlength="100"  class="form-control input-sm" id="passwd" placeholder="숫자와 영문자로 입력해 주세요." name="passwd">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="passwd_check" class="col-sm-2 control-label">비밀번호 확인</label>
+				<label for="passwd" class="col-sm-2 control-label">새로운 비밀번호</label>
+				<div class="col-sm-8">
+					<input type="password" maxlength="100"  class="form-control input-sm" id="newPasswd" placeholder="숫자와 영문자로 입력해 주세요." name="newPasswd">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="passwd_check" class="col-sm-2 control-label">새로운 비밀번호 확인</label>
 				<div class="col-sm-8">
 					<input type="password" maxlength="100"  class="form-control input-sm" id="passwd_check" placeholder="비밀번호 확인" name="passwd_check">
 				</div>
@@ -111,8 +113,8 @@
 		<div class="row">
 			<div class="col-lg-10 col-sm-10 col-xs-10">
 				<div class="text-right">
-					<button type="button" class="btn btn-default btn-sm" id="doInit">초기화</button>
-					<button type="button" class="btn btn-default btn-sm" id="doSave">회원가입</button>
+					<button type="button" class="btn btn-default btn-sm" id="doUpdate">회원 정보 수정</button>
+					<button type="button" class="btn btn-default btn-sm" id="doDelete">회원 탈퇴</button>
 				</div>
 			</div>
 		</div>
@@ -126,61 +128,54 @@
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
 		
-		//등록
-	    $("#doSave").on("click",function(){
-	    	console.log("doSave");
-	    	checkValue();
+		//회원 정보 수정
+	    $("#doUpdate").on("click",function(){
+	    	console.log("doUpdate");
 	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
+	    	//passValidation()->checkValue()->doUpdate()
+	    	passValidation();
+	    	    	
 	    });
 		
+		//체크 함수
 		function checkValue(){
 			
 			
-			if(!$("#u_id").val()){
-				alert("아이디를 입력하세요.");
-				document.getElementById("u_id").focus();
-				return false;
-			}
-			if($("#idDuplication").val() !="id_Check"){
-				alert("아이디 중복 체크를 해주세요.");
-				document.getElementById("u_id").focus();
-				return false;
-			}
-			if(!$("#passwd").val()){
-				alert("비밀번호를 입력하세요.");
-				document.getElementById("passwd").focus();
+			
+			if(!$("#newPasswd").val()){
+				alert("비밀번호를 입력해 주세요.");
+				document.getElementById("newPasswd").focus();
 				return false;
 			} 
 						
-			if($("#passwd").val() != $("#passwd_check").val()){
+			if($("#newPasswd").val() != $("#passwd_check").val()){
 				alert("비밀번호를 동일하게 입력하세요.");
 				document.getElementById("passwd_check").focus();
 				return false;
 			}		
 			if(!$("#name").val()){
-				alert("이름을 입력하세요.");
+				alert("이름을 입력해 주세요.");
 				document.getElementById("name").focus();
 				return false;
 			}	
 			if(!$("#nickname").val()){
-				alert("닉네임을 입력하세요.");
+				alert("닉네임을 입력해 주세요.");
 				document.getElementById("nickname").focus();
 				return false;
 			}	
 			if(!$("#email1").val()){
-				alert("이메일을 입력하세요.");
+				alert("이메일을 입력해 주세요.");
 				document.getElementById("email1").focus();
 				return false;
 			}	
 			if(!$("#email2").val()){
-				alert("이메일을 입력하세요.");
+				alert("이메일을 입력해 주세요.");
 				document.getElementById("email2").focus();
+				return false;
+			}	
+			if(!$("#tel").val()){
+				alert("전화번호를 입력해 주세요.");
+				document.getElementById("tel").focus();
 				return false;
 			}	
 			if(isNaN($("#tel").val())){
@@ -200,21 +195,67 @@
 			}
 			console.log("check okay!");
 			
-			var emailPerfect = $("#email1").val().trim()+"@"+$("#email2").val().trim();
 			
-			emailPerfect.trim();
+			
+			doUpdate();
+						
+		};
+		
+	    		
+		//pass 확인 함수
+		function passValidation(){
+			var pass = document.getElementById("passwd").value;
+			
+			if(pass==""){
+				alert("기존 비밀번호를 입력해 주세요.");
+				return false;	
+			}else{
+				//alert("비밀번호 확인합니다.");
+				$.ajax({
+					type : "POST",
+					url : "${context}/user/passwd_check.do",
+					dataType : "html",
+					data : {
+						"id" : $("#u_id").val(),
+						"pass" : $("#passwd").val()
+					},	
+					success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+		                
+		            	var parseData = $.parseJSON(data);
+		            	if(parseData.msgId=="1"){
+		            		checkValue();
+		            		
+		            	}else{
+		            		alert(parseData.msgMsg);
+		            	}
+		            		            	
+		            },
+		            complete: function(data){//무조건 수행
+		             
+		            },
+		            error: function(xhr,status,error){
+		             
+		            }
+				});
+	        
+			}
+		};
+	
+		//수정 함수
+		function doUpdate(){
+			if(false==confirm("회원 정보를 수정 하시겠습니까?"))return;
+			var emailPerfect = $("#email1").val().trim() +"@"+$("#email2").val().trim();
 			
 			$.ajax({
 	            type:"POST",
-	            url:"${context}/user/do_save.do",
+	            url:"${context}/user/do_update.do",
 	            dataType:"html",// JSON
 	            data:{
 	            	"id": $("#u_id").val(),
 	            	"name": $("#name").val(),
-	            	"pass": $("#passwd").val(),
+	            	"pass": $("#newPasswd").val(),
 	            	"nickname": $("#nickname").val(),
 	            	"email": emailPerfect,
-	            	"lvl" : "1",
 	            	"postcode": $("#postcode").val(),
 	            	"address1": $("#address1").val(),
 	            	"address2": $("#address2").val(),
@@ -222,11 +263,10 @@
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);
-	            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);
-	            		console.log("가입완료!");
+	            		
 	            	}else{
 	            		alert(parseData.msgMsg);
 	            	}
@@ -242,46 +282,38 @@
 	            }
 	        });	
 			
-			
 		};
 		
-	
-	
-		//ID 중복 확인 함수
-		$("#idCheck").on("click",function(){
-			idValidation();
-	    });
 		
-		//ID 중복 확인 이벤트
-		function idValidation(){
-			var id = document.getElementById("u_id").value;
-			var flag = false;
-			if(id==""){
-				alert("아이디를 입력해주세요.");
+		//삭제 버튼 이벤트
+		$("#doDelete").on("click",function(){
+			var pass = document.getElementById("passwd").value;
+			if(confirm("묘한 생각을 탈퇴하시겠습니까?") == false)return;
+			
+			if(pass==""){
+				alert("기존 비밀번호를 입력해 주세요.");
 				return false;	
-			}else if(( id < "0" || id > "9")&&( id < "A" || id > "Z")&&(id < "a" || id > "z")){
-				alert("한글 및 특수문자는 아이디로 사용하실 수 없습니다.");
-				return false;
 			}else{
-	//			alert("중복 확인하겠습니다.");
 				$.ajax({
-					type : "POST",
-					url : "${context}/user/id_check.do",
-					dataType : "html",
-					data : {
-						"id" : id
-					},	
-					success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
-		                
+		            type:"POST",
+		            url:"${context}/user/do_delete.do",
+		            dataType:"html",// JSON
+		            data:{
+		            	"id": $("#u_id").val(),
+		            	"pass" : $("#passwd").val()
+		            },
+		            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+		                //console.log(data);
+		            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
 		            	var parseData = $.parseJSON(data);
-		            	if(parseData.msgId=="0"){
+		            	if(parseData.msgId=="1"){
 		            		alert(parseData.msgMsg);
-		            		document.getElementById('idDuplication').value ="id_Check";
+		            		
 		            	}else{
 		            		alert(parseData.msgMsg);
 		            	}
 		            	
-
+	
 		            	
 		            },
 		            complete: function(data){//무조건 수행
@@ -290,27 +322,10 @@
 		            error: function(xhr,status,error){
 		             
 		            }
-				});
-	        
+		        });	 
 			}
-		};
-	
+		});
 		
-		
-		//초기화
-		$("#doInit").on("click",function(){
-			$("#u_id").val("");
-	     	$("#passwd").val("");
-	    	$("#passwd_check").val("");
-	    	$("#name").val("");
-	    	$("#nickname").val("");
-	    	$("#email").val("");
-	    	$("#tel").val("");
-	    	$("#postcode").val(""); 
-	    	$("#address1").val(""); 
-	    	$("#address2").val(""); 
-	    	
-		});	
 	
 	
 		//우편번호 찾기 버튼 이벤트

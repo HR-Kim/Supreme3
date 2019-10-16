@@ -56,8 +56,45 @@ public class UserController {
 	private final String VIEW_JOIN_NM  ="user/user_join";
 	
 	
+	/**password 체크 */
+	@RequestMapping(value="user/passwd_check.do",method = RequestMethod.POST
+			,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String passwd_check(User user,Model model) {
+		String gsonStr = "";
+		LOG.debug("============================");
+		LOG.debug("=user="+user);
+		LOG.debug("============================");
+		
+		if(null == user.getId() || "".equals(user.getId().trim())) {
+			throw new IllegalArgumentException("아이디를 입력 하세요.");
+		}
+		
+		if(null == user.getPass() || "".equals(user.getPass().trim())) {
+			throw new IllegalArgumentException("비밀번호를 입력 하세요.");
+		}
 	
-	/**단건조회 */
+		int flag = this.userService.passwd_check(user);
+		Message  message=new Message();
+		
+		if(flag==1) {
+			message.setMsgId(String.valueOf(flag));
+			message.setMsgMsg("비밀번호가 맞습니다.");
+		}else {
+			message.setMsgId(String.valueOf(flag));
+			message.setMsgMsg("잘못된 비밀번호를 입력하셨습니다.");			
+		}
+		
+		Gson gson=new Gson();
+		gsonStr = gson.toJson(message);		
+		
+		
+		return gsonStr;
+	}
+	
+	
+	
+	/**id중복체크 */
 	@RequestMapping(value="user/id_check.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -112,10 +149,10 @@ public class UserController {
 		
 		if(flag>0) {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("수정 되었습니다.");
+			message.setMsgMsg("회원 정보가 수정되었습니다.");
 		}else {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("수정에 실패하였습니다.");			
+			message.setMsgMsg("회원 정보 수정에 실패하였습니다.");			
 		}
 		
 		Gson gson=new Gson();
@@ -139,10 +176,10 @@ public class UserController {
 		
 		if(flag>0) {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("삭제 되었습니다.");
+			message.setMsgMsg("회원 정보가 삭제되었습니다. 묘한 생각을 이용해 주셔서 감사합니다.");
 		}else {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("삭제에 실패하였습니다.");			
+			message.setMsgMsg("회원 정보 삭제에 실패하였습니다. 기존 비밀번호를 확인해 주세요.");			
 		}
 		
 		Gson gson=new Gson();
@@ -175,10 +212,10 @@ public class UserController {
 		
 		if(flag>0) {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("등록 되었습니다.");
+			message.setMsgMsg("회원 가입이 완료되었습니다.");
 		}else {
 			message.setMsgId(String.valueOf(flag));
-			message.setMsgMsg("등록에 실패하였습니다.");			
+			message.setMsgMsg("회원 가입에 실패하였습니다.");			
 		}
 		
 		Gson gson=new Gson();

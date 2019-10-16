@@ -206,7 +206,7 @@ public class DaoUserWebTest {
 	
 	//CRD
 	@Test
-	@Ignore
+//	@Ignore
 	public void addAndGet() throws Exception {
 		LOG.debug("======================================");
 		LOG.debug("=01. 기존 데이터 삭제=");
@@ -306,7 +306,8 @@ public class DaoUserWebTest {
 		//url,param
 		MockHttpServletRequestBuilder createMessage =
 				MockMvcRequestBuilders.post("/user/do_delete.do")
-				.param("id", vo.getId());
+				.param("id", vo.getId())
+				.param("pass", vo.getPass());
 		
 		
 		ResultActions resultActions = mockMvc.perform(createMessage)
@@ -377,6 +378,7 @@ public class DaoUserWebTest {
 	
 	//id 중복 체크
 	@Test
+	@Ignore
 	public void id_check() throws Exception {
 		
 		//url,param

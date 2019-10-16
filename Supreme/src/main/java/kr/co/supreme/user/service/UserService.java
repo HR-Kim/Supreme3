@@ -30,4 +30,6 @@ public interface UserService {
 	public void tx_upgradeLevels() throws SQLException;
 	
 	public int id_check(DTO dto);
+	
+	public int passwd_check(DTO dto);
 }
