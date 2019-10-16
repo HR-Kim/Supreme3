@@ -14,9 +14,16 @@
 	<!-- get_retrieve -->
 	<select id="get_retrieve" parameterType="Search" resultType="Cart">
 		SELECT
-       	<include refid="cartColumns" />
+		c.CART_CODE as cartCode,
+		c.P_CODE as pCode,
+		c.QUANTITY as quantity,
+		c.UNIT_PRICE as unitPrice,
+		c.ID as id,
+        p.p_image as pImage,
+        p.p_name as pName
 		FROM
-		    CART
+  		    CART c JOIN PRODUCT p
+        	ON c.P_CODE = p.P_CODE
 		WHERE ID LIKE '%' || #{searchWord} || '%'
 		ORDER BY CART_CODE ASC
 	</select>

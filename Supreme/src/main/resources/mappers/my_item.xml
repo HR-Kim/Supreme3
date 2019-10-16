@@ -35,11 +35,18 @@
 	<select id="get_retrieve" parameterType="Search"
 		resultType="MyItem">
 		SELECT
-		<include refid="myItemColums" />
+			i.F_SEQ as fSeq,
+			ID as id,
+			i.P_CODE as pCode,
+			i.REG_DT as regDt,
+	        p.p_image as pImage,
+	        p.p_name as pName,
+	        (p.p_price*p.sale_percent) as price
 		FROM
-		MY_ITEM
-		WHERE ID = #{searchWord}
-		ORDER BY F_SEQ ASC
+  		    my_item i JOIN PRODUCT p
+        	ON i.P_CODE = p.P_CODE
+            WHERE i.id = #{searchWord}
+		ORDER BY i.REG_DT ASC
 	</select>
 
 	<insert id="do_save" parameterType="MyItem">
