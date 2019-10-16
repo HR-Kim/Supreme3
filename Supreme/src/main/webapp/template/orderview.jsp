@@ -116,7 +116,7 @@
 							<th class="text-center">Select</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="tablerow">
 						<c:choose>
 							<c:when test="${currentlist.size()>0}">
 		
@@ -134,9 +134,9 @@
 							
 							<td class="price text-center"><strong>$<c:out value="${cvo.unit_price}"/></strong><br><del class="font-weak"><small>$<c:out value="${cvo.p_price}"/></small></del></td>
 							<td class="price text-center"><c:out value="${cvo.quantitiy}"/></td>
-							<td class="total text-center"><strong class="primary-color"><c:out value="${cvo.quantitiy * cvo.unit_price}"/></strong>원</td>
+							<td class="total text-center"><strong class="primary-color"><c:out value="${cvo.quantitiy * cvo.unit_price}"/></strong></td>
 							<td class="total text-center">
-							<button class="icon-btn.main-btn" name="cancle" id="cancle" onclick="window.open('../template/cancle_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');">주문취소</button>
+							<button class="icon-btn.main-btn" name="cancle" id="cancle" onclick="window.open('../template/cancle_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');">주누</button>
 							</td>
 						</tr>
 							
@@ -146,7 +146,10 @@
 					</c:choose>
 					</tbody>
 				</table>
-				
+				<div class="pull-right">
+				<!-- //grid영역 -->
+				<button class="primary-btn" id="canclebtn" name="canclebtn">Cancle Order</button>
+			</div>
 		</div>
 	</div>
 	<div class="col-md-12">
@@ -182,7 +185,7 @@
 							<td class="price text-center"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
 							<td class="total text-center"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
 							<td class="total text-center">
-							<button class="icon-btn.main-btn" name="refund" id="refund" onclick="window.open('../template/refund_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');setChildText();">환불</button>
+							<button class="icon-btn.main-btn" name="refund" id="refund"onclick="openChild()" >환불</button>
 							<button class="icon-btn.main-btn" name="change" id="change" onclick="window.open('../template/change_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');">교환</button>
 							</td>
 						</tr>
@@ -211,31 +214,43 @@
 	
 	
 	<script type="text/javascript">
-	function setChildText(){
-		openWin.document.getElement
-	}
-	
+	 var openWin;
+	    
+     function openChild()
+     {
+         // window.name = "부모창 이름"; 
+         window.name = "parentForm";
+         // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+         openWin = window.open("/supreme/template/refund_popup.jsp",
+                 "childForm", "width=570, height=350, resizable = no, scrollbars = no");   
+     
+     }
+     
+     function setChildText(){
+         openWin.document.getElementById("tablerow").value = document.getElementById("tablerow").value;
+         console("ok");
+     }
+
 	//환불버튼 클릭
-	$("#refund").click(function(){
-		alert("dorefund");
-	var str =""
-	var tdArr = new Array();//배열 선언
-	var refund = $(this);
-	
+	//$("#refund").click(function(){
+	//	alert("dorefund");
+	//var str =""
+	//var tdArr = new Array();//배열 선언
+	//var refund = $(this);
+	//
 	//Checkbtn.parent() : checkBtn의 부모는 <td>
 	//CheckBtn.parent().parent() : <td>의 부모 <tr>
 	
-	var tr = refund.parent().parent();
-	var td = tr.children();
+	//var tr = refund.parent().parent();
+	//var td = tr.children();
 	
-	console.log("클릭한 row의 모든 데이터: " +tr.text());
-	var no = td.eq(0).text();
-	var no2 = td.eq(1).text();
-	var no3 = td.eq(2).text();
-	var no4 = td.eq(3).text();
+	//console.log("클릭한 row의 모든 데이터: " +tr.text());
+	//var no = td.eq(0).text();
+	//var no2 = td.eq(1).text();
+	//var no3 = td.eq(2).text();
+	//var no4 = td.eq(3).text();
 
-	
-	});
+	//});
 	
 	</script>
 	<!-- FOOTER -->
