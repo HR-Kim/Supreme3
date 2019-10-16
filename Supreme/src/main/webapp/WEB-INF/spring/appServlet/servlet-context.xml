@@ -36,6 +36,21 @@
 	
 	<context:component-scan base-package="kr.co.supreme" />
 	
+	<!-- viewname interceptor -->
+	<beans:bean id="viewNameInterceptor" class="kr.co.supreme.cmn.web.ViewNameInterceptor" />
 	
+	<!-- interceptor -->
+	<interceptors>
+		<!-- viewname interceptor -->
+		<interceptor>
+		    <mapping path="/*/*.do"/>
+			<beans:ref  bean="viewNameInterceptor"/>
+		</interceptor>
+		
+		
+		
+		
+		
+	</interceptors>
 	
 </beans:beans>
