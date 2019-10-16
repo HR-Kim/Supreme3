@@ -40,7 +40,7 @@
 		    <include refid="orderColumns" />
 		FROM
 		    ORDERS
-		WHERE id = #{searchWord} 
+		WHERE ORDER_CODE = #{searchWord} 
 		ORDER BY id ASC
 	</select>
 	
