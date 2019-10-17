@@ -28,7 +28,9 @@ import kr.co.supreme.orderstatus.service.OrderStatusService;
 public class OrderStatusController {
 
 	private final String VIEW_MNG_NM = "template/orderview";
-
+	private final String VIEW_MNG_NME = "template/refund_popup";
+	private final String VIEW_ADM_ORDER="orderStatus/orderview_admin";
+	
 	Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
@@ -37,8 +39,8 @@ public class OrderStatusController {
 	@Autowired
 	private CodeService codeService;
 	
-	/**지난주문 조회 */
-	@RequestMapping(value="orderStauts/get_previous_retrieve.do",method = RequestMethod.GET)
+	/**관리자조회 */
+	@RequestMapping(value="orderStauts/get_admin_retrieve.do",method = RequestMethod.GET)
 	public String get_previous(HttpServletRequest req, Search search, Model model) {
 		//param
 		if(search.getPageSize()==0) {
@@ -57,40 +59,12 @@ public class OrderStatusController {
 		LOG.debug("=========================");
 		
 		//목록조회 
-		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_previous_retrieve(search);
-		model.addAttribute("list",list);
+				List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);
+				model.addAttribute("list",list);
 		
-		
-		return VIEW_MNG_NM;
+		return VIEW_ADM_ORDER;
 	}
-	
-	/**현재주문 조회 */
-	@RequestMapping(value="orderStauts/get_current_retrieve.do",method = RequestMethod.GET)
-	public String get_current_retrieve(HttpServletRequest req, Search search, Model model) {
-		//param
-		if(search.getPageSize()==0) {
-			search.setPageSize(10);
-		}
-		if(search.getPageNum()==0) {
-			search.setPageNum(1);
-		}
-		
-		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
-		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
-		model.addAttribute("vo",search);
-		
-		LOG.debug("=========================");
-		LOG.debug("====SEARCH====="+search);
-		LOG.debug("=========================");
-		
-		//현재 주문 목록조회 
-		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_current_retrieve(search);
-		model.addAttribute("list",list);
-		
-		
-		return VIEW_MNG_NM;
-	}
-	
+
 	/**전체조회*/
 	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
 	public String get_retrieve(HttpServletRequest req, Search search, Model model) {
@@ -139,7 +113,7 @@ public class OrderStatusController {
 		model.addAttribute("vo",outVO);
 	
 
-		return VIEW_MNG_NM;
+		return VIEW_MNG_NME;
 		
 	}
 	/**수정*/

@@ -8,52 +8,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value ="${pageContext.request.contextPath }"/>
-<%
-	/** 페이지 사이즈 */
-	String pageSize   = "10"  ; 	
-	/** 페이지 번호 */
-	String pageNum    = "1"  ;	
-	/** 검색조건 */
-	String searchDiv  = "" ;
-	/** 검색어 */
-	String searchWord = "" ;
-	/** 확장자 */
-	String ext = "xls" ;	
-	
-	Search vo = (Search)request.getAttribute("vo");
-	if(null !=vo){
-		pageSize   = StringUtil.nvl(vo.getPageSize()+"","10");
-		pageNum    = StringUtil.nvl(vo.getPageNum()+"","1");
-		searchDiv  = StringUtil.nvl(vo.getSearchDiv(),"");
-		searchWord = StringUtil.nvl(vo.getSearchWord(),"");		
-	}else{
-		pageSize   = "10";
-		pageNum    = "1";
-		searchDiv  = "";
-		searchWord = "";
-	}
-	
-	String extParam = (String)request.getAttribute("ext");
-	if(extParam !=null) ext = extParam;
-	
-	//페이지사이즈
-	List<Code> listPageSize=(request.getAttribute("listPageSize")==null)?
-			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listPageSize"));
-	//게시판 검색 구분
-	List<Code> listBoardSearch=(request.getAttribute("listBoardSearch")==null)?
-			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listBoardSearch"));
-	
-	//paging 
-	//maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName	
-	int maxNum      = 0;//totalCnt
-	int bottomCount = 10;
-	int currPageNo  = 1;//pageNum
-	int rowPerPage  = 10;//pageSize	
-	
-	String url      = request.getContextPath()+"/orderStauts/get_retrieve.do";
-	String scriptName ="search_page";
 
-%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +50,9 @@
 	<!-- Header -->
 	<%@include file ="header.jsp" %>
 	<!--/ Header -->
+	
 	<div class="container">
+	
 	<!-- row -->
 	<div class="row">
 	<div class="col-md-12">
@@ -152,12 +109,14 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-md-12">
 			<div class="order-summary clearfix">
 				<div class="section-title">
 					<h3 class="title">Previous Order</h3>
 				</div>
-				<table class="shopping-cart-table table">
+				<form name="frmData" id="frmData" method="post">				
+				<table class="shopping-cart-table table" id=prelist >
 					<thead>
 						<tr>
 							<th>Product</th>
@@ -167,33 +126,44 @@
 							<th class="text-center">Status</th>
 						</tr>
 					</thead>
+					
 					<tbody>
 						<c:choose>
 							<c:when test="${prelist.size()>0}">
 								<c:forEach var="pvo" items="${prelist}">
-							<% System.out.print(vo); %>
+								<input type="hidden" name="detailCode" id="detailCode" value="${pvo.detail_code}"/>							
+								<input type="hidden" name="name" id="name" value="${pvo.p_name}"/>							
+								<input type="hidden" name="status" id="status" value="${pvo.od_status}"/>							
+								<input type="hidden" name="unit_price" id="unit_price" value="${pvo.unit_price}"/>							
+								<input type="hidden" name="quantitiy" id="quantitiy" value="${pvo.quantitiy}"/>							
+								<input type="hidden" name="p_price" id="p_price" value="${pvo.p_price}"/>							
 						<tr>
-							<td class="thumb"><img value="${pvo.p_image}" alt=""></td>
+							<td class="thumb" id="image" name="image"><img value="${pvo.p_image}" alt=""></td>
 							
 							<td class="details">
-								<a href="#"><c:out value="${pvo.p_name}" /></a>
+								<a href="#" name="name" id="name"><c:out value="${pvo.p_name}" /></a>
 								<ul>
-									<li><span><c:out value="${pvo.od_status}"/></span></li>
+									<li name="status" id="status"><span><c:out value="${pvo.od_status}"/></span></li>
 								</ul>
 							</td>
 							
-							<td class="price text-center"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
-							<td class="total text-center"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
+							<td class="price text-center" style="display:none;" id="detail_code" name="detail_code"><c:out value="${pvo.detail_code}"/></td>
+							<td class="price text-center" id="unit_price" name="unit_price"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
+							<td class="total text-center" id="quantitiy" name="quantitiy"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
 							<td class="total text-center">
-							<button class="icon-btn.main-btn" name="refund" id="refund"onclick="openChild()" >환불</button>
-							<button class="icon-btn.main-btn" name="change" id="change" onclick="window.open('../template/change_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');">교환</button>
+							<button class="icon-btn.main-btn" name="refund" id="refund"  onclick="javascript:openPopup(this.form);">환불</button>
+							<button class="icon-btn.main-btn" name="change" id="change" >교환</button>
 							</td>
 						</tr>
+				
 							</c:forEach>
 						</c:when>
 					</c:choose>
+			
 					</tbody>
+	
 				</table>
+			</form>
 			<!-- /row -->
 			</div>
 			</div>
@@ -212,45 +182,30 @@
 	<script src="../resources/js/jquery.zoom.min.js"></script>
 	<script src="../resources/js/main.js"></script>
 	
-	
 	<script type="text/javascript">
-	 var openWin;
+	
+	function setChildValue(detail_code){
+	     document.getElementById("detail_code").value = detail_code;
+	     
+	 }
+	 
+	 function openPopup(frm){
+	
+	 console.log("detail_code"+detail_code)
+	 var url    ="../template/refund_popup.jsp";
+	 var title  = "testpop";
+	 var status = "toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,width=240, height=200, top=0,left=20"; 
+	 window.open("../template/refund_popup.jsp",title,status); //window.open(url,title,status); window.open 함수에 url을 앞에와 같이
+	                                              //인수로  넣어도 동작에는 지장이 없으나 form.action에서 적용하므로 생략
+	                                              //가능합니다.
+	    frm.target = title;                    //form.target 이 부분이 빠지면 form값 전송이 되지 않습니다. 
+	    frm.action = url;                    //form.action 이 부분이 빠지면 action값을 찾지 못해서 제대로 된 팝업이 뜨질 않습니다.
+	    frm.method = "post";
+	    frm.submit();     
 	    
-     function openChild()
-     {
-         // window.name = "부모창 이름"; 
-         window.name = "parentForm";
-         // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-         openWin = window.open("/supreme/template/refund_popup.jsp",
-                 "childForm", "width=570, height=350, resizable = no, scrollbars = no");   
-     
-     }
-     
-     function setChildText(){
-         openWin.document.getElementById("tablerow").value = document.getElementById("tablerow").value;
-         console("ok");
-     }
-
-	//환불버튼 클릭
-	//$("#refund").click(function(){
-	//	alert("dorefund");
-	//var str =""
-	//var tdArr = new Array();//배열 선언
-	//var refund = $(this);
-	//
-	//Checkbtn.parent() : checkBtn의 부모는 <td>
-	//CheckBtn.parent().parent() : <td>의 부모 <tr>
-	
-	//var tr = refund.parent().parent();
-	//var td = tr.children();
-	
-	//console.log("클릭한 row의 모든 데이터: " +tr.text());
-	//var no = td.eq(0).text();
-	//var no2 = td.eq(1).text();
-	//var no3 = td.eq(2).text();
-	//var no4 = td.eq(3).text();
-
-	//});
+	    
+	   }
+  
 	
 	</script>
 	<!-- FOOTER -->

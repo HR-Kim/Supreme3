@@ -95,7 +95,7 @@ public class DaoOrderStatusWebTest {
 			}
 
 	@Test
-
+	@Ignore
 	public void get_current_retrieve() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_current_retrieve.do")
 				.param("pageSize", "10")
@@ -181,7 +181,7 @@ public class DaoOrderStatusWebTest {
 			}
 		
 	@Test
-	@Ignore
+
 	public void get_selectOne() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/do_selectOne.do")
 		.param("detail_code", "123789");
