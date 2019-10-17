@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:set var="context" value="${pageContext.request.contextPath }" />
 <html lang="ko">
 <head>
@@ -33,10 +34,12 @@
 		<div class="panel panel-default"></div>
 		<!-- 입력 form -->
 		<form action="do_update.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
+			<input type="hidden" name="emailComplete" id="emailComplete" value="${vo.email }">
 			<div class="form-group">
 				<label for="u_id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-6">
-					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id" disabled="disabled" value="test01_142">
+					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id" disabled="disabled" 
+						value="<c:out value='${vo.id}'/>">
 				</div>
 			</div>
 			<div class="form-group">
@@ -60,36 +63,42 @@
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="name" placeholder="이름" name="name">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="name" placeholder="이름" name="name"
+						value="<c:out value='${vo.name}'/>" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="nickname" class="col-sm-2 control-label">닉네임</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="nickname" placeholder="닉네임" name="nickname">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="nickname" placeholder="닉네임" name="nickname"
+						value="<c:out value='${vo.nickname}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">이메일</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="email1" placeholder="이메일" name="email1">
+					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="email1" placeholder="이메일" name="email1"
+						value="<c:out value='${email1 }'/>">
 				</div>
 				<label for="email" class="col-sm-1 control-label">@</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="email2" placeholder="도메인 (ex naver.com)" name="email2">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="email2" placeholder="도메인 (ex naver.com)" name="email2"
+						value="<c:out value='${email2 }'/>">
 				</div>
 			
 			</div>	
 			<div class="form-group">
 				<label for="tel" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="tel" placeholder="'-'없이 번호만 입력해 주세요." name="tel">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="tel" placeholder="'-'없이 번호만 입력해 주세요." name="tel"
+						value="<c:out value='${vo.tel}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="postcode" class="col-sm-2 control-label">우편번호</label>
 				<div class="col-sm-4">
-					<input type="text" maxlength="10"  class="form-control input-sm" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled">
+					<input type="text" maxlength="10"  class="form-control input-sm" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled"
+						value="<c:out value='${vo.postcode}'/>">
 				</div>
 				<div class="text-right col-sm-4">
 					<button type="button" class="btn btn-default btn-sm" id="pcode_search">우편번호 조회</button>
@@ -98,13 +107,15 @@
 			<div class="form-group">
 				<label for="address1" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled"
+						value="<c:out value='${vo.address1}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address2" class="col-sm-2 control-label">상세주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2"
+						value="<c:out value='${vo.address2}'/>">
 				</div>
 			</div>		
 		</form>
@@ -294,6 +305,8 @@
 				alert("기존 비밀번호를 입력해 주세요.");
 				return false;	
 			}else{
+				if(confirm("정말로 묘한 생각을 탈퇴하시겠습니까?") == false)return;
+				
 				$.ajax({
 		            type:"POST",
 		            url:"${context}/user/do_delete.do",
@@ -312,6 +325,8 @@
 		            	}else{
 		            		alert(parseData.msgMsg);
 		            	}
+		            		
+		            	
 		            	
 	
 		            	

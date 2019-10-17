@@ -51,9 +51,10 @@ public class UserController {
 	
 	
 	//view
-	private final String VIEW_LIST_NM ="user/user_list";
+	private final String VIEW_UPT_NM ="user/user_update";
 	private final String VIEW_MNG_NM  ="user/user_mng";
 	private final String VIEW_JOIN_NM  ="user/user_join";
+	private final String VIEW_SECESS_NM  ="user/user_secession";
 	
 	
 	/**password 체크 */
@@ -190,6 +191,7 @@ public class UserController {
 		LOG.debug("============================");		
 		
 		return gsonStr;
+		
 	}
 	
 	/**저장 */
@@ -241,9 +243,14 @@ public class UserController {
 		}
 		
 		User outVO=  (User) this.userService.get_selectOne(user);
-		model.addAttribute("vo", outVO);
+		String email= outVO.getEmail();
+		String email1 = email.substring(0, email.indexOf("@"));
+		String email2 = email.substring(email.indexOf("@")+1);
 		
-		return VIEW_MNG_NM;
+		model.addAttribute("vo", outVO);
+		model.addAttribute("email1", email1);
+		model.addAttribute("email2", email2);
+		return VIEW_UPT_NM;
 	}
 	
 	/**목록조회 */
@@ -319,3 +326,4 @@ public class UserController {
 	
 	
 }
+

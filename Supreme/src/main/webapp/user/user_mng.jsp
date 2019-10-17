@@ -108,7 +108,7 @@
 			<div class="col-md-12 text-right">
 				<form class="form-inline" name="frm" id="frm" method="get">
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
-					
+					<input type="hidden" name="id" id="id" />
 					<div class="form-group">
 					    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
 					    <%=StringUtil.makeSelectBox(codeLvlList, "userLvl", userLvl, true) %>
@@ -184,7 +184,25 @@
 	<script src="${context}/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	
-		
+		$("#listTable>tbody").on("click","tr",function(){
+			//alert("listTable>tbody");
+			var trs = $(this);
+			var tds = trs.children();
+			if(null == tds || tds.length ==1 )return;
+			//console.log("tds.length:"+tds.length);
+			
+			var idFind = tds.eq(2).text();
+			console.log("idFind:"+idFind);
+			
+			var frm = document.frm;
+			frm.id.value = idFind;
+			frm.action = "${context}/user/do_selectOne.do";;
+			frm.submit();				
+			  
+		});	
+	
+	
+	
 		//paging이동
 		function search_page(url,pageNum){
 			//alert(url+"|"+pageNum);

@@ -4,6 +4,14 @@
 <c:set var="context" value="${pageContext.request.contextPath }" />
 <html lang="ko">
 <head>
+<style type="text/css">
+	.img_wrap{
+		width: 140px;
+	}
+	.img_wrap img{
+		max-width: 100%;
+	}
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,7 +112,16 @@
 				<div class="col-sm-8">
 					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2">
 				</div>
-			</div>		
+			</div>
+			<!-- 첨부 -->
+			<div class="form-group">
+				<label for="attrFile" class="hidden-xs hidden-sm col-md-2 col-lg-2 control-label">프로필 사진</label>
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+					<button id="attrFile" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#layerpop">첨부하기</button>
+				</div>
+			</div>
+			
+					
 		</form>
 		
 		<!-- Button Area -->
@@ -117,6 +134,40 @@
 			</div>
 		</div>
 		
+		
+		
+		
+		
+		<!-- Modal -->
+		<div class="modal fade" id="layerpop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">File Upload</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form class="form-horizontal" action="${context }/file/do_save.do" 
+		           name="saveFileForm" id="saveFileForm" method="post" enctype="multipart/form-data">
+		            <input type="hidden"  name="work_dir"   id="work_dir" value="com">
+		            <input type="hidden"  name="attrFileId" id="attrFileId" >
+		            <input type="hidden"  name="orgFileNm"  id="orgFileNm" >
+		            <input type="hidden"  name="saveFileNm" id="saveFileNm" >
+		           
+		        	<!-- 첨부파일 -->
+		        	<div class="custom-file">
+		        		<input type="file" class="custom-file-input" id="file01" name="file01">
+		        	</div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal" id="doFileUpload">저장</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+		      </div>
+		    </div>
+		  </div>
+		 </div>
+		
 	</div>
 	<!--// div container -->
 	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
@@ -126,19 +177,105 @@
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
 		
+		//이미지 파일
+		var sel_file;
+		
+		//이미지 미리보기 소스
+		$(document).ready(function() {
+			
+			
+			
+		});
+		
+		
+		$("#doFileUpload").on("click",function(){
+			if(confirm("이미지를 등록하시겠습니까?")== false)return;
+			
+			doUploadFile();
+		});
+		
+		
+		//이미지 함수
+		function handleImgFileSelect(e){
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+			
+			filesArr.forEach(function(f){
+				if(!f.type.match("image.*")){
+					alert("이미지 파일만 업로드할 수 있습니다.");
+					return false;
+				}
+				
+				sel_file = f;
+				
+				var reader = new FileReader();
+				reader.onload = function(e){
+					$("#img").attr("src", e.target.result);
+				}
+				
+				reader.readAsDataURL(f);
+				
+			});
+		}
+	
+		
+		//파일 업로드 함수
+		function doUploadFile(){
+			var form = $('form')[1];
+			var formData = new FormData(form);
+			
+			//ajax
+			$.ajax({
+				   type:"POST",
+				   url:"${context }/file/do_save.do",
+				   contentType:false,
+				   async:false,
+				   cache:false,
+				   processData:false,
+				   enctype:"multipart/form-data",
+				   data:formData,
+				success: function(data){
+				  console.log("data.msgId:"+data.msgId)
+				  console.log("data:"+data.msgMsg)
+				  
+				  $("#attrFileId").val(data.msgMsg);
+				  $("#fileId").val(data.msgMsg);
+				  
+				  //
+				  document.getElementById('file01').value="";
+				  
+				  //var jData = JSON.parse(data);
+				  if(null != data && data.msgId=="1"){
+					//alert(data.msgMsg);
+					
+					//fileId file_mng조회
+					getFileList($("#fileId").val());
+				  }else{
+					alert(data.msgId+"|"+data.msgMsg);
+				  }
+				},
+				complete:function(data){
+				 
+				},
+				error:function(xhr,status,error){
+					alert("error:"+error);
+				}
+			}); 
+			//--ajax 			
+		}
+		
+		
+	
+	
 		//등록
 	    $("#doSave").on("click",function(){
 	    	console.log("doSave");
 	    	checkValue();
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
+	    		    	
 	    	
 	    });
 		
+		//데이터 체크 후 dosave 실행
 		function checkValue(){
 			
 			
@@ -222,7 +359,7 @@
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);
-	            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
+	            	
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);
@@ -239,7 +376,7 @@
 	            },
 	            error: function(xhr,status,error){
 	             
-	            }
+	           }
 	        });	
 			
 			
