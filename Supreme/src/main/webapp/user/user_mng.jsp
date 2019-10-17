@@ -234,6 +234,7 @@
 			if (key.keyCode == 13) {
 				doRetrieve();
 			}
+			
 		});
 		
 		//조회
