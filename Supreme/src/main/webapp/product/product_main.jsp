@@ -8,41 +8,58 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var="context" value="${pageContext.request.contextPath }" />
+<%
+	/** 페이지 사이즈 */
+	String pageSize   = "10"  ; 	
+	/** 페이지 번호 */
+	String pageNum    = "1"  ;	
+	/** 검색조건 */
+	String searchDiv  = "" ;
+	/** 검색어 */
+	String searchWord = "test01" ;
+	
+	String ext = "xls" ;
+
+	
+	Search vo = (Search)request.getAttribute("vo");
+	if(null !=vo){
+		pageSize   = StringUtil.nvl(vo.getPageSize()+"","10");
+		pageNum    = StringUtil.nvl(vo.getPageNum()+"","1");
+		searchDiv  = StringUtil.nvl(vo.getSearchDiv(),"");
+		searchWord = StringUtil.nvl(vo.getSearchWord(),"");	
+	}else{
+		pageSize   = "10";
+		pageNum    = "1";
+		searchDiv  = "";
+		searchWord = "";
+	}
+	
+	String extParam = (String)request.getAttribute("ext");
+	if(extParam !=null) ext = extParam;
+	
+	//페이지사이즈
+	List<Code> listPageSize=(request.getAttribute("listPageSize")==null)?
+			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listPageSize"));
+	//게시판 검색 구분
+	List<Code> listBoardSearch=(request.getAttribute("listBoardSearch")==null)?
+			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listBoardSearch"));
+	
+	//paging 
+	//maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName	
+	int maxNum      = 0;//totalCnt
+	int bottomCount = 10;
+	int currPageNo  = 1;//pageNum
+	int rowPerPage  = 10;//pageSize	
+	
+	String url      = request.getContextPath()+"/product/get_retrieve.do";
+	String scriptName ="search_page";
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
-
+<meta charset="UTF-8">
+<title>Product Page</title>
 <head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-
-   <!-- Google font -->
-   <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
-
-   <!-- Bootstrap -->
-   <link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-
-   <!-- Slick -->
-   <link type="text/css" rel="stylesheet" href="../resources/css/slick.css" />
-   <link type="text/css" rel="stylesheet" href="../resources/css/slick-theme.css" />
-
-   <!-- nouislider -->
-   <link type="text/css" rel="stylesheet" href="../resources/css/nouislider.min.css" />
-
-   <!-- Font Awesome Icon -->
-   <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
-
-   <!-- Custom stlylesheet -->
-   <link type="text/css" rel="stylesheet" href="../resources/css/style.css" />
-
-   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-   <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
 
 </head>
 
@@ -50,19 +67,17 @@
    <!-- Header -->
    <%@include file ="/template/header.jsp" %>
    <!--/ Header -->
-
+	
    <!-- HOME -->
    <div id="home">
+   <button type="button" class="btn btn-default btn-sm"
+		id="doRetrieve" >조회</button>
       <!-- container -->
       <div class="container">
          <!-- home wrap -->
          <div class="home-wrap">
             <!-- home slick -->
-            <div id="home-slick">
-               
-
-               
-            </div>
+            
             <!-- /home slick -->
          </div>
          <!-- /home wrap -->
@@ -130,22 +145,26 @@
                <div class="row">
                   <div id="product-slick-1" class="product-slick">
                      <!-- Product Single -->
+                   
+                    <tbody id="listTable">
+                    	<c:choose>
+                    		<c:when test="${list.size()>0}">
+                    		
+                    			<c:forEach var="vo" items="${list}">
+                    		
                      <div class="product product-single">
                         <div class="product-thumb">
                            <div class="product-label">
-                              <span>New</span>
-                              <span class="sale">-20%</span>
+                              
+                            
                            </div>
-                           <ul class="product-countdown">
-                              <li><span>00 H</span></li>
-                              <li><span>00 M</span></li>
-                              <li><span>00 S</span></li>
-                           </ul>
-                           <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                           <img src="../resources/img/product01.jpg" alt="">
+                          
+                          
+                           <img src="../resources/img/test567.jpg" alt="">
                         </div>
+                        	
                         <div class="product-body">
-                           <h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
+                           <h3 ><c:out value="${vo.p_name}"/></h3>
                            <div class="product-rating">
                               <i class="fa fa-star"></i>
                               <i class="fa fa-star"></i>
@@ -153,7 +172,7 @@
                               <i class="fa fa-star"></i>
                               <i class="fa fa-star-o empty"></i>
                            </div>
-                           <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+                           <h2 class="product-name"><a href="#"><c:out value="${vo.p_price}"/></a></h2>
                            <div class="product-btns">
                               <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                               <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
@@ -161,6 +180,11 @@
                            </div>
                         </div>
                      </div>
+                     		</c:forEach>
+                    	 </c:when>
+                     </c:choose>
+                   
+                    </table>
                      <!-- /Product Single -->
 
                      <!-- Product Single -->
@@ -700,6 +724,30 @@
 	
    <script>
    
+   function search_page(url, pageNum){
+		var frm = document.boardFrm;
+   		frm.pageNum.value = pageNum;
+   		frm.action = url;
+   		frm.submit();
+	}
+   
+   $("#listTable>tbody").on("click","tr",function(){
+		//alert("listTable");
+		var trs = $(this);
+		var td  = trs.children();
+		if(null==td || td.length==1)return;
+		//alert("td.length:"+td.length);
+		
+		
+		var p_name = td.eq(0).text();
+		//console.log("boardId:"+boardId);
+		var frm = document.boardFrm;
+		frm.pageNum.value = 1;
+    	frm.action = "${context}/product/do_selectOne.do";
+    	frm.submit();
+		
+	});
+   
    	function getProductList(p_code){
    		
    		$.ajax({
@@ -728,11 +776,24 @@
    		
    		}	//function
    
+   	 	function doRetrieve(){
+	    	var frm = document.boardFrm;
+	    	frm.pageNum.value = 1;
+	    	frm.action = "${context}/product/get_retrieve.do";
+	    	frm.submit();
+	    }
+   		
+		$("#doRetrieve").on("click",function(){
+			
+			doRetrieve();
+		});
+		
    
-   $(document).ready(function() {
-		//alert("ready");
-	});
-   </script>
+  		 $(document).ready(function() {
+				//alert("ready");
+	 	
+			});
+  	 </script>
 	
 </body>
 

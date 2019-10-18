@@ -1,40 +1,65 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.co.supreme.code.service.Code"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.supreme.cmn.StringUtil"%>
+<%@page import="kr.co.supreme.cmn.Search"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<c:set var="context" value="${pageContext.request.contextPath }" />
+<%
+	/** 페이지 사이즈 */
+	String pageSize   = "10"  ; 	
+	/** 페이지 번호 */
+	String pageNum    = "1"  ;	
+	/** 검색조건 */
+	String searchDiv  = "" ;
+	/** 검색어 */
+	String searchWord = "test01" ;
+	
+	String ext = "xls" ;
+
+	
+	Search vo = (Search)request.getAttribute("vo");
+	if(null !=vo){
+		pageSize   = StringUtil.nvl(vo.getPageSize()+"","10");
+		pageNum    = StringUtil.nvl(vo.getPageNum()+"","1");
+		searchDiv  = StringUtil.nvl(vo.getSearchDiv(),"");
+		searchWord = StringUtil.nvl(vo.getSearchWord(),"");	
+	}else{
+		pageSize   = "10";
+		pageNum    = "1";
+		searchDiv  = "";
+		searchWord = "";
+	}
+	
+	String extParam = (String)request.getAttribute("ext");
+	if(extParam !=null) ext = extParam;
+	
+	//페이지사이즈
+	List<Code> listPageSize=(request.getAttribute("listPageSize")==null)?
+			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listPageSize"));
+	//게시판 검색 구분
+	List<Code> listBoardSearch=(request.getAttribute("listBoardSearch")==null)?
+			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listBoardSearch"));
+	
+	//paging 
+	//maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName	
+	int maxNum      = 0;//totalCnt
+	int bottomCount = 10;
+	int currPageNo  = 1;//pageNum
+	int rowPerPage  = 10;//pageSize	
+	
+	String url      = request.getContextPath()+"/product/get_retrieve.do";
+	String scriptName ="search_page";
+%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
+<meta charset="UTF-8">
+<title>Product detail</title>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
-
-	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-
-	<!-- Slick -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/slick.css" />
-	<link type="text/css" rel="stylesheet" href="../resources/css/slick-theme.css" />
-
-	<!-- nouislider -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/nouislider.min.css" />
-
-	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="../resources/css/font-awesome.min.css">
-
-	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/style.css" />
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+	
 
 </head>
 
@@ -278,129 +303,23 @@
 			<!-- row -->
 			<div class="row">
 				<!-- section title -->
-				<div class="col-md-12">
-					<div class="section-title">
-						<h2 class="title">Picked For You</h2>
-					</div>
-				</div>
+				
 				<!-- section title -->
 
 				<!-- Product Single -->
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<div class="product product-single">
-						<div class="product-thumb">
-							<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-							<img src="./img/product04.jpg" alt="">
-						</div>
-						<div class="product-body">
-							<h3 class="product-price">$32.50</h3>
-							<div class="product-rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star-o empty"></i>
-							</div>
-							<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-							<div class="product-btns">
-								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				<!-- /Product Single -->
 
 				<!-- Product Single -->
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<div class="product product-single">
-						<div class="product-thumb">
-							<div class="product-label">
-								<span>New</span>
-							</div>
-							<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-							<img src="./img/product03.jpg" alt="">
-						</div>
-						<div class="product-body">
-							<h3 class="product-price">$32.50</h3>
-							<div class="product-rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star-o empty"></i>
-							</div>
-							<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-							<div class="product-btns">
-								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				<!-- /Product Single -->
 
 				<!-- Product Single -->
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<div class="product product-single">
-						<div class="product-thumb">
-							<div class="product-label">
-								<span class="sale">-20%</span>
-							</div>
-							<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-							<img src="./img/product02.jpg" alt="">
-						</div>
-						<div class="product-body">
-							<h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
-							<div class="product-rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star-o empty"></i>
-							</div>
-							<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-							<div class="product-btns">
-								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				<
 				<!-- /Product Single -->
 
 				<!-- Product Single -->
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<div class="product product-single">
-						<div class="product-thumb">
-							<div class="product-label">
-								<span>New</span>
-								<span class="sale">-20%</span>
-							</div>
-							<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-							<img src="./img/product01.jpg" alt="">
-						</div>
-						<div class="product-body">
-							<h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
-							<div class="product-rating">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star-o empty"></i>
-							</div>
-							<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-							<div class="product-btns">
-								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				<!-- /Product Single -->
 			</div>
 			<!-- /row -->
@@ -419,7 +338,44 @@
 	<script src="../resources/js/nouislider.min.js"></script>
 	<script src="../resources/js/jquery.zoom.min.js"></script>
 	<script src="../resources/js/main.js"></script>
-
+	
+	<script>
+  	function getProductList(p_code){
+   		
+   		$.ajax({
+   			type:"GET",
+   			url:"${context}/product/do_selectOne.do",
+   			dataType:"html",
+   			data:{
+   				"p_code" : p_code
+   			},
+   		   success: function(data){
+   			   alert(data);
+   			   var jData = JSON.parse(data);
+   			   if(null != jData && jData.msgId=="1"){
+   				   alert(jData.msgContents);
+   			   }else{
+   				   alert(jData.msgId+"|"jData.msgContents);
+   			   }
+   		   },
+   		   complete:function(data){
+   			   
+   		   },
+   		   error:function(xhr,status,error){
+   				  alert("error:"+error);
+   		   		}
+   			});	//ajax
+   		
+   		}	//function
+   
+   	 	
+		
+   
+  		 $(document).ready(function() {
+				alert("ready");
+	 	
+			});
+	</script>
 </body>
 
 </html>

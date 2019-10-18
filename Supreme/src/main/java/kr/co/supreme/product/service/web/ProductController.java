@@ -33,8 +33,8 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
-	private final String VIEW_LIST_NM  ="product/product_list";
-	private final String VIEW_MNG_NM  ="product/product_mng";
+	private final String VIEW_LIST_NM  ="product/product_main";
+	private final String VIEW_MNG_NM  ="product/product_detail";
 	
 	
 	   
@@ -116,16 +116,16 @@ public class ProductController {
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");
 	      
-	      if(null == product.getH_code() || "".equals(product.getH_code().trim())) {
-	         throw new IllegalArgumentException("대분류 번호를 입력하세요.");
-	      }
-	      
-	      if(null == product.getL_code() || "".equals(product.getL_code().trim())) {
-	         throw new IllegalArgumentException("소분류 번호를 입력하세요.");
-	      }
-	      if(null == product.getP_name() || "".equals(product.getP_name().trim())) {
-		         throw new IllegalArgumentException("상품명을 입력하세요.");
-		  } 
+//	      if(null == product.getH_code() || "".equals(product.getH_code().trim())) {
+//	         throw new IllegalArgumentException("대분류 번호를 입력하세요.");
+//	      }
+//	      
+//	      if(null == product.getL_code() || "".equals(product.getL_code().trim())) {
+//	         throw new IllegalArgumentException("소분류 번호를 입력하세요.");
+//	      }
+//	      if(null == product.getP_name() || "".equals(product.getP_name().trim())) {
+//		         throw new IllegalArgumentException("상품명을 입력하세요.");
+//		  } 
 
 	      
 	      int flag = this.productService.do_save(product);
@@ -156,9 +156,9 @@ public class ProductController {
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");
 	      
-	      if(null == product.getP_name() || "".equals(product.getP_name())) {
-	         throw new IllegalArgumentException("상품명을 입력하세요.");
-	      }
+//	      if(null == product.getP_name() || "".equals(product.getP_name())) {
+//	         throw new IllegalArgumentException("상품명을 입력하세요.");
+//	      }
 	      
 	      Product outVO= (Product) this.productService.get_selectOne(product);
 	      model.addAttribute("vo", outVO);

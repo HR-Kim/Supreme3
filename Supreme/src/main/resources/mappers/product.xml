@@ -153,7 +153,7 @@
 		    <include refid="proColumns"/>                  
 		FROM
    			 PRODUCT                             
-		WHERE p_name = #{p_name,jdbcType=VARCHAR}
+		WHERE p_name = #{p_name,jdbcType=VARCHAR} 
 	</select> 
 	
 	<select id="get_productIdList" parameterType="Search" resultType="Product">

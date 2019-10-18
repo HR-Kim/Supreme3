@@ -80,7 +80,7 @@ public class ProductWebTest {
 		
 		MockHttpServletRequestBuilder createMessage = 
 				MockMvcRequestBuilders.post("/product/do_save.do")
-				.param("p_code","55")
+				.param("p_code","45")
 				.param("h_code","21")
 				.param("l_code","22")
 				.param("p_name","test")
@@ -88,11 +88,11 @@ public class ProductWebTest {
 				.param("p_price", "44000")
 				.param("p_image","test")
 				.param("stock","555")
-				.param("unit_sales","777")
+				.param("unit_sales","77")
 				.param("status","1")
-				.param("p_new","tt")
-				.param("p_best","tt")
-				.param("p_sale","tt")
+				.param("p_new","3")
+				.param("p_best","3")
+				.param("p_sale","3")
 				.param("p_content","test")
 				.param("sale_percent","50")
 				;
@@ -111,7 +111,7 @@ public class ProductWebTest {
 	public void do_delete() throws Exception{
 		MockHttpServletRequestBuilder createMessage =
 				MockMvcRequestBuilders.post("/product/do_delete.do")
-				.param("p_code", "55");
+				.param("p_code", "45");
 		
 		ResultActions resultActions = mockMvc.perform(createMessage)
 				.andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))		
@@ -184,7 +184,7 @@ public class ProductWebTest {
 				.param("p_sale", "34")
 				.param("p_content", "cc")
 				.param("sale_percent", "40")
-				.param("p_code","30")
+				.param("p_code","45")
 				;
 		
 		ResultActions resultActions = mockMvc.perform(createMessage)
