@@ -19,6 +19,8 @@
 		TO_CHAR(ORDER_DATE, 'yyyy/mm/dd HH24:MI:SS') AS orderDate
 	</sql>
 	
+	
+	
 	<sql id="baseCondition">
 			<choose>
 				<when test="'10' == searchDiv">
@@ -91,6 +93,7 @@
 	  )T2
 	</select>
 
+	
 	<!-- ReadCount증가 -->
 	<update id="do_updateReadCnt" parameterType="Order">
 		UPDATE BOARD
@@ -129,6 +132,35 @@
 		WHERE order_code = #{orderCode,jdbcType=NUMERIC}
 	</select>
 
+<!-- 장바구니 항목들 가져오기 -->
+<select id="cart_retrieve" parameterType="Search" resultType="Cart">
+		SELECT
+		CART_CODE as cartCode,
+		P_CODE as pCode,
+		QUANTITY as quantity,
+		UNIT_PRICE as unitPrice
+		FROM
+  		    CART
+		WHERE ID=#{searchWord}
+		
+	</select>
+
+<!-- 등록 -->
+	<insert id="detail_save" parameterType="Order">
+		INSERT INTO order_detail (
+		    ORDER_CODE,
+		    DETAIL_CODE,
+		    P_CODE,
+		    QUANTITY,
+		    UNIT_PRICE
+		) VALUES (
+			#{orderCode,jdbcType=VARCHAR},              	    
+			#{detail_code,jdbcType=VARCHAR},  
+			#{p_code,jdbcType=VARCHAR}, 
+			#{quantitiy,jdbcType=VARCHAR}, 
+			#{unit_price,jdbcType=VARCHAR}
+		)
+	</insert>
 
 	<!-- 등록 -->
 	<insert id="do_save" parameterType="Order">

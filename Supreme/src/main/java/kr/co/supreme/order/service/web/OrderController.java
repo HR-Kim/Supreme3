@@ -22,6 +22,7 @@ import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.StringUtil;
 import kr.co.supreme.order.service.Order;
 import kr.co.supreme.order.service.OrderService;
+import kr.co.supreme.cart.service.Cart;
 
 @Controller
 public class OrderController {
@@ -121,6 +122,8 @@ public class OrderController {
 		LOG.debug("============================");
 		
 		
+		
+		
 		//저장 되어야 할 내용
 //		if(null == order.getbTitle() || "".equals(order.getbTitle().trim())) {
 //			throw new IllegalArgumentException("제목을 입력 하세요.");
@@ -129,7 +132,7 @@ public class OrderController {
 //		if(null == order.getbContents() || "".equals(order.getbContents().trim())) {
 //			throw new IllegalArgumentException("내용을 입력 하세요.");
 //		}
-		
+	
 		int flag = this.orderService.do_save(order);
 		Message  message=new Message();
 		

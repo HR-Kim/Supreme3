@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.supreme.board.service.Board;
+import kr.co.supreme.cart.service.Cart;
 import kr.co.supreme.cmn.DTO;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.WorkDiv;
@@ -84,15 +85,41 @@ public class OrderDaoImpl implements WorkDiv {
 
 	@Override
 	public int do_save(DTO dto) {
+		
 		String statement = this.NAMESPACE+".do_save";
+		String statement2 = this.NAMESPACE+".cart_retrieve";
+		String statement3 = this.NAMESPACE+".detail_save";
+		LOG.debug("여기0");
+		Search search = new Search();
+		LOG.debug("여기는?");
+		search.setSearchWord("test01");
+		LOG.debug("그럼 여기는?");
+		String aaa="admin";
 		Order order = (Order) dto;
+		LOG.debug("여기1");
 		LOG.debug("=========================");
 		LOG.debug("1. param:"+order);
 		LOG.debug("=========================");
+		LOG.debug("여기2");
 		LOG.debug("=========================");
 		LOG.debug("2. statement:"+statement);
-		LOG.debug("=========================");			
+		LOG.debug("=========================");		
+		LOG.debug("여기3");
 		int flag = this.sqlSessionTemplate.insert(statement, order);
+		List<Cart> list = this.sqlSessionTemplate.selectList(statement2, search);
+		
+		for(int i=0;i<list.size();i++) {
+			order.setP_code(Integer.toString(list.get(i).getpCode()));
+			order.setQuantitiy(Integer.toString(list.get(i).getQuantity()));
+			order.setUnit_price(Integer.toString(list.get(i).getUnitPrice()));
+			order.setDetail_code("123"+i); //주문 상세번호 난수 생성.
+			this.sqlSessionTemplate.insert(statement3, order);	
+		}
+		
+		LOG.debug("=========================");
+		LOG.debug("촤아아아아아!!!:"+list.get(0).getCartCode());
+		LOG.debug("=========================");
+		LOG.debug("여기4");
 		LOG.debug("=========================");
 		LOG.debug("3. flag:"+flag);
 		LOG.debug("=========================");			
