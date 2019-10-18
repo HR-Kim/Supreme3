@@ -27,7 +27,7 @@ import kr.co.supreme.orderstatus.service.OrderStatusService;
 @Controller
 public class OrderStatusController {
 
-	private final String VIEW_MNG_NM = "template/orderview";
+	private final String VIEW_MNG_NM = "orderStatus/orderview";
 	private final String VIEW_MNG_NME = "template/refund_popup";
 	private final String VIEW_ADM_ORDER="orderStatus/orderview_admin";
 	

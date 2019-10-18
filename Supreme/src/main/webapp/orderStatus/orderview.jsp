@@ -48,7 +48,7 @@
 </head>
 <body>
 	<!-- Header -->
-	<%@include file ="header.jsp" %>
+	<%@include file ="../template/header.jsp" %>
 	<!--/ Header -->
 	
 	<div class="container">
@@ -74,6 +74,7 @@
 						</tr>
 					</thead>
 					<tbody id="tablerow">
+					
 						<c:choose>
 							<c:when test="${currentlist.size()>0}">
 		
@@ -88,12 +89,12 @@
 										<li><span><c:out value="${cvo.od_status}"/></span></li>
 									</ul>
 							</td>
-							
+							<input type="hidden" name="cdetailCode" id="cdetailCode" value="${cvo.detail_code}"/>	
 							<td class="price text-center"><strong>$<c:out value="${cvo.unit_price}"/></strong><br><del class="font-weak"><small>$<c:out value="${cvo.p_price}"/></small></del></td>
 							<td class="price text-center"><c:out value="${cvo.quantitiy}"/></td>
 							<td class="total text-center"><strong class="primary-color"><c:out value="${cvo.quantitiy * cvo.unit_price}"/></strong></td>
 							<td class="total text-center">
-							<button class="icon-btn.main-btn" name="cancle" id="cancle" onclick="window.open('../template/cancle_popup.jsp','window_name','width=430,height=400,location=no,status=no,scrollbars=yes');">주누</button>
+							<button class="icon-btn.main-btn" name="cancle" id="cancle">주문취소</button>
 							</td>
 						</tr>
 							
@@ -151,8 +152,8 @@
 							<td class="price text-center" id="unit_price" name="unit_price"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
 							<td class="total text-center" id="quantitiy" name="quantitiy"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
 							<td class="total text-center">
-							<button class="icon-btn.main-btn" name="refund" id="refund"  onclick="javascript:openPopup(this.form);">환불</button>
-							<button class="icon-btn.main-btn" name="change" id="change" >교환</button>
+							<button class="icon-btn.main-btn" name="refund" id="refund"  onclick="javascript:openRefundPopup(this.form);">환불</button>
+							<button class="icon-btn.main-btn" name="change" id="change"  onclick="javascript:openChangePopup(this.form);">교환</button>
 							</td>
 						</tr>
 				
@@ -184,18 +185,58 @@
 	
 	<script type="text/javascript">
 	
+	/**주문 취소 */
+	$("#cancle").on("click", function() {
+		 var dcode	= $("#cdetailCode");
+		 console.log(dcode)
+	//	$.ajax({
+	//		type : "POST",
+	//		url : "${context}/orderStatus/do_update.do",
+	//		dataType : "html",
+	//		data : {
+	//			"status" : "9",
+	//			"detail_code": dcode
+	//		}
+	//	});
+	});
+	
+	
+	/**교환 버튼*/
+	function setChildValue2(detail_code){
+	     document.getElementById("detail_code").value = detail_code;
+	     
+	 }
+	 
+	 function openChangePopup(frm){
+	
+	 console.log("detail_code"+detail_code)
+	 var url    ="../orderStatus/change_popup.jsp";
+	 var title  = "testpop";
+	 var status = "toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,width=600, height=400, top=0,left=20"; 
+	 window.open("../orderStatus/change_popup.jsp",title,status); //window.open(url,title,status); window.open 함수에 url을 앞에와 같이
+	                                              //인수로  넣어도 동작에는 지장이 없으나 form.action에서 적용하므로 생략
+	                                              //가능합니다.
+	    frm.target = title;                    //form.target 이 부분이 빠지면 form값 전송이 되지 않습니다. 
+	    frm.action = url;                    //form.action 이 부분이 빠지면 action값을 찾지 못해서 제대로 된 팝업이 뜨질 않습니다.
+	    frm.method = "post";
+	    frm.submit();     
+	    
+	    
+	   }
+  
+	/**환불버튼*/
 	function setChildValue(detail_code){
 	     document.getElementById("detail_code").value = detail_code;
 	     
 	 }
 	 
-	 function openPopup(frm){
+	 function openRefundPopup(frm){
 	
 	 console.log("detail_code"+detail_code)
-	 var url    ="../template/refund_popup.jsp";
+	 var url    ="../orderStatus/refund_popup.jsp";
 	 var title  = "testpop";
-	 var status = "toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,width=240, height=200, top=0,left=20"; 
-	 window.open("../template/refund_popup.jsp",title,status); //window.open(url,title,status); window.open 함수에 url을 앞에와 같이
+	 var status = "toolbar=no,directories=no,scrollbars=no,resizable=no,status=no,menubar=no,width=600, height=400, top=0,left=20"; 
+	 window.open("../orderStatus/refund_popup.jsp",title,status); //window.open(url,title,status); window.open 함수에 url을 앞에와 같이
 	                                              //인수로  넣어도 동작에는 지장이 없으나 form.action에서 적용하므로 생략
 	                                              //가능합니다.
 	    frm.target = title;                    //form.target 이 부분이 빠지면 form값 전송이 되지 않습니다. 
@@ -209,7 +250,7 @@
 	
 	</script>
 	<!-- FOOTER -->
-	<%@include file ="footer.jsp" %>
+	<%@include file ="../template/footer.jsp" %>
 	<!-- /FOOTER -->
 
 </body>
