@@ -39,6 +39,10 @@
 	<!-- viewname interceptor -->
 	<beans:bean id="viewNameInterceptor" class="kr.co.supreme.cmn.web.ViewNameInterceptor" />
 	
+	<!-- LoginInterceptor -->
+	<beans:bean id="loginInterceptor" class="kr.co.supreme.cmn.web.LoginInterceptor"/>
+	
+	
 	<!-- interceptor -->
 	<interceptors>
 		<!-- viewname interceptor -->
@@ -47,8 +51,12 @@
 			<beans:ref  bean="viewNameInterceptor"/>
 		</interceptor>
 		
-		
-		
+		<!-- LoginInterceptor -->
+ <!-- 		<interceptor>
+			<mapping path="/user/**"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	 -->
 		
 		
 	</interceptors>

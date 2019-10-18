@@ -80,12 +80,13 @@ public class UserDaoServiceImpl implements UserService{
 		flag = userDaoImpl.passwd_check(dto);
 		if(flag<1) {
 			outMsg.setMsgId("20");
-			outMsg.setMsgMsg("비밀 번호를 확인 하세요.");
+			outMsg.setMsgMsg("비밀번호를 확인 하세요.");
 			return outMsg;
 		}
 		
 		if(flag==1) {
 			outMsg.setMsgId("30");
+			
 		}
 		
 		LOG.debug("===========================================");
@@ -142,6 +143,18 @@ public class UserDaoServiceImpl implements UserService{
 	public int passwd_check(DTO dto) {
 		// TODO Auto-generated method stub
 		return userDaoImpl.passwd_check(dto);
+	}
+
+	@Override
+	public DTO id_find(DTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DTO pw_find(DTO dto) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

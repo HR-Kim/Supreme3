@@ -56,12 +56,7 @@
 						로그인
 			
 					</span>
-					    <div class="text-left	">
-					    <select id="lang" name="lang" class="input-sm">
-					    	<option value="ko">한글</option>
-					    	<option value="en">영어</option>
-					    </select> 
-				    </div>
+					
 				    <div class="col-lg-10"></div>
 				    <div class="col-lg-10"></div>
 				    <div class="col-lg-10"></div>
@@ -98,7 +93,7 @@
 							묘한 생각에 가입하시겠습니까?
 						</span>
 
-						<a href="#" class="txt2 hov1">
+						<a href="#" class="txt2 hov1" onclick="joinLocation()">
 							회원가입
 						</a>
 					</div>
@@ -117,6 +112,62 @@
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
 	
+	
+		function do_login(){
+			var frm = document.loginForm;
+			//validation
+			frm.submit();
+		}
+			
+		$("#signIn").on("click",function(){
+			//alert("signIn");
+			
+			$.ajax({
+				type : "POST",
+				url : "${context}/user/do_login.do",
+				dataType : "html",
+				data : {
+					"id" : $("#u_id").val(),
+					"pass" : $("#passwd").val()
+				},
+				success : function(data) {
+					var jData = JSON.parse(data);
+					
+					if(null != jData){
+						if (jData.msgId == "30") {
+							alert("로그인에 성공했습니다");
+	
+							
+						}else if (jData.msgId == "10") {
+							$("#u_id").focus();
+							alert(jData.msgMsg);
+	
+						}else if ( jData.msgId == "20") {
+							$("#passwd").focus();
+							alert(jData.msgMsg);
+						}
+					}
+				},
+				complete : function(data) {
+
+				},
+				error : function(xhr, status, error) {
+					alert("error:" + error);
+					
+				}
+			});	
+		});
+		
+
+		//회원가입 창으로 이동
+		function joinLocation(){
+			location.href = "${context}/user/user_join.jsp"
+		};
+		
+		
+		
+		
+		
 	</script>	
 	 
 </body>

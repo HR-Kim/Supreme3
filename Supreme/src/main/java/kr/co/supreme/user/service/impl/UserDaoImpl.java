@@ -26,6 +26,32 @@ public class UserDaoImpl implements WorkDiv {
 	
 	public UserDaoImpl() {}
 	
+	
+	public DTO id_find(DTO dto) {
+		String statement = this.NAMESPACE+".id_find";
+		User inVO = (User) dto;
+		LOG.debug("=========================");
+		LOG.debug("1. param:"+inVO);
+		LOG.debug("2. statement:"+statement);
+		User outVO = this.sqlSessionTemplate.selectOne(statement, inVO);
+		LOG.debug("3. outVO:"+outVO);
+		LOG.debug("=========================");
+		return outVO;
+	}
+	
+	public DTO pw_find(DTO dto) {
+		String statement = this.NAMESPACE+".pw_find";
+		User inVO = (User) dto;
+		LOG.debug("=========================");
+		LOG.debug("1. param:"+inVO);
+		LOG.debug("2. statement:"+statement);
+		User outVO = this.sqlSessionTemplate.selectOne(statement, inVO);
+		LOG.debug("3. outVO:"+outVO);
+		LOG.debug("=========================");
+		return outVO;
+	}
+	
+	
 	public List<User> getAll(){
 		String statement = this.NAMESPACE+".get_all";
 		

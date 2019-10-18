@@ -59,6 +59,30 @@
 			</choose>
 	</sql>
 	
+	<!-- id찾기 -->
+ 	<select id="id_find" parameterType="User" resultType="User">
+		SELECT										
+		    <include refid="userColumns"/>                  
+		FROM
+   			 USERS                             
+		WHERE name = #{name,jdbcType=VARCHAR}
+		AND tel = #{tel,jdbcType=VARCHAR}
+		AND email = #{email,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- pw찾기 -->
+ 	<select id="pw_find" parameterType="User" resultType="User">
+		SELECT										
+		    <include refid="userColumns"/>                  
+		FROM
+   			 USERS                             
+		WHERE id = #{id,jdbcType=VARCHAR} 
+		AND	name = #{name,jdbcType=VARCHAR}
+		AND tel = #{tel,jdbcType=VARCHAR}
+		AND email = #{email,jdbcType=VARCHAR}
+	</select>
+	
+	
 	<!-- 아이디 체크 -->
 	<select id="id_check" parameterType="User" resultType="int">
 		SELECT COUNT(*) CNT

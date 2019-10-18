@@ -32,4 +32,10 @@ public interface UserService {
 	public int id_check(DTO dto);
 	
 	public int passwd_check(DTO dto);
+	
+	/**id찾기 */
+	public DTO id_find(DTO dto);
+	/**pw찾기 */
+	public DTO pw_find(DTO dto);
+	
 }

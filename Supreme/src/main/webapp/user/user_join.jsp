@@ -32,7 +32,7 @@
 	<div class="container">
 		<!-- div title -->
 		<div class="page-header">
-			<h1>회원 가입</h1>
+			<h1 class="p-b-33">회원가입</h1>
 		</div>
 		<!--// div title -->
 	

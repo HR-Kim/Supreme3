@@ -1,10 +1,13 @@
 package kr.co.supreme.user.service.web;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.annotation.Resources;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +58,44 @@ public class UserController {
 	private final String VIEW_MNG_NM  ="user/user_mng";
 	private final String VIEW_JOIN_NM  ="user/user_join";
 	private final String VIEW_SECESS_NM  ="user/user_secession";
+	
+	
+	/**로그인*/
+	@RequestMapping(value="user/do_login.do",method = RequestMethod.POST
+			,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String do_login(User user,HttpSession session,HttpServletRequest request, HttpServletResponse response) {
+		LOG.debug("1=========================");
+		LOG.debug("1=user="+user);
+		LOG.debug("1=========================");
+		
+		Message msg = (Message) userService.idPassCheck(user);
+		LOG.debug("2=========================");
+		LOG.debug("2=msg="+msg);
+		LOG.debug("2=========================");
+		if(msg.getMsgId().equals("10")||msg.getMsgId().equals("20")) {
+			
+		}else {
+			//데이터 단건 조회
+			User outVO = (User) userService.get_selectOne(user);
+			LOG.debug("3=========================");
+			LOG.debug("3=outVO="+outVO);
+			LOG.debug("3=========================");	
+//			Locale  locale=new Locale(user.getLang());
+//			localeResolver.setLocale(request, response, locale);
+			
+			session.setAttribute("user", outVO);
+		}
+		//JSON
+		Gson gson=new Gson();
+		String json = gson.toJson(msg);
+		LOG.debug("2=========================");
+		LOG.debug("=@Controller=json=="+json);
+		LOG.debug("2=========================");
+		return json;
+		
+	}
+	
 	
 	
 	/**password 체크 */
