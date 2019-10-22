@@ -89,6 +89,7 @@ public class OrderDaoImpl implements WorkDiv {
 		String statement = this.NAMESPACE+".do_save";
 		String statement2 = this.NAMESPACE+".cart_retrieve";
 		String statement3 = this.NAMESPACE+".detail_save";
+		String statement4 = this.NAMESPACE+".status_save";
 		LOG.debug("여기0");
 		Search search = new Search();
 		LOG.debug("여기는?");
@@ -114,8 +115,10 @@ public class OrderDaoImpl implements WorkDiv {
 			order.setUnit_price(Integer.toString(list.get(i).getUnitPrice()));
 			order.setDetail_code("123"+i); //주문 상세번호 난수 생성.
 			this.sqlSessionTemplate.insert(statement3, order);	
+			order.setOd_status("1"+i);
+			this.sqlSessionTemplate.insert(statement4, order);
 		}
-		
+			
 		LOG.debug("=========================");
 		LOG.debug("촤아아아아아!!!:"+list.get(0).getCartCode());
 		LOG.debug("=========================");

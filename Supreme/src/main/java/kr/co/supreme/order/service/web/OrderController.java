@@ -39,6 +39,7 @@ public class OrderController {
 	//view
 	private final String VIEW_LIST_NM ="order/order_list";
 	private final String VIEW_MNG_NM  ="order/order_mng";
+	private final String VIEW  ="order/order_success";
 	
 	/**수정 */
 	@RequestMapping(value="order/do_update.do",method = RequestMethod.POST
@@ -204,6 +205,8 @@ public class OrderController {
 		model.addAttribute("totalCnt", totalCnt);
 		return VIEW_LIST_NM;
 	}
+	
+	
 	
 	
 }

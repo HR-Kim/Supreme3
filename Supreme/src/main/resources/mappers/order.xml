@@ -161,6 +161,22 @@
 			#{unit_price,jdbcType=VARCHAR}
 		)
 	</insert>
+	
+	<!-- 등록 -->
+	<insert id="status_save" parameterType="Order">
+		INSERT INTO order_status (
+		    DETAIL_CODE,
+		    OD_STATUS,
+		    REG_DT,
+		    UDT_DT
+		) VALUES (
+			#{detail_code,jdbcType=VARCHAR},              	    
+			#{od_status,jdbcType=VARCHAR},  
+			SYSDATE, 
+			SYSDATE
+		)
+	</insert>
+	
 
 	<!-- 등록 -->
 	<insert id="do_save" parameterType="Order">
