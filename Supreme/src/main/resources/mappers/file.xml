@@ -99,13 +99,14 @@
 	</insert>
 	
 	<!-- 삭제 -->
-	<delete id="do_delete"
-		parameterType="File">
-		<![CDATA[
+	<delete id="do_delete" parameterType="File">
+	
 			DELETE FROM file_mng	
-			WHERE  file_id = #{fileId,jdbcType=VARCHAR}	
-			AND    num = #{num,jdbcType=NUMERIC}
-		]]>
+			WHERE  file_id = #{fileId,jdbcType=VARCHAR}
+			<if test='num gt 0 '> 
+				AND num = #{num,jdbcType=NUMERIC}
+			</if>
+		
 	</delete>
 	
 	

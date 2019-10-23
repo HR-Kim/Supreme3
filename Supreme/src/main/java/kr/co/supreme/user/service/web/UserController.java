@@ -62,6 +62,66 @@ public class UserController {
 	private final String VIEW_PW_RESULT ="user/user_pw_result";
 	
 	
+	/**로그아웃*/
+	@RequestMapping(value="user/do_logout.do",method = RequestMethod.POST)
+	@ResponseBody
+	public void logout(User user,HttpSession session,HttpServletRequest request, HttpServletResponse response) {
+		LOG.debug("1=========================");
+		LOG.debug("1===logout===");
+		LOG.debug("1=========================");
+		
+		session.invalidate();
+		
+		
+		
+		
+	}
+		
+	
+	
+	/**관리자 로그인*/
+	@RequestMapping(value="user/admin_do_login.do",method = RequestMethod.POST
+			,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String admin_do_login(User user,HttpSession session,HttpServletRequest request, HttpServletResponse response) {
+		LOG.debug("1=========================");
+		LOG.debug("1=user="+user);
+		LOG.debug("1=========================");
+		
+		Message msg = (Message) userService.idPassCheck(user);
+		LOG.debug("2=========================");
+		LOG.debug("2=msg="+msg);
+		LOG.debug("2=========================");
+		if(msg.getMsgId().equals("10")||msg.getMsgId().equals("20")) {
+			
+		}else {
+			//데이터 단건 조회
+			User outVO = (User) userService.get_selectOne(user);
+			LOG.debug("3=========================");
+			LOG.debug("3=outVO="+outVO);
+			LOG.debug("3=========================");	
+			
+			if(outVO.getLvl().equals("ADMIN")) {
+//			Locale  locale=new Locale(user.getLang());
+//			localeResolver.setLocale(request, response, locale);
+			
+			session.setAttribute("user", outVO);
+			msg.setMsgId("30");
+			}else {
+				msg.setMsgId("10");
+				msg.setMsgMsg("정보가 잘못되었습니다. 확인해 주세요.");
+			}
+		}
+		//JSON
+		Gson gson=new Gson();
+		String json = gson.toJson(msg);
+		LOG.debug("2=========================");
+		LOG.debug("=@Controller=json=="+json);
+		LOG.debug("2=========================");
+		return json;
+		
+	}
+	
 	/**로그인*/
 	@RequestMapping(value="user/do_login.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")

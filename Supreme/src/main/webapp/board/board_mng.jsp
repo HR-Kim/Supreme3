@@ -1,5 +1,4 @@
-<%@page import="kr.co.supreme.user.service.UserSearch"%>
-<%@page import="kr.co.supreme.cmn.Search"%>
+<%@page import="kr.co.supreme.board.service.BoardSearch"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
 <%@page import="java.util.List"%>
@@ -19,10 +18,10 @@
 	/** 확장자 */
 	String ext = "xls" ;	
 	
-	String userLvl = ""; 
+	String boardCode = ""; 
 	
 	
-	UserSearch vo = (UserSearch)request.getAttribute("vo");
+	BoardSearch vo = (BoardSearch)request.getAttribute("vo");
 	
 	
 	
@@ -32,14 +31,14 @@
 		pageNum = StringUtil.nvl(vo.getPageNum()+"","1");
 		searchDiv = StringUtil.nvl(vo.getSearchDiv(),"");
 		searchWord = StringUtil.nvl(vo.getSearchWord(),"");
-		userLvl = StringUtil.nvl(vo.getUserLvl(),"");
+		boardCode = StringUtil.nvl(vo.getBoardCode(),"");
 		
 	}else{
 		pageSize = "10";
 		pageNum  = "1";
 		searchDiv = "";
 		searchWord = "";
-		userLvl="";
+		boardCode="";
 	}
 	
 	String extParam = (String)request.getAttribute("ext");
@@ -58,7 +57,7 @@
 	List<Code> excelList = (request.getAttribute("excelList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("excelList");
 	
 	//userLvL
-	List<Code> codeLvlList = (request.getAttribute("codeLvlList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeLvlList");
+	List<Code> boardCodeList = (request.getAttribute("boardCodeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("boardCodeList");
 	
 	int maxNum      = 0;
     int bottomCount = 10;
@@ -114,7 +113,7 @@
 					<input type="hidden" name="id" id="id" />
 					<div class="form-group">
 					    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
-					    <%=StringUtil.makeSelectBox(codeLvlList, "userLvl", userLvl, true) %>
+					    <%=StringUtil.makeSelectBox(boardCodeList, "boardCode", boardCode, true) %>
 					    <%=StringUtil.makeSelectBox(codeSearchList, "searchDiv", searchDiv, true) %>
 						<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

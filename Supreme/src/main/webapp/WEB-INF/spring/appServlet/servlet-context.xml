@@ -34,7 +34,12 @@
 		<beans:property name="order" value="2"/>
 	</beans:bean>
 	
+	<!-- FileDownload View -->
+	<beans:bean id="downloadView" class="kr.co.supreme.cmn.DownloadView"/>
+	
 	<context:component-scan base-package="kr.co.supreme" />
+	
+	
 	
 	<!-- viewname interceptor -->
 	<beans:bean id="viewNameInterceptor" class="kr.co.supreme.cmn.web.ViewNameInterceptor" />

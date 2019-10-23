@@ -30,6 +30,18 @@
 				<otherwise></otherwise>							
 			</choose>
 	</sql>
+	
+	<sql id="boardCondition">
+			<choose>
+				<when test="'' == boardCode">
+				</when>
+				<when test="null == boardCode">
+				</when>
+				<otherwise>
+				and B_CODE = #{boardCode}
+				</otherwise>							
+			</choose>
+	</sql>
 
 	<!-- get_IdList -->
 	<select id="get_IdList" parameterType="Search" resultType="Board">

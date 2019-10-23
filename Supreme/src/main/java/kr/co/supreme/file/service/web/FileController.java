@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import com.google.gson.Gson;
 
@@ -35,6 +39,86 @@ public class FileController {
 	
 	private final String VIEW_LIST_NM = "file/file_list";
 	private final String VIEW_MNG_NM = "file/file_mng";	
+	
+	@Resource(name="downloadView")
+	private View download;
+	
+	@RequestMapping(value="file/do_delete.do",method = RequestMethod.POST
+			,produces = "application/json;charset=UTF-8")
+	@ResponseBody	
+	public String do_delete(kr.co.supreme.file.service.File inVO) {
+		LOG.debug("=============================");
+		LOG.debug("=inVO=="+inVO);
+		LOG.debug("=============================");
+		
+		//------------------------------------------
+		//1. db에서 파일 삭제:fileId,num
+		//------------------------------------------
+		int flag = fileService.do_delete(inVO);
+		LOG.debug("=============================");
+		LOG.debug("=1 flag=="+flag);
+		LOG.debug("=============================");
+		
+		Message msg=new Message();
+		msg.setMsgId(String.valueOf(flag));
+		//파일 삭제 성공 
+		if(flag>0) {
+			
+			//------------------------------------------
+			//2. 물리적 파일 삭제: saveFileNm
+			//------------------------------------------
+			File delFile=new File(inVO.getSaveFileNm());
+			boolean delFlag = delFile.delete();
+			LOG.debug("=============================");
+			LOG.debug("=2 .delFlag=="+delFlag);
+			LOG.debug("=============================");
+			
+			msg.setMsgMsg("삭제 되었습니다.");
+		}else {
+			msg.setMsgMsg("삭제 실패");
+		}
+		
+		Gson gson=new Gson();
+		String gsonStr= gson.toJson(msg);
+		
+		LOG.debug("=============================");
+		LOG.debug("=3 .gsonStr=="+gsonStr);
+		LOG.debug("=============================");
+		
+		return gsonStr;
+		
+	}
+	
+	@RequestMapping(value="file/download.do",method = RequestMethod.POST)
+	public ModelAndView download(HttpServletRequest req, ModelAndView mView) {
+		//----------------------------------------------------
+        //			download.do
+        //	file.jsp  ->  FileController.java
+        //       				-download()  -> View(downloadView) 
+		//		                 		 -> DownloadView.java
+		//		                 		 	-renderMergedOutputModel()
+		//		                 		 	-setDownloadFileName
+		//		                 		 	-downloadFile
+		//----------------------------------------------------
+		
+		
+		String orgFileNm  = req.getParameter("orgFileNm");// 원본파일명
+		String saveFileNm = req.getParameter("saveFileNm");// 저장파일명 
+		LOG.debug("===============================");
+		LOG.debug("=@Controller orgFileNm="+orgFileNm);
+		LOG.debug("=@Controller saveFileNm="+saveFileNm);
+		LOG.debug("===============================");		
+		// File downloadFile= (File) model.get("downloadFile");
+		// String orgFileNm = (String) model.get("orgFileNm");
+		mView.setView(download);
+		
+		File  downloadFile=new File(saveFileNm);
+		mView.addObject("downloadFile", downloadFile);
+		mView.addObject("orgFileNm", orgFileNm);
+		
+		return mView;
+	}	
+	
 	
 	
 	
