@@ -198,21 +198,18 @@
 	
 	
 	<script type="text/javascript">
-	function SetSelectBox(){
-		var selectedVal = $("#changeOrderStatus option:selected").value();
-		var detail_code = td.eq(0).text();
-		console.log("detail_code "+detail_code);
-		console.log("selectedVal "+selectedVal);
-	}
+	
 	$(".changeBtn").on("click", function(){
 		//alert("changeBtn");
 		var tr = $(this).parent().parent();
 		var td =tr.children();
-		var select = td.eq(4).html().val;
-		//var select2 = select.attr("option:selected");
+		var select = td.eq(4).html();
 		console.log("select: "+select);
-		//$("#셀렉트ID option:selected").val();
+		
+
 	});
+	
+	
 	$(document).on('click', '#changeBtn', function(){
 		
 		
