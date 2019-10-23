@@ -97,7 +97,7 @@ public class OrderStatusDaoImpl implements WorkDiv {
 	}
 	public List<?> get_current_retrieve(DTO dto){
 		String statement = this.NAMESPACE+".get_current_retrieve";
-		Search search = (Search) dto;		
+		OrderSearch search = (OrderSearch) dto;		
 		LOG.debug("=========================");
 		LOG.debug("1. param:"+search);
 		LOG.debug("2. statement:"+statement);
@@ -108,7 +108,7 @@ public class OrderStatusDaoImpl implements WorkDiv {
 	}
 	public List<?> get_previous_retrieve(DTO dto){
 		String statement = this.NAMESPACE+".get_previous_retrieve";
-		Search search = (Search) dto;		
+		OrderSearch search = (OrderSearch) dto;		
 		LOG.debug("=========================");
 		LOG.debug("1. param:"+search);
 		LOG.debug("2. statement:"+statement);
@@ -150,6 +150,23 @@ public class OrderStatusDaoImpl implements WorkDiv {
 		return list;	
 	}
 
+	public List<?> get_retrieve2(DTO dto) {
+		String statement = this.NAMESPACE+".get_retrieve";
+		OrderSearch search = (OrderSearch) dto;
+		LOG.debug("=========================");
+		LOG.debug("1. param:"+search);
+		LOG.debug("=========================");
+		
+		LOG.debug("=========================");
+		LOG.debug("2. statement:"+statement);
+		LOG.debug("=========================");	
+		
+		List<OrderStatus> list = this.sqlSessionTemplate.selectList(statement, search);
+		LOG.debug("=========================");
+		LOG.debug("3. list:"+list);
+		LOG.debug("=========================");			
+		return list;	
+	}
 	@Override
 	public List<?> get_excelDown(DTO dto) {
 		// TODO Auto-generated method stub
