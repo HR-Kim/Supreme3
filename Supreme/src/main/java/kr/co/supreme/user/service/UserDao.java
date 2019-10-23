@@ -16,4 +16,5 @@ public interface UserDao {
 	public User get(String id);
 	public int id_check(User user);
 	public int passwd_check(User user);
+	public int tel_check(User user);
 }

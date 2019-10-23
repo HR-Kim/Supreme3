@@ -72,6 +72,31 @@ public class UserDaoImpl implements WorkDiv {
 	}
 	
 	/**
+	 * tel_check
+	 * @param dto
+	 * @return
+	 */
+	public int tel_check(DTO dto) {
+		String statement = this.NAMESPACE+".tel_check";
+		User user = (User) dto;
+		LOG.debug("========================");
+		LOG.debug("01.param="+user);
+		LOG.debug("========================");
+		
+		LOG.debug("========================");
+		LOG.debug("02.statement="+statement);
+		LOG.debug("========================");
+		
+		int flag = this.sqlSessionTemplate.selectOne(statement, user);
+		
+		LOG.debug("========================");
+		LOG.debug("03.flag="+flag);
+		LOG.debug("========================");		
+		return flag;
+	}
+	
+	
+	/**
 	 * 비번check
 	 * @param dto
 	 * @return

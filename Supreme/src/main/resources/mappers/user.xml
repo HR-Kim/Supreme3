@@ -53,6 +53,8 @@
 			<choose>
 				<when test="'' == userLvl">
 				</when>
+				<when test="null == userLvl">
+				</when>
 				<otherwise>
 				and LVL = #{userLvl}
 				</otherwise>							
@@ -80,6 +82,13 @@
 		AND	name = #{name,jdbcType=VARCHAR}
 		AND tel = #{tel,jdbcType=VARCHAR}
 		AND email = #{email,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 전화번호 체크 -->
+	<select id="tel_check" parameterType="User" resultType="int">
+		SELECT COUNT(*) CNT
+		FROM USERS
+		WHERE tel = #{tel,jdbcType=VARCHAR}	
 	</select>
 	
 	

@@ -28,6 +28,10 @@
     <![endif]-->
 </head>
 <body>
+	<!-- Header -->
+   <%@include file ="/template/header.jsp" %>
+   <!--/ Header -->
+
 	<!-- div container -->
 	<div class="container">
 		<!-- div title -->
@@ -38,7 +42,7 @@
 		<div class="col-lg-12"></div>
 		<div class="col-lg-12"></div>
 		<div class="panel panel-default"></div>
-		
+			
 			<div class="col-lg-12">
 				<!--  -->
 				<ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
@@ -53,6 +57,10 @@
 				    <!-- ID찾기 항목 -->					
 				    <div role="tabpanel" class="tab-pane fade in active" id="idFind" aria-labelledBy="idFind-tab">
 				        <form action="do_idFind.do" name="frmIdFind" id="frmIdFind" method="post" class="form-horizontal">
+					    <input type="hidden" name="id" id="id" />
+						<input type="hidden" name="name" id="name" />
+						<input type="hidden" name="tel" id="tel" />
+						<input type="hidden" name="email" id="email" />
 					        <!-- 입력 form -->
 					        <div class="form-group"></div>
 					        <div class="form-group">
@@ -98,6 +106,10 @@
 				    <!-- PW찾기 항목 -->
 			      	<div role="tabpanel" class="tab-pane fade" id="pwFind" aria-labelledBy="pwFind-tab">
 			       	 	<form action="do_pwFind.do" name="frmPwFind" id="frmPwFind" method="post" class="form-horizontal">
+					    <input type="hidden" name="id" id="id" />
+						<input type="hidden" name="name" id="name" />
+						<input type="hidden" name="tel" id="tel" />
+						<input type="hidden" name="email" id="email" />
 					        <!-- 입력 form -->
 					        <div class="form-group"></div>
 					        <div class="form-group">
@@ -138,7 +150,7 @@
 						<div class="row">
 							<div class="col-lg-10 col-sm-10 col-xs-10">
 								<div class="text-center">
-									<button type="button" class="btn btn-default " id="dopwFind">PW 찾기</button>
+									<button type="button" class="btn btn-default " id="doPwFind">PW 찾기</button>
 								</div>
 							</div>
 						</div>
@@ -151,6 +163,10 @@
 	</div>
 	<!--// div container -->
 	
+	
+	<!-- FOOTER -->
+   <%@include file ="/template/footer.jsp" %>
+   <!-- /FOOTER -->
 		
 	
 	
@@ -165,6 +181,115 @@
 			  $(this).tab('show')
 		})	
 		
+		
+		$("#doIdFind").on("click",function(){
+		//	alert("doIdFind");
+			
+			
+			var nameFind = $('#idFind_name').val();
+			var telFind = $('#idFind_tel').val();
+			var emailFind = $("#idFind_email1").val().trim()+"@"+$("#idFind_email2").val().trim()
+			
+			console.log("nameFind="+nameFind);
+			console.log("telFind="+telFind);
+			console.log("emailFind="+emailFind);
+			
+			
+			$.ajax({
+	            type:"POST",
+	            url:"${context}/user/id_find.do",
+	            dataType:"html",// JSON
+	            data:{
+	            	"name": nameFind,
+	            	"tel" : telFind,
+	            	"email" : emailFind
+	            },
+	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+	                //console.log(data);
+	            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
+	            	var parseData = $.parseJSON(data);
+	            	if(parseData.msgId=="1"){
+	            		alert(parseData.msgMsg);
+	            		
+	            		
+	            	}else{
+	            		alert(parseData.msgMsg);
+	            	}
+	            		
+	            	
+	            	
+
+	            	
+	            },
+	            complete: function(data){//무조건 수행
+	             
+	            },
+	            error: function(xhr,status,error){
+	             
+	            }
+	        });	 
+			
+		
+			  
+		});	
+		
+		
+		
+		
+		$("#doPwFind").on("click",function(){
+		//	alert("doPwFind");
+			
+			
+			var idFind = $('#pwFind_id').val();
+			var nameFind = $('#pwFind_name').val();
+			var telFind = $('#pwFind_tel').val();
+			var emailFind = $("#pwFind_email1").val().trim()+"@"+$("#pwFind_email2").val().trim()
+			
+			console.log("nameFind="+nameFind);
+			console.log("telFind="+telFind);
+			console.log("emailFind="+emailFind);
+			
+			
+			$.ajax({
+	            type:"POST",
+	            url:"${context}/user/pw_find.do",
+	            dataType:"html",// JSON
+	            data:{
+	            	"id": idFind,
+	            	"name": nameFind,
+	            	"tel" : telFind,
+	            	"email" : emailFind
+	            },
+	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+	                //console.log(data);
+	            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
+	            	var parseData = $.parseJSON(data);
+	            	if(parseData.msgId=="1"){
+	            		alert(parseData.msgMsg);
+	            		
+	            		
+	            	}else{
+	            		alert(parseData.msgMsg);
+	            	}
+	            		
+	            	
+	            	
+
+	            	
+	            },
+	            complete: function(data){//무조건 수행
+	             
+	            },
+	            error: function(xhr,status,error){
+	             
+	            }
+	        });	 
+			
+			
+	         
+		
+			  
+		});	
 		
 	</script>	
 	 

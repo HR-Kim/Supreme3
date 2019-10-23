@@ -28,6 +28,8 @@
     <![endif]-->
 </head>
 <body>
+
+
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
@@ -40,7 +42,8 @@
 		<div class="col-lg-12"></div>
 		<div class="panel panel-default"></div>
 		<!-- 입력 form -->
-		<form action="do_update.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
+		<form action="do_save.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
+			<input type="hidden"  name="fileId" id="fileId" >
 			<div class="form-group">
 				<label for="u_id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-6">
@@ -120,6 +123,12 @@
 					<button id="attrFile" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#layerpop">첨부하기</button>
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="attrFile" class="hidden-xs hidden-sm col-md-2 col-lg-2 control-label"></label>
+				<div class="img_wrap col-sm-8">
+					<img id="img"/>
+				</div>
+			</div>
 			
 					
 		</form>
@@ -180,18 +189,21 @@
 		//이미지 파일
 		var sel_file;
 		
+		
 		//이미지 미리보기 소스
 		$(document).ready(function() {
 			
+			$("#file01").on("change",handleImgFileSelect);
 			
 			
 		});
 		
 		
+		
 		$("#doFileUpload").on("click",function(){
 			if(confirm("이미지를 등록하시겠습니까?")== false)return;
-			
 			doUploadFile();
+			
 		});
 		
 		
@@ -262,6 +274,52 @@
 				}
 			}); 
 			//--ajax 			
+		}
+		
+		
+		//파일목록 조회:
+		function getFileList(fileId){
+			//ajax
+			
+			$.ajax({
+				   type:"POST",
+				   url:"${context}/file/do_retrieve.do",
+				   dataType:"html",
+				   data:{
+				   "fileId":fileId
+				  }, 
+				success: function(data){
+				    //alert(data);	
+				    var jData = JSON.parse(data);
+				  
+				    if(null != jData){
+						//기존 : listFileTable 삭제.
+						$("#listFileTable tbody tr").remove();
+						  
+						//전체 Data를 동적으로 생성.
+						$.each(jData,function(index,item){
+							$("#listFileTable tbody:last").append("<tr>"+
+									"<td class='text-center hidden-xs hidden-sm hidden-md hidden-lg'>"+<c:out value='item.fileId'/>+"</td>"+  
+									"<td class='text-center hidden-xs hidden-sm hidden-md hidden-lg'>"+<c:out value='item.num'/>+"</td>"+  
+									"<td class='text-left org-file-name'>"+<c:out value='item.orgFileNm'/>+"</td>"+ 
+									"<td class='text-center hidden-xs hidden-sm hidden-md hidden-lg'>"+<c:out value='item.saveFileNm'/>+"</td>"+ 
+									"<td class='text-right'>"+<c:out value='item.fSize'/>+" &nbsp; byte</td>"+
+									"<td class='text-right'><button type='button' class='btn btn-default btn-sm btn-danger' >X</button></td>"+
+									"</tr>");
+							
+						});//$.each
+				  }else{
+					alert(jData);
+				  }
+				},
+				complete:function(data){
+				 
+				},
+				error:function(xhr,status,error){
+					alert("error:"+error);
+				}
+			}); 
+			//--ajax 
 		}
 		
 		
@@ -340,6 +398,7 @@
 			var emailPerfect = $("#email1").val().trim()+"@"+$("#email2").val().trim();
 			
 			emailPerfect.trim();
+			console.log("fileId:"+$("#fileId").val());
 			
 			$.ajax({
 	            type:"POST",
@@ -355,7 +414,8 @@
 	            	"postcode": $("#postcode").val(),
 	            	"address1": $("#address1").val(),
 	            	"address2": $("#address2").val(),
-	            	"tel": $("#tel").val()
+	            	"tel": $("#tel").val(),
+	            	"image" : $("#fileId").val()
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);
@@ -503,6 +563,6 @@
 	        }).open();
 	    };
 	</script>	
-	 
+	
 </body>
 </html>

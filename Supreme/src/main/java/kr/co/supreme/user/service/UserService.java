@@ -33,6 +33,8 @@ public interface UserService {
 	
 	public int passwd_check(DTO dto);
 	
+	public int tel_check(DTO dto);
+	
 	/**id찾기 */
 	public DTO id_find(DTO dto);
 	/**pw찾기 */

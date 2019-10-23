@@ -58,6 +58,8 @@ public class UserController {
 	private final String VIEW_MNG_NM  ="user/user_mng";
 	private final String VIEW_JOIN_NM  ="user/user_join";
 	private final String VIEW_SECESS_NM  ="user/user_secession";
+	private final String VIEW_ID_RESULT ="user/user_id_result";
+	private final String VIEW_PW_RESULT ="user/user_pw_result";
 	
 	
 	/**로그인*/
@@ -94,6 +96,83 @@ public class UserController {
 		LOG.debug("2=========================");
 		return json;
 		
+	}
+	
+	
+	/**id find */
+	@RequestMapping(value="user/id_find.do",method = RequestMethod.POST
+			,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String id_find(User user,Model model) {
+		String gsonStr = "";
+		LOG.debug("============================");
+		LOG.debug("=user="+user);
+		LOG.debug("============================");
+		
+
+		
+		User outVO=  (User) this.userService.id_find(user);
+		
+		Message  message=new Message();
+		
+		if(outVO==null) {
+			message.setMsgId("0");
+			message.setMsgMsg("일치하는 ID가 없습니다. 다시 확인해 주세요.");
+		}else {
+			message.setMsgId("1");
+			message.setMsgMsg("회원님의 아이디는   "+outVO.getId()+" 입니다.");			
+		}
+		LOG.debug("============================");
+		LOG.debug("=messageID="+message.getMsgId());
+		LOG.debug("============================");
+		LOG.debug("============================");
+		LOG.debug("=messageID="+message.getMsgMsg());
+		LOG.debug("============================");
+		
+		Gson gson=new Gson();
+		gsonStr = gson.toJson(message);		
+		
+		
+		return gsonStr;
+	}
+	
+	
+	/**pass find */
+	@RequestMapping(value="user/pw_find.do",method = RequestMethod.POST
+			,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String pw_find(User user,Model model) {
+		String gsonStr = "";
+		LOG.debug("============================");
+		LOG.debug("=user="+user);
+		LOG.debug("============================");
+		
+
+		
+		User outVO=  (User) this.userService.pw_find(user);
+		
+		
+		Message  message=new Message();
+		
+		if(outVO==null) {
+			message.setMsgId("0");
+			message.setMsgMsg("일치하는 회원 정보가 없습니다. 다시 확인해 주세요.");
+		}else {
+			message.setMsgId("1");
+			message.setMsgMsg("회원님의 비밀번호는   "+outVO.getPass()+" 입니다.");			
+		}
+		LOG.debug("============================");
+		LOG.debug("=messageID="+message.getMsgId());
+		LOG.debug("============================");
+		LOG.debug("============================");
+		LOG.debug("=messageID="+message.getMsgMsg());
+		LOG.debug("============================");
+		
+		Gson gson=new Gson();
+		gsonStr = gson.toJson(message);		
+		
+		
+		return gsonStr;
 	}
 	
 	
@@ -134,6 +213,40 @@ public class UserController {
 		return gsonStr;
 	}
 	
+	
+	
+	/**tel 중복체크 */
+	@RequestMapping(value="user/tel_check.do",method = RequestMethod.POST
+			,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String tel_check(User user,Model model) {
+		String gsonStr = "";
+		LOG.debug("============================");
+		LOG.debug("=user="+user);
+		LOG.debug("============================");
+		
+		if(null == user.getTel() || "".equals(user.getTel().trim())) {
+			throw new IllegalArgumentException("전화번호를 입력 하세요.");
+		}
+		
+	
+		int flag = this.userService.tel_check(user);
+		Message  message=new Message();
+		
+		if(flag==0) {
+			message.setMsgId(String.valueOf(flag));
+			message.setMsgMsg("전화번호를 사용할 수 있습니다.");
+		}else {
+			message.setMsgId(String.valueOf(flag));
+			message.setMsgMsg("이미 사용된 전화번호 입니다.");			
+		}
+		
+		Gson gson=new Gson();
+		gsonStr = gson.toJson(message);		
+		
+		
+		return gsonStr;
+	}
 	
 	
 	/**id중복체크 */

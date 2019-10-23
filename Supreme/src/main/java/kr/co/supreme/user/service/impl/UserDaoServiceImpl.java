@@ -135,26 +135,32 @@ public class UserDaoServiceImpl implements UserService{
 
 	@Override
 	public int id_check(DTO dto) {
-		// TODO Auto-generated method stub
+		
 		return userDaoImpl.id_check(dto);
 	}
 
 	@Override
 	public int passwd_check(DTO dto) {
-		// TODO Auto-generated method stub
+		
 		return userDaoImpl.passwd_check(dto);
 	}
 
 	@Override
 	public DTO id_find(DTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return userDaoImpl.id_find(dto);
 	}
 
 	@Override
 	public DTO pw_find(DTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return userDaoImpl.pw_find(dto);
+	}
+
+	@Override
+	public int tel_check(DTO dto) {
+
+		return userDaoImpl.tel_check(dto);
 	}
 
 }

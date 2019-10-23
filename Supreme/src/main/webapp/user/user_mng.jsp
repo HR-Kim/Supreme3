@@ -19,7 +19,7 @@
 	/** 확장자 */
 	String ext = "xls" ;	
 	
-	String userLvl = ""; 
+	String userLvl = "1"; 
 	
 	
 	UserSearch vo = (UserSearch)request.getAttribute("vo");
@@ -32,14 +32,14 @@
 		pageNum = StringUtil.nvl(vo.getPageNum()+"","1");
 		searchDiv = StringUtil.nvl(vo.getSearchDiv(),"");
 		searchWord = StringUtil.nvl(vo.getSearchWord(),"");
-		userLvl = StringUtil.nvl(vo.getUserLvl(),"");
+		userLvl = StringUtil.nvl(vo.getUserLvl(),"1");
 		
 	}else{
 		pageSize = "10";
 		pageNum  = "1";
 		searchDiv = "";
 		searchWord = "";
-		userLvl="";
+		userLvl="1";
 	}
 	
 	String extParam = (String)request.getAttribute("ext");
@@ -196,7 +196,7 @@
 			
 			var frm = document.frm;
 			frm.id.value = idFind;
-			frm.action = "${context}/user/do_selectOne.do";;
+			frm.action = "${context}/user/do_selectOne.do";
 			frm.submit();				
 			  
 		});	
