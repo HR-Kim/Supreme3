@@ -136,7 +136,7 @@
 							JOIN PRODUCT P 
 							ON O2.P_CODE = P.P_CODE		                     
 			  			AND udt_dt <![CDATA[ >  ]]> to_date('19700101','yyyymmdd')     
-			  			ORDER BY udt_dt DESC                                   
+			  			ORDER BY detail_code DESC                                   
 			  		)A                                                         
 			  	   WHERE ROWNUM <![CDATA[ <= ]]>(#{pageSize} * (#{pageNum}-1)+#{pageSize})   						       
 			  	) B                                                            
