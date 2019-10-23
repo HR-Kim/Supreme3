@@ -9,50 +9,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var="context" value="${pageContext.request.contextPath }" />
 <%
-	/** 페이지 사이즈 */
-	String pageSize   = "10"  ; 	
-	/** 페이지 번호 */
-	String pageNum    = "1"  ;	
-	/** 검색조건 */
-	String searchDiv  = "" ;
-	/** 검색어 */
-	String searchWord = "test01" ;
-	
-	String ext = "xls" ;
 
-	
-	Search vo = (Search)request.getAttribute("vo");
-	if(null !=vo){
-		pageSize   = StringUtil.nvl(vo.getPageSize()+"","10");
-		pageNum    = StringUtil.nvl(vo.getPageNum()+"","1");
-		searchDiv  = StringUtil.nvl(vo.getSearchDiv(),"");
-		searchWord = StringUtil.nvl(vo.getSearchWord(),"");	
-	}else{
-		pageSize   = "10";
-		pageNum    = "1";
-		searchDiv  = "";
-		searchWord = "";
-	}
-	
-	String extParam = (String)request.getAttribute("ext");
-	if(extParam !=null) ext = extParam;
-	
-	//페이지사이즈
-	List<Code> listPageSize=(request.getAttribute("listPageSize")==null)?
-			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listPageSize"));
-	//게시판 검색 구분
-	List<Code> listBoardSearch=(request.getAttribute("listBoardSearch")==null)?
-			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listBoardSearch"));
-	
-	//paging 
-	//maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName	
-	int maxNum      = 0;//totalCnt
-	int bottomCount = 10;
-	int currPageNo  = 1;//pageNum
-	int rowPerPage  = 10;//pageSize	
-	
-	String url      = request.getContextPath()+"/product/get_retrieve.do";
-	String scriptName ="search_page";
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -66,16 +23,16 @@
 <body>
 	<!-- Header -->
 	<%@include file ="/template/header.jsp" %>
-
+	
 
 	<!-- BREADCRUMB -->
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
 				<li><a href="#">Home</a></li>
-				<li><a href="#">Products</a></li>
-				<li><a href="#">Category</a></li>
-				<li class="active">Product Name Goes Here</li>
+				<li><a href="#"><c:out value="${vo.h_code}"/></a></li>
+				<li><a href="#"><c:out value="${vo.l_code}"/></a></li>
+				<li class="active"><c:out value="${vo.p_name}"/></li>
 			</ul>
 		</div>
 	</div>
@@ -121,24 +78,12 @@
 					</div>
 					<div class="col-md-6">
 						<div class="product-body">
-							<div class="product-label">
-								<span>New</span>
-								<span class="sale">-20%</span>
-							</div>
-							<h2 class="product-name">Product Name Goes Here</h2>
-							<h3 class="product-price">$32.50 <del class="product-old-price">$45.00</del></h3>
-							<div>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o empty"></i>
-								</div>
-								<a href="#">3 Review(s) / Add Review</a>
-							</div>
-							<p><strong>Availability:</strong> In Stock</p>
-							<p><strong>Brand:</strong> E-SHOP</p>
+							
+							<h2 class="product-name"><c:out value="${vo.p_name}"/></h2>
+							<h3 class="product-price"><c:out value="${vo.p_price}"/></h3>
+							
+							<p><strong>상태:</strong><c:out value="${vo.p_price}"/></p>
+							<p><strong>제조회사:</strong><c:out value="${vo.p_price}"/></p>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
 								dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							<div class="product-options">
@@ -326,6 +271,8 @@
 		</div>
 		<!-- /container -->
 	</div>
+	
+	
 	<!-- /section -->
 	<!-- FOOTER -->
 	<%@include file ="/template/footer.jsp" %>
@@ -340,41 +287,17 @@
 	<script src="../resources/js/main.js"></script>
 	
 	<script>
-  	function getProductList(p_code){
-   		
-   		$.ajax({
-   			type:"GET",
-   			url:"${context}/product/do_selectOne.do",
-   			dataType:"html",
-   			data:{
-   				"p_code" : p_code
-   			},
-   		   success: function(data){
-   			   alert(data);
-   			   var jData = JSON.parse(data);
-   			   if(null != jData && jData.msgId=="1"){
-   				   alert(jData.msgContents);
-   			   }else{
-   				   alert(jData.msgId+"|"jData.msgContents);
-   			   }
-   		   },
-   		   complete:function(data){
-   			   
-   		   },
-   		   error:function(xhr,status,error){
-   				  alert("error:"+error);
-   		   		}
-   			});	//ajax
-   		
-   		}	//function
+
    
    	 	
 		
    
   		 $(document).ready(function() {
-				alert("ready");
-	 	
-			});
+					alert("data.p_code"+data.p_code); 
+			
+  					
+  			
+			});	// function
 	</script>
 </body>
 

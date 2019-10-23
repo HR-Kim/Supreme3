@@ -41,7 +41,7 @@
 			</choose>
 	</sql>
 	
-	<select id="get_retrieve" parameterType="Search" resultType="Product">
+	<select id="get_retrieve" parameterType="Product" resultType="Product">
 		SELECT T1.*,T2.*													
 		FROM 
 		(SELECT 
@@ -85,7 +85,7 @@
 	</select>
 
 	<delete id="do_delete" parameterType="Product">
-		DELETE FROM product WHERE p_code = #{p_code,jdbcType=VARCHAR}
+		DELETE FROM product WHERE p_code = #{p_code,jdbcType=NUMERIC}
 	</delete>
 
 	<insert id="do_save" parameterType="Product">
@@ -145,18 +145,18 @@
 			sale_percent = #{sale_percent,jdbcType=NUMERIC},
 			reg_dt = SYSDATE
 		WHERE
-		    p_code = #{p_code,jdbcType=VARCHAR} 
+		    p_code = #{p_code,jdbcType=NUMERIC} 
 	</update>
 	
-	<select id="get_selectOne" parameterType="Search" resultType="Product" >
+	<select id="get_selectOne" parameterType="Product" resultType="Product" >
 		SELECT										
 		    <include refid="proColumns"/>                  
 		FROM
    			 PRODUCT                             
-		WHERE p_name = #{p_name,jdbcType=VARCHAR} 
+		WHERE p_code = #{p_code,jdbcType=NUMERIC} 
 	</select> 
 	
-	<select id="get_productIdList" parameterType="Search" resultType="Product">
+	<select id="get_productIdList" parameterType="Product" resultType="Product">
 		SELECT										
 		    <include refid="proColumns"/>                  
 		FROM

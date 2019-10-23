@@ -150,17 +150,18 @@ public class ProductController {
 	   }
 
 	   /**단건조회 */
-	   @RequestMapping(value="product/do_selectOne.do",method = RequestMethod.GET)
+	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.POST)
 	   public String get_selectOne(Product product,Model model) {
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");
+		
 	      
-//	      if(null == product.getP_name() || "".equals(product.getP_name())) {
-//	         throw new IllegalArgumentException("상품명을 입력하세요.");
-//	      }
-	      
+	    
 	      Product outVO= (Product) this.productService.get_selectOne(product);
+	      LOG.debug("============================");
+	      LOG.debug("=outVO="+outVO);
+	      LOG.debug("============================");
 	      model.addAttribute("vo", outVO);
 	      
 	      return VIEW_MNG_NM;

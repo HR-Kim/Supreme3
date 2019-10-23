@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:set var="context" value="${pageContext.request.contextPath }" />    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,20 +16,20 @@
 	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/bootstrap.min.css" />
 
 	<!-- Slick -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/slick.css" />
-	<link type="text/css" rel="stylesheet" href="../resources/css/slick-theme.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/slick-theme.css" />
 
 	<!-- nouislider -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/nouislider.min.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/nouislider.min.css" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="../resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="${context}/resources/css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/style.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,14 +83,14 @@
 					<!-- Logo -->
 					<div class="header-logo">
 						<a class="logo" href="#">
-							<img src="../resources/img/logo.png" alt="">
+							<img src="${context}/resources/img/logo.png" alt="">
 						</a>
 					</div>
 					<!-- /Logo -->
 
 					<!-- Search -->
 					<div class="header-search">
-						<form>
+						<!-- <form>
 							<input class="input search-input" type="text" placeholder="검색어를 입력하세요">
 							<select class="input search-categories">
 								<option value="0">전체</option>
@@ -97,7 +98,7 @@
 								<option value="1">Category 02</option>
 							</select>
 							<button class="search-btn"><i class="fa fa-search"></i></button>
-						</form>
+						</form> -->
 					</div>
 					<!-- /Search -->
 				</div>
@@ -722,12 +723,12 @@
 	<!-- /section -->
 		
 	<!-- jQuery Plugins -->
-	<script src="../resources/js/jquery.min.js"></script>
-	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/slick.min.js"></script>
-	<script src="../resources/js/nouislider.min.js"></script>
-	<script src="../resources/js/jquery.zoom.min.js"></script>
-	<script src="../resources/js/main.js"></script>
+	<script src="${context}/resources/js/jquery.min.js"></script>
+	<script src="${context}/resources/js/bootstrap.min.js"></script>
+	<script src="${context}/resources/js/slick.min.js"></script>
+	<script src="${context}/resources/js/nouislider.min.js"></script>
+	<script src="${context}/resources/js/jquery.zoom.min.js"></script>
+	<script src="${context}/resources/js/main.js"></script>
 
 	
 </html>
