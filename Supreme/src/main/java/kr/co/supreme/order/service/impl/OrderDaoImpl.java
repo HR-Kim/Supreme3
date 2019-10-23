@@ -14,7 +14,7 @@ import kr.co.supreme.cmn.DTO;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.WorkDiv;
 import kr.co.supreme.order.service.Order;
-
+import java.util.UUID;
 @Repository
 public class OrderDaoImpl implements WorkDiv {
 	Logger LOG=LoggerFactory.getLogger(this.getClass());
@@ -90,6 +90,7 @@ public class OrderDaoImpl implements WorkDiv {
 		String statement2 = this.NAMESPACE+".cart_retrieve";
 		String statement3 = this.NAMESPACE+".detail_save";
 		String statement4 = this.NAMESPACE+".status_save";
+		String statement5 = this.NAMESPACE+".";
 		LOG.debug("여기0");
 		Search search = new Search();
 		LOG.debug("여기는?");
@@ -107,20 +108,29 @@ public class OrderDaoImpl implements WorkDiv {
 		LOG.debug("=========================");		
 		LOG.debug("여기3");
 		int flag = this.sqlSessionTemplate.insert(statement, order);
-		List<Cart> list = this.sqlSessionTemplate.selectList(statement2, search);
 		
-		for(int i=0;i<list.size();i++) {
-			order.setP_code(Integer.toString(list.get(i).getpCode()));
-			order.setQuantitiy(Integer.toString(list.get(i).getQuantity()));
-			order.setUnit_price(Integer.toString(list.get(i).getUnitPrice()));
-			order.setDetail_code("123"+i); //주문 상세번호 난수 생성.
-			this.sqlSessionTemplate.insert(statement3, order);	
-			order.setOd_status("1"+i);
+		if (order.getCheck() == "1") {
+			List<Cart> list = this.sqlSessionTemplate.selectList(statement2, search);
+			for (int i = 0; i < list.size(); i++) {
+				String uuid = UUID.randomUUID().toString();
+				order.setP_code(Integer.toString(list.get(i).getpCode()));
+				order.setQuantitiy(Integer.toString(list.get(i).getQuantity()));
+				order.setUnit_price(Integer.toString(list.get(i).getUnitPrice()));
+				order.setDetail_code(uuid); // 주문 상세번호 난수 생성.
+				this.sqlSessionTemplate.insert(statement3, order);
+				order.setOd_status("1");
+				this.sqlSessionTemplate.insert(statement4, order);
+			}
+		}
+		else {
+			String uuid = UUID.randomUUID().toString();
+			order.setDetail_code(uuid); // 주문 상세번호 난수 생성.
+			this.sqlSessionTemplate.insert(statement3, order);
+			order.setOd_status("1");
 			this.sqlSessionTemplate.insert(statement4, order);
 		}
-			
+		
 		LOG.debug("=========================");
-		LOG.debug("촤아아아아아!!!:"+list.get(0).getCartCode());
 		LOG.debug("=========================");
 		LOG.debug("여기4");
 		LOG.debug("=========================");

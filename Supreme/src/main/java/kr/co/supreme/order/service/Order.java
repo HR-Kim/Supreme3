@@ -27,6 +27,7 @@ public class Order extends DTO{
 	private String quantitiy	 ; /*주문 수량*/
 	private String unit_price    ; /*상품 단가*/
 	
+	private String check; //장바구니,단일결제 구분
 	
 	public Order() {}
 	
@@ -71,6 +72,14 @@ public class Order extends DTO{
 	}
 
 	
+
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
 
 	public String getOrderCode() {
 		return orderCode;
@@ -232,7 +241,6 @@ public class Order extends DTO{
 		this.unit_price = unit_price;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Order [orderCode=" + orderCode + ", id=" + id + ", rName=" + rName + ", rPostcode=" + rPostcode
@@ -240,8 +248,10 @@ public class Order extends DTO{
 				+ ", payMethod=" + payMethod + ", bank=" + bank + ", depositName=" + depositName + ", depositDate="
 				+ depositDate + ", orderDate=" + orderDate + ", detail_code=" + detail_code + ", od_status=" + od_status
 				+ ", reg_dt=" + reg_dt + ", udt_dt=" + udt_dt + ", p_code=" + p_code + ", quantitiy=" + quantitiy
-				+ ", unit_price=" + unit_price + "]";
+				+ ", unit_price=" + unit_price + ", check=" + check + "]";
 	}
+
+	
 
 
 

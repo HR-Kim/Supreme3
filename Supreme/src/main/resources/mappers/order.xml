@@ -154,7 +154,7 @@
 		    QUANTITY,
 		    UNIT_PRICE
 		) VALUES (
-			#{orderCode,jdbcType=VARCHAR},              	    
+			CONCAT(CONCAT('S',CONCAT((to_char(sysdate, 'yyyymmdd') ),'_')),ORDER_SEQ.CURRVAL),              	    
 			#{detail_code,jdbcType=VARCHAR},  
 			#{p_code,jdbcType=VARCHAR}, 
 			#{quantitiy,jdbcType=VARCHAR}, 
@@ -195,7 +195,7 @@
 		    deposit_date,
 		    order_date
 		) VALUES (
-			#{orderCode,jdbcType=NUMERIC},              	    
+			CONCAT(CONCAT('S',CONCAT((to_char(sysdate, 'yyyymmdd') ),'_')),ORDER_SEQ.NEXTVAL),     	    
 			#{id,jdbcType=VARCHAR},  
 			#{rName,jdbcType=VARCHAR}, 
 			#{rPostcode,jdbcType=VARCHAR}, 

@@ -291,7 +291,6 @@ for(int i=0;i<3;i++){
 	            	"pay_method": $("#paymentway").val(),
 	            	"bank": "111",
 	            	"deposit_name": "111", */
-	            	"orderCode" : 2222,
 	            	"id" : "admin",
 	            	"rName" : $("#name").val(),
 	            	"rPostcode" : $("#postcode").val(),
@@ -302,8 +301,10 @@ for(int i=0;i<3;i++){
 	            	"payMethod" : $("#paymethod").val(),
 	              	"bank" : $("#bank").val(),
 	              	"depositName" : $("#depositName").val(),
-	              	
-	            	
+	              	"p_code" : "123",
+	              	"quantitiy" : "1",
+	              	"unit_price" : "10000",
+	              	"check" : "1"
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);
