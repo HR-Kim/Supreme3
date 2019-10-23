@@ -1,3 +1,4 @@
+<%@page import="kr.co.supreme.orderstatus.service.OrderSearch"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
 <%@page import="java.util.List"%>
 <%@page import = "java.util.ArrayList" %>
@@ -8,7 +9,58 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value ="${pageContext.request.contextPath }"/>
+<%
+		/** 페이지 사이즈 */
+		String pageSize   = "10"  ; 	
+		/** 페이지 번호 */
+		String pageNum    = "1"  ;	
+		/** 검색조건 */
+		String searchDiv  = "" ;
+		/** 검색어 */
+		String searchWord = "" ;
+		/** 확장자 */
+		String ext = "xls" ;	
 
+		String orderStatus = ""; 
+		
+		Search vo = (Search)request.getAttribute("vo");
+		
+		if(null !=vo){
+			pageSize = StringUtil.nvl(vo.getPageSize()+"","10");
+			pageNum = StringUtil.nvl(vo.getPageNum()+"","1");
+			searchDiv = StringUtil.nvl(vo.getSearchDiv(),"");
+			searchWord = StringUtil.nvl(vo.getSearchWord(),"");
+		
+			
+		}else{
+			pageSize = "10";
+			pageNum  = "1";
+			searchDiv = "";
+			searchWord = "";
+		}
+		
+		String extParam = (String)request.getAttribute("ext");
+		if(extParam !=null) ext = extParam;
+		
+		//pageCode	
+		List<Code> codeList = (request.getAttribute("codeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeList");
+		
+		
+		//codeOrderList
+		List<Code> codeSearchList = (request.getAttribute("codeSearchList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeSearchList");			
+	
+		int maxNum      = 0;
+	    int bottomCount = 10;
+	    int currPageNo  = 1; //pageNum
+	    int rowPerPage  = 10;//pageSize			
+		String url      = request.getContextPath()+"orderStauts/get_retrieve.do";
+		String scriptName ="search_page";
+		
+		String iTotalCnt =(request.getAttribute("totalCnt")==null)?"0":request.getAttribute("totalCnt").toString();
+		maxNum = Integer.parseInt(iTotalCnt);
+		currPageNo = Integer.parseInt(pageNum);
+		rowPerPage = Integer.parseInt(pageSize);	
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +104,27 @@
 	<!--/ Header -->
 	
 	<div class="container">
-	
+	<!-- 검색영역 -->
+		<div class="row" >
+			<div class="col-md-12 text-right" type="hidden">
+				<form class="form-inline" name="boardFrm" id="boardFrm" method="get">
+					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }"/>
+					<input type="hidden" name="boardId" id="boardId" />
+					<div class="form-group">
+					    <!-- 페이지 사이즈 -->
+						<%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
+					    <%=StringUtil.makeSelectBox(codeSearchList, "orderStatus", orderStatus, true) %>
+
+					<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-default btn-sm"
+							id="doRetrieve" >조회</button>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--// 검색영역 -->
 	<!-- row -->
 	<div class="row">
 	<div class="col-md-12">
