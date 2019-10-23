@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.supreme.cmn.DTO;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.WorkDiv;
+import kr.co.supreme.orderstatus.service.OrderSearch;
 import kr.co.supreme.orderstatus.service.OrderStatus;
 
 @Repository
@@ -133,7 +134,7 @@ public class OrderStatusDaoImpl implements WorkDiv {
 	@Override
 	public List<?> get_retrieve(DTO dto) {
 		String statement = this.NAMESPACE+".get_retrieve";
-		Search search = (Search) dto;
+		OrderSearch search = (OrderSearch) dto;
 		LOG.debug("=========================");
 		LOG.debug("1. param:"+search);
 		LOG.debug("=========================");

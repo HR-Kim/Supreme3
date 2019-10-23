@@ -73,7 +73,26 @@ public class DaoOrderStatusWebTest {
 		LOG.debug("=dao="+dao);
 		LOG.debug("===============================");
 	}
-	
+	@Test
+	@Ignore
+	public void get_admin_retrieve() throws Exception {
+		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_admin_retrieve.do")
+				.param("pageSize", "10")
+				.param("pageNum", "1")
+				.param("searchDiv", "10")
+				.param("searchWord", "admin")
+				.param("orderStatus", "0")
+				;
+		ResultActions resultActions = mockMvc.perform(createMessage)		
+				.andExpect(status().isOk()) ;
+		        		
+				String result = resultActions.andDo(print())
+						.andReturn()
+						.getResponse().getContentAsString();
+				LOG.debug("===============================");
+				LOG.debug("=result="+result);
+				LOG.debug("===============================");			
+			}
 	@Test
 	@Ignore
 	public void get_previous_retrieve() throws Exception{
@@ -115,7 +134,7 @@ public class DaoOrderStatusWebTest {
 			}
 
 	@Test
-	@Ignore
+
 	public void get_retrieve() throws Exception {
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/get_retrieve.do")
 				.param("pageSize", "10")
@@ -181,7 +200,7 @@ public class DaoOrderStatusWebTest {
 			}
 		
 	@Test
-
+	@Ignore
 	public void get_selectOne() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/do_selectOne.do")
 		.param("detail_code", "123789");

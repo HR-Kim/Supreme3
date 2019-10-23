@@ -80,14 +80,14 @@
 							<c:when test="${currentlist.size()>0}">
 		
 								<c:forEach var="cvo" items="${currentlist}">
-							<input type="hidden" name="cdetailCode" id="cdetailCode" value="${cvo.detail_code}"/>	
+							<input type="hidden" name="od_status" id="od_status" value="${cvo.od_status}"/>	
 						<tr>
 							<td class="thumb"><img value="${cvo.p_image}" alt=""></td>
 							<td class="price text-left"><c:out value="${cvo.detail_code}"/></td>
 							<td class="details">
 								<a href="#"><c:out value="${cvo.p_name}" /></a>
 									<ul>
-										<li id=orderStatus><span><c:out value="${cvo.od_status}"/></span></li>
+										<li><span><c:out value="${cvo.od_status}"/></span></li>
 									</ul>
 							</td>
 							<td class="price text-center"><strong>$<c:out value="${cvo.unit_price}"/></strong><br><del class="font-weak"><small>$<c:out value="${cvo.p_price}"/></small></del></td>
@@ -141,8 +141,8 @@
 							
 							<td class="details">
 								<a href="#" name="name" id="name"><c:out value="${pvo.p_name}" /></a>
-								<ul>
-									<li name="status" id="status"><span><c:out value="${pvo.od_status}"/></span></li>
+								<ul id=corderStatus>
+									<li><span><c:out value="${pvo.od_status}"/></span></li>
 								</ul>
 							</td>							
 							<td class="price text-center" style="display:none;" id="detail_code" name="detail_code"><c:out value="${pvo.detail_code}"/></td>
@@ -183,8 +183,8 @@
 	<script type="text/javascript">
 	
 	/**주문 취소 */
-	$("#cancle").click(function(){
-		
+
+	$(document).on('click', '#cancle', function(){	
 		var str =""
 		var cancle = $(this);
 		
@@ -197,14 +197,10 @@
 		console.log("클릭한 row의 모든 데이터 "+tr.text());
 		
 		var detail_code = td.eq(1).text();
-		var od_status	= $("#orderStatus");
 		console.log("detail_code "+detail_code);
-		console.log("od_status "+orderStatus);
+		var od_status = $('#od_status').val();
+		console.log("od_status "+od_status);
 		
-		if(od_status = '3'){
-			alert ("이미 배송중인 상품은 취소할 수 없습니다.")
-			
-		}else{
 	 
 		$.ajax({
 			type : "POST",
@@ -225,7 +221,6 @@
 
 			}
 		  });
-		}
 	});	
 	
 	/**주문 취소상태의 경우 버튼 나오지 않게*/

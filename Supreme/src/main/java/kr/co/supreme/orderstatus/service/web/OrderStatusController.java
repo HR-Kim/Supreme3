@@ -20,7 +20,9 @@ import com.google.gson.Gson;
 import kr.co.supreme.cmn.Message;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.StringUtil;
+import kr.co.supreme.code.service.Code;
 import kr.co.supreme.code.service.CodeService;
+import kr.co.supreme.orderstatus.service.OrderSearch;
 import kr.co.supreme.orderstatus.service.OrderStatus;
 import kr.co.supreme.orderstatus.service.OrderStatusService;
 
@@ -37,11 +39,11 @@ public class OrderStatusController {
 	OrderStatusService Service;
 	
 	@Autowired
-	private CodeService codeService;
+	CodeService codeService;
 	
 	/**관리자조회 */
 	@RequestMapping(value="orderStauts/get_admin_retrieve.do",method = RequestMethod.GET)
-	public String get_previous(HttpServletRequest req, Search search, Model model) {
+	public String get_retrieve(HttpServletRequest req, OrderSearch search, Model model) {
 		//param
 		if(search.getPageSize()==0) {
 			search.setPageSize(10);
@@ -52,15 +54,40 @@ public class OrderStatusController {
 		
 		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
-		model.addAttribute("vo",search);
+		
 		
 		LOG.debug("=========================");
 		LOG.debug("====SEARCH====="+search);
 		LOG.debug("=========================");
+		model.addAttribute("vo",search);
+		
+		//Code:PAGE_SIZE
+		Code code=new Code();
+		code.setCodeId("PAGE_SIZE");
+		//Code정보조회
+		List<Code> codeList = (List<Code>) codeService.get_retrieve(code);
+		model.addAttribute("codeList", codeList);
+		
+		code.setCodeId("ORDER_STATUS");
+		//Code정보조회
+		List<Code> codeSearchList = (List<Code>) codeService.get_retrieve(code);
+		model.addAttribute("codeSearchList", codeSearchList);
+		
+		code.setCodeId("ORDER_STATUS");
+		
 		
 		//목록조회 
-				List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);
-				model.addAttribute("list",list);
+		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);
+		model.addAttribute("list",list);
+		
+		
+		//총건수
+		int totalCnt = 0;
+		if(null !=list && list.size()>0) {
+		totalCnt = list.get(0).getTotalCnt();
+		}
+		model.addAttribute("totalCnt", totalCnt);
+		
 		
 		return VIEW_ADM_ORDER;
 	}
@@ -68,6 +95,9 @@ public class OrderStatusController {
 	/**전체조회*/
 	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
 	public String get_retrieve(HttpServletRequest req, Search search, Model model) {
+		LOG.debug("1=========================");
+		LOG.debug("1=param="+search);
+		LOG.debug("1=========================");
 		//param
 		if(search.getPageSize()==0) {
 			search.setPageSize(10);
@@ -78,11 +108,12 @@ public class OrderStatusController {
 		
 		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
-		model.addAttribute("vo",search);
-		
 		LOG.debug("=========================");
 		LOG.debug("====SEARCH====="+search);
 		LOG.debug("=========================");
+		model.addAttribute("vo",search);
+		
+		
 		
 		//목록조회 
 		List<OrderStatus> list = (List<OrderStatus>) this.Service.get_retrieve(search);

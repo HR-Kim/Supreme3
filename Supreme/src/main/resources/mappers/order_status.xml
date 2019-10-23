@@ -33,6 +33,17 @@
 				<otherwise></otherwise>							
 			</choose>
 	</sql>
+	
+	<sql id="orderStatusCondition">
+			<choose>
+				<when test="'' == orderStatus">
+				</when>
+				<otherwise>
+				and OD_STATUS = #{orderStatus}
+				</otherwise>							
+			</choose>
+	</sql>
+	
 		<!-- 현재진행중인 주문 조회  -->
    <select id="get_current_retrieve" parameterType="Search" resultType="OrderStatus">
           SELECT 
