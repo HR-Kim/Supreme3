@@ -23,6 +23,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -31,12 +32,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.product.service.Product;
+import kr.co.supreme.product.service.ProductSearch;
 import kr.co.supreme.product.service.impl.ProductDaoImpl;
+import kr.co.supreme.user.service.User;
 
 
 
@@ -198,6 +202,58 @@ public class ProductWebTest {
 				LOG.debug("=result="+result);
 				LOG.debug("===============================");		
 	}
+	
+	
+	
+	public List<Product> get_admin_retrieve(ProductSearch inVO) throws Exception{
+		MockHttpServletRequestBuilder createMessage = 
+				MockMvcRequestBuilders.get("/product/get_admin_retrieve.do")
+				.param("searchDiv", inVO.getSearchDiv())
+				.param("searchWord", inVO.getSearchWord())
+				.param("pageSize", String.valueOf(inVO.getPageSize()))
+				.param("pageNum", String.valueOf(inVO.getPageNum()))
+				.param("hCodeCat", String.valueOf(inVO.gethCodeCat()))
+				.param("lCodeCat", String.valueOf(inVO.getlCodeCat()))
+				.param("status", String.valueOf(inVO.getpStatus()));
+		
+		//url call 결과 return
+				MvcResult result = mockMvc.perform(createMessage)
+						                     .andExpect(status().isOk())
+						                     .andReturn()
+						                     ;		
+				ModelAndView   modelAndView= result.getModelAndView();
+				List<Product> list =  (List<Product>) modelAndView.getModel().get("list");
+				
+				LOG.debug("=====================================");
+				LOG.debug("=list="+list);
+				LOG.debug("=====================================");		
+				
+				return list;
+	}
+	
+	
+	
+	
+	
+	//목록 조회
+	@Test
+	public void do_retrieve() throws Exception{
+		ProductSearch search = new ProductSearch();
+		search.setSearchDiv("10");
+		search.setSearchWord("test");
+		search.setPageSize(10);
+		search.setPageNum(1);
+		search.sethCodeCat("01");
+		search.setpStatus("10");
+		
+		
+		List<Product> list = this.get_admin_retrieve(search);
+		for(Product vo: list) {
+			LOG.debug(vo.toString());
+		}
+		
+	}
+	
 	
 	@After
 	public void tearDown() {

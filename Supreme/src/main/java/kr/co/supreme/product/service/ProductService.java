@@ -27,4 +27,8 @@ public interface ProductService {
 
 	/** 목록조회 */
 	public List<?> get_retrieve(DTO dto);
+	
+	/** 목록조회 */
+	public List<?> get_admin_retrieve(DTO dto);
+	
 }

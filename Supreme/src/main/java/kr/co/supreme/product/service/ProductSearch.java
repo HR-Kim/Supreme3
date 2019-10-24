@@ -16,12 +16,12 @@ public class ProductSearch extends DTO {
 	/** 소분류 카테고리*/
 	private String lCodeCat;
 	/** 상태*/
-	private String status;
+	private String pStatus;
 	
 	public ProductSearch() {}
-	
+
 	public ProductSearch(int pageSize, int pageNum, String searchDiv, String searchWord, String hCodeCat,
-			String lCodeCat, String status) {
+			String lCodeCat, String pStatus) {
 		super();
 		this.pageSize = pageSize;
 		this.pageNum = pageNum;
@@ -29,7 +29,7 @@ public class ProductSearch extends DTO {
 		this.searchWord = searchWord;
 		this.hCodeCat = hCodeCat;
 		this.lCodeCat = lCodeCat;
-		this.status = status;
+		this.pStatus = pStatus;
 	}
 
 	public int getPageSize() {
@@ -80,19 +80,19 @@ public class ProductSearch extends DTO {
 		this.lCodeCat = lCodeCat;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getpStatus() {
+		return pStatus;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setpStatus(String pStatus) {
+		this.pStatus = pStatus;
 	}
 
 	@Override
 	public String toString() {
 		return "ProductSearch [pageSize=" + pageSize + ", pageNum=" + pageNum + ", searchDiv=" + searchDiv
-				+ ", searchWord=" + searchWord + ", hCodeCat=" + hCodeCat + ", lCodeCat=" + lCodeCat + ", status="
-				+ status + ", toString()=" + super.toString() + "]";
+				+ ", searchWord=" + searchWord + ", hCodeCat=" + hCodeCat + ", lCodeCat=" + lCodeCat + ", pStatus="
+				+ pStatus + ", toString()=" + super.toString() + "]";
 	}
 	
 	

@@ -14,7 +14,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>product insert</title>
+<title>상품 등록</title>
 </head>
 <body>
 	<!-- Header -->

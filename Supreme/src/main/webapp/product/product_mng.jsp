@@ -22,7 +22,7 @@
 	
 	String lCodeCat = ""; 
 	
-	String proStatus = "";
+	String pStatus = "";
 	
 	ProductSearch vo = (ProductSearch)request.getAttribute("vo");
 	
@@ -36,7 +36,7 @@
 		searchWord = StringUtil.nvl(vo.getSearchWord(),"");
 		hCodeCat = StringUtil.nvl(vo.gethCodeCat(),"");
 		lCodeCat = StringUtil.nvl(vo.getlCodeCat(),"");
-		proStatus = StringUtil.nvl(vo.getStatus(),"");
+		pStatus = StringUtil.nvl(vo.getpStatus(),"");
 		
 	}else{
 		pageSize = "10";
@@ -45,7 +45,7 @@
 		searchWord = "";
 		hCodeCat="";
 		lCodeCat="";
-		proStatus="";
+		pStatus="";
 	}
 	
 	
@@ -65,7 +65,7 @@
 	//lCode
 	List<Code> codeLCodeList = (request.getAttribute("codeLCodeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeLCodeList");
 	
-	//lCode
+	//statusCode
 	List<Code> codeStatusList = (request.getAttribute("codeStatusList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeStatusList");
 		
 	
@@ -120,12 +120,12 @@
 			<div class="col-md-12 text-right">
 				<form class="form-inline" name="frm" id="frm" method="get">
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
-					<input type="hidden" name="id" id="id" />
+					<input type="hidden" name="p_code" id="p_code" />
 					<div class="form-group">
 					    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
 					    <%=StringUtil.makeSelectBox(codeHCodeList, "hCodeCat", hCodeCat, true) %>
 					    <%=StringUtil.makeSelectBox(codeLCodeList, "lCodeCat", lCodeCat, true) %>
-					    <%=StringUtil.makeSelectBox(codeStatusList, "proStatus", proStatus, true) %>
+					    <%=StringUtil.makeSelectBox(codeStatusList, "pStatus", pStatus, true) %>
 					    <%=StringUtil.makeSelectBox(codeSearchList, "searchDiv", searchDiv, true) %>
 						<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -144,28 +144,35 @@
 				<thead class="bg-primary">
 					<th class="text-center col-md-1 col-xs-1">번호</th>
 					<th class="text-center col-md-2 col-xs-2">상품코드</th>
-					<th class="text-center col-md-1 col-xs-1">상품이름</th>
+					<th class="hidden">대분류코드</th>
+					<th class="hidden">소분류코드</th>
+					<th class="text-center col-md-2 col-xs-2">상품이름</th>
 					<th class="text-center col-md-1 col-xs-1">상품가격</th>
 					<th class="text-center col-md-1 col-xs-1">재고</th>
-					<th class="text-center col-md-2 col-xs-2">신상품</th>
-					<th class="text-center col-md-2 col-xs-2"></th>
-					<th class="text-center col-md-1 col-xs-1">가입일</th>
+					<th class="text-center col-md-1 col-xs-1">상태</th>
+					<th class="text-center col-md-1 col-xs-1">신상품</th>
+					<th class="text-center col-md-1 col-xs-1">베스트</th>
+					<th class="text-center col-md-1 col-xs-1">세일</th>
+					<th class="text-center col-md-1 col-xs-1">등록일</th>
 				</thead>
 				
 				<tbody>
 					<c:choose>
 						<c:when test="${list.size()>0 }">
-							<c:forEach  var="user"  items="${list}">
+							<c:forEach  var="product"  items="${list}">
 								<tr>
-									<td class="text-center"><input type="checkbox" name="check"></td>
-									<td class="text-center"><c:out value="${user.num}"/></td>
-									<td class="text-center"><c:out value="${user.id}"/></td>
-									<td class="text-center"><c:out value="${user.name}"/></td>
-									<td class="text-center"><c:out value="${user.lvl}"/></td>
-									<td class="text-center"><c:out value="${user.nickname}"/></td>
-									<td class="text-center"><c:out value="${user.email}"/></td>
-									<td class="text-center"><c:out value="${user.tel}"/></td>
-									<td class="text-center"><c:out value="${user.regDt}"/></td>
+									<td class="text-center"><c:out value="${product.num}"/></td>
+									<td class="text-center"><c:out value="${product.p_code}"/></td>
+									<td class="hidden"><c:out value="${product.h_code}"/></td>
+									<td class="hidden"><c:out value="${product.l_code}"/></td>
+									<td class="text-center"><c:out value="${product.p_name}"/></td>
+									<td class="text-center"><c:out value="${product.p_price}"/></td>
+									<td class="text-center"><c:out value="${product.stock}"/></td>
+									<td class="text-center"><c:out value="${product.status}"/></td>
+									<td class="text-center"><c:out value="${product.p_new}"/></td>
+									<td class="text-center"><c:out value="${product.p_best}"/></td>
+									<td class="text-center"><c:out value="${product.p_sale}"/></td>
+									<td class="text-center"><c:out value="${product.reg_dt}"/></td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -185,6 +192,14 @@
 		</div>
 		<!--// pagenation -->
 		
+		<!-- Button Area -->
+		<div class="row">
+			<div class="col-lg-12 col-sm-12 col-xs-12">
+				<div class="text-right">
+					<button type="button" class="btn btn-default btn-sm" id="doSave">제품등록</button>
+				</div>
+			</div>
+		</div>
 		
 	</div>
 	<!--// div container -->
@@ -194,6 +209,7 @@
 	<script src="${context}/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	
+		
 		$("#listTable>tbody").on("click","tr",function(){
 			//alert("listTable>tbody");
 			var trs = $(this);
@@ -201,16 +217,15 @@
 			if(null == tds || tds.length ==1 )return;
 			//console.log("tds.length:"+tds.length);
 			
-			var idFind = tds.eq(2).text();
-			console.log("idFind:"+idFind);
+			var pcodeFind = tds.eq(1).text();
+			console.log("pcodeFind:"+pcodeFind);
 			
 			var frm = document.frm;
-			frm.id.value = idFind;
-			frm.action = "${context}/user/do_selectOne.do";
+			frm.p_code.value = pcodeFind;
+			frm.action = "${context}/product/get_selectOne.do";
 			frm.submit();				
 			  
-		});	
-	
+		});
 	
 	
 		//paging이동
@@ -222,20 +237,12 @@
 			frm.submit();
 		}
 	
-		//check전체 선택 및 해제
-		function checkAll(){
-			console.log("checkAll");
-			if($("#checkAll").is(':checked')==true){
-				$("input[name='check']").prop("checked",true);//check
-			}else{
-				$("input[name='check']").prop("checked",false);//check해제
-			}
-		}
+		
 		
 		function doRetrieve(){
 			var frm = document.frm;
 			frm.pageNum.value= 1;
-			frm.action = "${context}/user/get_retrieve.do";
+			frm.action = "${context}/product/get_admin_retrieve.do";
 			frm.submit();
 		}
 	
@@ -253,6 +260,14 @@
 			doRetrieve();
 		}); 
 	
+		
+		//등록 화면으로 이동
+		$("#doSave").on("click",function(){
+			console.log("doSave");
+			location.href = "${context}/product/product_insert.jsp"
+		}); 
+		
+		
 		$(document).ready(function() {
 			//alert("ready");
 		});

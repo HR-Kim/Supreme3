@@ -64,38 +64,38 @@
 	
 	<sql id="statusCondition">
 			<choose>
-				<when test="'' == proStatus">
+				<when test="'' == pStatus">
 				</when>
-				<when test="null == proStatus">
+				<when test="null == pStatus">
 				</when>
 				<otherwise>
-				and status = #{proStatus}
+				and status = #{pStatus}
 				</otherwise>							
 			</choose>
 	</sql>
 	
 	
-	<select id="get_admin_retrieve" parameterType="Search" resultType="Product">
+	<select id="get_admin_retrieve" parameterType="ProductSearch" resultType="Product">
 		SELECT T1.*,T2.*													
 		FROM 
 		(SELECT 
-            rnum ,
-		    B.p_code ,
-			B.h_code ,
-			B.l_code ,
-			B.p_name ,
-			B.p_company ,
-			B.p_price ,
-			B.p_image ,
-			B.stock , 
-			B.unit_sales ,
-			B.status ,
-			B.p_new ,
-			B.p_best ,
-			B.p_sale ,
-			B.p_content ,
-			B.sale_percent ,
-			TO_CHAR(B.reg_dt, 'yyyy/mm/dd')
+            rnum as num,
+		    B.p_code as p_code,
+			B.h_code as h_code,
+			B.l_code as l_code,
+			B.p_name as p_name,
+			B.p_company as p_company,
+			B.p_price as p_price,
+			B.p_image as p_image,
+			B.stock as stock, 
+			B.unit_sales as unit_sales,
+			B.status as status,
+			B.p_new as p_new,
+			B.p_best as p_best,
+			B.p_sale as p_sale,
+			B.p_content as p_content,
+			B.sale_percent as sale_percent,
+			TO_CHAR(B.reg_dt, 'yyyy/mm/dd') reg_dt
 		    FROM
 		        (SELECT ROWNUM as rnum, A.*
 		        FROM

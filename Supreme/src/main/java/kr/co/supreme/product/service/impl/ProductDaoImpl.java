@@ -12,6 +12,7 @@ import kr.co.supreme.cmn.DTO;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.WorkDiv;
 import kr.co.supreme.product.service.Product;
+import kr.co.supreme.product.service.ProductSearch;
 
 @Repository
 public class ProductDaoImpl implements WorkDiv {
@@ -129,5 +130,20 @@ public class ProductDaoImpl implements WorkDiv {
 		LOG.debug("=========================");
 		return list;		
 	}
+	
+	
+	
+	public List<?> get_admin_retrieve(DTO dto) {
+		String statement = this.NAMESPACE+".get_admin_retrieve";
+		ProductSearch search = (ProductSearch) dto;
+		LOG.debug("=========================");
+		LOG.debug("1. param:"+search);
+		LOG.debug("2. statement:"+statement);
+		List<Product> list = this.sqlSessionTemplate.selectList(statement,search);
+		LOG.debug("3. list:"+list);
+		LOG.debug("=========================");
+		return list;	
+	}
+	
 
 }

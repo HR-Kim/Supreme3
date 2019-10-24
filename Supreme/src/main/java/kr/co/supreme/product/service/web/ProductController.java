@@ -22,6 +22,7 @@ import kr.co.supreme.cmn.StringUtil;
 import kr.co.supreme.code.service.Code;
 import kr.co.supreme.code.service.CodeService;
 import kr.co.supreme.product.service.Product;
+import kr.co.supreme.product.service.ProductSearch;
 import kr.co.supreme.product.service.ProductService;
 
 @Controller
@@ -39,6 +40,8 @@ public class ProductController {
 	CodeService codeService;
 	
 	private final String VIEW_LIST_NM  ="product/product_main";
+	private final String VIEW_ADMIN_MNG_NM  ="product/product_mng";
+	private final String VIEW_ADMIN_UPT_NM  ="product/product_update";
 	private final String VIEW_MNG_NM  ="product/product_detail";
 	
 	
@@ -210,12 +213,28 @@ public class ProductController {
 	   
 	   
 	   
-	   
+	   /**단건조회 */
+	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.POST)
+	   public String get_admin_selectOne(Product product,Model model) {
+	      LOG.debug("============================");
+	      LOG.debug("=product="+product);
+	      LOG.debug("============================");
+		
+	      
+	    
+	      Product outVO= (Product) this.productService.get_selectOne(product);
+	      LOG.debug("============================");
+	      LOG.debug("=outVO="+outVO);
+	      LOG.debug("============================");
+	      model.addAttribute("vo", outVO);
+	      
+	      return VIEW_ADMIN_UPT_NM;
+	   }
 	   
 	   
 	   /**목록조회 */
 	   @RequestMapping(value="product/get_admin_retrieve.do",method = RequestMethod.GET)
-	   public String get_admin_retrieve(HttpServletRequest req,Search search, Model model) {
+	   public String get_admin_retrieve(HttpServletRequest req,ProductSearch search, Model model) {
 		   LOG.debug("1=========================");
 		   LOG.debug("1=param="+search);
 		   LOG.debug("1=========================");
@@ -247,7 +266,7 @@ public class ProductController {
 			code.setCodeId("PRODUCT_SEARCH");
 			//Code정보조회
 			List<Code> codeSearchList = (List<Code>) codeService.get_retrieve(code);
-			model.addAttribute("codeList", codeSearchList);
+			model.addAttribute("codeSearchList", codeSearchList);
 			
 			code.setCodeId("HIGH_CODE");
 			//Code정보조회
@@ -263,11 +282,15 @@ public class ProductController {
 			//Code정보조회
 			List<Code> codeStatusList = (List<Code>) codeService.get_retrieve(code);
 			model.addAttribute("codeStatusList", codeStatusList);
-			
+			LOG.debug("2.5=========================");
+		    LOG.debug("2.5=코드 조회 완료");
+		    LOG.debug("2.5=search="+search);
+		    LOG.debug("2.5=========================");   
 	      
 	      
 	      //목록조회
-	      List<Product> list = (List<Product>) this.productService.get_retrieve(search);
+		      
+	      List<Product> list = (List<Product>) this.productService.get_admin_retrieve(search);
 	      model.addAttribute("list", list);
 	      
 	      //총건수
@@ -276,7 +299,7 @@ public class ProductController {
 	         totalCnt = list.get(0).getTotalCnt();
 	      }
 	      model.addAttribute("totalCnt", totalCnt);
-	      return VIEW_LIST_NM;
+	      return VIEW_ADMIN_MNG_NM;
 	   }
 	   
 	   
