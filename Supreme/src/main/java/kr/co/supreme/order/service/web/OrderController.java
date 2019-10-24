@@ -216,6 +216,8 @@ public class OrderController {
 		LOG.debug("========"+order.getUnit_price());
 		LOG.debug("============================");
 		
+		
+			
 		model.addAttribute("aaa", order);
 		
 		return VIEW2;

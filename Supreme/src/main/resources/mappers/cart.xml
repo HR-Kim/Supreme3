@@ -58,13 +58,15 @@
 		    p_code,
 		    quantity,
 		    unit_price,
-		    id
+		    id,
+		    pName
 			) VALUES (
 		    #{cartCode,jdbcType=NUMERIC},
 		    #{pCode,jdbcType=NUMERIC},
 		    #{quantity,jdbcType=NUMERIC},
 		    #{unitPrice,jdbcType=NUMERIC},
-		    #{id,jdbcType=VARCHAR}
+		    #{id,jdbcType=VARCHAR},
+		    #{pName,jdbcType=VARCHAR}
 		)
 	</insert>
 	

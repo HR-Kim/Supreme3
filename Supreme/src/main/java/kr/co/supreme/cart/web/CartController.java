@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.servlet.LocaleResolver;
 import com.google.gson.Gson;
 
 
@@ -21,6 +21,7 @@ import kr.co.supreme.cart.service.CartService;
 import kr.co.supreme.cmn.Message;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.StringUtil;
+import kr.co.supreme.order.service.Order;
 
 @Controller
 public class CartController {
@@ -30,6 +31,10 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	CartService cartService;
+	
+	
+	@Autowired
+	private LocaleResolver localeResolver;//SessionLocaleResolver
 	
 	//view
 	private final String VIEW_LIST_NM ="cart/cart_list";
@@ -192,6 +197,23 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		return VIEW_LIST_NM;
 	}
 	
-	
+	//상세페이지에서 값받아오기
+		@RequestMapping(value="cart/get.do",method = RequestMethod.GET)
+		public String get(Cart cart,Model model) {
+			cart.setCartCode(1111);
+			LOG.debug("============================");
+			LOG.debug("========"+cart.getpCode());
+			LOG.debug("========"+cart.getQuantity());
+			LOG.debug("========"+cart.getpName());
+			LOG.debug("========"+cart.getUnitPrice());
+			LOG.debug("========"+cart.getId());
+			LOG.debug("========"+cart.getCartCode());
+			LOG.debug("============================");
+			
+			int flag = this.cartService.do_save(cart);
+				
+			return VIEW_LIST_NM;
+			
+		}
 	
 }

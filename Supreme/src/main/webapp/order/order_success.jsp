@@ -27,6 +27,7 @@ String code = (String)request.getAttribute("code");
     <![endif]-->
 </head>
 <body>
+<%@include file ="/template/header.jsp" %>
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
@@ -47,6 +48,16 @@ String code = (String)request.getAttribute("code");
 	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
-	 
+	  <!-- FOOTER -->
+	<%@include file ="/template/footer.jsp" %>
+	<!-- /FOOTER -->
+	
+	<!-- jQuery Plugins -->
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/slick.min.js"></script>
+	<script src="../resources/js/nouislider.min.js"></script>
+	<script src="../resources/js/jquery.zoom.min.js"></script>
+	<script src="../resources/js/main.js"></script>
 </body>
 </html>
