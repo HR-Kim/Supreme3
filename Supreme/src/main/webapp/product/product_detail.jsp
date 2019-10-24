@@ -53,20 +53,20 @@
 					<div class="col-md-6">
 					<div class="product-body">
 							
-							<h2 class="product-name"><c:out value="${vo.p_name}"/></h2>
-							<h3 class="product-price"><c:out value="${vo.p_price}"/> 원</h3>
+							<h2 class="product-name" title="<c:out value='${vo.p_name}'/>"><c:out value="${vo.p_name}"/></h2>
+							<h3 class="product-price" title="<c:out value='${vo.p_price}'/>"><c:out value="${vo.p_price}"/> 원</h3>
 							
 							<p><strong>상태:</strong><c:out value="${vo.status}"/></p>
 							<p><strong>제조회사:</strong><c:out value="${vo.p_company}"/></p>
 							
 						<div class="product-options">
-							<p><strong>상품 재고:</strong><c:out value="${vo.stock}"/> 개 남음</p>	
+							<p><strong title="<c:out value='${vo.stock}'/>">상품 재고:</strong><c:out value="${vo.stock}"/> 개 남음</p>	
 							<p><strong>팔린 상품개수:</strong><c:out value="${vo.unit_sales}"/> 개 팔림</p>	
 						</div>
 
 						<div class="product-btns">
 								
-							<button class="primary-btn add-to-cart">구매하기</button>	
+							<button class="primary-btn add-to-cart buy">구매하기</button>	
 							<button class="primary-btn add-to-cart">장바구니 담기</button>
 							
 						</div>
@@ -108,6 +108,14 @@
 	</div>
 	
 	
+	<form class="form-horizontal" name="detailFrm" id="detailFrm" method="post">
+	   	<input type="hidden" name="p_name" />
+	   	<input type="hidden" name="p_price" />
+	   		<input type="hidden" name="stock" />
+	</form>
+	
+	
+	
 	<!-- /section -->
 	<!-- FOOTER -->
 	<%@include file ="/template/footer.jsp" %>
@@ -124,6 +132,23 @@
 	<script>
 
    
+	
+	 $('.buy').on('click',function() {
+		  
+		   var p_name = $(this).attr("title");
+		   var p_price = $(this).attr("title");
+		   var stock = $(this).attr("title");
+		   
+		   var frm = document.detailFrm;
+		   frm.p_name.value=p_name;
+		   frm.p_price.value=p_price;
+		   frm.stock.value=stock;
+		   frm.action = "${context}/order/get.do";
+	   	   frm.submit();
+		   
+		  
+	 	 });
+	
    	 	
 		
    
