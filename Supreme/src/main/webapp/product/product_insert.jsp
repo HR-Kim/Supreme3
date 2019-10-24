@@ -156,15 +156,15 @@
 				<label for="sale_percent" class="col-sm-2 control-label">할인율</label>
 				<div class="col-sm-2">
 					<select id="sale_percent" class="form-control input-sm">
-						<option value="1">0% 할인</option>
-						<option value="0.9">10% 할인</option>
-						<option value="0.85">15% 할인</option>
-						<option value="0.8">20% 할인</option>
-						<option value="0.75">25% 할인</option>
-						<option value="0.7">30% 할인</option>
-						<option value="0.65">35% 할인</option>
-						<option value="0.6">40% 할인</option>
-						<option value="0.5">50% 할인</option>
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50">50% 할인</option>
 					</select>
 				</div>
 			</div>
@@ -251,12 +251,46 @@
    <script>
    
    	
-	 //등록
-	   $("#doSave").on("click",function(){
-	   	console.log("doSave");
-	   	checkValue();
-	   		    	
-	   });
+	 	//이미지 미리보기 소스
+		$(document).ready(function() {
+			
+			$("#file01").on("change",handleImgFileSelect);
+			
+			
+		});
+   
+	 	
+		//이미지 함수
+		function handleImgFileSelect(e){
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+			
+			filesArr.forEach(function(f){
+				if(!f.type.match("image.*")){
+					alert("이미지 파일만 업로드할 수 있습니다.");
+					return false;
+				}
+				
+				sel_file = f;
+				
+				var reader = new FileReader();
+				reader.onload = function(e){
+					$("#img").attr("src", e.target.result);
+				}
+				
+				reader.readAsDataURL(f);
+				
+			});
+		}
+	
+   
+   
+	 	//등록
+		$("#doSave").on("click",function(){
+		   	console.log("doSave");
+		   	checkValue();
+		   		    	
+		});
 	 
 	   function checkValue(){
 
@@ -272,12 +306,22 @@
 				return false;
 			}
 		   if(!$("#p_price").val()){
-				alert("상품가격을 입력해주세요.");
+				alert("상품 가격을 입력해주세요..");
 				document.getElementById("p_price").focus();
 				return false;
 			}
-		   if(!$("#stock").val()){
+		   if(isNaN($("#p_price").val())){
+				alert("상품 가격에는 숫자만 입력해 주세요.");
+				document.getElementById("p_price").focus();
+				return false;
+			}
+		   if(isNaN$("#stock").val()){
 				alert("재고를 입력해주세요.");
+				document.getElementById("stock").focus();
+				return false;
+			}
+		   if(isNaN($("#stock").val())){
+				alert("재고에는 숫자만 입력해 주세요.");
 				document.getElementById("stock").focus();
 				return false;
 			}
@@ -292,9 +336,23 @@
 		   var tmp_code = $("#h_code option:selected").val() + $("#l_code option:selected").val() + d.getTime();
 		   
 		   console.log(tmp_code);
+		   console.log($("#h_code option:selected").val());
+		   console.log($("#l_code option:selected").val());
+		   console.log($("#p_name").val());
+		   console.log($("#p_company").val());
+		   console.log($("#p_price").val());
+		   console.log($("#fileId").val());
+		   console.log($("#stock").val());
+		   console.log("0");
+		   console.log($("#status option:selected").val());
+		   console.log($("#p_new option:selected").val());
+		   console.log($("#p_best option:selected").val());
+		   console.log($("#p_sale option:selected").val());
+		   console.log( $("#p_content").val());
+		   console.log($("#sale_percent option:selected").val());
 		   
 		   
-		   
+		   alert("post");
 		   $.ajax({
 	            type:"POST",
 	            url:"${context}/product/do_save.do",
@@ -318,7 +376,7 @@
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);
-	            	
+	            	alert(data);
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);

@@ -26,20 +26,106 @@
 	<sql id="baseCondition">
 			<choose>
 				<when test="'10' == searchDiv">
-					and p_code LIKE '%' || #{searchWord} || '%'
+					and p_name LIKE '%' || #{searchWord} || '%'
 				</when>
 				<when test="'20' == searchDiv">
-					and h_code LIKE '%' || #{searchWord} || '%'
+					and p_content LIKE '%' || #{searchWord} || '%'
 				</when>
 				<when test="'30' == searchDiv">
-					and l_code LIKE '%' || #{searchWord} || '%'
-				</when>
-				<when test="'40' == searchDiv">
-					and p_name LIKE '%' || #{searchWord} || '%'
+					and p_code LIKE '%' || #{searchWord} || '%'
 				</when>
 				<otherwise></otherwise>							
 			</choose>
 	</sql>
+	
+	<sql id="hCodeCondition">
+			<choose>
+				<when test="'' == hCodeCat">
+				</when>
+				<when test="null == hCodeCat">
+				</when>
+				<otherwise>
+				and h_code = #{hCodeCat}
+				</otherwise>							
+			</choose>
+	</sql>
+	
+	<sql id="lCodeCondition">
+			<choose>
+				<when test="'' == lCodeCat">
+				</when>
+				<when test="null == lCodeCat">
+				</when>
+				<otherwise>
+				and l_code = #{lCodeCat}
+				</otherwise>							
+			</choose>
+	</sql>
+	
+	<sql id="statusCondition">
+			<choose>
+				<when test="'' == proStatus">
+				</when>
+				<when test="null == proStatus">
+				</when>
+				<otherwise>
+				and status = #{proStatus}
+				</otherwise>							
+			</choose>
+	</sql>
+	
+	
+	<select id="get_admin_retrieve" parameterType="Search" resultType="Product">
+		SELECT T1.*,T2.*													
+		FROM 
+		(SELECT 
+            rnum ,
+		    B.p_code ,
+			B.h_code ,
+			B.l_code ,
+			B.p_name ,
+			B.p_company ,
+			B.p_price ,
+			B.p_image ,
+			B.stock , 
+			B.unit_sales ,
+			B.status ,
+			B.p_new ,
+			B.p_best ,
+			B.p_sale ,
+			B.p_content ,
+			B.sale_percent ,
+			TO_CHAR(B.reg_dt, 'yyyy/mm/dd')
+		    FROM
+		        (SELECT ROWNUM as rnum, A.*
+		        FROM
+		            (SELECT *
+		             FROM PRODUCT
+		             WHERE  1=1 
+					  <include refid="baseCondition"/>
+					  <include refid="hCodeCondition"/>
+					  <include refid="lCodeCondition"/>
+					  <include refid="statusCondition"/>
+		             ORDER BY reg_dt DESC
+		            )A
+		            WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
+		        )B    
+		        WHERE b.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)
+		)T1  
+		NATURAL JOIN                                                      
+		(                                                                 
+		  SELECT COUNT(*) totalCnt                                     
+		  FROM PRODUCT
+		  WHERE  1=1 
+		  <include refid="baseCondition"/>
+		  <include refid="hCodeCondition"/>
+		  <include refid="lCodeCondition"/>
+		  <include refid="statusCondition"/>
+		)T2
+	</select>
+	
+	
+	
 	
 	<select id="get_retrieve" parameterType="Product" resultType="Product">
 		SELECT T1.*,T2.*													

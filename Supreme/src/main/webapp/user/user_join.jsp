@@ -378,6 +378,11 @@
 				document.getElementById("email2").focus();
 				return false;
 			}	
+			if(!$("#tel").val()){
+				alert("전화번호를 입력하세요.");
+				document.getElementById("tel").focus();
+				return false;
+			}
 			if(isNaN($("#tel").val())){
 				alert("전화번호에는 숫자만 입력해 주세요.");
 				document.getElementById("tel").focus();

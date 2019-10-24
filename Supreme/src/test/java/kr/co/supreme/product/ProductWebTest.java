@@ -65,10 +65,10 @@ public class ProductWebTest {
 		
 		
 		list = Arrays.asList(
-				new Product(1,"12","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"),
-				new Product(2,"13","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"),
-				new Product(3,"14","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"),
-				new Product(4,"15","13","test11","test11",5000,"test11",3000,50,"test11","test11","test11","test11","test11",1194,"test11"));
+				new Product("1","12","13","test11","test11","5000","test11","3000","50","test11","test11","test11","test11","test11","1194","test11"),
+				new Product("2","13","13","test11","test11","5000","test11","3000","50","test11","test11","test11","test11","test11","1194","test11"),
+				new Product("3","14","13","test11","test11","5000","test11","3000","50","test11","test11","test11","test11","test11","1194","test11"),
+				new Product("4","15","13","test11","test11","5000","test11","3000","50","test11","test11","test11","test11","test11","1194","test11"));
 		
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 		

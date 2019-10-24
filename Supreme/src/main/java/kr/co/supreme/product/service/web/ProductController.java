@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 import kr.co.supreme.cmn.Message;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.cmn.StringUtil;
+import kr.co.supreme.code.service.Code;
+import kr.co.supreme.code.service.CodeService;
 import kr.co.supreme.product.service.Product;
 import kr.co.supreme.product.service.ProductService;
 
@@ -32,6 +34,9 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	CodeService codeService;
 	
 	private final String VIEW_LIST_NM  ="product/product_main";
 	private final String VIEW_MNG_NM  ="product/product_detail";
@@ -112,6 +117,7 @@ public class ProductController {
 	         ,produces = "application/json;charset=UTF-8")
 	   @ResponseBody   
 	   public String do_save(Product product) {
+		  
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");
@@ -201,5 +207,78 @@ public class ProductController {
 	      model.addAttribute("totalCnt", totalCnt);
 	      return VIEW_LIST_NM;
 	   }
+	   
+	   
+	   
+	   
+	   
+	   
+	   /**목록조회 */
+	   @RequestMapping(value="product/get_admin_retrieve.do",method = RequestMethod.GET)
+	   public String get_admin_retrieve(HttpServletRequest req,Search search, Model model) {
+		   LOG.debug("1=========================");
+		   LOG.debug("1=param="+search);
+		   LOG.debug("1=========================");
+		   
+		   //param
+	      if(search.getPageSize()==0) {
+	         search.setPageSize(10);
+	      }
+	      
+	      if(search.getPageNum()==0) {
+	         search.setPageNum(1);
+	      }      
+	      
+	      search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+	      search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+	      model.addAttribute("vo", search);
+	      
+	      LOG.debug("2=========================");
+	      LOG.debug("2=param="+search);
+	      LOG.debug("2=========================");   
+	      	
+	      //Code:PAGE_SIZE
+			Code code=new Code();
+			code.setCodeId("PAGE_SIZE");
+			//Code정보조회
+			List<Code> codeList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeList", codeList);
+			
+			code.setCodeId("PRODUCT_SEARCH");
+			//Code정보조회
+			List<Code> codeSearchList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeList", codeSearchList);
+			
+			code.setCodeId("HIGH_CODE");
+			//Code정보조회
+			List<Code> codeHCodeList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeHCodeList", codeHCodeList);
+			
+			code.setCodeId("LOW_CODE");
+			//Code정보조회
+			List<Code> codeLCodeList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeLCodeList", codeLCodeList);
+			
+			code.setCodeId("PRODUCT_STATUS");
+			//Code정보조회
+			List<Code> codeStatusList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeStatusList", codeStatusList);
+			
+	      
+	      
+	      //목록조회
+	      List<Product> list = (List<Product>) this.productService.get_retrieve(search);
+	      model.addAttribute("list", list);
+	      
+	      //총건수
+	      int totalCnt = 0;
+	      if(null != list && list.size()>0) {
+	         totalCnt = list.get(0).getTotalCnt();
+	      }
+	      model.addAttribute("totalCnt", totalCnt);
+	      return VIEW_LIST_NM;
+	   }
+	   
+	   
 	}
 

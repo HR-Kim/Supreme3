@@ -4,28 +4,28 @@ import kr.co.supreme.cmn.DTO;
 
 public class Product extends DTO{
 
-	private int p_code;
+	private String p_code;
 	private String	h_code;
 	private String	l_code;
 	private String	p_name;
 	private String	p_company;
-	private int	p_price;
+	private String	p_price;
 	private String	p_image;
-	private int	stock;
-	private int	unit_sales;
+	private String	stock;
+	private String	unit_sales;
 	private String	status;
 	private String	p_new;
 	private String	p_best;
 	private String	p_sale;
 	private String	p_content;
-	private int	sale_percent;
+	private String	sale_percent;
 	private String	reg_dt;
 	
 	public Product() {}
 
-	public Product(int p_code, String h_code, String l_code, String p_name, String p_company, int p_price,
-			String p_image, int stock, int unit_sales, String status, String p_new, String p_best, String p_sale,
-			String p_content, int sale_percent, String reg_dt) {
+	public Product(String p_code, String h_code, String l_code, String p_name, String p_company, String p_price,
+			String p_image, String stock, String unit_sales, String status, String p_new, String p_best, String p_sale,
+			String p_content, String sale_percent, String reg_dt) {
 		super();
 		this.p_code = p_code;
 		this.h_code = h_code;
@@ -45,11 +45,11 @@ public class Product extends DTO{
 		this.reg_dt = reg_dt;
 	}
 
-	public int getP_code() {
+	public String getP_code() {
 		return p_code;
 	}
 
-	public void setP_code(int p_code) {
+	public void setP_code(String p_code) {
 		this.p_code = p_code;
 	}
 
@@ -85,11 +85,11 @@ public class Product extends DTO{
 		this.p_company = p_company;
 	}
 
-	public int getP_price() {
+	public String getP_price() {
 		return p_price;
 	}
 
-	public void setP_price(int p_price) {
+	public void setP_price(String p_price) {
 		this.p_price = p_price;
 	}
 
@@ -101,19 +101,19 @@ public class Product extends DTO{
 		this.p_image = p_image;
 	}
 
-	public int getStock() {
+	public String getStock() {
 		return stock;
 	}
 
-	public void setStock(int stock) {
+	public void setStock(String stock) {
 		this.stock = stock;
 	}
 
-	public int getUnit_sales() {
+	public String getUnit_sales() {
 		return unit_sales;
 	}
 
-	public void setUnit_sales(int unit_sales) {
+	public void setUnit_sales(String unit_sales) {
 		this.unit_sales = unit_sales;
 	}
 
@@ -157,11 +157,11 @@ public class Product extends DTO{
 		this.p_content = p_content;
 	}
 
-	public int getSale_percent() {
+	public String getSale_percent() {
 		return sale_percent;
 	}
 
-	public void setSale_percent(int sale_percent) {
+	public void setSale_percent(String sale_percent) {
 		this.sale_percent = sale_percent;
 	}
 
@@ -181,6 +181,8 @@ public class Product extends DTO{
 				+ ", p_sale=" + p_sale + ", p_content=" + p_content + ", sale_percent=" + sale_percent + ", reg_dt="
 				+ reg_dt + ", toString()=" + super.toString() + "]";
 	}
+
+	
 	
 	
 	
