@@ -57,178 +57,130 @@
 %>
 <!DOCTYPE html>
 <html lang="ko">
-<meta charset="UTF-8">
-<title>Product Page</title>
+
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="../resources/css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="../resources/css/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="../resources/css/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="../resources/css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="../resources/css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
 
 </head>
 
+
 <body>
-   <!-- Header -->
+   <!-- HEADER -->
    <%@include file ="/template/header.jsp" %>
    <!--/ Header -->
+
+   <!-- BREADCRUMB -->
+   <div id="breadcrumb">
+      <div class="container">
+         <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Products</li>
+         </ul>
+      </div>
+   </div>
+   <!-- /BREADCRUMB -->
 	
-   <!-- HOME -->
-   <div id="home">
-  
-      <!-- container -->
-      <div class="container">
-         <!-- home wrap -->
-         <div class="home-wrap">
-            <!-- home slick -->
-            
-            <!-- /home slick -->
-         </div>
-         <!-- /home wrap -->
-      </div>
-      <!-- /container -->
-   </div>
-   <!-- /HOME -->
-
    <!-- section -->
    <div class="section">
       <!-- container -->
       <div class="container">
          <!-- row -->
          <div class="row">
-            <!-- banner -->
-            
-            <!-- /banner -->
-
-            <!-- banner -->
-           
-            <!-- /banner -->
-
-            <!-- banner -->
-            
-            <!-- /banner -->
-
-         </div>
-         <!-- /row -->
-      </div>
-      <!-- /container -->
-   </div>
-   <!-- /section -->
-
-   <!-- section -->
-   <div class="section">
-      <!-- container -->
-      <div class="container">
-         <!-- row -->
-         <div class="row">
-            <!-- section-title -->
-            <div class="col-md-12">
-               <div class="section-title">
-                  <h2 class="title"></h2>
-                  <div class="pull-right">
-                     <div class="product-slick-dots-1 custom-dots"></div>
-                  </div>
-               </div>
-            </div>
-            <!-- /section-title -->
-			 <div class="col-md-12">
-               <div class="section-title">
-                  <h2 class="title">YOON</h2>
-                  <div class="pull-right">
-                     <div class="product-slick-dots-2 custom-dots">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- banner -->
-           
-            <!-- /banner -->
-
-            <!-- Product Slick -->
-            <div class="col-md-9 col-sm-6 col-xs-6">
-               <div class="row">
-                  <div id="product-slick-1" class="product-slick">
-                     <!-- Product Single -->	
-
-                    	<c:choose>
-                    		<c:when test="${list.size()>0}">
-                    		
-                    			<c:forEach var="vo" items="${list}">
-			                    
-				                     <div class="product product-single">
-				                        <div class="product-thumb detail" title="<c:out value='${vo.p_code}'/>">
-				                           <img src="../resources/img/test567.jpg" alt="">
-				                        </div>                       	
-				                    
-				                        <div class="product-body">
-				                           <h3 ><c:out value="${vo.p_name}"/></h3>                           
-				                           <h2 class="product-name"><a href="#"><c:out value="${vo.p_price}"/></a></h2>                   
-				                        </div>
-				                     </div>
-                     		   </c:forEach>
-                    	   </c:when>
-                       </c:choose>
-                       <!-- /Product Single -->
-                   	 </div>  
-                    
-                    
-
-                     <!-- Product Single -->
-                   			
-                     <!-- /Product Single -->
-
-                     <!-- Product Single -->
-                 
-                     <!-- /Product Single -->
-
-                     <!-- Product Single -->
-                    
-                     <!-- /Product Single -->
-               
-               </div>
-            </div>
-            <!-- /Product Slick -->
-         </div>
-         <!-- /row -->
-
-         <!-- row -->
-        
-            <!-- section title -->
-            
-            <!-- section title -->
-
-            <!-- Product Single -->
-       
-            <!-- /Product Single -->
-
-            <!-- Product Slick -->
-           
-            <!-- /Product Slick -->
-        
-         <!-- /row -->
-      </div>
-      <!-- /container -->
-   </div>
-   <!-- /section -->
-
-   <!-- section -->
-   <div class="section section-grey">
-      <!-- container -->
-      <div class="container">
-         <!-- row -->
-         <div class="row">
-           
-         </div>
-         <!-- /row -->
-      </div>
-      <!-- /container -->
-   </div>
-   <!-- /section -->
-
-   <!-- section -->
-   <div class="section">
-      <!-- container -->
+         
       
-         <!-- /row -->
-		
-         <!-- row -->
-       
-            <!-- /Product Single -->
+            <!-- ASIDE -->
+        
+            
+            <!-- /ASIDE -->
+
+            <!-- MAIN -->
+            <div id="main" class="col-md-9">
+               <!-- store top filter -->
+              
+               <!-- /store top filter -->
+
+               <!-- STORE -->
+               <div id="store">
+               
+                  <!-- row -->
+                  <div class="row">
+				  
+				  <c:choose>
+               		<c:when test="${list.size()>0}">
+               		
+               			<c:forEach var="vo" items="${list}">
+                     <!-- Product Single -->
+                     
+                     <div class="col-md-4 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                           <div class="product-thumb">
+                              <div class="product-label">
+                                
+                                 <span class="sale"><c:out value="${vo.sale_percent}"/> % 할인 </span>
+                              </div>
+                              <button class="main-btn quick-view detail" title="<c:out value='${vo.p_code}'/>"><i class="fa fa-search-plus"></i>자세히 보기</button>
+                              <img src="${vo.p_image}" alt="">
+                           </div>
+                           <div class="product-body">
+                              <h3 class="product-price"><c:out value="${vo.p_price}"/> 원</h3>
+                              
+                              <h2 class="product-name"><a href="#"><c:out value="${vo.p_name}"/></a></h2>
+                             
+                           </div>
+                           
+                        </div>
+                        
+                        
+                     </div>
+                       		</c:forEach>
+                  			</c:when>
+                 		 </c:choose>  
+                     
+                   
+
+
+                    
+                  </div>
+                  <!-- /row -->
+                  	
+               </div>
+               <!-- /STORE -->
+
+               <!-- store bottom filter -->
+           
+               <!-- /store bottom filter -->
+            </div>
+            <!-- /MAIN -->
          </div>
          <!-- /row -->
       </div>
@@ -237,49 +189,45 @@
    <!-- /section -->
 
 
-<form class="form-horizontal" name="productFrm" id="productFrm" method="post">
-   	<input type="text" name="p_code" />
-</form>
 	
-	
-	
-		
+
+	<form class="form-horizontal" name="productFrm" id="productFrm" method="post">
+	   	<input type="hidden" name="p_code" />
+	</form>
+
+ 
+  
    <!-- jQuery Plugins -->
-<%--    <script src="${context}/resources/js/jquery.min.js"></script>
+   <script src="${context}/resources/js/jquery.min.js"></script>
    <script src="${context}/resources/js/bootstrap.min.js"></script>
    <script src="${context}/resources/js/slick.min.js"></script>
    <script src="${context}/resources/js/nouislider.min.js"></script>
    <script src="${context}/resources/js/jquery.zoom.min.js"></script>
-   <script src="${context}/resources/js/main.js"></script>  --%>
-	
-   <script>
-
-   
-   
-  $('.detail').on('click',function() {
-	  
-	  	var p_codeVal = $(this).attr("title"); 
-	  	
-		var frm = document.productFrm;
-   		frm.p_code.value=p_codeVal;
-   		frm.action = "${context}/product/get_selectOne.do";
-   		frm.submit();
-   		
-  });	//-- function
-
-		
-   
-  $(document).ready(function() {
-				//alert("ready");
-	 	
-    });
-
-  </script>
+   <script src="${context}/resources/js/main.js"></script>
 
    <!-- FOOTER -->
    <%@include file ="/template/footer.jsp" %>
    <!-- /FOOTER -->
-   	
+
+   <script>
+
+	   $('.detail').on('click',function() {
+			  
+		   var p_code = $(this).attr("title");
+		   
+		   var frm = document.productFrm;
+		   frm.p_code.value=p_code;
+		   frm.action = "${context}/product/get_selectOne.do";
+	   	   frm.submit();
+		   
+		  
+	 	 });	//-- function
+   
+   </script>
+   
+    
+   
+   
 </body>
 
 </html>
