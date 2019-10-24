@@ -104,7 +104,7 @@
 </head>
 <body>
 	<!-- Header -->
-	<%@include file ="../template/header.jsp" %>
+	<%@include file ="../admin/admin_header.jsp" %> <br>
 	<!--/ Header -->
 	
 	<div class="container">

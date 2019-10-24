@@ -140,6 +140,7 @@
 						<tr>
 							<th>Product</th>
 							<th class="text-left">Order number</th>
+							<th class="text-left">Product name</th>
 							<th class="text-left">Status</th>
 							<th class="text-center">Price</th>
 							<th class="text-center">Quantity</th>
@@ -158,12 +159,10 @@
 							<td class="thumb"><img value="${cvo.p_image}" alt=""></td>
 							<td class="price text-left"><c:out value="${cvo.detail_code}"/></td>
 							<td class="details">
-								<a href="#"><c:out value="${cvo.p_name}" /></a>
-									<ul>
-										<li><span><c:out value="${cvo.od_status}"/></span></li>
-									</ul>
-							</td>
-							<td class="price text-center"><strong>$<c:out value="${cvo.unit_price}"/></strong><br><del class="font-weak"><small>$<c:out value="${cvo.p_price}"/></small></del></td>
+								<a href="#" name="name" id="name"><c:out value="${cvo.p_name}" /></a>
+							</td>							
+							<td><c:out value="${cvo.od_status}"/></td>
+							<td class="price text-center"><strong><c:out value="${cvo.unit_price}"/></strong><br><del class="font-weak"><small><c:out value="${cvo.p_price}"/></small></del></td>
 							<td class="price text-center"><c:out value="${cvo.quantitiy}"/></td>
 							<td class="total text-center"><strong class="primary-color"><c:out value="${cvo.quantitiy * cvo.unit_price}"/></strong></td>
 							<td class="total text-center">
@@ -214,10 +213,8 @@
 							
 							<td class="details">
 								<a href="#" name="name" id="name"><c:out value="${pvo.p_name}" /></a>
-								<ul id=corderStatus>
-									<li><span><c:out value="${pvo.od_status}"/></span></li>
-								</ul>
 							</td>							
+							<td><c:out value="${pvo.od_status}"/></td>
 							<td class="price text-center" style="display:none;" id="detail_code" name="detail_code"><c:out value="${pvo.detail_code}"/></td>
 							<td class="price text-center" id="unit_price" name="unit_price"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
 							<td class="total text-center" id="quantitiy" name="quantitiy"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
@@ -271,10 +268,13 @@
 		
 		var detail_code = td.eq(1).text();
 		console.log("detail_code "+detail_code);
-		var od_statustd =  td.eq(2).text();
+		var od_status =  td.eq(3);
 		
-		console.log("od_statustd "+od_statustd);
+		console.log("od_status "+od_status);
 		
+		if(od_status='4'){
+			alert("ddd")
+		}
 	 
 	/* 	$.ajax({
 			type : "POST",
