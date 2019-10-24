@@ -45,6 +45,7 @@ for(int i=0;i<3;i++){
     <![endif]-->
 </head>
 <body>
+<%@include file ="/template/header.jsp" %>
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
@@ -98,47 +99,50 @@ for(int i=0;i<3;i++){
 			</div>
 			<br>
 			<br>
-			
-			<h3>배송 0건중 0건</h3>
+
 			<div class="form-group">
-				<label for="product" class="col-sm-2 control-label">상품목록</label>
-				<div class="col-sm-4">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="product">
-				</div>
-			</div>
+				<label for="product" class="col-sm-2 control-label"></label>
+				<div class="col-md-12">
+						<div class="order-summary clearfix">
+							<div class="section-title">
+								<h3 class="title">상품 목록</h3>
+							</div>
+							<table class="shopping-cart-table table">
+								<thead>
+									<tr>
+										<th>Product</th>
+										<th></th>
+										<th class="text-center">Price</th>
+										<th class="text-center">Quantity</th>
+										<th class="text-center">Total</th>
+										
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="details"><a href="#">${aaa.getP_code()}</a></td>
+										<th></th>
+										<td class="price text-center"><strong>${aaa.getUnit_price()}</strong><br></td>
+										<td class="qty text-center"><strong class="primary-color">${aaa.getQuantitiy()}</strong></td>
+										<td class="total text-center"><strong class="primary-color">${aaa.getUnit_price()}</strong></td>
+									</tr>
+									
+								</tbody>
+								
+							</table>
+								<div class="pull-right">
+								<button type="button" class="primary-btn" id="doPayment">결제하기</button>
+								</div>
+						</div>
+
+					</div>
 			<br>
 			<br>
-			<h3>결제정보</h3>
-			<div class="form-group">
-				<label for="paymethod" class="col-sm-2 control-label">결제방법</label>
-				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="paymethod"  name="paymethod">
-				</div>
-			</div>	
-			<div class="form-group">
-				<label for="bank" class="col-sm-2 control-label">은행명</label>
-				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="bank"  name="bank" >
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="depositName" class="col-sm-2 control-label">입금인명</label>
-				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="depositName"  name="depositName">
-				</div>
-			</div>		
+		</div>
 			
 		</form>
 		
-		<!-- Button Area -->
-		<div class="row">
-			<div class="col-lg-10 col-sm-10 col-xs-10">
-				<div class="text-right">
-					<button type="button" class="btn btn-primary btn-lg"  id="doPayment">결제하기</button>
-					
-				</div>
-			</div>
-		</div>
+	
 		
 	</div>
 	<!--// div container -->
@@ -297,10 +301,7 @@ for(int i=0;i<3;i++){
 	            	"rAddress1" : $("#address1").val(),
 	            	"rAddress2" : $("#address2").val(),
 	            	"rTel" : $("#tel").val(),
-	            	"request" : $("#request").val(),
-	            	"payMethod" : $("#paymethod").val(),
-	              	"bank" : $("#bank").val(),
-	              	"depositName" : $("#depositName").val(),
+	            	"request" : $("#request").val(),	
 	              	"p_code" : "123",
 	              	"quantitiy" : "1",
 	              	"unit_price" : "10000",
@@ -335,5 +336,17 @@ for(int i=0;i<3;i++){
 		};
 	</script>	
 	 
+	 <!-- FOOTER -->
+	<%@include file ="/template/footer.jsp" %>
+	<!-- /FOOTER -->
+	
+	<!-- jQuery Plugins -->
+	<script src="../resources/js/jquery.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/slick.min.js"></script>
+	<script src="../resources/js/nouislider.min.js"></script>
+	<script src="../resources/js/jquery.zoom.min.js"></script>
+	<script src="../resources/js/main.js"></script>
+	
 </body>
 </html>

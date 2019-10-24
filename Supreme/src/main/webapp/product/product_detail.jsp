@@ -66,7 +66,7 @@
 
 						<div class="product-btns">
 								
-							<button class="primary-btn add-to-cart buy">구매하기</button>	
+							<button class="primary-btn add-to-cart buy" id="buy">구매하기</button>	
 							<button class="primary-btn add-to-cart">장바구니 담기</button>
 							
 						</div>
@@ -108,10 +108,10 @@
 	</div>
 	
 	
-	<form class="form-horizontal" name="detailFrm" id="detailFrm" method="post">
-	   	<input type="hidden" name="p_name" />
-	   	<input type="hidden" name="p_price" />
-	   		<input type="hidden" name="stock" />
+	<form class="form-horizontal" name="detailFrm" id="detailFrm" method="get">
+	   	<input type="hidden" name="p_code" value='모찌'/>
+	   	<input type="hidden" name="quantitiy" value='1' />
+	   	<input type="hidden" name="unit_price" value='300000'/>
 	</form>
 	
 	
@@ -131,22 +131,24 @@
 	
 	<script>
 
-   
 	
-	 $('.buy').on('click',function() {
+	
+	
+	 $("#buy").on('click',function() {
 		  
-		   var p_name = $(this).attr("title");
+		  /*  var p_name = $(this).attr("title");
 		   var p_price = $(this).attr("title");
-		   var stock = $(this).attr("title");
-		   
-		   var frm = document.detailFrm;
-		   frm.p_name.value=p_name;
-		   frm.p_price.value=p_price;
-		   frm.stock.value=stock;
-		   frm.action = "${context}/order/get.do";
-	   	   frm.submit();
+		   var stock = $(this).attr("title"); */
 		   
 		  
+		   /* frm.p_name.value=p_name;
+		   frm.p_price.value=p_price;
+		   frm.stock.value=stock; */
+		  // frm.action = "${context}/order/get.do";
+	   
+		  var frm = document.detailFrm;
+		  frm.action = "${context}/order/get.do";
+	   	 frm.submit();
 	 	 });
 	
    	 	

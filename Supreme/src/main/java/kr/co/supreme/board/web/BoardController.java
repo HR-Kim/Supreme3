@@ -22,6 +22,8 @@ import com.google.gson.Gson;
 import kr.co.supreme.cmn.DTO;
 import kr.co.supreme.cmn.Message;
 import kr.co.supreme.cmn.StringUtil;
+import kr.co.supreme.code.service.Code;
+import kr.co.supreme.code.service.CodeService;
 import kr.co.supreme.cmn.Search;
 import kr.co.supreme.board.service.Board;
 import kr.co.supreme.board.service.BoardService;
@@ -34,7 +36,8 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
-
+	@Autowired
+	CodeService  codeService;
 
 	
 	
@@ -189,9 +192,23 @@ public class BoardController {
 		LOG.debug("============================");
 		LOG.debug("=search="+search);
 		LOG.debug("============================");		
-		
-		
+		Code code=new Code();
+		code.setCodeId("PAGE_SIZE");
 		//목록조회
+		List<Code> listPageSize=(List<Code>) this.codeService.get_retrieve(code);
+		model.addAttribute("listPageSize", listPageSize);
+		
+		//엑셀타입
+		code.setCodeId("EXCEL_TYPE");
+		List<Code> listExcelType=(List<Code>) this.codeService.get_retrieve(code);		
+		model.addAttribute("listExcelType", listExcelType);
+				
+		
+		//게시판 검색 구분
+		code.setCodeId("BOARD_SEARCH");
+		List<Code> listBoardSearch=(List<Code>) this.codeService.get_retrieve(code);		
+		model.addAttribute("listBoardSearch", listBoardSearch);
+				
 		List<Board> list = (List<Board>) this.boardService.get_retrieve(search);
 		model.addAttribute("list", list);
 		

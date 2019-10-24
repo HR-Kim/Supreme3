@@ -1,3 +1,4 @@
+<%@page import="kr.co.supreme.cmn.Search"%>
 <%@page import="kr.co.supreme.board.service.BoardSearch"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
@@ -21,24 +22,21 @@
 	String boardCode = ""; 
 	
 	
-	BoardSearch vo = (BoardSearch)request.getAttribute("vo");
+	Search vo = (Search)request.getAttribute("vo");
 	
 	
 	
 	
 	if(null !=vo){
-		pageSize = StringUtil.nvl(vo.getPageSize()+"","10");
-		pageNum = StringUtil.nvl(vo.getPageNum()+"","1");
-		searchDiv = StringUtil.nvl(vo.getSearchDiv(),"");
-		searchWord = StringUtil.nvl(vo.getSearchWord(),"");
-		boardCode = StringUtil.nvl(vo.getBoardCode(),"");
-		
+		pageSize   = StringUtil.nvl(vo.getPageSize()+"","10");
+		pageNum    = StringUtil.nvl(vo.getPageNum()+"","1");
+		searchDiv  = StringUtil.nvl(vo.getSearchDiv(),"");
+		searchWord = StringUtil.nvl(vo.getSearchWord(),"");		
 	}else{
-		pageSize = "10";
-		pageNum  = "1";
-		searchDiv = "";
+		pageSize   = "10";
+		pageNum    = "1";
+		searchDiv  = "";
 		searchWord = "";
-		boardCode="";
 	}
 	
 	String extParam = (String)request.getAttribute("ext");
@@ -47,11 +45,23 @@
 	//pageCode	
 	List<Code> codeList = (request.getAttribute("codeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeList");
 			
+	//페이지사이즈
+	List<Code> listPageSize=(request.getAttribute("listPageSize")==null)?
+	(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listPageSize"));
+				
+	//게시판 검색 구분
+	List<Code> listBoardSearch=(request.getAttribute("listBoardSearch")==null)?
+	(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listBoardSearch"));
+				
+	//엑셀타입	
+	List<Code> listExcelType=(request.getAttribute("listExcelType")==null)?
+	(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listExcelType"));	
+				
 	//userSearch	
 	List<Code> codeSearchList = 
 	(request.getAttribute("codeSearchList")==null)?
-			(List<Code>)new ArrayList<Code>():
-				(List<Code>)request.getAttribute("codeSearchList");		
+	(List<Code>)new ArrayList<Code>():
+	(List<Code>)request.getAttribute("codeSearchList");		
 	
 	//pageCode	
 	List<Code> excelList = (request.getAttribute("excelList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("excelList");
@@ -59,10 +69,13 @@
 	//userLvL
 	List<Code> boardCodeList = (request.getAttribute("boardCodeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("boardCodeList");
 	
+	//paging 
+	//maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName
 	int maxNum      = 0;
     int bottomCount = 10;
     int currPageNo  = 1; //pageNum
     int rowPerPage  = 10;//pageSize
+    
     String url      = request.getContextPath()+"/user/get_retrieve.do";
     String scriptName = "search_page";
     
@@ -80,7 +93,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-<title>사용자관리</title>
+
 
 <!-- 부트스트랩 -->
 <link href="${context}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -91,16 +104,17 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
 </head>
 <body>
    <!-- Header -->
-   <%@include file ="/admin/admin_header.jsp" %>
+   <%@include file ="/template/header.jsp" %>
    <!--/ Header -->
 	<!-- div container -->
 	<div class="container">
 		<!-- div title -->
 		<div class="page-header">
-			<h1>사용자 관리</h1>
+			<h1>공지사항</h1>
 			
 		</div>
 		<!--// div title -->
@@ -198,7 +212,7 @@
 			
 			var frm = document.frm;
 			frm.id.value = idFind;
-			frm.action = "${context}/user/do_selectOne.do";
+			frm.action = "${context}/board/do_selectOne.do";
 			frm.submit();				
 			  
 		});	
@@ -227,7 +241,7 @@
 		function doRetrieve(){
 			var frm = document.frm;
 			frm.pageNum.value= 1;
-			frm.action = "${context}/user/get_retrieve.do";
+			frm.action = "${context}/board/get_retrieve.do";
 			frm.submit();
 		}
 	
