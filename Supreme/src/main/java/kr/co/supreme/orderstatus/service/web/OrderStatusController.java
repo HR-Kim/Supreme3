@@ -94,7 +94,7 @@ public class OrderStatusController {
 
 	/**전체조회*/
 	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
-	public String get_retrieve(HttpServletRequest req, Search search, Model model) {
+	public String get_retrieve2(HttpServletRequest req, OrderSearch search, Model model) {
 		LOG.debug("1=========================");
 		LOG.debug("1=param="+search);
 		LOG.debug("1=========================");

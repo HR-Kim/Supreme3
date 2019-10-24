@@ -158,7 +158,8 @@
 							<td class="price text-center"><c:out value="${vo.reg_dt}"/></td>
 							<td class="price text-center"><c:out value="${vo.od_status}"/></td>
 							<td class="total text-center">
-							<select name="changeOrderStatus" >
+							
+							<select name="changeOrderStatus" class="changeOrderStatus"id="furuit${i.count}" >
 							<option value="0">주문완료</option>
 							<option value="1">결제대기</option>
 							<option value="2">배송준비</option>
@@ -167,10 +168,9 @@
 							<option value="6">환불완료</option>
 							<option value="9">취소</option>
 							</select>
+							</span>
 							</td>
-							<td class="total text-center">
-							<button class="icon-btn.main-btn changeBtn"  >변경</button>
-							</td>
+							
 						</tr>
 							</c:forEach>
 						</c:when>
@@ -198,44 +198,23 @@
 	
 	
 	<script type="text/javascript">
-	
-	$(".changeBtn").on("click", function(){
-		//alert("changeBtn");
+
+
+
+	$(".changeOrderStatus").on("change", function(){
+		//alert("dd")
+		var getval = $(this).val();
+		//alert("getval"+getva)
 		var tr = $(this).parent().parent();
 		var td =tr.children();
-		var select = td.eq(4).html();
-		console.log("select: "+select);
-		
-
-	});
-	
-	
-	$(document).on('click', '#changeBtn', function(){
-		
-		
-		var str =""
-		var cancle = $(this);
-		var selectedVal = $("#changeOrderStatus option:selected").val();
-		//cancle.parent() : check의 부모는 <td>
-		//cancle. parent().parent() : <td>의 부모이므로 <tr>
-		
-		var tr = cancle.parent().parent();
-		var td =tr.children();
-		
-		console.log("클릭한 row의 모든 데이터 "+tr.text());
-		console.log("selectedVal "+selectedVal);
-		
 		var detail_code = td.eq(0).text();
-		console.log("detail_code "+detail_code);
-		
-	 
 		$.ajax({
 			type : "POST",
 			url : "${context}/orderStauts/do_update.do",
 			dataType : "html",
 			data : {
 				
-				"od_status" : selectedVal,
+				"od_status" : getval,
 				"detail_code": detail_code
 			},
 			success : function(data){
@@ -248,7 +227,8 @@
 
 			}
 		  });
-	});	
+	});
+	
 	function doRetrieve(){
 		var frm = document.boardFrm;
 		frm.pageNum.value= 1;

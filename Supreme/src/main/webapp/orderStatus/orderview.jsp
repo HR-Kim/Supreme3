@@ -7,6 +7,8 @@
 <%@page import = "kr.co.supreme.cmn.Search" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value ="${pageContext.request.contextPath }"/>
 <%
@@ -23,20 +25,21 @@
 
 		String orderStatus = ""; 
 		
-		Search vo = (Search)request.getAttribute("vo");
+		OrderSearch vo = (OrderSearch)request.getAttribute("vo");
 		
 		if(null !=vo){
 			pageSize = StringUtil.nvl(vo.getPageSize()+"","10");
 			pageNum = StringUtil.nvl(vo.getPageNum()+"","1");
 			searchDiv = StringUtil.nvl(vo.getSearchDiv(),"");
 			searchWord = StringUtil.nvl(vo.getSearchWord(),"");
-		
+			orderStatus = StringUtil.nvl(vo.getOrderStatus(),"");
 			
 		}else{
 			pageSize = "10";
 			pageNum  = "1";
 			searchDiv = "";
 			searchWord = "";
+			orderStatus="";
 		}
 		
 		String extParam = (String)request.getAttribute("ext");
@@ -112,9 +115,7 @@
 					<input type="hidden" name="boardId" id="boardId" />
 					<div class="form-group">
 					    <!-- 페이지 사이즈 -->
-						<%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
-					    <%=StringUtil.makeSelectBox(codeSearchList, "orderStatus", orderStatus, true) %>
-
+				
 					<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn btn-default btn-sm"
@@ -270,11 +271,12 @@
 		
 		var detail_code = td.eq(1).text();
 		console.log("detail_code "+detail_code);
-		var od_status = $('#od_status').val();
-		console.log("od_status "+od_status);
+		var od_statustd =  td.eq(2).text();
+		
+		console.log("od_statustd "+od_statustd);
 		
 	 
-		$.ajax({
+	/* 	$.ajax({
 			type : "POST",
 			url : "${context}/orderStauts/do_update.do",
 			dataType : "html",
@@ -292,7 +294,7 @@
 				location.reload();
 
 			}
-		  });
+		  }); */
 	});	
 	
 	/**주문 취소상태의 경우 버튼 나오지 않게*/
@@ -346,7 +348,18 @@
 	    
 	    
 	   }
-  
+	 function doRetrieve(){
+			var frm = document.boardFrm;
+			frm.pageNum.value= 1;
+			frm.action = "${context}/orderStauts/get_retrieve.do";
+			frm.submit();
+		}
+	//조회
+		$("#doRetrieve").on("click",function(){
+			console.log("doRetrieve");
+			doRetrieve();
+		}); 
+
 	
 	</script>
 	<!-- FOOTER -->
