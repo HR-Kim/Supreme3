@@ -191,9 +191,10 @@
 						<tr>
 							<th>Product</th>
 							<th class="text-left">Product name</th>
+							<th class="text-left">Status</th>
 							<th class="text-center">Price</th>
 							<th class="text-center">Total</th>
-							<th class="text-center">Status</th>
+							
 						</tr>
 					</thead>
 					
@@ -214,7 +215,7 @@
 							<td class="details">
 								<a href="#" name="name" id="name"><c:out value="${pvo.p_name}" /></a>
 							</td>							
-							<td><c:out value="${pvo.od_status}"/></td>
+							<td class ="pod_status" id="pod_status"><c:out value="${pvo.od_status}"/></td>
 							<td class="price text-center" style="display:none;" id="detail_code" name="detail_code"><c:out value="${pvo.detail_code}"/></td>
 							<td class="price text-center" id="unit_price" name="unit_price"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
 							<td class="total text-center" id="quantitiy" name="quantitiy"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
@@ -255,6 +256,7 @@
 	/**주문 취소 */
 
 	$(document).on('click', '#cancle', function(){	
+		
 		var str =""
 		var cancle = $(this);
 		
@@ -268,15 +270,16 @@
 		
 		var detail_code = td.eq(1).text();
 		console.log("detail_code "+detail_code);
-		var od_status =  td.eq(3);
+		
+		var od_statust =  td.eq(3).text();
 		
 		console.log("od_status "+od_status);
 		
-		if(od_status='4'){
-			alert("ddd")
-		}
+		if(od_statust=="배송중"){
+			alert("배송중인 상품은 취소할 수 없습니다.")
+		}else{
 	 
-	/* 	$.ajax({
+		$.ajax({
 			type : "POST",
 			url : "${context}/orderStauts/do_update.do",
 			dataType : "html",
@@ -294,14 +297,22 @@
 				location.reload();
 
 			}
-		  }); */
+			
+		  }); 
+		}
 	});	
 	
 	/**주문 취소상태의 경우 버튼 나오지 않게*/
-
-	
-	
-	
+	$(document).ready(function(){	
+	var cancel_s = $("#pod_status").html();
+	console.log("cancel_s: "+cancel_s)
+		
+	if(cancel_s=="취소"){
+		$("#refund").css("display", "none");
+		$("#change").css("display", "none");
+	}
+	});
+		
 	
 	/**교환 버튼*/
 	function setChildValue2(detail_code){
