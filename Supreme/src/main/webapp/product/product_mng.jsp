@@ -65,7 +65,7 @@
 	//lCode
 	List<Code> codeLCodeList = (request.getAttribute("codeLCodeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeLCodeList");
 	
-	//statusCode
+	//lCode
 	List<Code> codeStatusList = (request.getAttribute("codeStatusList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeStatusList");
 		
 	
@@ -143,16 +143,16 @@
 			<table class="table  table-striped table-bordered table-hover" id="listTable">
 				<thead class="bg-primary">
 					<th class="text-center col-md-1 col-xs-1">번호</th>
-					<th class="text-center col-md-2 col-xs-2">상품코드</th>
+					<th class="text-center col-md-2 col-xs-3">상품코드</th>
 					<th class="hidden">대분류코드</th>
 					<th class="hidden">소분류코드</th>
-					<th class="text-center col-md-2 col-xs-2">상품이름</th>
-					<th class="text-center col-md-1 col-xs-1">상품가격</th>
+					<th class="text-center col-md-2 col-xs-3">상품이름</th>
+					<th class="text-center col-md-1 col-xs-2">상품가격</th>
 					<th class="text-center col-md-1 col-xs-1">재고</th>
 					<th class="text-center col-md-1 col-xs-1">상태</th>
-					<th class="text-center col-md-1 col-xs-1">신상품</th>
-					<th class="text-center col-md-1 col-xs-1">베스트</th>
-					<th class="text-center col-md-1 col-xs-1">세일</th>
+					<th class="hidden">신상품</th>
+					<th class="hidden">베스트</th>
+					<th class="hidden">세일</th>
 					<th class="text-center col-md-1 col-xs-1">등록일</th>
 				</thead>
 				
@@ -169,9 +169,9 @@
 									<td class="text-center"><c:out value="${product.p_price}"/></td>
 									<td class="text-center"><c:out value="${product.stock}"/></td>
 									<td class="text-center"><c:out value="${product.status}"/></td>
-									<td class="text-center"><c:out value="${product.p_new}"/></td>
-									<td class="text-center"><c:out value="${product.p_best}"/></td>
-									<td class="text-center"><c:out value="${product.p_sale}"/></td>
+									<td class="hidden"><c:out value="${product.p_new}"/></td>
+									<td class="hidden"><c:out value="${product.p_best}"/></td>
+									<td class="hidden"><c:out value="${product.p_sale}"/></td>
 									<td class="text-center"><c:out value="${product.reg_dt}"/></td>
 								</tr>
 							</c:forEach>
@@ -209,8 +209,7 @@
 	<script src="${context}/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	
-		
-		$("#listTable>tbody").on("click","tr",function(){
+		$("#listTable>tbody").on("dblclick","tr",function(){
 			//alert("listTable>tbody");
 			var trs = $(this);
 			var tds = trs.children();
@@ -222,10 +221,11 @@
 			
 			var frm = document.frm;
 			frm.p_code.value = pcodeFind;
-			frm.action = "${context}/product/get_selectOne.do";
+			frm.action = "${context}/product/get_admin_selectOne.do";
 			frm.submit();				
 			  
 		});
+	
 	
 	
 		//paging이동
@@ -262,6 +262,7 @@
 	
 		
 		//등록 화면으로 이동
+		//조회
 		$("#doSave").on("click",function(){
 			console.log("doSave");
 			location.href = "${context}/product/product_insert.jsp"

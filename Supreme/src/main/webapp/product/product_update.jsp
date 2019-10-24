@@ -10,17 +10,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	
-	Product vo = (Product) request.getAttribute("vo"); 
+	Product pro = (Product) request.getAttribute("vo"); 
+out.print(pro);
 
-
-	//hCode
-	List<Code> codeHCodeList = (request.getAttribute("codeHCodeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeHCodeList");
 	
-	//lCode
-	List<Code> codeLCodeList = (request.getAttribute("codeLCodeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeLCodeList");
-	
-	//statusCode
-	List<Code> codeStatusList = (request.getAttribute("codeStatusList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeStatusList");
 
 %>
 <c:set var="context" value ="${pageContext.request.contextPath }"/>
@@ -42,6 +35,7 @@
 	<!-- div title -->
 		<div class="page-header">
 			<h1>상품 수정</h1>
+			<h6><% pro.toString();%></h6>
 		</div>
 		<!--// div title -->
 	
@@ -58,38 +52,256 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">대분류 번호</label>
 				<div class="col-sm-2">
+					<%if(pro.getH_code().equals("10")){ %>
 					<select id='h_code' name="h_code" class="form-control input-sm">
-						<option value="10">먹거리</option>
+						<option value="10" selected="selected">먹거리</option>
 						<option value="20">생활용품</option>
 						<option value="30">위생용품</option>
 						<option value="40">외출용품</option>
 					</select>
-					<%=StringUtil.makeSelectBox(codeHCodeList, "h_code", vo.getH_code(), false) %>
+					<%}else if(pro.getH_code().equals("20")){ %>
+					<select id='h_code' name="h_code" class="form-control input-sm">
+						<option value="10" >먹거리</option>
+						<option value="20" selected="selected">생활용품</option>
+						<option value="30">위생용품</option>
+						<option value="40">외출용품</option>
+					</select>
+					<%}else if(pro.getH_code().equals("30")){ %>
+					<select id='h_code' name="h_code" class="form-control input-sm">
+						<option value="10" >먹거리</option>
+						<option value="20">생활용품</option>
+						<option value="30"  selected="selected">위생용품</option>
+						<option value="40">외출용품</option>
+					<%}else if(pro.getH_code().equals("40")){ %>
+					<select id='h_code' name="h_code" class="form-control input-sm">
+						<option value="10" >먹거리</option>
+						<option value="20" >생활용품</option>
+						<option value="30" >위생용품</option>
+						<option value="40" selected="selected">외출용품</option>
+					</select>
+					<%}else{ %>
+					<select id='h_code' name="h_code" class="form-control input-sm">
+						
+					</select>
+					<%} %>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-sm-2 control-label">소분류 번호</label>
 				<div class="col-sm-2">
+					<%if(pro.getL_code().equals("11")){ %>
 					<select id='l_code' name="l_code" class="form-control input-sm">
-						<option value="11">사료</option>
+						<option value="11" selected="selected">사료</option>
 						<option value="12">간식</option>
-						
 						<option value="21">하우스</option>
 						<option value="22">캣타워</option>
 						<option value="23">낚싯대</option>
 						<option value="24">레이저</option>
 						<option value="25">스크레쳐</option>
-						
 						<option value="31">목욕 용품</option>
 						<option value="32">화장실 용품</option>
 						<option value="33">미용 용품</option>
-						
 						<option value="41">이동장</option>
 						<option value="42">가슴줄</option>
 						<option value="43">의류</option>
-						
 					</select>
+					<%}else if(pro.getL_code().equals("12")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12" selected="selected">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("21")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21" selected="selected">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("22")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22" selected="selected">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("23")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23" selected="selected">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("24")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24" selected="selected">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("25")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25" selected="selected">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("31")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31" selected="selected">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("32")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32" selected="selected">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("33")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33" selected="selected">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("41")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41" selected="selected">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("42")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42" selected="selected">가슴줄</option>
+						<option value="43">의류</option>
+					</select>
+					<%}else if(pro.getL_code().equals("43")){  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+						<option value="11">사료</option>
+						<option value="12">간식</option>
+						<option value="21">하우스</option>
+						<option value="22">캣타워</option>
+						<option value="23">낚싯대</option>
+						<option value="24">레이저</option>
+						<option value="25">스크레쳐</option>
+						<option value="31">목욕 용품</option>
+						<option value="32">화장실 용품</option>
+						<option value="33">미용 용품</option>
+						<option value="41">이동장</option>
+						<option value="42">가슴줄</option>
+						<option value="43" selected="selected">의류</option>
+					</select>
+					<%}else{  %>
+					<select id='l_code' name="l_code" class="form-control input-sm">
+					</select>
+					<%} %>
 				</div>
 			</div>
 			
@@ -128,41 +340,88 @@
 			<div class="form-group">
 				<label for="status" class="col-sm-2 control-label">상태</label>
 				<div class="col-sm-2">
-						<select id="status" class="form-control input-sm">
-						<option value="10">판매중</option>
+					<%if(pro.getStatus().equals("10")){ %>
+					<select id="status" class="form-control input-sm">
+						<option value="10" selected="selected">판매중</option>
 						<option value="20">재입고 예정</option>
 						<option value="30">매진</option>
 					</select>
+					<%}else if(pro.getStatus().equals("20")){ %>
+					<select id="status" class="form-control input-sm">
+						<option value="10">판매중</option>
+						<option value="20" selected="selected">재입고 예정</option>
+						<option value="30">매진</option>
+					</select>
+					<%}else if(pro.getStatus().equals("30")){ %>
+					<select id="status" class="form-control input-sm">
+						<option value="10">판매중</option>
+						<option value="20">재입고 예정</option>
+						<option value="30" selected="selected">매진</option>
+					</select>
+					<%}else{ %>
+					<select id="status" class="form-control input-sm">
+					</select>
+					<%} %>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="p_new" class="col-sm-2 control-label">신상품</label>
 				<div class="col-sm-2">
+					<%if(pro.getP_new().equals("N")){ %>
 					<select id="p_new" class="form-control input-sm">
-						<option value="N">해제</option>
+						<option value="N" selected="selected">해제</option>
 						<option value="Y">설정</option>
 					</select>
+					<%}else if(pro.getP_new().equals("Y")){ %>
+					<select id="p_new" class="form-control input-sm">
+						<option value="N">해제</option>
+						<option value="Y" selected="selected">설정</option>
+					</select>
+					<%}else{ %>
+					<select id="p_new" class="form-control input-sm">
+					</select>
+					<%} %>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="p_best" class="col-sm-2 control-label">베스트 상품</label>
 				<div class="col-sm-2">
+					<%if(pro.getP_best().equals("N")){ %>
 					<select id="p_best" class="form-control input-sm">
-						<option value="N">해제</option>
+						<option value="N" selected="selected">해제</option>
 						<option value="Y">설정</option>
 					</select>
+					<%}else if(pro.getP_best().equals("Y")){ %>
+					<select id="p_best" class="form-control input-sm">
+						<option value="N">해제</option>
+						<option value="Y" selected="selected">설정</option>
+					</select>
+					<%}else{ %>
+					<select id="p_best" class="form-control input-sm">
+					</select>
+					<%} %>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="p_sale" class="col-sm-2 control-label">할인 상품</label>
 				<div class="col-sm-2">
+					<%if(pro.getP_sale().equals("N")){ %>
 					<select id="p_sale" class="form-control input-sm">
-						<option value="N">해제</option>
+						<option value="N" selected="selected">해제</option>
 						<option value="Y">설정</option>
 					</select>
+					<%}else if(pro.getP_sale().equals("Y")){ %>
+					<select id="p_sale" class="form-control input-sm">
+						<option value="N">해제</option>
+						<option value="Y" selected="selected">설정</option>
+					</select>
+					<%}else{ %>
+					<select id="p_sale" class="form-control input-sm">
+					</select>
+					<%} %>
 				</div>
 			</div>
 			
@@ -170,15 +429,16 @@
 				<label for="p_content" class="col-sm-2 control-label">상품 설명</label>
 				<div class="col-sm-8">
 					<textarea rows="4" class="form-control input-sm" id="p_content" placeholder="상세 설명을 입력해 주세요." name="p_content"
-						value="<c:out value='${vo.p_content}'/>"></textarea>
+						><c:out value='${vo.p_content}'/></textarea>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label for="sale_percent" class="col-sm-2 control-label">할인율</label>
 				<div class="col-sm-2">
+					<%if(pro.getSale_percent().equals("100")){ %>
 					<select id="sale_percent" class="form-control input-sm">
-						<option value="100">0% 할인</option>
+						<option value="100" selected="selected">0% 할인</option>
 						<option value="90">10% 할인</option>
 						<option value="85">15% 할인</option>
 						<option value="80">20% 할인</option>
@@ -188,6 +448,106 @@
 						<option value="60">40% 할인</option>
 						<option value="50">50% 할인</option>
 					</select>
+					<%}else if(pro.getSale_percent().equals("90")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90" selected="selected">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50">50% 할인</option>
+					</select>
+					<%}else if(pro.getSale_percent().equals("85")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85" selected="selected">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50">50% 할인</option>
+					</select>
+					<%}else if(pro.getSale_percent().equals("80")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80" selected="selected">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50">50% 할인</option>
+					</select>
+					<%}else if(pro.getSale_percent().equals("75")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75" selected="selected">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50">50% 할인</option>
+					</select>
+					<%}else if(pro.getSale_percent().equals("70")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70" selected="selected">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50">50% 할인</option>
+					</select>
+					<%}else if(pro.getSale_percent().equals("65")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65" selected="selected">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50">50% 할인</option>
+					</select>
+					<%}else if(pro.getSale_percent().equals("60")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60" selected="selected">40% 할인</option>
+						<option value="50">50% 할인</option>
+					</select>
+					<%}else if(pro.getSale_percent().equals("50")){ %>
+					<select id="sale_percent" class="form-control input-sm">
+						<option value="100">0% 할인</option>
+						<option value="90">10% 할인</option>
+						<option value="85">15% 할인</option>
+						<option value="80">20% 할인</option>
+						<option value="75">25% 할인</option>
+						<option value="70">30% 할인</option>
+						<option value="65">35% 할인</option>
+						<option value="60">40% 할인</option>
+						<option value="50" selected="selected">50% 할인</option>
+					</select>
+					<%}else{ %>
+					<select id="sale_percent" class="form-control input-sm">
+					</select>
+					<%} %>
 				</div>
 			</div>
 			<!-- 첨부 -->

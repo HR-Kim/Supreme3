@@ -89,7 +89,9 @@
 			B.p_image as p_image,
 			B.stock as stock, 
 			B.unit_sales as unit_sales,
-			B.status as status,
+			DECODE(B.status,'10','판매중'
+			,'20','재입고 예정'
+			,'30','매진','미분류') as status,
 			B.p_new as p_new,
 			B.p_best as p_best,
 			B.p_sale as p_sale,

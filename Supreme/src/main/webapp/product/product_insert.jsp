@@ -315,7 +315,7 @@
 				document.getElementById("p_price").focus();
 				return false;
 			}
-		   if(isNaN$("#stock").val()){
+		   if(!$("#stock").val()){
 				alert("재고를 입력해주세요.");
 				document.getElementById("stock").focus();
 				return false;
