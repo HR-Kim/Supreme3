@@ -151,9 +151,9 @@
 					<tbody id="tablerow">
 					
 						<c:choose>
-							<c:when test="${currentlist.size()>0}">
-		
+							<c:when test="${currentlist.size()>0}" >
 								<c:forEach var="cvo" items="${currentlist}">
+								<c:if test="${cvo.u_id==$(user.id)}">
 							<input type="hidden" name="od_status" id="od_status" value="${cvo.od_status}"/>	
 						<tr>
 							<td class="thumb"><img value="${cvo.p_image}" alt=""></td>
@@ -169,7 +169,7 @@
 							<button class="icon-btn.main-btn" name="cancle" id="cancle">주문취소</button>
 							</td>
 						</tr>
-							
+							</c:if>
 							</c:forEach>
 						
 						</c:when>
@@ -202,6 +202,7 @@
 						<c:choose>
 							<c:when test="${prelist.size()>0}">
 								<c:forEach var="pvo" items="${prelist}">
+								<c:if test="${cvo.u_id==$(user.id)}">
 								<input type="hidden" name="detailCode" id="detailCode" value="${pvo.detail_code}"/>							
 								<input type="hidden" name="name" id="name" value="${pvo.p_name}"/>							
 								<input type="hidden" name="status" id="status" value="${pvo.od_status}"/>							
@@ -224,9 +225,10 @@
 							<button class="icon-btn.main-btn" name="change" id="change"  onclick="javascript:openChangePopup(this.form);">교환</button>
 							</td>
 						</tr>
-				
+							</c:if>
 							</c:forEach>
 						</c:when>
+					
 					</c:choose>
 			
 					</tbody>

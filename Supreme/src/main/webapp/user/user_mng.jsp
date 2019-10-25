@@ -201,7 +201,7 @@
 			frm.id.value = idFind;
 			frm.action = "${context}/user/do_selectOne.do";
 			frm.submit();				
-			  
+			 
 		});	
 	
 	

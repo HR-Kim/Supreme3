@@ -145,9 +145,13 @@
 						<c:choose>
 							<c:when test="${list.size()>0}">
 							<c:forEach var="vo" items="${list}">
+							<input type="hidden" name="bSeq" id="bSeq" value="${vo.bSeq}"/>							
+							<input type="hidden" name="bTitle" id="bTitle" value="${vo.bTitle}"/>							
+							<input type="hidden" name="id" id="id" value="${vo.id}"/>							
+							<input type="hidden" name="regDt" id="regDt" value="${vo.regDt}"/>							
 						<tr>
 							<th class="text-center col-md-1 col-xs-1">
-						    	<input type="checkbox" id="checkAll" name="checkAll" onclick="checkAll();">
+						    	<input type="checkbox" id="rowCheckbox" name="rowCheckbox">
 						    </th>
 							<td class="price text-left"><c:out value="${vo.bSeq}" /></td>
 							<td class="details"> <a href="#"><c:out value="${vo.bTitle}" /></a></td>
@@ -160,6 +164,7 @@
 				  </tbody>
 				</table>
 			</div>
+			<button class="primary-btn" name="delete" id="delete" style="margin-left:1400px;">삭제하기</button>
 		</div>
 		
 		<!-- //Grid영역 -->
@@ -178,12 +183,50 @@
 	<script src="${context}/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	
-		$("#listTable>tbody").on("click","tr",function(){
+		//삭제버튼
+		
+		$("#delete").on("click",function(){
+			//alert("dddd")
+			var rowData = new Array();
+			var tdArr = new Array();
+			var checkbox = $("input[name=rowCheckbox]:checked");
+			
+			checkbox.each(function(i){
+				var tr = checkbox.parent().parent().eq(i);
+				var td = tr.children();
+				
+				// 체크된 row의 모든 값을 배열에 담는다.
+				rowData.push(tr.text());
+				
+				var seq = td.eq(1).text()
+				var title = td.eq(1).text()
+				
+				console.log("seq : " + seq);
+				$.ajax({
+					type : "POST",
+					url : "${context}/board/do_delete.do",
+					dataType : "html",
+					data : {
+						"b_seq" : seq
+					},
+					success : function(data){
+						var dodelete;
+						dodelete = confirm("게시물을 삭제합니다");
+						if(dodelete){
+							document.write("삭제되었습니다.")
+						}
+						location.reload();
+
+					}
+				  });
+				  });
+			});
+		
+		 $("#listTable>tbody").on("click","tr",function(){
 			//alert("listTable>tbody");
 			var trs = $(this);
 			var tds = trs.children();
 			if(null == tds || tds.length ==1 )return;
-			console.log("tds.length:"+tds.length);
 			
 			var boardId = tds.eq(3).text();
 			console.log("boardId:"+boardId);
@@ -194,7 +237,7 @@
 			frm.submit();			
 			  
 		});	
-	
+	 
 	
 	
 		//paging이동
