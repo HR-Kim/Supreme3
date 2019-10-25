@@ -61,7 +61,47 @@
 	    <br>
 		<!--// div title -->
 <script type="text/javascript">
+$("#do_wirte").on('click',function(){
+	//alert('writebtn');
+	var title= $("#title").val();
+	//alert("title:"+rtitle)
+	if(null == title ||title.trim().length ==0){
+		$("#title").focus();
+		alert('제목을 입력하세요');
+		return;	
+	}
+	var contents = $("#contents").val();
+	if(null == contents || contents.trim().length == 0){
+		$("#contents").focus();
+		alert('내용을 입력 하세요.');
+		return ;
+	}   
+	$.ajax({
+		type : "POST",
+		url : "${context}/board/do_save.do",
+		dataType : "html",
+		data : {
+			 "b_seq ": $("#seq").val(),
+			 "b_title" :$("#title").val(),
+			 "b_contents":$("#contents").val(),
+			 "id" :"admin",
+			 "read_cnt" : "0",
+			 "udt_user" : "admin",
+			 "b_code" : "1",
+			 "p_code" : "1"
+		
+		},
+		success : function(data){
+			var update;
+			update = confirm("주주문상태를 변경합니다");
+			if(update){
+				document.write("주문상태가 변경되었습니다.")
+			}
+			location.reload();
 
+		}
+	  });
+});
 </script>
 </body>
    <!-- FOOTER -->

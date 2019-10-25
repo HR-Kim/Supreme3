@@ -200,10 +200,10 @@ public class DaoOrderStatusWebTest {
 			}
 		
 	@Test
-	@Ignore
+	
 	public void get_selectOne() throws Exception{
 		MockHttpServletRequestBuilder createMessage = MockMvcRequestBuilders.get("/orderStauts/do_selectOne.do")
-		.param("detail_code", "123789");
+		.param("detail_code", "123456789123");
 		
 		ResultActions resultActions = mockMvc.perform(createMessage)
 									  .andExpect(status().isOk());

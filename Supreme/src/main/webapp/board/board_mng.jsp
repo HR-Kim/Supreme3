@@ -47,9 +47,6 @@
 	List<Code> listBoardSearch=(request.getAttribute("listBoardSearch")==null)?
 	(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listBoardSearch"));
 				
-	//엑셀타입	
-	List<Code> listExcelType=(request.getAttribute("listExcelType")==null)?
-	(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listExcelType"));	
 				
 	//userSearch	
 	List<Code> codeSearchList = 
@@ -115,7 +112,7 @@
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
 					<input type="hidden" name="boardId" id="boardId" />
 					<div class="form-group">
-					    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
+					    <%=StringUtil.makeSelectBox(listPageSize, "pageSize", pageSize, false) %>
 						<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn btn-default btn-sm"
@@ -157,6 +154,7 @@
 							<td class="details"> <a href="#"><c:out value="${vo.bTitle}" /></a></td>
 							<td class="price text-center"><c:out value="${vo.id}"/></td>
 							<td class="price text-center"><c:out value="${vo.regDt}"/></td>
+							<td class="price text-center"><c:out value="${vo.readCnt}"/></td>
 						</tr>
 							</c:forEach>
 						</c:when>
@@ -230,11 +228,11 @@
 			
 			var boardId = tds.eq(3).text();
 			console.log("boardId:"+boardId);
-			
+
 			var frm = document.frm;
-			frm.boardId.value = boardId;
-			frm.action = "${context}/board/do_selectOne.do";
-			frm.submit();			
+			frm.boardId.value=boardId;
+			//frm.action = "${context}/board/do_selectOne.do";
+			//frm.submit();			
 			  
 		});	
 	 
