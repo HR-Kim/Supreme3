@@ -16,11 +16,6 @@
 	String searchDiv  = "" ;
 	/** 검색어 */
 	String searchWord = "" ;
-	/** 확장자 */
-	String ext = "xls" ;	
-	
-	String boardCode = ""; 
-	
 	
 	Search vo = (Search)request.getAttribute("vo");
 	
@@ -39,8 +34,7 @@
 		searchWord = "";
 	}
 	
-	String extParam = (String)request.getAttribute("ext");
-	if(extParam !=null) ext = extParam;
+	
 
 	//pageCode	
 	List<Code> codeList = (request.getAttribute("codeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("codeList");
@@ -63,11 +57,7 @@
 	(List<Code>)new ArrayList<Code>():
 	(List<Code>)request.getAttribute("codeSearchList");		
 	
-	//pageCode	
-	List<Code> excelList = (request.getAttribute("excelList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("excelList");
 	
-	//userLvL
-	List<Code> boardCodeList = (request.getAttribute("boardCodeList")==null)?(List<Code>)new ArrayList<Code>():(List<Code>)request.getAttribute("boardCodeList");
 	
 	//paging 
 	//maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName
@@ -76,7 +66,7 @@
     int currPageNo  = 1; //pageNum
     int rowPerPage  = 10;//pageSize
     
-    String url      = request.getContextPath()+"/user/get_retrieve.do";
+    String url      = request.getContextPath()+"/board/get_retrieve.do";
     String scriptName = "search_page";
     
 	String iTotalCnt =(request.getAttribute("totalCnt")==null)?"0":request.getAttribute("totalCnt").toString();
@@ -113,10 +103,9 @@
 	<!-- div container -->
 	<div class="container">
 		<!-- div title -->
-		<div class="page-header">
-			<h1>공지사항</h1>
-			
-		</div>
+		<div class="section-title">
+			<h3 class="title">공지사항</h3>
+	    </div>
 		<!--// div title -->
 		
 		<!-- 검색영역 -->
@@ -124,18 +113,15 @@
 			<div class="col-md-12 text-right">
 				<form class="form-inline" name="frm" id="frm" method="get">
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
-					<input type="hidden" name="id" id="id" />
+					<input type="hidden" name="boardId" id="boardId" />
 					<div class="form-group">
 					    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
-					    <%=StringUtil.makeSelectBox(boardCodeList, "boardCode", boardCode, true) %>
-					    <%=StringUtil.makeSelectBox(codeSearchList, "searchDiv", searchDiv, true) %>
 						<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn btn-default btn-sm"
 							id="doRetrieve" >조회</button>
-						<%=StringUtil.makeSelectBox(excelList, "ext", ext, false) %>	
-						<input type="button" class="btn btn-default btn-sm" id="doExcel"
-							value="엑셀다운" />
+						
+					
 					</div>	
 				</form>
 			</div>
@@ -143,47 +129,39 @@
 		<!-- //검색영역 -->
 		
 		<!-- Grid영역 -->
-		<div class="table-responsive">
-			<table class="table  table-striped table-bordered table-hover" id="listTable">
-				<thead class="bg-primary">
-					 <th class="text-center col-md-1 col-xs-1">
-				    <input type="checkbox" id="checkAll" name="checkAll" onclick="checkAll();"></th>
-					<th class="text-center col-md-1 col-xs-1">번호</th>
-					<th class="text-center col-md-2 col-xs-2">ID</th>
-					<th class="text-center col-md-1 col-xs-1">이름</th>
-					<th class="text-center col-md-1 col-xs-1">회원등급</th>
-					<th class="text-center col-md-1 col-xs-1">닉네임</th>
-					<th class="text-center col-md-2 col-xs-2">이메일</th>
-					<th class="text-center col-md-2 col-xs-2">전화번호</th>
-					<th class="text-center col-md-1 col-xs-1">가입일</th>
-				</thead>
-				
-				<tbody>
-					<c:choose>
-						<c:when test="${list.size()>0 }">
-							<c:forEach  var="user"  items="${list}">
-								<tr>
-									<td class="text-center"><input type="checkbox" name="check"></td>
-									<td class="text-center"><c:out value="${user.num}"/></td>
-									<td class="text-center"><c:out value="${user.id}"/></td>
-									<td class="text-center"><c:out value="${user.name}"/></td>
-									<td class="text-center"><c:out value="${user.lvl}"/></td>
-									<td class="text-center"><c:out value="${user.nickname}"/></td>
-									<td class="text-center"><c:out value="${user.email}"/></td>
-									<td class="text-center"><c:out value="${user.tel}"/></td>
-									<td class="text-center"><c:out value="${user.regDt}"/></td>
-								</tr>
+		<table class="shopping-cart-table table" id="listTable">
+					<thead>
+						<tr>
+						 <th class="text-center col-md-1 col-xs-1">
+						    <input type="checkbox" id="checkAll" name="checkAll" onclick="checkAll();"></th>
+							<th>번호</th>
+							<th class="text-left">제목</th>
+							<th class="text-center">작성자</th>
+							<th class="text-center">작성날짜</th>
+							<th class="text-center">조회수</th>
+						</tr>
+					</thead>
+					<tbody id="tablerow">
+						<c:choose>
+							<c:when test="${list.size()>0}">
+							<c:forEach var="vo" items="${list}">
+						<tr>
+							<th class="text-center col-md-1 col-xs-1">
+						    	<input type="checkbox" id="checkAll" name="checkAll" onclick="checkAll();">
+						    </th>
+							<td class="price text-left"><c:out value="${vo.bSeq}" /></td>
+							<td class="details"> <a href="#"><c:out value="${vo.bTitle}" /></a></td>
+							<td class="price text-center"><c:out value="${vo.id}"/></td>
+							<td class="price text-center"><c:out value="${vo.regDt}"/></td>
+						</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<tr>
-								<td colspan="99">정보가 없습니다.</td>
-							</tr>
-						</c:otherwise>
 					</c:choose>
-				</tbody>
-			</table>
+				  </tbody>
+				</table>
+			</div>
 		</div>
+		
 		<!-- //Grid영역 -->
 		<!-- pagenation -->
 		<div class="text-center">
@@ -205,15 +183,15 @@
 			var trs = $(this);
 			var tds = trs.children();
 			if(null == tds || tds.length ==1 )return;
-			//console.log("tds.length:"+tds.length);
+			console.log("tds.length:"+tds.length);
 			
-			var idFind = tds.eq(2).text();
-			console.log("idFind:"+idFind);
+			var boardId = tds.eq(3).text();
+			console.log("boardId:"+boardId);
 			
 			var frm = document.frm;
-			frm.id.value = idFind;
+			frm.boardId.value = boardId;
 			frm.action = "${context}/board/do_selectOne.do";
-			frm.submit();				
+			frm.submit();			
 			  
 		});	
 	

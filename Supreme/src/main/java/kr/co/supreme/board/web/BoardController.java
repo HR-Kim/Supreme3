@@ -42,8 +42,8 @@ public class BoardController {
 	
 	
 	//view
-	private final String VIEW_LIST_NM ="board/board_list";
-	private final String VIEW_MNG_NM  ="board/board_mng";
+	private final String VIEW_LIST_NM ="board/board_mng";
+	private final String VIEW_MNG_NM  ="board/board_wirte";
 	
 
 	

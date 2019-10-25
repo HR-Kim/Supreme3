@@ -66,7 +66,7 @@
 		rowPerPage = Integer.parseInt(pageSize);	
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 	<meta charset="utf-8">
@@ -179,6 +179,7 @@
 				</table>
 			</div>
 		</div>
+		
 		<!-- /container -->
 		<div class="text-center">
 			<%=StringUtil.renderPaing(maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName) %>
