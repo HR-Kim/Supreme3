@@ -32,8 +32,48 @@ Product pro = (Product) request.getAttribute("vo");
 		<div class="container">
 			<ul class="breadcrumb">
 				<li><a href="#">Home</a></li>
-				<li><a href="#"><c:out value="${vo.h_code}"/></a></li>
-				<li><a href="#"><c:out value="${vo.l_code}"/></a></li>
+				<%if(pro.getH_code().equals("10")){ %>
+				<li><a href="#">먹거리</a></li>
+				<% }else if(pro.getH_code().equals("20")) {%>
+				<li><a href="#">생활용품</a></li>
+				<% }else if(pro.getH_code().equals("30")) {%>
+				<li><a href="#">위생용품</a></li>
+				<% }else if(pro.getH_code().equals("40")) {%>
+				<li><a href="#">외출용품</a></li>
+				<%}else {%>
+				<li><a href="#"></a></li>
+				<%}%>
+				
+				
+				<%if(pro.getL_code().equals("11")){ %>
+				<li><a href="#">사료</a></li>
+				<% }else if(pro.getL_code().equals("12")) {%>
+				<li><a href="#">간식</a></li>
+				<% }else if(pro.getL_code().equals("21")) {%>
+				<li><a href="#">하우스</a></li>
+				<% }else if(pro.getL_code().equals("22")) {%>
+				<li><a href="#">캣타워</a></li>
+				<% }else if(pro.getL_code().equals("23")) {%>
+				<li><a href="#">낚싯대</a></li>
+				<% }else if(pro.getL_code().equals("24")) {%>
+				<li><a href="#">레이져</a></li>
+				<% }else if(pro.getL_code().equals("25")) {%>
+				<li><a href="#">스크래쳐</a></li>
+				<% }else if(pro.getL_code().equals("31")) {%>
+				<li><a href="#">목욕 용품</a></li>
+				<% }else if(pro.getL_code().equals("32")) {%>
+				<li><a href="#">화장실 용품</a></li>
+				<% }else if(pro.getL_code().equals("33")) {%>
+				<li><a href="#">미용 용품</a></li>
+				<% }else if(pro.getL_code().equals("41")) {%>
+				<li><a href="#">이동장</a></li>
+				<% }else if(pro.getL_code().equals("42")) {%>
+				<li><a href="#">가슴줄</a></li>
+				<% }else if(pro.getL_code().equals("43")) {%>
+				<li><a href="#">의류</a></li>
+				<%}else {%>
+				<li><a href="#"></a></li>
+				<%}%>
 				<li class="active"><c:out value="${vo.p_name}"/></li>
 			</ul>
 		</div>
@@ -166,10 +206,10 @@ Product pro = (Product) request.getAttribute("vo");
 		  
 		  frm.quantitiy.value=quantitiy;
 		  
-		  
-		  
 		  frm.action = "${context}/order/get.do";
 	   	  frm.submit();
+	   	 
+	   	  
 	   	 
 	 	 });
 	
