@@ -42,7 +42,7 @@ public class OrderStatusController {
 	CodeService codeService;
 	
 	/**관리자조회 */
-	@RequestMapping(value="orderStauts/get_admin_retrieve.do",method = RequestMethod.GET)
+	@RequestMapping(value="orderStatus/get_admin_retrieve.do",method = RequestMethod.GET)
 	public String get_retrieve(HttpServletRequest req, OrderSearch search, Model model) {
 		//param
 		if(search.getPageSize()==0) {
@@ -93,7 +93,7 @@ public class OrderStatusController {
 	}
 
 	/**전체조회*/
-	@RequestMapping(value="orderStauts/get_retrieve.do",method = RequestMethod.GET)
+	@RequestMapping(value="orderStatus/get_retrieve.do",method = RequestMethod.GET)
 	public String get_retrieve2(HttpServletRequest req, OrderSearch search, Model model) {
 		LOG.debug("1=========================");
 		LOG.debug("1=param="+search);
@@ -130,7 +130,7 @@ public class OrderStatusController {
 	}
 	
 	/**단건조회*/
-	@RequestMapping(value="orderStauts/do_selectOne.do",method = RequestMethod.GET)
+	@RequestMapping(value="orderStatus/do_selectOne.do",method = RequestMethod.GET)
 	public String get_selectOne(OrderStatus inVO,Model model) {
 		LOG.debug("===================");
 		LOG.debug("===inVO==="+inVO);
@@ -180,7 +180,7 @@ public class OrderStatusController {
 	
 	/**저장 */
 	
-	@RequestMapping(value="orderStauts/do_save.do",method = RequestMethod.POST
+	@RequestMapping(value="orderStatus/do_save.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String do_save(OrderStatus inVO) {
@@ -210,7 +210,7 @@ public class OrderStatusController {
 			
 		
 	/**삭제 */
-	@RequestMapping(value="orderStauts/do_delete.do",method = RequestMethod.POST
+	@RequestMapping(value="orderStatus/do_delete.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String do_delete(OrderStatus inVO) {

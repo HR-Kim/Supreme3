@@ -211,7 +211,7 @@
 		var detail_code = td.eq(0).text();
 		$.ajax({
 			type : "POST",
-			url : "${context}/orderStauts/do_update.do",
+			url : "${context}/orderStatus/do_update.do",
 			dataType : "html",
 			data : {
 				
@@ -233,7 +233,7 @@
 	function doRetrieve(){
 		var frm = document.boardFrm;
 		frm.pageNum.value= 1;
-		frm.action = "${context}/orderStauts/get_admin_retrieve.do";
+		frm.action = "${context}/orderStatus/get_admin_retrieve.do";
 		frm.submit();
 	}
 	//paging이동
