@@ -71,10 +71,10 @@ public class ProductController {
 	      
 	      if(flag>0) {
 	         message.setMsgId(String.valueOf(flag));
-	         message.setMsgMsg("수정 되었습니다.");
+	         message.setMsgMsg("제품 수정이 완료되었습니다.");
 	      }else {
 	         message.setMsgId(String.valueOf(flag));
-	         message.setMsgMsg("수정 실패.");         
+	         message.setMsgMsg("제품 수정에 실패했습니다.");         
 	      }
 	      
 	      Gson gson=new Gson();
@@ -99,10 +99,10 @@ public class ProductController {
 	      
 	      if(flag>0) {
 	         message.setMsgId(String.valueOf(flag));
-	         message.setMsgMsg("삭제 되었습니다.");
+	         message.setMsgMsg("제품을 삭제하였습니다.");
 	      }else {
 	         message.setMsgId(String.valueOf(flag));
-	         message.setMsgMsg("삭제 실패.");         
+	         message.setMsgMsg("제품을 삭제하지 못했습니다.");         
 	      }
 	      
 	      Gson gson=new Gson();
@@ -142,10 +142,10 @@ public class ProductController {
 	      
 	      if(flag>0) {
 	         message.setMsgId(String.valueOf(flag));
-	         message.setMsgMsg("등록 되었습니다.");
+	         message.setMsgMsg("제품을 등록하였습니다.");
 	      }else {
 	         message.setMsgId(String.valueOf(flag));
-	         message.setMsgMsg("등록 실패.");         
+	         message.setMsgMsg("제품을 등록하지 못했습니다.");         
 	      }
 	      
 	      Gson gson=new Gson();

@@ -38,9 +38,7 @@
     <![endif]-->
 </head>
 <body>
-   <!-- Header -->
-   <%@include file ="/admin/admin_header.jsp" %>
-   <!--/ Header -->
+  
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
@@ -81,9 +79,7 @@
 	</div>
 		
 		
-   <!-- FOOTER -->
-   <%@include file ="/template/footer.jsp" %>
-   <!-- /FOOTER -->	
+  
 	
 	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 	<script src="${context}/resources/js/jquery-1.12.4.js"></script>
@@ -116,7 +112,7 @@
 					if(null != jData){
 						if (jData.msgId == "30") {
 							alert("로그인에 성공했습니다");
-							location.href = "${context}/user/get_retrieve.do"
+							location.href = "${context}/admin/admin_main.jsp"
 							
 						}else if (jData.msgId == "10") {
 							$("#u_id").focus();

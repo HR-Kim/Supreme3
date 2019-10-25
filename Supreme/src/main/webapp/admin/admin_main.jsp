@@ -1,22 +1,19 @@
+<%@page import="kr.co.supreme.user.service.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	
+	
+%>
 <c:set var="context" value="${pageContext.request.contextPath }" />
 <html lang="ko">
 <head>
-<style type="text/css">
-	.img_wrap{
-		width: 140px;
-	}
-	.img_wrap img{
-		max-width: 100%;
-	}
-</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-<title>회원 가입</title>
+<title>묘한생각 :: 관리자 페이지</title>
 <!-- 부트스트랩 -->
 <link href="${context}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,13 +25,15 @@
     <![endif]-->
 </head>
 <body>
-
+	<!-- Header -->
+	<%@include file ="/admin/admin_header.jsp" %>
+	<!--/ Header -->
 
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
 		<div class="page-header">
-			<h1 class="p-b-33">회원가입</h1>
+			<h1>관리자 정보 수정</h1>
 		</div>
 		<!--// div title -->
 	
@@ -42,26 +41,29 @@
 		<div class="col-lg-12"></div>
 		<div class="panel panel-default"></div>
 		<!-- 입력 form -->
-		<form action="do_save.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
-			<input type="hidden"  name="fileId" id="fileId" >
+		<form action="do_update.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
+			<input type="hidden" name="emailComplete" id="emailComplete" value="${user.email }">
 			<div class="form-group">
 				<label for="u_id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-6">
-					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id">
+					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id" disabled="disabled" 
+						value="<c:out value='${user.id}'/>">
 				</div>
-				<div class="text-right col-sm-2">
-					<button type="button" class="btn btn-default btn-sm" id="idCheck">ID 중복 확인</button>
-				</div>	
-				<input type="hidden" id="idDuplication" value="id_UnCheck">
 			</div>
 			<div class="form-group">
-				<label for="passwd" class="col-sm-2 control-label">비밀번호</label>
+				<label for="passwd" class="col-sm-2 control-label">기존 비밀번호</label>
 				<div class="col-sm-8">
 					<input type="password" maxlength="100"  class="form-control input-sm" id="passwd" placeholder="숫자와 영문자로 입력해 주세요." name="passwd">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="passwd_check" class="col-sm-2 control-label">비밀번호 확인</label>
+				<label for="passwd" class="col-sm-2 control-label">새로운 비밀번호</label>
+				<div class="col-sm-8">
+					<input type="password" maxlength="100"  class="form-control input-sm" id="newPasswd" placeholder="숫자와 영문자로 입력해 주세요." name="newPasswd">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="passwd_check" class="col-sm-2 control-label">새로운 비밀번호 확인</label>
 				<div class="col-sm-8">
 					<input type="password" maxlength="100"  class="form-control input-sm" id="passwd_check" placeholder="비밀번호 확인" name="passwd_check">
 				</div>
@@ -69,36 +71,42 @@
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="name" placeholder="이름" name="name">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="name" placeholder="이름" name="name"
+						value="<c:out value='${user.name}'/>" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="nickname" class="col-sm-2 control-label">닉네임</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="nickname" placeholder="닉네임" name="nickname">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="nickname" placeholder="닉네임" name="nickname"
+						value="<c:out value='${user.nickname}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">이메일</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="email1" placeholder="이메일" name="email1">
+					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="email1" placeholder="이메일" name="email1"
+						value="<c:out value='${email1 }'/>">
 				</div>
 				<label for="email" class="col-sm-1 control-label">@</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="email2" placeholder="도메인 (ex naver.com)" name="email2">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="email2" placeholder="도메인 (ex naver.com)" name="email2"
+						value="<c:out value='${email2 }'/>">
 				</div>
 			
 			</div>	
 			<div class="form-group">
 				<label for="tel" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="tel" placeholder="'-'없이 번호만 입력해 주세요." name="tel">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="tel" placeholder="'-'없이 번호만 입력해 주세요." name="tel"
+						value="<c:out value='${user.tel}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="postcode" class="col-sm-2 control-label">우편번호</label>
 				<div class="col-sm-4">
-					<input type="text" maxlength="10"  class="form-control input-sm" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled">
+					<input type="text" maxlength="10"  class="form-control input-sm" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled"
+						value="<c:out value='${user.postcode}'/>">
 				</div>
 				<div class="text-right col-sm-4">
 					<button type="button" class="btn btn-default btn-sm" id="pcode_search">우편번호 조회</button>
@@ -107,35 +115,28 @@
 			<div class="form-group">
 				<label for="address1" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled"
+						value="<c:out value='${user.address1}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address2" class="col-sm-2 control-label">상세주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2"
+						value="<c:out value='${user.address2}'/>">
 				</div>
-			</div>
-			
-			
-					
+			</div>		
 		</form>
 		
 		<!-- Button Area -->
 		<div class="row">
 			<div class="col-lg-10 col-sm-10 col-xs-10">
 				<div class="text-right">
-					<button type="button" class="btn btn-default btn-sm" id="doInit">초기화</button>
-					<button type="button" class="btn btn-default btn-sm" id="doSave">회원가입</button>
+					<button type="button" class="btn btn-default btn-sm" id="doUpdate">회원 정보 수정</button>
+					<button type="button" class="btn btn-default btn-sm" id="doDelete">회원 탈퇴</button>
 				</div>
 			</div>
 		</div>
-		
-		
-		
-		
-		
-		
 		
 	</div>
 	<!--// div container -->
@@ -146,203 +147,56 @@
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
 		
-		//이미지 파일
-		var sel_file;
-		
-		
-		//이미지 미리보기 소스
-		$(document).ready(function() {
-			
-			$("#file01").on("change",handleImgFileSelect);
-			
-			
-		});
-		
-		
-		
-		$("#doFileUpload").on("click",function(){
-			if(confirm("이미지를 등록하시겠습니까?")== false)return;
-			doUploadFile();
-			
-		});
-		
-		
-		//이미지 함수
-		function handleImgFileSelect(e){
-			var files = e.target.files;
-			var filesArr = Array.prototype.slice.call(files);
-			
-			filesArr.forEach(function(f){
-				if(!f.type.match("image.*")){
-					alert("이미지 파일만 업로드할 수 있습니다.");
-					return false;
-				}
-				
-				sel_file = f;
-				
-				var reader = new FileReader();
-				reader.onload = function(e){
-					$("#img").attr("src", e.target.result);
-				}
-				
-				reader.readAsDataURL(f);
-				
-			});
-		}
-	
-		
-		//파일 업로드 함수
-		function doUploadFile(){
-			var form = $('form')[1];
-			var formData = new FormData(form);
-			
-			//ajax
-			$.ajax({
-				   type:"POST",
-				   url:"${context }/file/do_save.do",
-				   contentType:false,
-				   async:false,
-				   cache:false,
-				   processData:false,
-				   enctype:"multipart/form-data",
-				   data:formData,
-				success: function(data){
-				  console.log("data.msgId:"+data.msgId)
-				  console.log("data:"+data.msgMsg)
-				  
-				  $("#attrFileId").val(data.msgMsg);
-				  $("#fileId").val(data.msgMsg);
-				  
-				  //
-				  document.getElementById('file01').value="";
-				  
-				  //var jData = JSON.parse(data);
-				  if(null != data && data.msgId=="1"){
-					//alert(data.msgMsg);
-					
-					//fileId file_mng조회
-					getFileList($("#fileId").val());
-				  }else{
-					alert(data.msgId+"|"+data.msgMsg);
-				  }
-				},
-				complete:function(data){
-				 
-				},
-				error:function(xhr,status,error){
-					alert("error:"+error);
-				}
-			}); 
-			//--ajax 			
-		}
-		
-		
-		//파일목록 조회:
-		function getFileList(fileId){
-			//ajax
-			
-			$.ajax({
-				   type:"POST",
-				   url:"${context}/file/do_retrieve.do",
-				   dataType:"html",
-				   data:{
-				   "fileId":fileId
-				  }, 
-				success: function(data){
-				    //alert(data);	
-				    var jData = JSON.parse(data);
-				  
-				    if(null != jData){
-						//기존 : listFileTable 삭제.
-						$("#listFileTable tbody tr").remove();
-						  
-						//전체 Data를 동적으로 생성.
-						$.each(jData,function(index,item){
-							$("#listFileTable tbody:last").append("<tr>"+
-									"<td class='text-center hidden-xs hidden-sm hidden-md hidden-lg'>"+<c:out value='item.fileId'/>+"</td>"+  
-									"<td class='text-center hidden-xs hidden-sm hidden-md hidden-lg'>"+<c:out value='item.num'/>+"</td>"+  
-									"<td class='text-left org-file-name'>"+<c:out value='item.orgFileNm'/>+"</td>"+ 
-									"<td class='text-center hidden-xs hidden-sm hidden-md hidden-lg'>"+<c:out value='item.saveFileNm'/>+"</td>"+ 
-									"<td class='text-right'>"+<c:out value='item.fSize'/>+" &nbsp; byte</td>"+
-									"<td class='text-right'><button type='button' class='btn btn-default btn-sm btn-danger' >X</button></td>"+
-									"</tr>");
-							
-						});//$.each
-				  }else{
-					alert(jData);
-				  }
-				},
-				complete:function(data){
-				 
-				},
-				error:function(xhr,status,error){
-					alert("error:"+error);
-				}
-			}); 
-			//--ajax 
-		}
-		
-		
-	
-	
-		//등록
-	    $("#doSave").on("click",function(){
-	    	console.log("doSave");
-	    	checkValue();
-	    		    	
+		//회원 정보 수정
+	    $("#doUpdate").on("click",function(){
+	    	console.log("doUpdate");
 	    	
+	    	//passValidation()->checkValue()->doUpdate()
+	    	passValidation();
+	    	    	
 	    });
 		
-		//데이터 체크 후 dosave 실행
+		//체크 함수
 		function checkValue(){
 			
 			
-			if(!$("#u_id").val()){
-				alert("아이디를 입력하세요.");
-				document.getElementById("u_id").focus();
-				return false;
-			}
-			if($("#idDuplication").val() !="id_Check"){
-				alert("아이디 중복 체크를 해주세요.");
-				document.getElementById("u_id").focus();
-				return false;
-			}
-			if(!$("#passwd").val()){
-				alert("비밀번호를 입력하세요.");
-				document.getElementById("passwd").focus();
+			
+			if(!$("#newPasswd").val()){
+				alert("비밀번호를 입력해 주세요.");
+				document.getElementById("newPasswd").focus();
 				return false;
 			} 
 						
-			if($("#passwd").val() != $("#passwd_check").val()){
+			if($("#newPasswd").val() != $("#passwd_check").val()){
 				alert("비밀번호를 동일하게 입력하세요.");
 				document.getElementById("passwd_check").focus();
 				return false;
 			}		
 			if(!$("#name").val()){
-				alert("이름을 입력하세요.");
+				alert("이름을 입력해 주세요.");
 				document.getElementById("name").focus();
 				return false;
 			}	
 			if(!$("#nickname").val()){
-				alert("닉네임을 입력하세요.");
+				alert("닉네임을 입력해 주세요.");
 				document.getElementById("nickname").focus();
 				return false;
 			}	
 			if(!$("#email1").val()){
-				alert("이메일을 입력하세요.");
+				alert("이메일을 입력해 주세요.");
 				document.getElementById("email1").focus();
 				return false;
 			}	
 			if(!$("#email2").val()){
-				alert("이메일을 입력하세요.");
+				alert("이메일을 입력해 주세요.");
 				document.getElementById("email2").focus();
 				return false;
 			}	
 			if(!$("#tel").val()){
-				alert("전화번호를 입력하세요.");
+				alert("전화번호를 입력해 주세요.");
 				document.getElementById("tel").focus();
 				return false;
-			}
+			}	
 			if(isNaN($("#tel").val())){
 				alert("전화번호에는 숫자만 입력해 주세요.");
 				document.getElementById("tel").focus();
@@ -360,91 +214,40 @@
 			}
 			console.log("check okay!");
 			
-			var emailPerfect = $("#email1").val().trim()+"@"+$("#email2").val().trim();
-			
-			emailPerfect.trim();
-			console.log("fileId:"+$("#fileId").val());
-			
-			$.ajax({
-	            type:"POST",
-	            url:"${context}/user/do_save.do",
-	            dataType:"html",// JSON
-	            data:{
-	            	"id": $("#u_id").val(),
-	            	"name": $("#name").val(),
-	            	"pass": $("#passwd").val(),
-	            	"nickname": $("#nickname").val(),
-	            	"email": emailPerfect,
-	            	"lvl" : "1",
-	            	"postcode": $("#postcode").val(),
-	            	"address1": $("#address1").val(),
-	            	"address2": $("#address2").val(),
-	            	"tel": $("#tel").val(),
-	            	"image" : $("#fileId").val()
-	            },
-	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
-	                //console.log(data);
-	            	
-	            	var parseData = $.parseJSON(data);
-	            	if(parseData.msgId=="1"){
-	            		alert(parseData.msgMsg);
-	            		console.log("가입완료!");
-	            	}else{
-	            		alert(parseData.msgMsg);
-	            	}
-	            	
-
-	            	
-	            },
-	            complete: function(data){//무조건 수행
-	             
-	            },
-	            error: function(xhr,status,error){
-	             
-	           }
-	        });	
 			
 			
+			doUpdate();
+						
 		};
 		
-	
-	
-		//ID 중복 확인 함수
-		$("#idCheck").on("click",function(){
-			idValidation();
-	    });
-		
-		//ID 중복 확인 이벤트
-		function idValidation(){
-			var id = document.getElementById("u_id").value;
-			var flag = false;
-			if(id==""){
-				alert("아이디를 입력해주세요.");
+	    		
+		//pass 확인 함수
+		function passValidation(){
+			var pass = document.getElementById("passwd").value;
+			
+			if(pass==""){
+				alert("기존 비밀번호를 입력해 주세요.");
 				return false;	
-			}else if(( id < "0" || id > "9")&&( id < "A" || id > "Z")&&(id < "a" || id > "z")){
-				alert("한글 및 특수문자는 아이디로 사용하실 수 없습니다.");
-				return false;
 			}else{
-	//			alert("중복 확인하겠습니다.");
+				//alert("비밀번호 확인합니다.");
 				$.ajax({
 					type : "POST",
-					url : "${context}/user/id_check.do",
+					url : "${context}/user/passwd_check.do",
 					dataType : "html",
 					data : {
-						"id" : id
+						"id" : $("#u_id").val(),
+						"pass" : $("#passwd").val()
 					},	
 					success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 		                
 		            	var parseData = $.parseJSON(data);
-		            	if(parseData.msgId=="0"){
-		            		alert(parseData.msgMsg);
-		            		document.getElementById('idDuplication').value ="id_Check";
+		            	if(parseData.msgId=="1"){
+		            		checkValue();
+		            		
 		            	}else{
 		            		alert(parseData.msgMsg);
 		            	}
-		            	
-
-		            	
+		            		            	
 		            },
 		            complete: function(data){//무조건 수행
 		             
@@ -457,22 +260,96 @@
 			}
 		};
 	
+		//수정 함수
+		function doUpdate(){
+			if(false==confirm("회원 정보를 수정 하시겠습니까?"))return;
+			var emailPerfect = $("#email1").val().trim() +"@"+$("#email2").val().trim();
+			
+			$.ajax({
+	            type:"POST",
+	            url:"${context}/user/do_update.do",
+	            dataType:"html",// JSON
+	            data:{
+	            	"id": $("#u_id").val(),
+	            	"name": $("#name").val(),
+	            	"pass": $("#newPasswd").val(),
+	            	"nickname": $("#nickname").val(),
+	            	"email": emailPerfect,
+	            	"postcode": $("#postcode").val(),
+	            	"address1": $("#address1").val(),
+	            	"address2": $("#address2").val(),
+	            	"tel": $("#tel").val()
+	            },
+	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+	                //console.log(data);
+	            	var parseData = $.parseJSON(data);
+	            	if(parseData.msgId=="1"){
+	            		alert(parseData.msgMsg);
+	            		
+	            	}else{
+	            		alert(parseData.msgMsg);
+	            	}
+	            	
+
+	            	
+	            },
+	            complete: function(data){//무조건 수행
+	             
+	            },
+	            error: function(xhr,status,error){
+	             
+	            }
+	        });	
+			
+		};
 		
 		
-		//초기화
-		$("#doInit").on("click",function(){
-			$("#u_id").val("");
-	     	$("#passwd").val("");
-	    	$("#passwd_check").val("");
-	    	$("#name").val("");
-	    	$("#nickname").val("");
-	    	$("#email").val("");
-	    	$("#tel").val("");
-	    	$("#postcode").val(""); 
-	    	$("#address1").val(""); 
-	    	$("#address2").val(""); 
-	    	
-		});	
+		//삭제 버튼 이벤트
+		$("#doDelete").on("click",function(){
+			var pass = document.getElementById("passwd").value;
+			if(confirm("묘한 생각을 탈퇴하시겠습니까?") == false)return;
+			
+			if(pass==""){
+				alert("기존 비밀번호를 입력해 주세요.");
+				return false;	
+			}else{
+				if(confirm("정말로 묘한 생각을 탈퇴하시겠습니까?") == false)return;
+				
+				$.ajax({
+		            type:"POST",
+		            url:"${context}/user/do_delete.do",
+		            dataType:"html",// JSON
+		            data:{
+		            	"id": $("#u_id").val(),
+		            	"pass" : $("#passwd").val()
+		            },
+		            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+		                //console.log(data);
+		            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
+		            	var parseData = $.parseJSON(data);
+		            	if(parseData.msgId=="1"){
+		            		alert(parseData.msgMsg);
+		            		location.href = "${context}/user/user_secession.jsp"
+		            		
+		            	}else{
+		            		alert(parseData.msgMsg);
+		            	}
+		            		
+		            	
+		            	
+	
+		            	
+		            },
+		            complete: function(data){//무조건 수행
+		             
+		            },
+		            error: function(xhr,status,error){
+		             
+		            }
+		        });	 
+			}
+		});
+		
 	
 	
 		//우편번호 찾기 버튼 이벤트
@@ -528,6 +405,8 @@
 	        }).open();
 	    };
 	</script>	
-	
+	<!-- FOOTER -->
+	<%@include file ="/template/footer.jsp" %>
+	<!-- /FOOTER --> 
 </body>
 </html>

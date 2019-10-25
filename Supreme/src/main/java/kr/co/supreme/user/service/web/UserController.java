@@ -60,21 +60,22 @@ public class UserController {
 	private final String VIEW_SECESS_NM  ="user/user_secession";
 	private final String VIEW_ID_RESULT ="user/user_id_result";
 	private final String VIEW_PW_RESULT ="user/user_pw_result";
+	private final String VIEW_ADMIN_LOGIN = "admin/admin_login";
 	
 	
 	/**로그아웃*/
-	@RequestMapping(value="user/do_logout.do",method = RequestMethod.POST)
+	@RequestMapping(value="user/do_logout.do",method = RequestMethod.GET)
 	@ResponseBody
 	public void logout(User user,HttpSession session,HttpServletRequest request, HttpServletResponse response) {
 		LOG.debug("1=========================");
 		LOG.debug("1===logout===");
 		LOG.debug("1=========================");
+		request.getSession().removeAttribute("user");
 		
 		session.invalidate();
 		
-		
-		
-		
+				
+			
 	}
 		
 	
@@ -105,7 +106,13 @@ public class UserController {
 //			Locale  locale=new Locale(user.getLang());
 //			localeResolver.setLocale(request, response, locale);
 			
+				
+			String email= outVO.getEmail();
+			String email1 = email.substring(0, email.indexOf("@"));
+			String email2 = email.substring(email.indexOf("@")+1);	
 			session.setAttribute("user", outVO);
+			session.setAttribute("email1", email1);
+			session.setAttribute("email2", email2);
 			msg.setMsgId("30");
 			}else {
 				msg.setMsgId("10");

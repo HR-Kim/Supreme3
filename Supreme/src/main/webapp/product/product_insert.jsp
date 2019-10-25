@@ -352,7 +352,7 @@
 		   console.log($("#sale_percent option:selected").val());
 		   
 		   
-		   alert("post");
+		   
 		   $.ajax({
 	            type:"POST",
 	            url:"${context}/product/do_save.do",
@@ -376,7 +376,7 @@
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);
-	            	alert(data);
+	            	
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);

@@ -46,6 +46,8 @@
 	
 	<!-- LoginInterceptor -->
 	<beans:bean id="loginInterceptor" class="kr.co.supreme.cmn.web.LoginInterceptor"/>
+	<!-- AdminLoginInterceptor -->
+	<beans:bean id="adminLoginInterceptor" class="kr.co.supreme.cmn.web.AdminLoginInterceptor"/>
 	
 	
 	<!-- interceptor -->
@@ -62,7 +64,11 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	 -->
-		
+		<!-- AdminLoginInterceptor -->
+			<interceptor>
+				<mapping path="/admin/admin_main.jsp"/>
+				<beans:ref bean="adminLoginInterceptor"/>
+			</interceptor>
 		
 	</interceptors>
 	

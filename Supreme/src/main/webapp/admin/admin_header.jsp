@@ -66,7 +66,7 @@
 							<% 
 								}else{
 							%>
-							<a href="#" class="text-uppercase">Logout</a> 
+							<a href="#" class="text-uppercase" onclick="logout()">Logout</a> 
 							<%		
 								}
 							%>
@@ -94,10 +94,10 @@
 				<div class="menu-nav">
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
-						<li><a href="#"> 메인 </a></li>
-						<li><a href="#"> 회원 관리 </a></li>
-						<li><a href="#"> 상품 관리 </a></li>
-						<li><a href="#"> 주문 관리</a></li>
+						<li><a href="${context}/admin/admin_main.jsp"> 메인 </a></li>
+						<li><a href="${context}/user/get_retrieve.do"> 회원 관리 </a></li>
+						<li><a href="${context}//product/get_admin_retrieve.do"> 상품 관리 </a></li>
+						<li><a href="${context}/orderStauts/get_admin_retrieve.do"> 주문 관리</a></li>
 						<li><a href="#"> 게시판 관리 </a></li>
 						
 						</li>
@@ -121,6 +121,15 @@
 	<script src="../resources/js/nouislider.min.js"></script>
 	<script src="../resources/js/jquery.zoom.min.js"></script>
 	<script src="../resources/js/main.js"></script>
+	<script type="text/javascript">
+	
+		function logout(){
+			alert("로그아웃 하시겠습니까?");
+			location.href = "${context}/user/do_logout.do";
+			location.href = "${context}/admin/admin_login.jsp";
+		};
+	
+	</script>
 
 	
 </html>

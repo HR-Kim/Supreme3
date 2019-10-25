@@ -44,9 +44,9 @@ out.print(pro);
 		<div class="panel panel-default"></div>
 		<!-- 입력 form -->
 		<form action="do_save.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
-			<input type="hidden"  name="fileId" id="fileId" >
+			<input type="hidden"  name="fileId" id="fileId" value="<c:out value='${vo.p_image}'/>">
 			<div class="form-group">
-				<input type="hidden"  name="p_code" id="p_code">
+				<input type="hidden"  name="p_code" id="p_code" value="<c:out value='${vo.p_code}'/>">
 			</div>
 			
 			<div class="form-group">
@@ -576,8 +576,9 @@ out.print(pro);
 		<div class="row">
 			<div class="col-lg-10 col-sm-10 col-xs-10">
 				<div class="text-right">
-					<button type="button" class="btn btn-default btn-sm" id="doSave">등록하기</button>
-					<button type="button" class="btn btn-default btn-sm" id="doCancel">취소하기</button>
+					<button type="button" class="btn btn-default btn-sm" id="doRetrieve">목록으로 돌아가기</button>
+					<button type="button" class="btn btn-default btn-sm" id="doUpdate">수정하기</button>
+					<button type="button" class="btn btn-default btn-sm" id="doDelete">삭제하기</button>
 				</div>
 			</div>
 		</div>
@@ -639,16 +640,69 @@ out.print(pro);
 			$("#file01").on("change",handleImgFileSelect);
 			
 			
+			if("${vo.p_image}" !=""){
+				getFileList('${vo.p_image}');
+			}
+			
 		});
    
 	 	
+	 	
+		//목록이동
+		$("#doRetrieve").on("click",function(){
+			//alert("doRetrieve");
+			//board_attr/get_retrieve.do
+			if(confirm("목록으로 돌아가시겠습니까?")== false)return;
+			location.href ="${context}/product/get_admin_retrieve.do";
+		});  
+	 	
+	 	
+		//삭제
+		$("#doDelete").on("click",function(){
+			
+			if(confirm("제품을 삭제하시겠습니까?") == false)return;
+			
+						
+				$.ajax({
+		            type:"POST",
+		            url:"${context}/product/do_delete.do",
+		            dataType:"html",// JSON
+		            data:{
+		            	"p_code": $("#p_code").val()	            	
+		            },
+		            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+		                //console.log(data);
+		            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
+		            	var parseData = $.parseJSON(data);
+		            	if(parseData.msgId=="1"){
+		            		alert(parseData.msgMsg);
+		            		location.href = "${context}/product/get_admin_retrieve.do";
+		            		
+		            	}else{
+		            		alert(parseData.msgMsg);
+		            	}
+		            		
+		            	
+		            	
 		
-	
+		            	
+		            },
+		            complete: function(data){//무조건 수행
+		             
+		            },
+		            error: function(xhr,status,error){
+		             
+		            }
+		        });	 
+			
+		});
+		
+		
    
    
-	 	//등록
-		$("#doSave").on("click",function(){
-		   	console.log("doSave");
+	 	//수정
+		$("#doUpdate").on("click",function(){
+		   	console.log("doUpdate");
 		   	checkValue();
 		   		    	
 		});
@@ -676,7 +730,7 @@ out.print(pro);
 				document.getElementById("p_price").focus();
 				return false;
 			}
-		   if(isNaN$("#stock").val()){
+		   if(isNaN($("#stock").val())){
 				alert("재고를 입력해주세요.");
 				document.getElementById("stock").focus();
 				return false;
@@ -694,9 +748,9 @@ out.print(pro);
 		  
 		   var d = new Date();
 		   
-		   var tmp_code = $("#h_code option:selected").val() + $("#l_code option:selected").val() + d.getTime();
 		   
-		   console.log(tmp_code);
+		   
+		   console.log($("#p_code").val());
 		   console.log($("#h_code option:selected").val());
 		   console.log($("#l_code option:selected").val());
 		   console.log($("#p_name").val());
@@ -713,13 +767,12 @@ out.print(pro);
 		   console.log($("#sale_percent option:selected").val());
 		   
 		   
-		   alert("post");
 		   $.ajax({
 	            type:"POST",
-	            url:"${context}/product/do_save.do",
+	            url:"${context}/product/do_update.do",
 	            dataType:"html",// JSON
 	            data:{
-	            	"p_code": tmp_code,
+	            	"p_code": $("#p_code").val(),
 	            	"h_code":$("#h_code option:selected").val(),
 	            	"l_code":$("#l_code option:selected").val(),
 	            	"p_name": $("#p_name").val(),
@@ -737,11 +790,12 @@ out.print(pro);
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);
-	            	alert(data);
+	            	
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);
-	            		console.log("등록 완료!");
+	            		console.log("수정 완료!");
+	            		location.href = "${context}/product/get_admin_retrieve.do";
 	            	}else{
 	            		alert(parseData.msgMsg);
 	            	}
