@@ -43,39 +43,7 @@
 <body>
 	<!-- HEADER -->
 	<header>
-		<!-- top Header -->
-		<div id="top-header">
-			<div class="container">
-			
-				<div class="pull-left" >
-					<span>안녕하세요, 묘한생각입니다</span>
-				</div>
-				<div class="pull-right">
-					<ul class="header-top-links">
-						<li><a href="#">Store</a></li>
-						<li><a href="#">Newsletter</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li class="dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-								<li><a href="#">English (ENG)</a></li>
-								<li><a href="#">Russian (Ru)</a></li>
-								<li><a href="#">French (FR)</a></li>
-								<li><a href="#">Spanish (Es)</a></li>
-							</ul>
-						</li>
-						<li class="dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-								<li><a href="#">KRW (원)</a></li>
-								<li><a href="#">USD ($)</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- /top Header -->
+		
 
 		<!-- header -->
 		<div id="header">
@@ -113,14 +81,24 @@
 								</div>
 								<strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
 							</div>
-							<a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+							<% 
+								Object user = session.getAttribute("user"); 
+								if( user == null){
+							%>
+							<a href="${context}/user/user_login.jsp" class="text-uppercase">Login</a> 
+							<% 
+								}else{
+							%>
+							<a href="#" class="text-uppercase" onclick="logout()">Logout</a> 
+							<%		
+								}
+							%>
+							
+							 / <a href="${context}/user/user_join.jsp" class="text-uppercase">Join</a>
 							<ul class="custom-menu">
-								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-								<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-								<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-								<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-								<li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+								<li><a href="${context}/user/user_update.jsp"><i class="fa fa-user-o"></i> 회원 정보 수정</a></li>
+								<li><a href="${context}/orderStauts/get_retrieve.do"><i class="fa fa-check"></i> 주문 내역 확인</a></li>
+								<li><a href="${context}/user/user_login.jsp"><i class="fa fa-unlock-alt"></i> Login</a></li>
 							</ul>
 						</li>
 						<!-- /Account -->

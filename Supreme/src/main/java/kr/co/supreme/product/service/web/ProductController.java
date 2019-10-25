@@ -160,7 +160,7 @@ public class ProductController {
 	   }
 
 	   /**단건조회 */
-	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.POST)
+	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.GET)
 	   public String get_selectOne(Product product,Model model) {
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);
@@ -313,7 +313,7 @@ public class ProductController {
 		   
 		   //param
 	      if(search.getPageSize()==0) {
-	         search.setPageSize(10);
+	         search.setPageSize(9);
 	      }
 	      
 	      if(search.getPageNum()==0) {

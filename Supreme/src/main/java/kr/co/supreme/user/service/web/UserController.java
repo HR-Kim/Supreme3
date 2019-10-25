@@ -153,7 +153,12 @@ public class UserController {
 //			Locale  locale=new Locale(user.getLang());
 //			localeResolver.setLocale(request, response, locale);
 			
+			String email= outVO.getEmail();
+			String email1 = email.substring(0, email.indexOf("@"));
+			String email2 = email.substring(email.indexOf("@")+1);	
 			session.setAttribute("user", outVO);
+			session.setAttribute("email1", email1);
+			session.setAttribute("email2", email2);
 		}
 		//JSON
 		Gson gson=new Gson();

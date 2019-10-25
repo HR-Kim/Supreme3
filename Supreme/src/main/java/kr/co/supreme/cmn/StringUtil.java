@@ -22,8 +22,8 @@ public class StringUtil {
 	private static Logger LOG = LoggerFactory.getLogger(StringUtil.class);
 
 	// File Root 디렉토리
-	public static final String UPLOAD_ROOT = "C:\\SUPREME";
-
+	public static final String UPLOAD_ROOT = "C:\\Users\\sist\\git\\Supreme3\\Supreme\\src\\main\\webapp\\resources";
+	
 	/**
 	 * D:\\HR_FILE\2019\09
 	 */

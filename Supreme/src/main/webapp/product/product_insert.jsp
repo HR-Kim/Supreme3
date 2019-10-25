@@ -381,6 +381,7 @@
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);
 	            		console.log("등록 완료!");
+	            		location.href = "${context}/product/get_admin_retrieve.do";
 	            	}else{
 	            		alert(parseData.msgMsg);
 	            	}

@@ -21,6 +21,10 @@
     <![endif]-->
 </head>
 <body>
+	<!-- Header -->
+	<%@include file ="../template/header.jsp" %>
+	<!--/ Header -->
+
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
@@ -34,12 +38,12 @@
 		<div class="panel panel-default"></div>
 		<!-- 입력 form -->
 		<form action="do_update.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
-			<input type="hidden" name="emailComplete" id="emailComplete" value="${vo.email }">
+			<input type="hidden" name="emailComplete" id="emailComplete" value="${user.email }">
 			<div class="form-group">
 				<label for="u_id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-6">
 					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id" disabled="disabled" 
-						value="<c:out value='${vo.id}'/>">
+						value="<c:out value='${user.id}'/>">
 				</div>
 			</div>
 			<div class="form-group">
@@ -64,14 +68,14 @@
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">
 					<input type="text" maxlength="300"  class="form-control input-sm" id="name" placeholder="이름" name="name"
-						value="<c:out value='${vo.name}'/>" >
+						value="<c:out value='${user.name}'/>" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="nickname" class="col-sm-2 control-label">닉네임</label>
 				<div class="col-sm-8">
 					<input type="text" maxlength="300"  class="form-control input-sm" id="nickname" placeholder="닉네임" name="nickname"
-						value="<c:out value='${vo.nickname}'/>">
+						value="<c:out value='${user.nickname}'/>">
 				</div>
 			</div>
 			<div class="form-group">
@@ -91,14 +95,14 @@
 				<label for="tel" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-8">
 					<input type="text" maxlength="300"  class="form-control input-sm" id="tel" placeholder="'-'없이 번호만 입력해 주세요." name="tel"
-						value="<c:out value='${vo.tel}'/>">
+						value="<c:out value='${user.tel}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="postcode" class="col-sm-2 control-label">우편번호</label>
 				<div class="col-sm-4">
 					<input type="text" maxlength="10"  class="form-control input-sm" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled"
-						value="<c:out value='${vo.postcode}'/>">
+						value="<c:out value='${user.postcode}'/>">
 				</div>
 				<div class="text-right col-sm-4">
 					<button type="button" class="btn btn-default btn-sm" id="pcode_search">우편번호 조회</button>
@@ -108,14 +112,14 @@
 				<label for="address1" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-8">
 					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled"
-						value="<c:out value='${vo.address1}'/>">
+						value="<c:out value='${user.address1}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address2" class="col-sm-2 control-label">상세주소</label>
 				<div class="col-sm-8">
 					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2"
-						value="<c:out value='${vo.address2}'/>">
+						value="<c:out value='${user.address2}'/>">
 				</div>
 			</div>		
 		</form>
@@ -397,6 +401,8 @@
 	        }).open();
 	    };
 	</script>	
-	 
+	<!-- FOOTER -->
+	<%@include file ="../template/footer.jsp" %>
+	<!-- /FOOTER --> 
 </body>
 </html>
