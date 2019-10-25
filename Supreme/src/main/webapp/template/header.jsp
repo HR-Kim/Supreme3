@@ -46,6 +46,7 @@
 		<!-- top Header -->
 		<div id="top-header">
 			<div class="container">
+			
 				<div class="pull-left" >
 					<span>안녕하세요, 묘한생각입니다</span>
 				</div>
@@ -140,7 +141,7 @@
 									<div class="shopping-cart-list">
 										<div class="product product-widget">
 											<div class="product-thumb">
-												<img src="../resources/img/thumb-product01.jpg" alt="">
+												<img src="${context}/resources/img/thumb-product01.jpg" alt="">
 											</div>
 											<div class="product-body">
 												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
@@ -150,7 +151,7 @@
 										</div>
 										<div class="product product-widget">
 											<div class="product-thumb">
-												<img src="../resources/img/thumb-product01.jpg" alt="">
+												<img src="${context}/resources/img/thumb-product01.jpg" alt="">
 											</div>
 											<div class="product-body">
 												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
@@ -235,7 +236,7 @@
 									<div class="col-md-12">
 										<hr>
 										<a class="banner banner-1" href="#">
-											<img src="../resources/img/banner05.jpg" alt="">
+											<img src="${context}/resources/img/banner05.jpg" alt="">
 											<div class="banner-caption text-center">
 												<h2 class="white-color">NEW COLLECTION</h2>
 												<h3 class="white-color font-weak">HOT DEAL</h3>
@@ -294,7 +295,7 @@
 									</div>
 									<div class="col-md-4 hidden-sm hidden-xs">
 										<a class="banner banner-2" href="#">
-											<img src="../resources/img/banner04.jpg" alt="">
+											<img src="${context}/resources/img/banner04.jpg" alt="">
 											<div class="banner-caption">
 												<h3 class="white-color">NEW<br>COLLECTION</h3>
 											</div>
@@ -393,8 +394,8 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner06.jpg" alt="">
-												<div class="banner-caption text-center">
+												<img src="${context}/resources/img/test567.jpg" alt="">
+												<div class="banner-caption text-center detail1">
 													<h3 class="white-color text-uppercase"> 사료 </h3>
 												</div>
 											</a>
@@ -412,8 +413,8 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner07.jpg" alt="">
-												<div class="banner-caption text-center">
+												<img src="${context}/resources/img/test567.jpg" alt="">
+												<div class="banner-caption text-center detail2">
 													<h3 class="white-color text-uppercase"> 간식 </h3>
 												</div>
 											</a>
@@ -431,8 +432,8 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner08.jpg" alt="">
-												<div class="banner-caption text-center">
+												<img src="${context}/resources/img/test567.jpg" alt="">
+												<div class="banner-caption text-center detail3">
 													<h3 class="white-color text-uppercase">영양제</h3>
 												</div>
 											</a>
@@ -450,8 +451,8 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner09.jpg" alt="">
-												<div class="banner-caption text-center">
+												<img src="${context}/resources/img/test567.jpg" alt="">
+												<div class="banner-caption text-center detail4">
 													<h3 class="white-color text-uppercase">통조림</h3>
 												</div>
 											</a>
@@ -471,7 +472,7 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner06.jpg" alt="">
+												<img src="${context}/resources/img/test567.jpg" alt="">
 												<div class="banner-caption text-center">
 													<h3 class="white-color text-uppercase">Women’s</h3>
 												</div>
@@ -491,7 +492,7 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner07.jpg" alt="">
+												<img src="${context}/resources/img/test567.jpg" alt="">
 												<div class="banner-caption text-center">
 													<h3 class="white-color text-uppercase">Men’s</h3>
 												</div>
@@ -508,45 +509,9 @@
 											<li><a href="#">Bags & Shoes</a></li>
 										</ul>
 									</div>
+									
 									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner08.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Accessories</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner09.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Bags</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
+										
 						<li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 주거용품  <i class="fa fa-caret-down"></i></a>
 							<div class="custom-menu">
 								<div class="row">
@@ -590,7 +555,7 @@
 									<div class="col-md-12">
 										<hr>
 										<a class="banner banner-1" href="#">
-											<img src="../resources/img/banner05.jpg" alt="">
+											<img src="${context}/resources/img/banner05.jpg" alt="">
 											<div class="banner-caption text-center">
 												<h2 class="white-color">NEW COLLECTION</h2>
 												<h3 class="white-color font-weak">HOT DEAL</h3>
@@ -606,7 +571,7 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner06.jpg" alt="">
+												<img src="${context}/resources/img/banner06.jpg" alt="">
 												<div class="banner-caption text-center">
 													<h3 class="white-color text-uppercase">Women’s</h3>
 												</div>
@@ -626,7 +591,7 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner07.jpg" alt="">
+												<img src="${context}/resources/img/banner07.jpg" alt="">
 												<div class="banner-caption text-center">
 													<h3 class="white-color text-uppercase">Men’s</h3>
 												</div>
@@ -646,7 +611,7 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner08.jpg" alt="">
+												<img src="${context}/resources/img/banner08.jpg" alt="">
 												<div class="banner-caption text-center">
 													<h3 class="white-color text-uppercase">Accessories</h3>
 												</div>
@@ -666,7 +631,7 @@
 									<div class="col-md-3">
 										<div class="hidden-sm hidden-xs">
 											<a class="banner banner-1" href="#">
-												<img src="../resources/img/banner09.jpg" alt="">
+												<img src="${context}/resources/img/banner09.jpg" alt="">
 												<div class="banner-caption text-center">
 													<h3 class="white-color text-uppercase">Bags</h3>
 												</div>
@@ -699,14 +664,7 @@
 	<!-- /NAVIGATION -->
 
 	<!-- BREADCRUMB -->
-	<div id="breadcrumb">
-		<div class="container">
-			<ul class="breadcrumb">
-				<li><a href="#">Home</a></li>
-				<li class="active">Blank</li>
-			</ul>
-		</div>
-	</div>
+	
 	<!-- /BREADCRUMB -->
 
 	<!-- section -->
@@ -721,6 +679,15 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
+	
+	
+	<form class="form-horizontal" name="Frm1" id="Frm1" method="post">
+	   	<input type="hidden" name="h_code" />
+	</form>
+	
+	<form class="form-horizontal" name="Frm2" id="Frm2" method="post">
+	   	<input type="hidden" name="l_code" />
+	</form>
 		
 	<!-- jQuery Plugins -->
 	<script src="${context}/resources/js/jquery.min.js"></script>
@@ -730,5 +697,38 @@
 	<script src="${context}/resources/js/jquery.zoom.min.js"></script>
 	<script src="${context}/resources/js/main.js"></script>
 
+
+	<script>
+
+	   $('.detail1').on('click',function() {
+			  
+		 /*  location.href="${context}/product/product_insert.jsp"; */
+		   
+		
+	 	 });	//-- function
+	 	 
+	   $('.detail2').on('click',function() {
+			  
+		 /*  location.href="${context}/product/product_insert.jsp"; */
+			   
+			  
+		  });	//-- function
+		 	 
+		 	 
+		$('.detail3').on('click',function() {
+				  
+		 /*  location.href="${context}/product/product_insert.jsp"; */
+				   
+		  
+			 });	//-- function
+			  
+		 $('.detail4').on('click',function() {
+					  
+		 /*  location.href="${context}/product/product_insert.jsp"; */
+					   
+					  
+			 });	//-- function
+   
+   </script>
 	
 </html>

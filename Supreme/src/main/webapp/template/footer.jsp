@@ -12,20 +12,20 @@
 	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/bootstrap.min.css" />
 
 	<!-- Slick -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/slick.css" />
-	<link type="text/css" rel="stylesheet" href="../resources/css/slick-theme.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/slick-theme.css" />
 
 	<!-- nouislider -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/nouislider.min.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/nouislider.min.css" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="../resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="${context}/resources/css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="../resources/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${context}/resources/css/style.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,7 +51,7 @@
 						<!-- footer logo -->
 						<div class="footer-logo">
 							<a class="logo" href="#">
-		            <img src="../resources/img/logo.png" alt="">
+		            <img src="${context}/resources/img/logo.png" alt="">
 		          </a>
 						</div>
 						<!-- /footer logo -->
@@ -110,12 +110,12 @@
 	<!-- /FOOTER -->
 
 	<!-- jQuery Plugins -->
-	<script src="../resources/js/jquery.min.js"></script>
-	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/slick.min.js"></script>
-	<script src="../resources/js/nouislider.min.js"></script>
-	<script src="../resources/js/jquery.zoom.min.js"></script>
-	<script src="../resources/js/main.js"></script>
+	<script src="${context}/resources/js/jquery.min.js"></script>
+	<script src="${context}/resources/js/bootstrap.min.js"></script>
+	<script src="${context}/resources/js/slick.min.js"></script>
+	<script src="${context}/resources/js/nouislider.min.js"></script>
+	<script src="${context}/resources/js/jquery.zoom.min.js"></script>
+	<script src="${context}/resources/js/main.js"></script>
 
 </body>
 
