@@ -149,7 +149,7 @@
                                  <span class="sale"><c:out value="${vo.sale_percent}"/> % 할인 </span>
                               </div>
                               <button class="main-btn quick-view detail" title="<c:out value='${vo.p_code}'/>"><i class="fa fa-search-plus"></i>자세히 보기</button>
-                              <img src="${vo.p_image}" alt="">
+                              <img src="${context}/${vo.p_image}" alt="">
                            </div>
                            <div class="product-body">
                               <h3 class="product-price"><c:out value="${vo.p_price}"/> 원</h3>

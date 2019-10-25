@@ -47,23 +47,28 @@
 				<!--  Product Details -->
 				<div class="product product-details clearfix">
 					<div class="col-md-6">
-					
-						
+					<img src="${context}/${vo.p_image}" alt="">
 					</div>
 					<div class="col-md-6">
+					
 					<div class="product-body">
 							
-							<h2 class="product-name" title="<c:out value='${vo.p_name}'/>"><c:out value="${vo.p_name}"/></h2>
-							<h3 class="product-price" title="<c:out value='${vo.p_price}'/>"><c:out value="${vo.p_price}"/> 원</h3>
+							<h2 class="product-name"><c:out value="${vo.p_name}"/></h2>
+							<h3 class="product-price"><c:out value="${vo.p_price}"/> 원</h3>
 							
 							<p><strong>상태:</strong><c:out value="${vo.status}"/></p>
 							<p><strong>제조회사:</strong><c:out value="${vo.p_company}"/></p>
 							
 						<div class="product-options">
-							<p><strong title="<c:out value='${vo.stock}'/>">상품 재고:</strong><c:out value="${vo.stock}"/> 개 남음</p>	
-							<p><strong>팔린 상품개수:</strong><c:out value="${vo.unit_sales}"/> 개 팔림</p>	
+							<p><strong>상품 재고:</strong><c:out value="${vo.stock}"/> 개 남음</p>	
+							<p><strong>팔린 상품개수:</strong><c:out value="${vo.unit_sales}"/> 개 팔림</p>
+							<div class="qty-input test">
+								<span class="text-uppercase">수량: </span>
+								<input class="input" id="quantity" type="number">
+							</div>	
 						</div>
-
+						
+						
 						<div class="product-btns">
 								
 							<button class="primary-btn add-to-cart buy" id="buy">구매하기</button>	
@@ -109,32 +114,32 @@
 	
 	
 	<form class="form-horizontal" name="detailFrm" id="detailFrm" method="get">
-	   	<input type="hidden" name="p_code" value='모찌'/>
-	   	<input type="hidden" name="quantitiy" value='1' />
-	   	<input type="hidden" name="unit_price" value='300000'/>
+	   	<input type="hidden" name="p_code" value='${vo.p_code}'/>	    
+	   	<input type="hidden" name="unit_price" value='${vo.p_price}'/>
+	   	<input type="hidden" name="quantitiy"/>
 	</form>
 	
 	<form class="form-horizontal" name="detailFrm2" id="detailFrm2" method="get">
-	   	<input type="hidden" name="pCode" value='1111'/>
-	   	<input type="hidden" name="quantity" value='1' />
-	   	<input type="hidden" name="unitPrice" value='30000'/>
-	   	<input type="hidden" name="pName" value='모찌'/>
+	   	<input type="hidden" name="pCode" value='${vo.p_code}'/>
+	    <input type="hidden" name="quantity"/>
+	   	<input type="hidden" name="unitPrice" value='${vo.p_price}'/>
+	   	<input type="hidden" name="pName" value='${vo.p_name}'/>
 	   	<input type="hidden" name="id" value='admin'/>
 	</form>
 	
 	
-	<!-- /section -->
+	<!-- /section -
 	<!-- FOOTER -->
 	<%@include file ="/template/footer.jsp" %>
 	<!-- /FOOTER -->
 	
 	<!-- jQuery Plugins -->
-	<script src="../resources/js/jquery.min.js"></script>
-	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/slick.min.js"></script>
-	<script src="../resources/js/nouislider.min.js"></script>
-	<script src="../resources/js/jquery.zoom.min.js"></script>
-	<script src="../resources/js/main.js"></script>
+	<script src="${context}/resources/js/jquery.min.js"></script>
+	<script src="${context}/resources/js/bootstrap.min.js"></script>
+	<script src="${context}/resources/js/slick.min.js"></script>
+	<script src="${context}/resources/js/nouislider.min.js"></script>
+	<script src="${context}/resources/js/jquery.zoom.min.js"></script>
+	<script src="${context}/resources/js/main.js"></script>
 	
 	<script>
 
@@ -142,37 +147,31 @@
 	
 	//구매버튼
 	 $("#buy").on('click',function() {
+		  	  
+	   	
+		  var quantitiy = $('#quantity').val();
+		 
 		  
-		  /*  var p_name = $(this).attr("title");
-		   var p_price = $(this).attr("title");
-		   var stock = $(this).attr("title"); */
-		   
-		  
-		   /* frm.p_name.value=p_name;
-		   frm.p_price.value=p_price;
-		   frm.stock.value=stock; */
-		  // frm.action = "${context}/order/get.do";
-	   
 		  var frm = document.detailFrm;
+		  
+		  frm.quantitiy.value=quantitiy;
+		  
+		  
+		  
 		  frm.action = "${context}/order/get.do";
-	   	 frm.submit();
+	   	  frm.submit();
 	   	 
 	 	 });
 	
 	//장바구니 담기버튼
 	 $("#cart").on('click',function() {
 		  
-		  /*  var p_name = $(this).attr("title");
-		   var p_price = $(this).attr("title");
-		   var stock = $(this).attr("title"); */
-		   
-		  
-		   /* frm.p_name.value=p_name;
-		   frm.p_price.value=p_price;
-		   frm.stock.value=stock; */
-		  // frm.action = "${context}/order/get.do";
+		 
 	   
+		 var quantity = $('#quantity').val();
+		 
 		 var frm = document.detailFrm2;
+		 frm.quantity.value=quantity;
 		 frm.action = "${context}/cart/get.do";
 	   	 frm.submit();
 	   	 alert("장바구니에 담겼습니다.");
@@ -184,7 +183,7 @@
 			
   					
   			
-			});	// function
+		});	// function
 	</script>
 </body>
 
