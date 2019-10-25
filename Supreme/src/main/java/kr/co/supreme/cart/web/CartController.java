@@ -2,6 +2,7 @@ package kr.co.supreme.cart.web;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -165,6 +166,8 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 	/**목록조회 */
 	@RequestMapping(value="cart/get_retrieve.do",method = RequestMethod.GET)
 	public String get_retrieve(HttpServletRequest req,Search search, Model model) {
+		
+		LOG.debug("요요요요요요ㅛ"+req.getParameter("idd"));
 		//param
 		if(search.getPageSize()==0) {
 			search.setPageSize(10);
@@ -174,6 +177,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			search.setPageNum(1);
 		}		
 		
+		search.setSearchWord(req.getParameter("idd"));
 		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
 		model.addAttribute("vo", search);
@@ -200,7 +204,22 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 	//상세페이지에서 값받아오기
 		@RequestMapping(value="cart/get.do",method = RequestMethod.GET)
 		public String get(Cart cart,Model model) {
-			cart.setCartCode(1111);
+			
+			
+			Search search = new Search();
+			//param
+			if(search.getPageSize()==0) {
+				search.setPageSize(10);
+			}
+			
+			if(search.getPageNum()==0) {
+				search.setPageNum(1);
+			}	
+			search.setSearchWord(cart.getId());
+			
+			search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+			search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+			
 			LOG.debug("============================");
 			LOG.debug("========"+cart.getpCode());
 			LOG.debug("========"+cart.getQuantity());
@@ -209,9 +228,12 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			LOG.debug("========"+cart.getId());
 			LOG.debug("========"+cart.getCartCode());
 			LOG.debug("============================");
-			
+			LOG.debug("자 여기"+search.getSearchWord());
+			if(cart.getpCode()!=0) {
 			int flag = this.cartService.do_save(cart);
-				
+			}
+			List<Cart> list = (List<Cart>) this.cartService.get_retrieve(search);
+			model.addAttribute("list", list);
 			return VIEW_LIST_NM;
 			
 		}

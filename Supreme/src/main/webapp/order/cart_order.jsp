@@ -64,14 +64,13 @@ for(int i=0;i<3;i++){
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">	
-					<input type="text" maxlength="300"  class="form-control input-sm" id="name"  name="name" value="<c:out value='${user.name}'/>">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="name"  name="name">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address" class="col-sm-2 control-label">우편번호</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"   id="postcode" placeholder="우편번호"  name="postcode"disabled="disabled"
-						value="<c:out value='${user.postcode}'/>">
+					<input type="text" maxlength="300"   id="postcode" placeholder="우편번호"  name="postcode"disabled="disabled">
 				<button type="button" class="btn btn-default btn-sm" id="pcode_search">우편번호 조회</button>
 				</div>
 			</div>
@@ -80,28 +79,25 @@ for(int i=0;i<3;i++){
 			<div class="form-group">
 				<label for="address1" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled"
-					value="<c:out value='${user.address1}'/>">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address2" class="col-sm-2 control-label">상세주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2"
-					value="<c:out value='${user.address2}'/>">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="tel" class="col-sm-2 control-label">연락처</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="tel"  name="tel" value="<c:out value='${user.tel}'/>">
+					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="tel"  name="tel">
 				</div>
 			</div>	
 			<div class="form-group">
 				<label for="request" class="col-sm-2 control-label">배송 요청사항</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="request"  name="request"
-					>
+					<input type="text" maxlength="300"  class="form-control input-sm" id="request"  name="request">
 				</div>
 			</div>
 			<br>

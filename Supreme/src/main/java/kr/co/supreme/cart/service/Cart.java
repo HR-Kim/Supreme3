@@ -12,6 +12,8 @@ public class Cart extends DTO{
 	
 	private String pImage; //상품이미지
 	private String pName; //상품이름
+	private int total; //상품이름
+	
 	
 	public Cart() {}
 
@@ -24,6 +26,14 @@ public class Cart extends DTO{
 		this.id = id;
 		this.pImage = pImage;
 		this.pName = pName;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 	public int getCartCode() {

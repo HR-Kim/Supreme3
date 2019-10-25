@@ -9,6 +9,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value ="${pageContext.request.contextPath }"/>
 <%
+	String id="admin";
+
 	/** 페이지 사이즈 */
 	String pageSize   = "10"  ; 	
 	/** 페이지 번호 */
@@ -32,6 +34,7 @@
 		searchDiv  = "";
 		searchWord = "";
 	}
+	
 	
 	String extParam = (String)request.getAttribute("ext");
 	if(extParam !=null) ext = extParam;
@@ -68,7 +71,7 @@
 	<div class="container">
 	<!-- row -->
 	<div class="row">
-	
+
 			<div class="order-summary clearfix">
 				<!-- Grid영역 -->
 				
@@ -81,8 +84,8 @@
 							<table class="shopping-cart-table table">
 								<thead>
 									<tr>
-										<th>상품명</th>
-										<th></th>
+									<th> </th>
+										<th>상품명</th>			
 										<th class="text-center">가격</th>
 										<th class="text-center">수량</th>
 										<th class="text-center">총가격</th>
@@ -90,61 +93,60 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-										<td class="details">
-											<a href="#">모찌</a>
-											
-										</td>
-										<td class="price text-center">10,200원<br></td>
-										<td class="qty text-center"><input class="input" type="number" value="1"></td>
-										<td class="total text-center"><strong class="primary-color">10,200원</strong></td>
-										<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-									</tr>
-									<tr>
-										<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-										<td class="details">
-											<a href="#">다롱이</a>
-											
-										</td>
-										<td class="price text-center">20,200원</td>
-										<td class="qty text-center"><input class="input" type="number" value="1"></td>
-										<td class="total text-center"><strong class="primary-color">20,200원</strong></td>
-										<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-									</tr>
-									<tr>
-										<td class="thumb"><img src="./img/thumb-product01.jpg" alt=""></td>
-										<td class="details">
-											<a href="#">먼지</a>
-											
-										</td>
-										<td class="price text-center">30,200원</td>
-										<td class="qty text-center"><input class="input" type="number" value="1"></td>
-										<td class="total text-center"><strong class="primary-color">30,200원</strong></td>
-										<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
-									</tr>
+					<c:choose>
+						<c:when test="${list.size()>0 }">
+							<c:forEach  var="list"  items="${list}">
+								<tr>
+									<td class="text-center"><input type="checkbox" name="check"></td>
+									<td class="text-center"><c:out value="${list.pName}"/></td>
+									<td class="text-center"><c:out value="${list.unitPrice}"/></td>
+									<td class="text-center"><c:out value="${list.quantity}"/></td>
+									<td class="text-center"><c:out value="${list.unitPrice*list.quantity}"/></td>
+									<td class="text-center"><a class="remove" href="#" onclick="go_cart_ajax_delete(${list.cartCode})"><fa class="fa fa-close"></fa></a> 
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="99">장바구니에 물건이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 								</tbody>
+								
 								<tfoot>
-									<tr>
+					<c:choose>
+						<c:when test="${list.size()>0 }">
+								<tr>
 										<th class="empty" colspan="3"></th>
 										<th>상품가격</th>
 										<th colspan="2" class="sub-total">60,600원</th>
-									</tr>
-									<tr>
+								</tr>
+								<tr>
 										<th class="empty" colspan="3"></th>
 										<th>배송비</th>
 										<td colspan="2">2,500원</td> 
-									</tr>
-									<tr>
+								</tr>
+								<tr>
 										<th class="empty" colspan="3"></th>
 										<th>주문가격</th>
 										<th colspan="2" class="total">63,100원</th>
-									</tr>
+								</tr>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="99"></td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+									
 								</tfoot>
 							</table>
+							<c:if test="${list.size()>0 }">
 							<div class="pull-right">
-								<button class="primary-btn">구매하기</button>
+								<button class="primary-btn" id="buy">구매하기</button>
 							</div>
+							</c:if>
 						</div>
 
 					</div>
@@ -157,6 +159,67 @@
 	<!-- FOOTER -->
 	<%@include file ="/template/footer.jsp" %>
 	<!-- /FOOTER -->
+
+<script>
+
+$("#buy").on("click",function(){
+	console.log("doSave");
+	pay();
+	
+	
+
+});
+
+
+
+function go_cart_delete(cseq){
+    
+    if(confirm("정말 삭제하시겠습니까?")){
+        location.href="${context}/order/do_delete.do?cseq="+cseq;      
+    }
+     
+}
+
+
+function go_cart_ajax_delete(cseq){
+	if(confirm("정말 삭제하시겠습니까?")){
+		console.log(cseq);
+	$.ajax({
+        type:"POST",
+        url:"${context}/cart/do_delete.do",
+        dataType:"html",// JSON
+        data:{
+        	"cartCode" : cseq,
+        	"id" : "admin"
+        },
+        success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+            //console.log(data);
+        	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
+        	var parseData = $.parseJSON(data);
+        	if(parseData.msgId=="1"){
+        		alert(parseData.msgMsg);
+        		console.log("삭제완료!");
+        		location.href = "${context}/cart/get_retrieve.do?idd=admin";
+        		
+        		
+        	}else{
+        		alert(parseData.msgMsg);
+        	}
+        	
+
+        	
+        },
+        complete: function(data){//무조건 수행
+         
+        },
+        error: function(xhr,status,error){
+         
+        }
+    });	
+	
+	}
+};
+</script>
 
 </body>
 </html>
