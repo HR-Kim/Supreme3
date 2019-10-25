@@ -40,6 +40,7 @@ public class ProductController {
 	CodeService codeService;
 	
 	private final String VIEW_LIST_NM  ="product/product_main";
+	private final String VIEW_LIST_M_NM  ="product/product_main2";
 	private final String VIEW_ADMIN_MNG_NM  ="product/product_mng";
 	private final String VIEW_ADMIN_UPT_NM  ="product/product_update";
 	private final String VIEW_MNG_NM  ="product/product_detail";
@@ -301,6 +302,78 @@ public class ProductController {
 	      model.addAttribute("totalCnt", totalCnt);
 	      return VIEW_ADMIN_MNG_NM;
 	   }
+	   
+	   
+	   /**목록조회 */
+	   @RequestMapping(value="product/get_cat_retrieve.do",method = RequestMethod.GET)
+	   public String get_cat_retrieve(HttpServletRequest req,ProductSearch search, Model model) {
+		   LOG.debug("1=========================");
+		   LOG.debug("1=param="+search);
+		   LOG.debug("1=========================");
+		   
+		   //param
+	      if(search.getPageSize()==0) {
+	         search.setPageSize(10);
+	      }
+	      
+	      if(search.getPageNum()==0) {
+	         search.setPageNum(1);
+	      }      
+	      
+	      search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+	      search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+	      model.addAttribute("vo", search);
+	      
+	      LOG.debug("2=========================");
+	      LOG.debug("2=param="+search);
+	      LOG.debug("2=========================");   
+	      	
+	      //Code:PAGE_SIZE
+			Code code=new Code();
+			code.setCodeId("PAGE_SIZE");
+			//Code정보조회
+			List<Code> codeList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeList", codeList);
+			
+			code.setCodeId("PRODUCT_SEARCH");
+			//Code정보조회
+			List<Code> codeSearchList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeSearchList", codeSearchList);
+			
+			code.setCodeId("HIGH_CODE");
+			//Code정보조회
+			List<Code> codeHCodeList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeHCodeList", codeHCodeList);
+			
+			code.setCodeId("LOW_CODE");
+			//Code정보조회
+			List<Code> codeLCodeList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeLCodeList", codeLCodeList);
+			
+			code.setCodeId("PRODUCT_STATUS");
+			//Code정보조회
+			List<Code> codeStatusList = (List<Code>) codeService.get_retrieve(code);
+			model.addAttribute("codeStatusList", codeStatusList);
+			LOG.debug("2.5=========================");
+		    LOG.debug("2.5=코드 조회 완료");
+		    LOG.debug("2.5=search="+search);
+		    LOG.debug("2.5=========================");   
+	      
+	      
+	      //목록조회
+		      
+	      List<Product> list = (List<Product>) this.productService.get_admin_retrieve(search);
+	      model.addAttribute("list", list);
+	      
+	      //총건수
+	      int totalCnt = 0;
+	      if(null != list && list.size()>0) {
+	         totalCnt = list.get(0).getTotalCnt();
+	      }
+	      model.addAttribute("totalCnt", totalCnt);
+	      return VIEW_LIST_M_NM;
+	   }
+	   
 	   
 	   
 	}
