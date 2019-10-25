@@ -7,54 +7,12 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:set var="context" value="${pageContext.request.contextPath }" />
 <%
-	/** 페이지 사이즈 */
-	String pageSize   = "10"  ; 	
-	/** 페이지 번호 */
-	String pageNum    = "1"  ;	
-	/** 검색조건 */
-	String searchDiv  = "" ;
-	/** 검색어 */
-	String searchWord = "test01" ;
 	
-	String ext = "xls" ;
-
-	
-	Search vo = (Search)request.getAttribute("vo");
-	if(null !=vo){
-		pageSize   = StringUtil.nvl(vo.getPageSize()+"","10");
-		pageNum    = StringUtil.nvl(vo.getPageNum()+"","1");
-		searchDiv  = StringUtil.nvl(vo.getSearchDiv(),"");
-		searchWord = StringUtil.nvl(vo.getSearchWord(),"");	
-	}else{
-		pageSize   = "10";
-		pageNum    = "1";
-		searchDiv  = "";
-		searchWord = "";
-	}
-	
-	String extParam = (String)request.getAttribute("ext");
-	if(extParam !=null) ext = extParam;
-	
-	//페이지사이즈
-	List<Code> listPageSize=(request.getAttribute("listPageSize")==null)?
-			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listPageSize"));
-	//게시판 검색 구분
-	List<Code> listBoardSearch=(request.getAttribute("listBoardSearch")==null)?
-			(List<Code>)new ArrayList<Code>():(List<Code>)(request.getAttribute("listBoardSearch"));
-	
-	//paging 
-	//maxNum, currPageNo, rowPerPage, bottomCount, url, scriptName	
-	int maxNum      = 0;//totalCnt
-	int bottomCount = 10;
-	int currPageNo  = 1;//pageNum
-	int rowPerPage  = 10;//pageSize	
-	
-	String url      = request.getContextPath()+"/product/get_retrieve.do";
-	String scriptName ="search_page";
-
 %>
+
+<c:set var="context" value="${pageContext.request.contextPath }" />
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -149,7 +107,7 @@
                                  <span class="sale"><c:out value="${vo.sale_percent}"/> % 할인 </span>
                               </div>
                               <button class="main-btn quick-view detail" title="<c:out value='${vo.p_code}'/>"><i class="fa fa-search-plus"></i>자세히 보기</button>
-                              <img src="${context}/${vo.p_image}" alt="">
+                              <img src="${context}/resources" alt="">
                            </div>
                            <div class="product-body">
                               <h3 class="product-price"><c:out value="${vo.p_price}"/> 원</h3>

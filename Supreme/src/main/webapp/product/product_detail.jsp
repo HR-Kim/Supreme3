@@ -1,3 +1,4 @@
+<%@page import="kr.co.supreme.product.service.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
 <%@page import="java.util.List"%>
@@ -7,10 +8,11 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:set var="context" value="${pageContext.request.contextPath }" />
 <%
-
+Product pro = (Product) request.getAttribute("vo");
 %>
+<c:set var="context" value="${pageContext.request.contextPath }" />
+
 <!DOCTYPE html>
 <html lang="ko">
 <meta charset="UTF-8">
@@ -55,8 +57,16 @@
 							
 							<h2 class="product-name"><c:out value="${vo.p_name}"/></h2>
 							<h3 class="product-price"><c:out value="${vo.p_price}"/> 원</h3>
+							<%if(pro.getStatus().equals("10")){ %>
+							<p><strong>상태:</strong> 판매중</p>
+							<% }else if(pro.getStatus().equals("20")) {%>
+							<p><strong>상태:</strong> 재입고 예정</p>
+							<%}else if (pro.getStatus().equals("30")) {%>
+							<p><strong>상태:</strong>매진</p>
+							<%}else {%>
+							<p><strong>상태:</strong></p>
+							<%}%>
 							
-							<p><strong>상태:</strong><c:out value="${vo.status}"/></p>
 							<p><strong>제조회사:</strong><c:out value="${vo.p_company}"/></p>
 							
 						<div class="product-options">
