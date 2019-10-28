@@ -24,6 +24,7 @@ import kr.co.supreme.order.service.Order;
 import kr.co.supreme.order.service.OrderService;
 import kr.co.supreme.user.service.User;
 import kr.co.supreme.cart.service.Cart;
+import kr.co.supreme.cart.service.CartService;
 
 @Controller
 public class OrderController {
@@ -36,12 +37,15 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
-	
+	@Autowired
+	CartService cartService;
 	//view
 	private final String VIEW_LIST_NM ="order/order_list";
 	private final String VIEW_MNG_NM  ="order/order_mng";
 	private final String VIEW  ="order/order_success";
 	private final String VIEW2  ="order/order";
+	private final String VIEW3  ="order/cart_order";
+	
 	/**수정 */
 	@RequestMapping(value="order/do_update.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")
@@ -207,7 +211,7 @@ public class OrderController {
 		return VIEW_LIST_NM;
 	}
 	
-	//상세페이지에서 값받아오기
+	//(바로 결제)상세페이지에서 값받아오기
 	@RequestMapping(value="order/get.do",method = RequestMethod.GET)
 	public String get(Order order,Model model) {
 		LOG.debug("============================");
@@ -223,5 +227,27 @@ public class OrderController {
 		return VIEW2;
 	}
 	
-	
+	//(장바구니 결제)장바구니에서 구매하기 눌렀을때 결제창으로 가는거
+	@RequestMapping(value="order/get2.do",method = RequestMethod.GET)
+	public String get2(Search search,Model model) {
+		
+		
+		if(search.getPageSize()==0) {
+			search.setPageSize(10);
+		}
+		
+		if(search.getPageNum()==0) {
+			search.setPageNum(1);
+		}	
+		//search.setSearchWord(cart.getId());
+		search.setSearchWord("admin");
+		
+		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+		
+		
+		List<Cart> list = (List<Cart>) this.cartService.get_retrieve(search);
+		model.addAttribute("list", list);
+		return VIEW3;
+	}
 }

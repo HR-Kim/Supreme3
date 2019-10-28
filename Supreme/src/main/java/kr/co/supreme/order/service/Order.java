@@ -26,6 +26,8 @@ public class Order extends DTO{
 	private String p_code		 ; /*상품번호*/	
 	private String quantitiy	 ; /*주문 수량*/
 	private String unit_price    ; /*상품 단가*/
+	private String total_price    ; /*상품 총가격*/
+	
 	
 	private String check; //장바구니,단일결제 구분
 	

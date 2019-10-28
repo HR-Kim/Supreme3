@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 //Cart list = (Cart)request.getAttribute("list");
 List<Cart> list = new ArrayList<Cart>();
@@ -64,13 +65,14 @@ for(int i=0;i<3;i++){
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">	
-					<input type="text" maxlength="300"  class="form-control input-sm" id="name"  name="name">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="name"  name="name" value="<c:out value='${user.name}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address" class="col-sm-2 control-label">우편번호</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"   id="postcode" placeholder="우편번호"  name="postcode"disabled="disabled">
+					<input type="text" maxlength="300"   id="postcode" placeholder="우편번호"  name="postcode"disabled="disabled"
+					value="<c:out value='${user.postcode}'/>">
 				<button type="button" class="btn btn-default btn-sm" id="pcode_search">우편번호 조회</button>
 				</div>
 			</div>
@@ -79,19 +81,21 @@ for(int i=0;i<3;i++){
 			<div class="form-group">
 				<label for="address1" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled"
+					value="<c:out value='${user.address1}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address2" class="col-sm-2 control-label">상세주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2">
+					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2"
+					value="<c:out value='${user.address2}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="tel" class="col-sm-2 control-label">연락처</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="tel"  name="tel">
+					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="tel"  name="tel" value="<c:out value='${user.tel}'/>">
 				</div>
 			</div>	
 			<div class="form-group">
@@ -113,28 +117,42 @@ for(int i=0;i<3;i++){
 							<table class="shopping-cart-table table">
 								<thead>
 									<tr>
-										<th>Product</th>
-										<th></th>
+										<th class="text-center">Product</th>
 										<th class="text-center">Price</th>
 										<th class="text-center">Quantity</th>
-										<th class="text-center">Total</th>
-										
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="details"><a href="#">${aaa.getP_code()}</a></td>
-										<th></th>
-										<td class="price text-center"><strong>${aaa.getUnit_price()}</strong><br></td>
-										<td class="qty text-center"><strong class="primary-color">${aaa.getQuantitiy()}</strong></td>
-										<td class="total text-center"><strong class="primary-color">${aaa.getUnit_price()}</strong></td>
-									</tr>
+					<c:choose>
+						<c:when test="${list.size()>0 }">
+						<c:set var = "sum" value = "0" />
+							<c:forEach  var="list"  items="${list}">
+								<tr>
+									<td class="text-center"><c:out value="${list.pName}"/></td>
+									<td class="text-center"><c:out value="${list.unitPrice}"/></td>
+									<td class="text-center"><c:out value="${list.quantity}"/></td>
+								<c:set var = "sum" value = "${sum + list.unitPrice * list.quantity}" />
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>1
+								<td colspan="99">장바구니에 물건이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 									
 								</tbody>
 								
 							</table>
 								<div class="pull-right">
-								<button type="button" class="primary-btn" id="doPayment">결제하기</button>
+								<table>
+								<tr>
+									<th>결제 금액 : <fmt:formatNumber pattern="###,###,###" value="${sum}"/></th>
+									<th><button type="button" class="primary-btn" id="doPayment">결제하기</button></th>
+								</tr>
+								</table>
+								
 								</div>
 						</div>
 
@@ -296,7 +314,7 @@ function sample6_execDaumPostcode() {
 	    	*/
 	    	name: '주문명:결제테스트',
 	    	//결제창에서 보여질 이름
-	    	amount: 100,
+	    	amount: ${sum},
 	    	//가격
 	    	buyer_email: 'iamport@siot.do',
 	    	buyer_name: '구매자이름',
@@ -359,7 +377,7 @@ function sample6_execDaumPostcode() {
 	              	"p_code" : "123",
 	              	"quantitiy" : "1",
 	              	"unit_price" : "10000",
-	              	"check" : "1"
+	              	"check" : "2"
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
 	                //console.log(data);

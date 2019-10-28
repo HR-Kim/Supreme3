@@ -40,6 +40,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 	//view
 	private final String VIEW_LIST_NM ="cart/cart_list";
 	private final String VIEW_MNG_NM  ="cart/cart_mng";
+	private final String VIEW_MNG_NM2  ="product/product_detail";
 	
 	/**수정 */
 	@RequestMapping(value="cart/do_update.do",method = RequestMethod.POST
@@ -203,7 +204,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
 	//상세페이지에서 값받아오기
 		@RequestMapping(value="cart/get.do",method = RequestMethod.GET)
-		public String get(Cart cart,Model model) {
+		public String get(HttpServletRequest req,Cart cart,Model model) {
 			
 			
 			Search search = new Search();
@@ -232,10 +233,42 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			if(cart.getpCode()!=0) {
 			int flag = this.cartService.do_save(cart);
 			}
+			
 			List<Cart> list = (List<Cart>) this.cartService.get_retrieve(search);
 			model.addAttribute("list", list);
-			return VIEW_LIST_NM;
 			
+			String referer = req.getHeader("Referer");
+			LOG.debug("자 여기ekdkdkdkkdkdk"+referer);
+			return "redirect:"+ referer;
+		    			
 		}
-	
+		
+		
+		//장바구니로 가는 버튼 누르면 장바구니 list 띄워주는 창 (id를 넘겨줘야함)
+				@RequestMapping(value="cart/direct.do",method = RequestMethod.GET)
+				public String direct(HttpServletRequest req,Cart cart,Model model) {
+					
+					
+					Search search = new Search();
+					//param
+					if(search.getPageSize()==0) {
+						search.setPageSize(10);
+					}
+					
+					if(search.getPageNum()==0) {
+						search.setPageNum(1);
+					}	
+					//search.setSearchWord(cart.getId());
+					search.setSearchWord("admin");
+					
+					search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
+					search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
+					
+					
+					List<Cart> list = (List<Cart>) this.cartService.get_retrieve(search);
+					model.addAttribute("list", list);
+					
+					return VIEW_LIST_NM;
+				    			
+				}
 }

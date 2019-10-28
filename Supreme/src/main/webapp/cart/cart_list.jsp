@@ -7,10 +7,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <c:set var="context" value ="${pageContext.request.contextPath }"/>
+
 <%
 	String id="admin";
-
+	
 	/** 페이지 사이즈 */
 	String pageSize   = "10"  ; 	
 	/** 페이지 번호 */
@@ -93,8 +96,10 @@
 									</tr>
 								</thead>
 								<tbody>
+								
 					<c:choose>
 						<c:when test="${list.size()>0 }">
+						<c:set var = "sum" value = "0" />
 							<c:forEach  var="list"  items="${list}">
 								<tr>
 									<td class="text-center"><input type="checkbox" name="check"></td>
@@ -102,7 +107,8 @@
 									<td class="text-center"><c:out value="${list.unitPrice}"/></td>
 									<td class="text-center"><c:out value="${list.quantity}"/></td>
 									<td class="text-center"><c:out value="${list.unitPrice*list.quantity}"/></td>
-									<td class="text-center"><a class="remove" href="#" onclick="go_cart_ajax_delete(${list.cartCode})"><fa class="fa fa-close"></fa></a> 
+									<td class="text-center"><a class="remove" href="#" onclick="go_cart_ajax_delete(${list.cartCode})"><fa class="fa fa-close"></fa></a></td> 
+									<c:set var = "sum" value = "${sum + list.unitPrice * list.quantity}" />
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -111,6 +117,8 @@
 								<td colspan="99">장바구니에 물건이 없습니다.</td>
 							</tr>
 						</c:otherwise>
+					
+					
 					</c:choose>
 								</tbody>
 								
@@ -120,17 +128,17 @@
 								<tr>
 										<th class="empty" colspan="3"></th>
 										<th>상품가격</th>
-										<th colspan="2" class="sub-total">60,600원</th>
+										<th colspan="2" class="sub-total"><fmt:formatNumber pattern="###,###,###" value="${sum}"/></th>
 								</tr>
 								<tr>
 										<th class="empty" colspan="3"></th>
 										<th>배송비</th>
-										<td colspan="2">2,500원</td> 
+										<td colspan="2">무료</td> 
 								</tr>
 								<tr>
 										<th class="empty" colspan="3"></th>
 										<th>주문가격</th>
-										<th colspan="2" class="total">63,100원</th>
+										<th colspan="2" class="total"><fmt:formatNumber pattern="###,###,###" value="${sum}"/></th>
 								</tr>
 						</c:when>
 						<c:otherwise>
@@ -164,14 +172,15 @@
 
 $("#buy").on("click",function(){
 	console.log("doSave");
-	pay();
-	
+
+	location.href = "${context}/order/get2.do"
 	
 
 });
 
 
-
+	
+	
 function go_cart_delete(cseq){
     
     if(confirm("정말 삭제하시겠습니까?")){

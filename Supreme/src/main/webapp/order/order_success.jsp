@@ -35,6 +35,7 @@ String code = (String)request.getAttribute("code");
 			<h1>결제 완료</h1>
 		</div>
 		<h1>결제가 완료되었습니다.</h1>
+			<button type="button" class="primary-btn" id="check">주문 조회하기</button>
 	</div>
 	<!--// div container -->
 	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
