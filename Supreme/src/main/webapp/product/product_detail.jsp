@@ -1,4 +1,3 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="kr.co.supreme.product.service.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
@@ -97,10 +96,7 @@ Product pro = (Product) request.getAttribute("vo");
 					<div class="product-body">
 							
 							<h2 class="product-name"><c:out value="${vo.p_name}"/></h2>
-							
-							<h3 class="product-price"><fmt:formatNumber value="${vo.p_price}"/> 원</h3>
-								
-							
+							<h3 class="product-price"><c:out value="${vo.p_price}"/> 원</h3>
 							<%if(pro.getStatus().equals("10")){ %>
 							<p><strong>상태:</strong> 판매중</p>
 							<% }else if(pro.getStatus().equals("20")) {%>
@@ -115,7 +111,7 @@ Product pro = (Product) request.getAttribute("vo");
 							
 						<div class="product-options">
 						
-							<p><strong>팔린 상품개수:</strong><c:out value="${vo.unit_sales}"/> 개 팔림</p>
+							<p><strong>팔린 상품개수:</strong><c:out value="${vo.stock}"/> 개 남음</p>
 							<div class="qty-input test">
 								<span class="text-uppercase">수량: </span>
 								<input class="input" id="quantity" type="number">
