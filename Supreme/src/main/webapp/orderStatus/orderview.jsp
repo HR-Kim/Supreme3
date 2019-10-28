@@ -105,7 +105,7 @@
 	<!-- Header -->
 	<%@include file ="../template/header.jsp" %>
 	<!--/ Header -->
-	
+	<br>
 	<div class="container">
 	<!-- 검색영역 -->
 		<div class="row" >
