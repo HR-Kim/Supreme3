@@ -206,7 +206,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		@RequestMapping(value="cart/get.do",method = RequestMethod.GET)
 		public String get(HttpServletRequest req,Cart cart,Model model) {
 			
-			String st = req.getParameter("id");
+			
 			
 			Search search = new Search();
 			//param
@@ -217,7 +217,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			if(search.getPageNum()==0) {
 				search.setPageNum(1);
 			}	
-			search.setSearchWord(st);
+			search.setSearchWord(cart.getId());
 			
 			search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 			search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
@@ -247,11 +247,11 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		
 		//장바구니로 가는 버튼 누르면 장바구니 list 띄워주는 창 (id를 넘겨줘야함)
 				@RequestMapping(value="cart/direct.do",method = RequestMethod.GET)
-				public String direct(HttpServletRequest req,Cart cart,Model model) {
+				public String direct(HttpServletRequest req,Search search,Model model) {
 					
-					String st = req.getParameter("id");
 					
-					Search search = new Search();
+					LOG.debug("========ddddddddddddddddddddddd========"+search.getSearchWord());
+					
 					//param
 					if(search.getPageSize()==0) {
 						search.setPageSize(10);
@@ -261,7 +261,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 						search.setPageNum(1);
 					}	
 					//search.setSearchWord(cart.getId());
-					search.setSearchWord(st);
+				
 					
 					search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 					search.setSearchWord(StringUtil.nvl(search.getSearchWord()));

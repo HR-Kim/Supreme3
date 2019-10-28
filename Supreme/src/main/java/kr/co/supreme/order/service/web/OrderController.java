@@ -231,7 +231,7 @@ public class OrderController {
 	@RequestMapping(value="order/get2.do",method = RequestMethod.GET)
 	public String get2(Search search,Model model) {
 		
-		
+		LOG.debug("========ddddddddddddddddddddddd========"+search.getSearchWord());
 		if(search.getPageSize()==0) {
 			search.setPageSize(10);
 		}
@@ -240,7 +240,7 @@ public class OrderController {
 			search.setPageNum(1);
 		}	
 		//search.setSearchWord(cart.getId());
-		search.setSearchWord("admin");
+		
 		
 		search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 		search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
