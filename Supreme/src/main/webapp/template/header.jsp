@@ -115,13 +115,13 @@
 
 						<!-- Cart -->
 						<li class="header-cart">
-							<a href="${context}/cart/direct.do">
-								<div class="header-btns-icon">
-									<i class="fa fa-shopping-cart"></i>
-								</div>
-								<strong class="text-uppercase">My Cart</strong>
-							</a>
-							
+						   <a href="#" onclick="cart()">
+						      <div class="header-btns-icon">
+						         <i class="fa fa-shopping-cart"></i>
+						      </div>
+						      <strong class="text-uppercase">My Cart</strong>
+						   </a>
+						
 						</li>
 						<!-- /Cart -->
 
@@ -251,6 +251,10 @@
 	<form class="form-horizontal" name="Frm2" id="Frm2" method="post">
 	   	<input type="hidden" name="l_code" />
 	</form>
+	
+	<form class="form-horizontal" name="Frm3" id="Frm3" method="post">
+		<input type="hidden" name="uid" id="uid" value="<c:out value='${user.id}'/>" />
+	</form>
 		
 	<!-- jQuery Plugins -->
 	<script src="${context}/resources/js/jquery.min.js"></script>
@@ -268,6 +272,12 @@
 			location.reload();
 		};
 	
+		
+		function cart(){
+	         var ss = $("#uid").val();
+	         //alert(ss);
+	         location.href =   "${context}/cart/direct.do?id"+ss;
+	      }
 	
 	   $('.detail1').on('click',function() {
 			  

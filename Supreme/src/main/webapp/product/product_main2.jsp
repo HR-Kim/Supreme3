@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="kr.co.supreme.product.service.ProductSearch"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
@@ -258,18 +259,26 @@
                            <div class="product-thumb">
                               <div class="product-label">
                                	<c:choose>
-                               	<c:when test="${product.sale_percent=='100'}"></c:when>  
-                               	<c:otherwise>                           	
-                                 <span class="sale"><c:out value="${product.sale_percent}"/>%에 구매</span>
-                                 </c:otherwise>
+	                               	<c:when test="${product.sale_percent=='100'}"></c:when>  
+	                               	<c:otherwise>                           	
+	                                 	<span class="sale"><c:out value="${product.sale_percent}"/>%에 구매</span>
+	                                 </c:otherwise>
                                 </c:choose> 
                               </div>
                               <button class="main-btn quick-view detail" title="<c:out value='${product.p_code}'/>"><i class="fa fa-search-plus"></i>자세히 보기</button>
                               <img src="${context}/resources" alt="">
                            </div>
                            <div class="product-body">
-                              <h3 class="product-price"><c:out value="${product.p_price}"/> 원</h3>
-                              
+                           <c:choose>
+	                        <c:when test="${product.sale_percent=='100'}">
+	                            <h3 class="product-price"><fmt:formatNumber value="${product.p_price}"/> 원</h3>
+	                      	</c:when>
+                           	<c:otherwise> 
+                           	   	<small>원가 <del class="font-weak"><fmt:formatNumber value="${product.p_price}"/> 원</del></small>
+                           	   	<br>
+                           	   	<h3 class="product-price"><fmt:formatNumber value="${(product.p_price*product.sale_percent)/100}"/> 원</h3>                         	   	
+                           	   </c:otherwise>
+                           </c:choose>   
                               <h2 class="product-name"><a href="#"><c:out value="${product.p_name}"/></a></h2>
                              
                            </div>
