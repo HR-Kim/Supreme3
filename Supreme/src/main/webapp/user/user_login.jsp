@@ -5,36 +5,29 @@
 <html lang="ko">
 <head>
 <style type="text/css">
-	.img_wrap{
-		width: 140px;
+	.txt1 {
+	  font-family: OpenSans-Regular;
+	  font-size: 15px;
+	  line-height: 1.4;
+	  color: #999999;
 	}
-	.img_wrap img{
-		max-width: 100%;
+	
+	.txt2 {
+	  font-family: OpenSans-Regular;
+	  font-size: 15px;
+	  line-height: 1.4;
+	  color: #4272d7;
+	}
+	
+	.hov1:hover {
+	  text-decoration: underline;
 	}
 </style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="${context}/resources/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${context}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${context}/resources/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${context}/resources/vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="${context}/resources/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${context}/resources/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${context}/resources/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="${context}/resources/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${context}/resources/css/util.css">
-	<link rel="stylesheet" type="text/css" href="${context}/resources/css/main.css">
-<!--===============================================================================================-->
+
 <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-<title>회원 가입</title>
+<title>로그인</title>
 <!-- 부트스트랩 -->
 <link href="${context}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,69 +42,89 @@
  	<!-- Header -->
 	<%@include file ="../template/header.jsp" %>
 	<!--/ Header -->
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form" name="loginForm" id="loginForm" 
+	
+	<div class="row"><br></div>
+	<div class="row"><br></div>
+	<div class="row"><br></div>
+	
+	
+	 <div class="container">
+
+      <form class="form-signin" name="loginForm" id="loginForm" 
 				     action="${context}/user/do_login.do" method="post">
-
-					<span class="login100-form-title p-b-33">
-						로그인
-			
-					</span>
-					
-				    <div class="col-lg-10"></div>
-				    <div class="col-lg-10"></div>
-				    <div class="col-lg-10"></div>
-					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-						<input class="input100" type="text" name="u_id" id="u_id" placeholder="아이디">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="passwd" id="passwd"   placeholder="비밀번호">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-                 </form>
-					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn" id="signIn">
-							Login
-						</button>
-					</div>
-				
-					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							아이디와 비밀번호를 잊으셨나요?
-						</span>
-
-						<a href="#" class="txt2 hov1">
-							아이디/비밀번호 찾기
-						</a>
-					</div>
-
-					<div class="text-center">
-						<span class="txt1">
-							묘한 생각에 가입하시겠습니까?
-						</span>
-
-						<a href="#" class="txt2 hov1" onclick="joinLocation()">
-							회원가입
-						</a>
-					</div>
-				
-					
-					
-				
+       
+	       <div class="row">
+	      	 <div class="col-md-3"></div> 
+	       	 <h2 class="form-signin-heading col-md-6">로그인</h2>
+	       </div>
+	       
+		  <div class="row"><br></div>
+	  
+	  
+		  <div class="row">
+	      	 <div class="col-md-3"></div> 
+			 <div class="validate-input col-md-6" data-validate = "Username is required">
+				<input class="form-control" type="text" name="u_id" id="u_id" placeholder="아이디">
 			</div>
+	      </div>  
+      
+      	  <div class="row"><br></div>		
+      
+	      <div class="row">
+	      	 <div class="col-md-3"></div>   
+	         <div class="rs1 validate-input col-md-6" data-validate="Password is required">
+				<input class="form-control" type="password" name="passwd" id="passwd"   placeholder="비밀번호">
+				<span class=""></span>
+				<span class=""></span>
+			</div>
+		  </div>	
+	  
+		  <div class="row"><br></div>
+		</form>  
+	      <div class="row">       
+	      	<div class="col-md-3"></div>    
+	       	<div class="col-md-6 m-t-20">
+				<button class="btn btn-lg btn-primary btn-block" id="signIn">
+					Login
+				</button>
+			</div>
+ 		 </div>	
+ 		 <div class="row"><br></div>
+		 <div class="row"><br></div>
+ 		 
+ 		 <div class="text-center p-t-45 p-b-4">
+			<span class="txt1">
+				아이디와 비밀번호를 잊으셨나요?
+			</span>
+
+			<a href="#" class="txt2 hov1" onclick="idpwLocation()">
+				아이디/비밀번호 찾기
+			</a>
 		</div>
-	</div>
+		
+		<div class="row"><br></div>
+			<div class="text-center">
+			<span class="txt1">
+				묘한 생각에 가입하시겠습니까?
+			</span>
+
+			<a href="#" class="txt2 hov1" onclick="joinLocation()">
+				회원가입
+			</a>
+		</div>
+ 		 
+ 	 <div class="row"><br></div>
+    
+
+    </div> <!-- /container -->
 	<div id="dropDownSelect1"></div>	
 		
 
 		
-
+	<div class="row"><br></div>
+	<div class="row"><br></div>
+	<div class="row"><br></div>
+	
 	<script src="${context}/resources/js/main.js"></script>	 
 	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 	<script src="${context}/resources/js/jquery-1.12.4.js"></script>
@@ -144,7 +157,8 @@
 					if(null != jData){
 						if (jData.msgId == "30") {
 							alert("로그인에 성공했습니다");
-	
+							window.history.back()
+						//	location.href = "${context}/product/get_cat_retrieve.do"
 							
 						}else if (jData.msgId == "10") {
 							$("#u_id").focus();
@@ -169,7 +183,14 @@
 
 		//회원가입 창으로 이동
 		function joinLocation(){
-			location.href = "${context}/user/user_join.jsp"
+			location.href = "${context}/user/join.do"
+			
+		};
+		
+		//IDPW 찾기 창으로 이동
+		function idpwLocation(){
+			location.href = "${context}/user/idpw.do"
+			
 		};
 		
 		
