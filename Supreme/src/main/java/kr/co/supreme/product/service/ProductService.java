@@ -13,6 +13,8 @@ public interface ProductService {
 
 	
 
+	public int do_stock_update(DTO dto);
+	
 	/** 수정 */
 	public int do_update(DTO dto);
 
