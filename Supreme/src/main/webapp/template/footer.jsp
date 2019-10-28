@@ -50,13 +50,15 @@
 					<div class="footer">
 						<!-- footer logo -->
 						<div class="footer-logo">
-							<a class="logo" href="#">
+							<a class="logo" href="${context}/product/get_cat_retrieve.do">
 		            <img src="${context}/resources/img/logo.png" alt="">
 		          </a>
 						</div>
 						<!-- /footer logo -->
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+						<p>서울특별시 마포구 월드컵북로 21
+						<br>
+						풍성빌딩 2층 묘한생각</p>
 
 						<!-- footer social -->
 						<ul class="footer-social">
@@ -77,10 +79,33 @@
 						<h3 class="footer-header">My Account</h3>
 						<ul class="list-links">
 							<li><a href="#">My Account</a></li>
-							<li><a href="#">My Wishlist</a></li>
-							<li><a href="#">Compare</a></li>
-							<li><a href="#">Checkout</a></li>
-							<li><a href="#">Login</a></li>
+							<li><a href="${context}/orderStatus/get_retrieve.do">Checkout</a></li>
+							<li><a href="#">Join</a></li>	
+						</ul>
+					</div>
+				</div>
+				<!-- /footer widget -->
+				
+				<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">Category</h3>
+						<ul class="list-links">
+							<li><a href="#">Food</a></li>
+							<li><a href="#">Living</a></li>
+							<li><a href="#">Sanitary</a></li>
+							<li><a href="#">Outing</a></li>							
+						</ul>
+					</div>
+				</div>
+				<!-- /footer widget -->
+				
+					<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">Board</h3>
+						<ul class="list-links">
+							<li><a href="#">Notice</a></li>					
 						</ul>
 					</div>
 				</div>

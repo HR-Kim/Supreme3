@@ -51,7 +51,7 @@
 				<div class="pull-left">
 					<!-- Logo -->
 					<div class="header-logo">
-						<a class="logo" href="#">
+						<a class="logo" href="${context}/product/get_cat_retrieve.do">
 							<img src="${context}/resources/img/logo.png" alt="">
 						</a>
 					</div>
@@ -85,7 +85,7 @@
 								Object user = session.getAttribute("user"); 
 								if( user == null){
 							%>
-							<a href="${context}/user/user_login.jsp" class="text-uppercase">Login</a> 
+							<a href="${context}/user/login.do" class="text-uppercase">Login</a> 
 							<% 
 								}else{
 							%>
@@ -94,56 +94,34 @@
 								}
 							%>
 							
-							 / <a href="${context}/user/user_join.jsp" class="text-uppercase">Join</a>
+							 / <a href="${context}/user/join.do" class="text-uppercase">Join</a>
 							<ul class="custom-menu">
-								<li><a href="${context}/user/user_update.jsp"><i class="fa fa-user-o"></i> 회원 정보 수정</a></li>
-								<li><a href="${context}/orderStauts/get_retrieve.do"><i class="fa fa-check"></i> 주문 내역 확인</a></li>
-								<li><a href="${context}/user/user_login.jsp"><i class="fa fa-unlock-alt"></i> Login</a></li>
+								<li><a href="${context}/user/update.do"><i class="fa fa-user-o"></i> 회원 정보 수정</a></li>
+								<li><a href="${context}/orderStatus/get_retrieve.do"><i class="fa fa-check"></i> 주문 내역 확인</a></li>
+								<% 
+								if( user == null){
+								%>
+								<li><a href="${context}/user/login.do"><i class="fa fa-unlock-alt"></i> Login</a></li>
+								<% 
+								}else{
+								%>
+								<li><a href="#" onclick="logout()"><i class="fa fa-unlock-alt"></i> Logout</a></li>
+								<%		
+								}
+								%>
 							</ul>
 						</li>
 						<!-- /Account -->
 
 						<!-- Cart -->
-						<li class="header-cart dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+						<li class="header-cart">
+							<a href="#">
 								<div class="header-btns-icon">
 									<i class="fa fa-shopping-cart"></i>
-									<span class="qty">3</span>
 								</div>
-								<strong class="text-uppercase">My Cart:</strong>
-								<br>
-								<span>35.20$</span>
+								<strong class="text-uppercase">My Cart</strong>
 							</a>
-							<div class="custom-menu">
-								<div id="shopping-cart">
-									<div class="shopping-cart-list">
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="${context}/resources/img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="${context}/resources/img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-									</div>
-									<div class="shopping-cart-btns">
-										<button class="main-btn">View Cart</button>
-										<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-									</div>
-								</div>
-							</div>
+							
 						</li>
 						<!-- /Cart -->
 
@@ -170,194 +148,10 @@
 				<div class="category-nav show-on-click">
 					<span class="category-header">카테고리 <i class="fa fa-list"></i></span>
 					<ul class="category-list">
-						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women’s Clothing <i class="fa fa-angle-right"></i></a>
-							<div class="custom-menu">
-								<div class="row">
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr class="hidden-md hidden-lg">
-									</div>
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr class="hidden-md hidden-lg">
-									</div>
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="row hidden-sm hidden-xs">
-									<div class="col-md-12">
-										<hr>
-										<a class="banner banner-1" href="#">
-											<img src="${context}/resources/img/banner05.jpg" alt="">
-											<div class="banner-caption text-center">
-												<h2 class="white-color">NEW COLLECTION</h2>
-												<h3 class="white-color font-weak">HOT DEAL</h3>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li><a href="#">Men’s Clothing</a></li>
-						<li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Phones & Accessories <i class="fa fa-angle-right"></i></a>
-							<div class="custom-menu">
-								<div class="row">
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr class="hidden-md hidden-lg">
-									</div>
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-									<div class="col-md-4 hidden-sm hidden-xs">
-										<a class="banner banner-2" href="#">
-											<img src="${context}/resources/img/banner04.jpg" alt="">
-											<div class="banner-caption">
-												<h3 class="white-color">NEW<br>COLLECTION</h3>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li><a href="#">Computer & Office</a></li>
-						<li><a href="#">Consumer Electronics</a></li>
-						<li class="dropdown side-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Jewelry & Watches <i class="fa fa-angle-right"></i></a>
-							<div class="custom-menu">
-								<div class="row">
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr class="hidden-md hidden-lg">
-									</div>
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr class="hidden-md hidden-lg">
-									</div>
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li><a href="#">Bags & Shoes</a></li>
-						<li><a href="#">View All</a></li>
+						<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=10">먹거리</a></li>
+						<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20">생활용품</a></li>
+						<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=30">위생용품</a></li>
+						<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=40">외출용품</a></li>
 					</ul>
 				</div>
 				<!-- /category nav -->
@@ -366,271 +160,73 @@
 				<div class="menu-nav">
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
-						<li class="dropdown mega-dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 먹거리  <i class="fa fa-caret-down"></i></a>
+						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 먹거리  <i class="fa fa-caret-down"></i></a>
 							<div class="custom-menu">
 								<div class="row">
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/test567.jpg" alt="">
-												<div class="banner-caption text-center detail1">
-													<h3 class="white-color text-uppercase"> 사료 </h3>
-												</div>
-											</a>
-											<hr>
-										</div>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">아깽이 사료 (0주~12주)</a></li>
-											<li><a href="#">캣초딩 사료 (6개월 이상)</a></li>
-											<li><a href="#">묘르신 사료 (7살 이상)</a></li>
-											
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/test567.jpg" alt="">
-												<div class="banner-caption text-center detail2">
-													<h3 class="white-color text-uppercase"> 간식 </h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">간식</h3></li>
-											<li><a href="#">건어물</a></li>
-											<li><a href="#">통조림</a></li>
-											<li><a href="#">수제간식</a></li>
-											<li><a href="#">츄르</a></li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/test567.jpg" alt="">
-												<div class="banner-caption text-center detail3">
-													<h3 class="white-color text-uppercase">영양제</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title"> 영양제 </h3></li>
-											<li><a href="#">눈</a></li>
-											<li><a href="#">치아&구강</a></li>
-											<li><a href="#">호흡계</a></li>
-											<li><a href="#">관절</a></li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/test567.jpg" alt="">
-												<div class="banner-caption text-center detail4">
-													<h3 class="white-color text-uppercase">통조림</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">통조림</h3></li>
-											<li><a href="#">닭고기</a></li>
-											<li><a href="#">가다랑어</a></li>
-											<li><a href="#">게살</a></li>
-											<li><a href="#">유제품</a></li>
-										</ul>
-						<li class="dropdown mega-dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 장난감  <i class="fa fa-caret-down"></i></a>
-							<div class="custom-menu">
-								<div class="row">
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/test567.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Women’s</h3>
-												</div>
-											</a>
-											<hr>
-										</div>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/test567.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Men’s</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-									
-									<div class="col-md-3">
-										
-						<li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 주거용품  <i class="fa fa-caret-down"></i></a>
-							<div class="custom-menu">
-								<div class="row">
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr class="hidden-md hidden-lg">
-									</div>
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-										<hr class="hidden-md hidden-lg">
-									</div>
-									<div class="col-md-4">
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="row hidden-sm hidden-xs">
 									<div class="col-md-12">
-										<hr>
-										<a class="banner banner-1" href="#">
-											<img src="${context}/resources/img/banner05.jpg" alt="">
-											<div class="banner-caption text-center">
-												<h2 class="white-color">NEW COLLECTION</h2>
-												<h3 class="white-color font-weak">HOT DEAL</h3>
-											</div>
-										</a>
+										<ul class="list-links">
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=11"><i class="fa fa-paw"></i>  사료</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=12"><i class="fa fa-paw"></i> 간식</a></li>
+										</ul>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li class="dropdown mega-dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 위생용품 <i class="fa fa-caret-down"></i></a>
+							</div>	
+						</li>		
+						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 생활용품  <i class="fa fa-caret-down"></i></a>
 							<div class="custom-menu">
 								<div class="row">
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/banner06.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Women’s</h3>
-												</div>
-											</a>
-											<hr>
-										</div>
+									<div class="col-md-12">
 										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/banner07.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Men’s</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/banner08.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Accessories</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<div class="hidden-sm hidden-xs">
-											<a class="banner banner-1" href="#">
-												<img src="${context}/resources/img/banner09.jpg" alt="">
-												<div class="banner-caption text-center">
-													<h3 class="white-color text-uppercase">Bags</h3>
-												</div>
-											</a>
-										</div>
-										<hr>
-										<ul class="list-links">
-											<li>
-												<h3 class="list-links-title">Categories</h3></li>
-											<li><a href="#">Women’s Clothing</a></li>
-											<li><a href="#">Men’s Clothing</a></li>
-											<li><a href="#">Phones & Accessories</a></li>
-											<li><a href="#">Jewelry & Watches</a></li>
-											<li><a href="#">Bags & Shoes</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=21"><i class="fa fa-paw"></i> 하우스</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=22"><i class="fa fa-paw"></i> 캣타워</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=23"><i class="fa fa-paw"></i> 낚시대</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=24"><i class="fa fa-paw"></i> 레이저</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=25"><i class="fa fa-paw"></i> 스크래쳐</a></li>
 										</ul>
 									</div>
 								</div>
-							</div>
+							</div>	
+						</li>
+						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 위생용품  <i class="fa fa-caret-down"></i></a>
+							<div class="custom-menu">
+								<div class="row">
+									<div class="col-md-12">
+										<ul class="list-links">
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=31"><i class="fa fa-paw"></i> 목욕용품</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=32"><i class="fa fa-paw"></i> 화장실용품</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=33"><i class="fa fa-paw"></i> 미용용품</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>	
+						</li>
+						<li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 외출용품  <i class="fa fa-caret-down"></i></a>
+							<div class="custom-menu">
+								<div class="row">
+									<div class="col-md-12">
+										<ul class="list-links">
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=41"><i class="fa fa-paw"></i> 이동장</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=42"><i class="fa fa-paw"></i> 가슴줄</a></li>
+											<li><br></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=43"><i class="fa fa-paw"></i> 의류</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>	
 						</li>
 						<li><a href="#"> 공지사항 </a></li>
-						<li><a href="#"> 고객센터 </a></li>
 						</li>
 					</ul>
 				</div>
@@ -645,18 +241,7 @@
 	
 	<!-- /BREADCRUMB -->
 
-	<!-- section -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /section -->
+	
 	
 	
 	<form class="form-horizontal" name="Frm1" id="Frm1" method="post">
@@ -677,7 +262,13 @@
 
 
 	<script>
-
+		function logout(){
+			alert("로그아웃 하시겠습니까?");
+			location.href = "${context}/user/do_logout.do";
+			location.reload();
+		};
+	
+	
 	   $('.detail1').on('click',function() {
 			  
 		 /*  location.href="${context}/product/product_insert.jsp"; */

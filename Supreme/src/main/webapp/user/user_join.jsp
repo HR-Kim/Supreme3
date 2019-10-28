@@ -27,6 +27,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+ <!-- HEADER -->
+   <%@include file ="/template/header.jsp" %>
+   <!--/ Header -->
 <body>
 
 
@@ -131,7 +134,9 @@
 			</div>
 		</div>
 		
-		
+		<div class="row"><br></div>
+		<div class="row"><br></div>
+		<div class="row"><br></div>
 		
 		
 		
@@ -389,6 +394,7 @@
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);
 	            		console.log("가입완료!");
+	            		window.history.back()
 	            	}else{
 	            		alert(parseData.msgMsg);
 	            	}
@@ -528,6 +534,8 @@
 	        }).open();
 	    };
 	</script>	
-	
+	<!-- FOOTER -->
+   <%@include file ="/template/footer.jsp" %>
+   <!-- /FOOTER -->
 </body>
 </html>

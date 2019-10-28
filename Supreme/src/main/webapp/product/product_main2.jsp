@@ -133,8 +133,15 @@
    <div id="breadcrumb">
       <div class="container">
          <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Products</li>
+            <li><a href="${context}/product/get_cat_retrieve.do">Home</a></li>
+            <%if(vo.gethCodeCat()==null && vo.getlCodeCat()==null){ %>
+            <li class="active">전체상품</li>
+            <%}else if(vo.gethCodeCat().equals("10") && vo.getlCodeCat()==null){ %>
+            <li class="active">먹거리</li>
+            <%}else if(vo.gethCodeCat().equals("20") && vo.getlCodeCat()==null){ %>
+            <li class="active">먹거리</li>
+            <%} %>
+            
          </ul>
       </div>
    </div>
@@ -159,13 +166,14 @@
 				<div class="col-md-11 text-right">
 					<form class="form-inline" name="frm" id="frm" method="get">
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
+					<input type="hidden" name="pageSize" id="pageSize" value="${vo.pageSize }">	
+					<input type="hidden" name="hCodeCat" id="hCodeCat" value="${vo.hCodeCat }">	
+					<input type="hidden" name="lCodeCat" id="lCodeCat" value="${vo.lCodeCat }">	
+					<input type="hidden" name="pStatus" id="pStatus" value="${vo.pStatus }">
 						
+					
 						<div class="form-group">
-						    <%=StringUtil.makeSelectBox(codeList, "pageSize", pageSize, false) %>
-						    <%=StringUtil.makeSelectBox(codeHCodeList, "hCodeCat", hCodeCat, true) %>
-						    <%=StringUtil.makeSelectBox(codeLCodeList, "lCodeCat", lCodeCat, true) %>
-						    <%=StringUtil.makeSelectBox(codeStatusList, "pStatus", pStatus, true) %>
-						    <%=StringUtil.makeSelectBox(codeSearchList, "searchDiv", searchDiv, true) %>
+							<%=StringUtil.makeSelectBox(codeSearchList, "searchDiv", searchDiv, true) %>
 							<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-default btn-sm"
@@ -316,7 +324,7 @@
 		});  
 	 	 
 		function doRetrieve(){
-			var frm = document.productFrm;
+			var frm = document.frm;
 			frm.pageNum.value= 1;
 			frm.action = "${context}/product/get_cat_retrieve.do";
 			frm.submit();

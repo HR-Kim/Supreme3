@@ -58,10 +58,54 @@ public class UserController {
 	private final String VIEW_MNG_NM  ="user/user_mng";
 	private final String VIEW_JOIN_NM  ="user/user_join";
 	private final String VIEW_SECESS_NM  ="user/user_secession";
-	private final String VIEW_ID_RESULT ="user/user_id_result";
-	private final String VIEW_PW_RESULT ="user/user_pw_result";
 	private final String VIEW_ADMIN_LOGIN = "admin/admin_login";
+	private final String VIEW_LOGIN ="user/user_login";
+	private final String VIEW_JOIN ="user/user_join";
+	private final String VIEW_IDPW ="user/user_idpw";
 	
+	
+	
+	/**IDPW 찾기로 이동 */
+	@RequestMapping(value="user/idpw.do",method = RequestMethod.GET)
+	public String go_idpw() {
+		LOG.debug("============================");
+		LOG.debug("=IDPW 찾기로 이동=");
+		LOG.debug("============================");
+				
+		return VIEW_IDPW;
+	}
+	
+	/**로그인페이지로 이동 */
+	@RequestMapping(value="user/login.do",method = RequestMethod.GET)
+	public String go_login() {
+		LOG.debug("============================");
+		LOG.debug("=로그인페이지 이동=");
+		LOG.debug("============================");
+				
+		return VIEW_LOGIN;
+	}
+	
+	/**회원가입 페이지로 이동 */
+	@RequestMapping(value="user/join.do",method = RequestMethod.GET)
+	public String go_join() {
+		LOG.debug("============================");
+		LOG.debug("=회원가입으로 이동=");
+		LOG.debug("============================");
+				
+		return VIEW_JOIN;
+	}
+	
+	/**회원수정 페이지로 이동 */
+	@RequestMapping(value="user/update.do",method = RequestMethod.GET)
+	public String go_update() {
+		LOG.debug("============================");
+		LOG.debug("=회원정보수정으로 이동=");
+		LOG.debug("============================");
+				
+		return VIEW_UPT_NM;
+	}
+	
+			
 	
 	/**로그아웃*/
 	@RequestMapping(value="user/do_logout.do",method = RequestMethod.GET)
@@ -73,9 +117,6 @@ public class UserController {
 		request.getSession().removeAttribute("user");
 		
 		session.invalidate();
-		
-				
-			
 	}
 		
 	

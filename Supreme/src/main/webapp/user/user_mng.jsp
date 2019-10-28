@@ -120,9 +120,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn btn-default btn-sm"
 							id="doRetrieve" >조회</button>
-						<%=StringUtil.makeSelectBox(excelList, "ext", ext, false) %>	
-						<input type="button" class="btn btn-default btn-sm" id="doExcel"
-							value="엑셀다운" />
+						
 					</div>	
 				</form>
 			</div>
