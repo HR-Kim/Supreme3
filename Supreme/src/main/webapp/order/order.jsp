@@ -49,30 +49,29 @@ for(int i=0;i<3;i++){
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
-		<div class="page-header">
+		<div class="section-title">
 			<h1>주문 / 결제</h1>
 		</div>
 		<!--// div title -->
-	
-		<div class="col-lg-12"></div>
-		<div class="col-lg-12"></div>
-		<div class="panel panel-default"></div>
+		
 		<!-- 입력 form -->
 		<form action="do_update.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
-			
+		<br>
+		<br>
+		<br>
 			<h3>받는사람 정보</h3>
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">	
-					<input type="text" maxlength="300"  class="form-control input-sm" id="name"  name="name" value="<c:out value='${user.name}'/>">
+					<input type="text" maxlength="300"  class="form-control input" id="name"  name="name" value="<c:out value='${user.name}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address" class="col-sm-2 control-label">우편번호</label>
-				<div class="col-sm-8">
-					<input type="text" maxlength="300"   id="postcode" placeholder="우편번호"  name="postcode"disabled="disabled"
+				<div class="col-sm-4">
+					<input type="text" maxlength="10" class="form-control input"  id="postcode" placeholder="우편번호"  name="postcode"disabled="disabled"
 						value="<c:out value='${user.postcode}'/>">
-				<button type="button" class="btn btn-default btn-sm" id="pcode_search">우편번호 조회</button>
+				<button type="button" class="main-btn" id="pcode_search">우편번호 조회</button>
 				</div>
 			</div>
 
@@ -80,27 +79,27 @@ for(int i=0;i<3;i++){
 			<div class="form-group">
 				<label for="address1" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled"
+					<input type="text" maxlength="300"  class="form-control input" id="address1" placeholder="주소" name="address1" disabled="disabled"
 					value="<c:out value='${user.address1}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address2" class="col-sm-2 control-label">상세주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2"
+					<input type="text" maxlength="300"  class="form-control input" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2"
 					value="<c:out value='${user.address2}'/>">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="tel" class="col-sm-2 control-label">연락처</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="tel"  name="tel" value="<c:out value='${user.tel}'/>">
+					<input type="text" maxlength="300" with="20%" class="form-control input" id="tel"  placeholder="000-0000-0000 ( '-' 을 포함해주세요)" name="tel" value="<c:out value='${user.tel}'/>">
 				</div>
 			</div>	
 			<div class="form-group">
 				<label for="request" class="col-sm-2 control-label">배송 요청사항</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="request"  name="request"
+					<input type="text" maxlength="300"  class="form-control input" id="request"  name="request"
 					>
 				</div>
 			</div>
@@ -141,8 +140,9 @@ for(int i=0;i<3;i++){
 								<button type="button" class="primary-btn" id="doPayment">결제하기</button>
 								</div>
 						</div>
-
+						<br>
 					</div>
+			<br>
 			<br>
 			<br>
 		</div>

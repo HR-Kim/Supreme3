@@ -133,7 +133,7 @@
 				<!-- Grid영역 -->
 				
 				<div class="section-title">
-					<h3 class="title">Orderview</h3>
+					<h3 class="title">주문조회</h3>
 				</div>
 				<table class="shopping-cart-table table" id="listTable">
 					<thead>
@@ -183,7 +183,7 @@
 	<div class="col-md-12">
 			<div class="order-summary clearfix">
 				<div class="section-title">
-					<h3 class="title">Previous Order</h3>
+					<h3 class="title">지난 주문 조회</h3>
 				</div>
 				<form name="frmData" id="frmData" method="post">				
 				<table class="shopping-cart-table table" id=prelist >
