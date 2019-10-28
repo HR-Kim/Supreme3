@@ -62,7 +62,39 @@ public class UserController {
 	private final String VIEW_LOGIN ="user/user_login";
 	private final String VIEW_JOIN ="user/user_join";
 	private final String VIEW_IDPW ="user/user_idpw";
+	private final String VIEW_ADMIN_MAIN = "admin/admin_main";
 	
+	
+	/**어드민 로그인 페이지로 이동 */
+	@RequestMapping(value="admin/admin_login.do",method = RequestMethod.GET)
+	public String go_adminLogin() {
+		LOG.debug("============================");
+		LOG.debug("=삭제 완료 페이지로 이동=");
+		LOG.debug("============================");
+				
+		return VIEW_ADMIN_LOGIN;
+	}
+	
+	/**어드민 메인 페이지로 이동 */
+	@RequestMapping(value="admin/admin_main.do",method = RequestMethod.GET)
+	public String go_adminMain() {
+		LOG.debug("============================");
+		LOG.debug("=삭제 완료 페이지로 이동=");
+		LOG.debug("============================");
+				
+		return VIEW_ADMIN_MAIN;
+	}
+	
+	
+	/**삭제완료 페이지로 이동 */
+	@RequestMapping(value="user/secession.do",method = RequestMethod.GET)
+	public String go_secession() {
+		LOG.debug("============================");
+		LOG.debug("=삭제 완료 페이지로 이동=");
+		LOG.debug("============================");
+				
+		return VIEW_SECESS_NM;
+	}
 	
 	
 	/**IDPW 찾기로 이동 */

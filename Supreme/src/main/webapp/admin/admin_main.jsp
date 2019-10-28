@@ -138,6 +138,10 @@
 			</div>
 		</div>
 		
+		<div class="row"><br></div>
+		<div class="row"><br></div>
+		<div class="row"><br></div>
+		
 	</div>
 	<!--// div container -->
 	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
@@ -406,7 +410,7 @@
 	    };
 	</script>	
 	<!-- FOOTER -->
-	<%@include file ="/template/footer.jsp" %>
+	<%@include file ="/admin/admin_footer.jsp" %>
 	<!-- /FOOTER --> 
 </body>
 </html>

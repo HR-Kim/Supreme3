@@ -325,7 +325,7 @@
 		            	var parseData = $.parseJSON(data);
 		            	if(parseData.msgId=="1"){
 		            		alert(parseData.msgMsg);
-		            		location.href = "${context}/user/user_secession.jsp"
+		            		location.href = "${context}/user/secession.do"
 		            		
 		            	}else{
 		            		alert(parseData.msgMsg);
