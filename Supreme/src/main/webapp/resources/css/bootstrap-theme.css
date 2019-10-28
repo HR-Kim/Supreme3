@@ -6,6 +6,7 @@
 
 .btn-default,
 .btn-primary,
+.btn-primary2,
 .btn-success,
 .btn-info,
 .btn-warning,
@@ -22,6 +23,7 @@
 .btn-danger:active,
 .btn-default.active,
 .btn-primary.active,
+.btn-primary2.active,
 .btn-success.active,
 .btn-info.active,
 .btn-warning.active,
@@ -69,6 +71,16 @@
   background-color: #e0e0e0;
   background-image: none;
 }
+.btn-primary2 {
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%);
+  background-image:      -o-linear-gradient(top, #337ab7 0%, #265a88 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#265a88));
+  background-image:         linear-gradient(to bottom, #337ab7 0%, #265a88 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #245580;
+}
 .btn-primary {
   background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%);
   background-image:      -o-linear-gradient(top, #337ab7 0%, #265a88 100%);
@@ -80,12 +92,16 @@
   border-color: #245580;
 }
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus, 
+.btn-primary2:focus,
+.btn-primary2:focus {
   background-color: #265a88;
   background-position: 0 -15px;
 }
 .btn-primary:active,
-.btn-primary.active {
+.btn-primary.active, {
+.btn-primary2.active, 
+.btn-primary2.active, 
   background-color: #265a88;
   border-color: #245580;
 }
