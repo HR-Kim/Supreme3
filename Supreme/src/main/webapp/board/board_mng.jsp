@@ -110,7 +110,7 @@
 			<div class="col-md-12 text-right">
 				<form class="form-inline" name="frm" id="frm" method="get">
 					<input type="hidden" name="pageNum" id="pageNum" value="${vo.pageNum }">
-					<input type="hidden" name="boardId" id="boardId" />
+					<input type="hidden" name="bSeq" id="bSeq" />
 					<div class="form-group">
 					    <%=StringUtil.makeSelectBox(listPageSize, "pageSize", pageSize, false) %>
 						<input type="text" class="form-control input-sm" id="searchWord" value="${vo.searchWord}" name="searchWord" placeholder="검색어" />
@@ -129,10 +129,9 @@
 		<table class="shopping-cart-table table" id="listTable">
 					<thead>
 						<tr>
-						 <th class="text-center col-md-1 col-xs-1">
-						    <input type="checkbox" id="checkAll" name="checkAll" onclick="checkAll();"></th>
-							<th>번호</th>
-							<th class="text-left">제목</th>
+
+							<th class="text-center">번호</th>
+							<th class="text-center">제목</th>
 							<th class="text-center">작성자</th>
 							<th class="text-center">작성날짜</th>
 							<th class="text-center">조회수</th>
@@ -147,10 +146,8 @@
 							<input type="hidden" name="id" id="id" value="${vo.id}"/>							
 							<input type="hidden" name="regDt" id="regDt" value="${vo.regDt}"/>							
 						<tr>
-							<th class="text-center col-md-1 col-xs-1">
-						    	<input type="checkbox" id="rowCheckbox" name="rowCheckbox">
-						    </th>
-							<td class="price text-left"><c:out value="${vo.bSeq}" /></td>
+							
+							<td class="price text-center"><c:out value="${vo.bSeq}" /></td>
 							<td class="details"> <a href="#"><c:out value="${vo.bTitle}" /></a></td>
 							<td class="price text-center"><c:out value="${vo.id}"/></td>
 							<td class="price text-center"><c:out value="${vo.regDt}"/></td>
@@ -161,8 +158,10 @@
 					</c:choose>
 				  </tbody>
 				</table>
+			
+			<div class="text-right"  >
+				<button class="primary-btn" name="dowrite" id="dowrite" onclick="location='${context}/board/board_write.jsp'">등록하기</button>
 			</div>
-			<button class="primary-btn" name="delete" id="delete" style="margin-left:1400px;">삭제하기</button>
 		</div>
 		
 		<!-- //Grid영역 -->
@@ -180,6 +179,7 @@
 	<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
 	<script src="${context}/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+		
 	
 		//삭제버튼
 		
@@ -188,6 +188,7 @@
 			var rowData = new Array();
 			var tdArr = new Array();
 			var checkbox = $("input[name=rowCheckbox]:checked");
+			console.log(checkbox.value())
 			
 			checkbox.each(function(i){
 				var tr = checkbox.parent().parent().eq(i);
@@ -205,7 +206,7 @@
 					url : "${context}/board/do_delete.do",
 					dataType : "html",
 					data : {
-						"b_seq" : seq
+						"bSeq" : seq
 					},
 					success : function(data){
 						var dodelete;
@@ -226,13 +227,13 @@
 			var tds = trs.children();
 			if(null == tds || tds.length ==1 )return;
 			
-			var boardId = tds.eq(3).text();
-			console.log("boardId:"+boardId);
+			var bSeq = tds.eq(0).text();
+			console.log("bSeq:"+bSeq);
 
 			var frm = document.frm;
-			frm.boardId.value=boardId;
-			//frm.action = "${context}/board/do_selectOne.do";
-			//frm.submit();			
+			frm.bSeq.value=bSeq;
+			frm.action = "${context}/board/do_selectOne.do";
+			frm.submit();			
 			  
 		});	
 	 
@@ -247,15 +248,7 @@
 			frm.submit();
 		}
 	
-		//check전체 선택 및 해제
-		function checkAll(){
-			console.log("checkAll");
-			if($("#checkAll").is(':checked')==true){
-				$("input[name='check']").prop("checked",true);//check
-			}else{
-				$("input[name='check']").prop("checked",false);//check해제
-			}
-		}
+	
 		
 		function doRetrieve(){
 			var frm = document.frm;

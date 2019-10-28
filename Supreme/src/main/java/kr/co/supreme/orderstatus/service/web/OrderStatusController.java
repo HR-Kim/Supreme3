@@ -148,7 +148,7 @@ public class OrderStatusController {
 		
 	}
 	/**수정*/
-	@RequestMapping(value="orderStauts/do_update.do",method = RequestMethod.POST
+	@RequestMapping(value="orderStatus/do_update.do",method = RequestMethod.POST
 			,produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String do_update(OrderStatus inVO) {

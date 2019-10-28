@@ -43,7 +43,7 @@ public class BoardController {
 	
 	//view
 	private final String VIEW_LIST_NM ="board/board_mng";
-	private final String VIEW_MNG_NM  ="board/board_wirte";
+	private final String VIEW_MNG_NM  ="board/board_write";
 	
 
 	
@@ -162,7 +162,7 @@ public class BoardController {
 		LOG.debug("=board="+board);
 		LOG.debug("============================");
 		
-		if(null == board.getId() || "".equals(board.getId())) {
+		if(0 == board.getbSeq() || "".equals(board.getbSeq())) {
 			throw new IllegalArgumentException("ID를 입력 하세요.");
 		}
 		

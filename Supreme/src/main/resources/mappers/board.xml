@@ -100,8 +100,8 @@
 	<!-- ReadCount증가 -->
 	<update id="do_updateReadCnt" parameterType="Board">
 		UPDATE BOARD
-		SET  READ_CNT = (SELECT NVL(MAX(READ_CNT),0)+1 FROM BOARD WHERE ID = #{Id,jdbcType=VARCHAR})
-		WHERE ID = #{Id,jdbcType=VARCHAR}
+		SET  READ_CNT = (SELECT NVL(MAX(READ_CNT),0)+1 FROM BOARD WHERE b_seq = #{bSeq})
+		WHERE b_seq = #{bSeq}
 	</update>
 	
 	
@@ -129,7 +129,7 @@
 		SELECT
 		<include refid="boardColumns" />
 		FROM BOARD
-		WHERE ID = #{Id,jdbcType=VARCHAR}
+		WHERE b_seq = #{bSeq}
 	</select>
 
 
