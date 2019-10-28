@@ -100,6 +100,7 @@
 			</div>
 			<div class="form-group">
 				<label for="postcode" class="col-sm-2 control-label">우편번호</label>
+				
 				<div class="col-sm-4">
 					<input type="text" maxlength="10"  class="form-control input" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled">
 				</div>
