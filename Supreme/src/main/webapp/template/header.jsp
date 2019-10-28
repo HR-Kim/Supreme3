@@ -115,7 +115,7 @@
 
 						<!-- Cart -->
 						<li class="header-cart">
-							<a href="#">
+							<a href="${context}/cart/direct.do">
 								<div class="header-btns-icon">
 									<i class="fa fa-shopping-cart"></i>
 								</div>
@@ -166,9 +166,9 @@
 									<div class="col-md-12">
 										<ul class="list-links">
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=11"><i class="fa fa-paw"></i>  사료</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=10&lCodeCat=11"><i class="fa fa-paw"></i>  사료</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=12"><i class="fa fa-paw"></i> 간식</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=10&lCodeCat=12"><i class="fa fa-paw"></i> 간식</a></li>
 										</ul>
 									</div>
 								</div>
