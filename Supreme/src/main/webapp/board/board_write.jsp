@@ -8,9 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	Board vo = (Board)request.getAttribute("bvo"); 
-%>
+
 <c:set var="context" value="${pageContext.request.contextPath }" />
 <html lang="ko">
 <head>
@@ -40,31 +38,136 @@
 		<!-- div title -->
 		<div class="section-title">
 			<h3 class="title">공지사항</h3>
-	    </div>
-	    <dir>
-	    <tr>
-			<td><input type="hidden" name="seq" id="seq" value="${bvo.b_seq}" ></td>
-		</tr>
-	   	<tr>
-			<td><textarea id="title" name="title" value="${bvo.b_title()} placeholder="제목" maxlength="100" 
-					 style="margin-top:20px; width: 1000px; height:50px;"></textarea></td>
-		</tr>
-		<tr>
-			<td><textarea id="contents" name="contents" placeholder="내용" value="${bvo.b_contents()} maxlength="2048" 
-					 style="margin-top:20px; width: 1000px; height:500px;"></textarea></td>
-		</tr>
-	    </dir>
-	    </div>
-	    <button class="primary-btn" id="do_wirte"style="margin-left:1300px;">등록하기</button>
-	   	<dir>
-	    </dir>
+	</div>		
+		<br>
+		<div class="text-right">
+			<form class="form-horizontal" name="boardEditFrm" id="boardEditFrm" method="post" action="do_update.do">
+				<input type="hidden" class="form-control" name="bSeq" id="bSeq" value="${vo.bSeq }">
+					<button type="button" class="primary-btn" id="doRetrieve">목록</button>
+				  	<button type="button" class="primary-btn" id="doInit">초기화</button>
+					<button type="button" class="primary-btn" id="doUpdate">수정</button>
+					<button type="button" class="primary-btn" id="doDelete">삭제</button>
+	   			 <tr>
+					<td><input type="hidden" name="seq" id="seq" value="${vo.bSeq}" ></td>
+				</tr>
+			   	<tr>
+					<td><input id="title" name="title" value="<c:out value= '${vo.bTitle}'/>" placeholder="제목" maxlength="100" 
+							 style="margin-top:20px; width: 1000px; height:50px;"/></td>
+				</tr>
+		
+				<tr>
+					<td><textarea id="contents" name="contents" placeholder="내용" value="<c:out value= '${vo.bContents}'/>" maxlength="2048" 
+							 style="margin-top:20px; width: 1000px; height:500px;"></textarea></td>
+				</tr>
+	  	 	</form>
+	  	 	 <button class="primary-btn" id="do_wirte">등록하기</button>
+	  	 	 <button class="primary-btn" id="goRetrieve">목록으로 돌아가기</button>
+	  	 	 <br>
+	   	 </div>
+	   </div>
+	
 	    <br>
 		<!--// div title -->
+		
 <script type="text/javascript">
+
+$("#doDelete").on("click", function() {
+	
+	console.log("title:" + $("#title").val());
+	if (confirm("삭제하시겠습니까?") == false)
+		return;
+
+	$.ajax({
+		type : "POST",
+		url : "${context}/board/do_delete.do",
+		dataType : "html",
+		data : {
+			"bSeq"	  : $("#bSeq").val(),	
+		},
+		success : function(data) {
+			location.href = "${context}/board/get_retrieve.do";
+		}
+	
+	});
+	});
+	//--ajax  
+
+$("#doUpdate").on("click", function() {
+	
+	console.log("title:" + $("#title").val());
+	if (confirm("수정 하시겠습니까?") == false)
+		return;
+
+	$.ajax({
+		type : "POST",
+		url : "${context}/board/do_update.do",
+		dataType : "html",
+		data : {
+			"bSeq"	  : $("#bSeq").val(),
+			"bTitle" : $("#title").val(),
+			"bContents" : $("#contents").val(),
+			"Id" : "admin",
+			"udtUser" : "admin",
+			"bCode" : 1,
+			"pCode" : 1
+			
+		},
+		success : function(data) {
+			var jData = JSON.parse(data);
+			if (null != jData && jData.msgId == "1") {
+				alert(jData.msgMsg);
+				location.href = "${context}/board/get_retrieve.do";
+
+			} else {
+				alert(jData.msgId + "|" + jData.msgMsg);
+			}
+		},
+		complete : function(data) {
+
+		},
+		error : function(xhr, status, error) {
+			alert("error:" + error);
+		}
+	});
+	//--ajax  
+
+});
+
+
+//목록
+$("#doRetrieve").on("click", function() {
+	if (confirm("목록으로 이동 하시겠습니까?") == false)return;
+
+	location.href = "${context}/board/get_retrieve.do";
+});
+//목록
+$("#goRetrieve").on("click", function() {
+	if (confirm("목록으로 이동 하시겠습니까?") == false)return;
+
+	location.href = "${context}/board/get_retrieve.do";
+});
+//초기화
+$("#doInit").on("click", function() {
+	//alert("doInit");
+	//input data clear
+	$("#title").val("")
+	$("#contents").val("");
+	
+
+	//버튼제어:등록,수정,삭제
+	$("#doUpdate").prop("disabled", true);
+	$("#doDelete").prop("disabled", true);
+	$("#doSave").prop("disabled", false);
+
+	$("#regId").prop("disabled", false);
+
+});
+
 $("#do_wirte").on('click',function(){
 	//alert('writebtn');
 	var title= $("#title").val();
 	//alert("title:"+rtitle)
+	alert($("#title").val())
 	if(null == title ||title.trim().length ==0){
 		$("#title").focus();
 		alert('제목을 입력하세요');
@@ -81,26 +184,36 @@ $("#do_wirte").on('click',function(){
 		url : "${context}/board/do_save.do",
 		dataType : "html",
 		data : {
-			 "b_seq ": $("#seq").val(),
-			 "b_title" :$("#title").val(),
-			 "b_contents":$("#contents").val(),
-			 "id" :"admin",
-			 "read_cnt" : "0",
-			 "udt_user" : "admin",
-			 "b_code" : "1",
-			 "p_code" : "1"
-		
+			"bSeq"  :9,
+			"bTitle" : $("#title").val(),
+			"bContents" : $("#contents").val(),
+			"readCnt"   : 0,
+			"Id" : "admin",
+			"udtUser" : "admin",
+			"bCode" : 1,
+			"pCode" : 1
 		},
 		success : function(data){
 			var update;
-			update = confirm("주주문상태를 변경합니다");
+			update = confirm("등록하시겠습니까?");
 			if(update){
-				document.write("주문상태가 변경되었습니다.")
+				document.write("등록되었습니다.")
 			}
-			location.reload();
+			location.href = "${context}/board/get_retrieve.do";
 
 		}
-	  });
+	  }); 
+});
+
+$(document).ready(function() {
+	$("goRetrieve").hide();
+	if($("#title").val()==""){
+		$("#doUpdate").hide();
+		$("#doDelete").hide();
+		$("#doRetrieve").hide();
+		$("#doInit").hide();
+		$("goRetrieve").show();
+	}  
 });
 </script>
 </body>
