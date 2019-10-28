@@ -206,6 +206,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		@RequestMapping(value="cart/get.do",method = RequestMethod.GET)
 		public String get(HttpServletRequest req,Cart cart,Model model) {
 			
+			String st = req.getParameter("id");
 			
 			Search search = new Search();
 			//param
@@ -216,7 +217,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			if(search.getPageNum()==0) {
 				search.setPageNum(1);
 			}	
-			search.setSearchWord(cart.getId());
+			search.setSearchWord(st);
 			
 			search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 			search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
@@ -248,6 +249,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 				@RequestMapping(value="cart/direct.do",method = RequestMethod.GET)
 				public String direct(HttpServletRequest req,Cart cart,Model model) {
 					
+					String st = req.getParameter("id");
 					
 					Search search = new Search();
 					//param
@@ -259,7 +261,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 						search.setPageNum(1);
 					}	
 					//search.setSearchWord(cart.getId());
-					search.setSearchWord("admin");
+					search.setSearchWord(st);
 					
 					search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 					search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
@@ -267,6 +269,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 					
 					List<Cart> list = (List<Cart>) this.cartService.get_retrieve(search);
 					model.addAttribute("list", list);
+					
 					
 					return VIEW_LIST_NM;
 				    			
