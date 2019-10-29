@@ -88,7 +88,7 @@
 								<thead>
 									<tr>
 									<th> </th>
-										<th>상품명</th>			
+										<th class="text-center">상품명</th>			
 										<th class="text-center">가격</th>
 										<th class="text-center">수량</th>
 										<th class="text-center">총가격</th>
@@ -102,11 +102,11 @@
 						<c:set var = "sum" value = "0" />
 							<c:forEach  var="list"  items="${list}">
 								<tr>
-									<td class="text-center"><input type="checkbox" name="check"></td>
+									<td> </td>
 									<td class="text-center"><c:out value="${list.pName}"/></td>
-									<td class="text-center"><c:out value="${list.unitPrice}"/></td>
+									<td class="text-center"><fmt:formatNumber pattern="###,###,###" value="${list.unitPrice}"/></td>
 									<td class="text-center"><c:out value="${list.quantity}"/></td>
-									<td class="text-center"><c:out value="${list.unitPrice*list.quantity}"/></td>
+									<td class="text-center"><fmt:formatNumber pattern="###,###,###" value="${list.unitPrice*list.quantity}"/></td>
 									<td class="text-center"><a class="remove" href="#" onclick="go_cart_ajax_delete(${list.cartCode})"><fa class="fa fa-close"></fa></a></td> 
 									<c:set var = "sum" value = "${sum + list.unitPrice * list.quantity}" />
 								</tr>
@@ -177,7 +177,7 @@
 
 $("#buy").on("click",function(){
 	var ss = $('#searchWord').val();
-	alert(ss);
+	
 	
 	var frm = document.Frm;
 	frm.action = "${context}/order/get2.do";
@@ -200,13 +200,14 @@ function go_cart_delete(cseq){
 function go_cart_ajax_delete(cseq){
 	if(confirm("정말 삭제하시겠습니까?")){
 		console.log(cseq);
+		var id = ${user.id};
 	$.ajax({
         type:"POST",
         url:"${context}/cart/do_delete.do",
         dataType:"html",// JSON
         data:{
         	"cartCode" : cseq,
-        	"id" : "admin"
+        	"id" : id
         },
         success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
             //console.log(data);
