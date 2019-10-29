@@ -29,6 +29,7 @@ Product pro = (Product) request.getAttribute("vo");
 	
 
 	<!-- BREADCRUMB -->
+	user: ${user} 
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">

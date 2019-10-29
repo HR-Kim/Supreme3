@@ -43,10 +43,17 @@
 		<div class="text-right">
 			<form class="form-horizontal" name="boardEditFrm" id="boardEditFrm" method="post" action="do_update.do">
 				<input type="hidden" class="form-control" name="bSeq" id="bSeq" value="${vo.bSeq }">
-					<button type="button" class="primary-btn" id="doRetrieve">목록</button>
-				  	<button type="button" class="primary-btn" id="doInit">초기화</button>
-					<button type="button" class="primary-btn" id="doUpdate">수정</button>
-					<button type="button" class="primary-btn" id="doDelete">삭제</button>
+					
+				  	<c:choose>
+						<c:when test="${user.id=='admin' }">
+							<div class="text-right"  >
+								<button type="button" class="primary-btn" id="doInit">초기화</button>
+								<button type="button" class="primary-btn" id="doUpdate">수정</button>
+								<button type="button" class="primary-btn" id="doDelete">삭제</button>								
+							</div>
+						</c:when>
+					</c:choose>
+				  	
 	   			 <tr>
 					<td><input type="hidden" name="seq" id="seq" value="${vo.bSeq}" ></td>
 				</tr>
@@ -60,7 +67,15 @@
 							 style="margin-top:20px; width: 1000px; height:500px;"><c:out value= '${vo.bContents}'/></textarea></td>
 				</tr>
 	  	 	</form>
-	  	 	 <button class="primary-btn" id="do_wirte">등록하기</button>
+	  	 	<c:choose>
+				<c:when test="${user.id=='admin' }">
+					<div class="text-right"  >
+						<button class="primary-btn" id="do_wirte">등록하기</button>							
+					</div>
+				</c:when>
+			</c:choose>
+	  	 	
+	  	 	 
 	  	 	 <button class="primary-btn" id="goRetrieve">목록으로 돌아가기</button>
 	  	 	 <br>
 	   	 </div>
@@ -184,7 +199,7 @@ $("#do_wirte").on('click',function(){
 		url : "${context}/board/do_save.do",
 		dataType : "html",
 		data : {
-			"bSeq"  :9,
+			"bSeq"  :10,
 			"bTitle" : $("#title").val(),
 			"bContents" : $("#contents").val(),
 			"readCnt"   : 0,
