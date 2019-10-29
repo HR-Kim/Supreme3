@@ -91,13 +91,14 @@ public class OrderDaoImpl implements WorkDiv {
 		String statement3 = this.NAMESPACE+".detail_save";
 		String statement4 = this.NAMESPACE+".status_save";
 		String statement5 = this.NAMESPACE+".";
+		Order order = (Order) dto;
 		LOG.debug("여기0");
 		Search search = new Search();
 		LOG.debug("여기는?");
-		search.setSearchWord("test01");
+		search.setSearchWord(order.getId());
 		LOG.debug("그럼 여기는?");
 		String aaa="admin";
-		Order order = (Order) dto;
+		
 		LOG.debug("여기1");
 		LOG.debug("=========================");
 		LOG.debug("1. param:"+order);
@@ -109,7 +110,7 @@ public class OrderDaoImpl implements WorkDiv {
 		LOG.debug("여기3");
 		int flag = this.sqlSessionTemplate.insert(statement, order);
 		
-		if (order.getCheck() == "1") {
+		if (order.getCheck().equals("2") ) {
 			List<Cart> list = this.sqlSessionTemplate.selectList(statement2, search);
 			for (int i = 0; i < list.size(); i++) {
 				String uuid = UUID.randomUUID().toString();
