@@ -129,7 +129,7 @@ for(int i=0;i<3;i++){
 							<c:forEach  var="list"  items="${list}">
 								<tr>
 									<td class="text-center"><c:out value="${list.pName}"/></td>
-									<td class="text-center"><c:out value="${list.unitPrice}"/></td>
+									<td class="text-center"><fmt:formatNumber pattern="###,###,###" value="${list.unitPrice}"/></td>
 									<td class="text-center"><c:out value="${list.quantity}"/></td>
 								<c:set var = "sum" value = "${sum + list.unitPrice * list.quantity}" />
 								</tr>

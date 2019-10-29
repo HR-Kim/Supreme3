@@ -56,8 +56,8 @@
 				</tr>
 		
 				<tr>
-					<td><textarea id="contents" name="contents" placeholder="내용" value="<c:out value= '${vo.bContents}'/>" maxlength="2048" 
-							 style="margin-top:20px; width: 1000px; height:500px;"></textarea></td>
+					<td><textarea id="contents" name="contents" placeholder="내용"  maxlength="2048" 
+							 style="margin-top:20px; width: 1000px; height:500px;"><c:out value= '${vo.bContents}'/></textarea></td>
 				</tr>
 	  	 	</form>
 	  	 	 <button class="primary-btn" id="do_wirte">등록하기</button>

@@ -245,9 +245,9 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			
 			String referer = req.getHeader("Referer");
 			LOG.debug("자 여기ekdkdkdkkdkdk"+referer);
-			return "redirect:"+ referer;
+//			return "redirect:"+ referer;
 		    			
-//			return VIEW_LIST_NM;
+			return VIEW_LIST_NM;
 		}
 		
 		

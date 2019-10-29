@@ -192,7 +192,7 @@ Product pro = (Product) request.getAttribute("vo");
 	    <input type="hidden" name="quantity"/>
 	   	<input type="hidden" name="unitPrice" value='${(vo.p_price*vo.sale_percent)/100}'/>
 	   	<input type="hidden" name="pName" value='${vo.p_name}'/>
-	   	<input type="hidden" name="id" value='admin'/>
+	   	<input type="hidden" name="id" value='${user.id}'/>
 	</form>
 	
 	
