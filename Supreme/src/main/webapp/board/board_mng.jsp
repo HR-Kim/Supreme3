@@ -294,6 +294,7 @@
 			doRetrieve();
 		}); 
 	
+		
 		$(document).ready(function() {
 			if("${user.id==admin}"){
 				$("#dowrite").show();
