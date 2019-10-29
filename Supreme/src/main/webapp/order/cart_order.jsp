@@ -131,12 +131,12 @@ for(int i=0;i<3;i++){
 									<td class="text-center"><c:out value="${list.pName}"/></td>
 									<td class="text-center"><fmt:formatNumber pattern="###,###,###" value="${list.unitPrice}"/></td>
 									<td class="text-center"><c:out value="${list.quantity}"/></td>
-								<c:set var = "sum" value = "${sum + list.unitPrice * list.quantity}" />
+								<fmt:formatNumber pattern="###,###,###" var = "sum" value = "${sum + list.unitPrice * list.quantity}" />
 								</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<tr>1
+							<tr>
 								<td colspan="99">장바구니에 물건이 없습니다.</td>
 							</tr>
 						</c:otherwise>
@@ -145,14 +145,16 @@ for(int i=0;i<3;i++){
 								</tbody>
 								
 							</table>
+							
 								<div class="pull-right">
+								<h3><strong>결제 금액 : <fmt:formatNumber pattern="###,###,###" value="${sum}"/></strong></h3>
 								<table>
 								<tr>
-									<th>결제 금액 : <fmt:formatNumber pattern="###,###,###" value="${sum}"/></th>
+									
 									<th><button type="button" class="primary-btn" id="doPayment">결제하기</button></th>
 								</tr>
 								</table>
-								
+								</div>
 								</div>
 						</div>
 
