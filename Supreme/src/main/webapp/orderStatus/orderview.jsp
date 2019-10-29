@@ -138,7 +138,6 @@
 				<table class="shopping-cart-table table" id="listTable">
 					<thead>
 						<tr>
-							<th>Product</th>
 							<th class="text-left">Order number</th>
 							<th class="text-left">Product name</th>
 							<th class="text-left">Status</th>
@@ -156,7 +155,6 @@
 								<c:if test="${cvo.u_id==user.id}">
 							<input type="hidden" name="od_status" id="od_status" value="${cvo.od_status}"/>	
 						<tr>
-							<td class="thumb"><img value="${cvo.p_image}" alt=""></td>
 							<td class="price text-left"><c:out value="${cvo.detail_code}"/></td>
 							<td class="details">
 								<a href="#" name="name" id="name"><c:out value="${cvo.p_name}" /></a>
@@ -189,7 +187,6 @@
 				<table class="shopping-cart-table table" id=prelist >
 					<thead>
 						<tr>
-							<th>Product</th>
 							<th class="text-left">Product name</th>
 							<th class="text-left">Status</th>
 							<th class="text-center">Price</th>
@@ -211,7 +208,7 @@
 								<input type="hidden" name="p_price" id="p_price" value="${pvo.p_price}"/>							
 						<tr>
 							<input type="hidden" name="cdetailCode" id="cdetailCode" value="${pvo.detail_code}"/>	
-							<td class="thumb" id="image" name="image"><img value="${pvo.p_image}" alt=""></td>
+							
 							
 							<td class="details">
 								<a href="#" name="name" id="name"><c:out value="${pvo.p_name}" /></a>
@@ -235,6 +232,9 @@
 	
 				</table>
 			</form>
+			<br>
+			<br>
+			<br>
 			<!-- /row -->
 			</div>
 			</div>
