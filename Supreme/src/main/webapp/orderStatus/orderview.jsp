@@ -160,9 +160,9 @@
 								<a href="#" name="name" id="name"><c:out value="${cvo.p_name}" /></a>
 							</td>							
 							<td><c:out value="${cvo.od_status}"/></td>
-							<td class="price text-center"><strong><c:out value="${cvo.unit_price}"/></strong><br><del class="font-weak"><small><c:out value="${cvo.p_price}"/></small></del></td>
+							<td class="price text-center"><strong><fmt:formatNumber value="${cvo.unit_price}"/></strong><br><del class="font-weak"><small><c:out value="${cvo.p_price}"/></small></del></td>
 							<td class="price text-center"><c:out value="${cvo.quantitiy}"/></td>
-							<td class="total text-center"><strong class="primary-color"><c:out value="${cvo.quantitiy * cvo.unit_price}"/></strong></td>
+							<td class="total text-center"><strong class="primary-color"><fmt:formatNumber value="${cvo.quantitiy * cvo.unit_price}"/></strong></td>
 							<td class="total text-center">
 							<button class="icon-btn.main-btn" name="cancle" id="cancle">주문취소</button>
 							</td>
@@ -215,8 +215,8 @@
 							</td>							
 							<td class ="pod_status" id="pod_status"><c:out value="${pvo.od_status}"/></td>
 							<td class="price text-center" style="display:none;" id="detail_code" name="detail_code"><c:out value="${pvo.detail_code}"/></td>
-							<td class="price text-center" id="unit_price" name="unit_price"><strong>￦<c:out value="${pvo.unit_price}"/></strong></td>
-							<td class="total text-center" id="quantitiy" name="quantitiy"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
+							<td class="price text-center" id="unit_price" name="unit_price"><strong>￦<fmt:formatNumber value="${pvo.unit_price}"/></strong></td>
+							<td class="total text-center" id="quantitiy" name="quantitiy"><strong class="primary-color"><fmt:formatNumber value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
 							<td class="total text-center">
 							<button class="icon-btn.main-btn" name="refund" id="refund"  onclick="javascript:openRefundPopup(this.form);">환불</button>
 							<button class="icon-btn.main-btn" name="change" id="change"  onclick="javascript:openChangePopup(this.form);">교환</button>
