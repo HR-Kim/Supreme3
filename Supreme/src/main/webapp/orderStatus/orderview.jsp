@@ -152,7 +152,7 @@
 						<c:choose>
 							<c:when test="${currentlist.size()>0}" >
 								<c:forEach var="cvo" items="${currentlist}">
-								<c:if test="${cvo.u_id==user.id}">
+						
 							<input type="hidden" name="od_status" id="od_status" value="${cvo.od_status}"/>	
 						<tr>
 							<td class="price text-left"><c:out value="${cvo.detail_code}"/></td>
@@ -167,7 +167,7 @@
 							<button class="icon-btn.main-btn" name="cancle" id="cancle">주문취소</button>
 							</td>
 						</tr>
-							</c:if>
+						
 							</c:forEach>
 						
 						</c:when>
@@ -187,6 +187,7 @@
 				<table class="shopping-cart-table table" id=prelist >
 					<thead>
 						<tr>
+
 							<th class="text-left">Product name</th>
 							<th class="text-left">Status</th>
 							<th class="text-center">Price</th>
@@ -199,7 +200,7 @@
 						<c:choose>
 							<c:when test="${prelist.size()>0}">
 								<c:forEach var="pvo" items="${prelist}">
-								<c:if test="${cvo.u_id==user.id}">
+							
 								<input type="hidden" name="detailCode" id="detailCode" value="${pvo.detail_code}"/>							
 								<input type="hidden" name="name" id="name" value="${pvo.p_name}"/>							
 								<input type="hidden" name="status" id="status" value="${pvo.od_status}"/>							
@@ -208,7 +209,6 @@
 								<input type="hidden" name="p_price" id="p_price" value="${pvo.p_price}"/>							
 						<tr>
 							<input type="hidden" name="cdetailCode" id="cdetailCode" value="${pvo.detail_code}"/>	
-							
 							
 							<td class="details">
 								<a href="#" name="name" id="name"><c:out value="${pvo.p_name}" /></a>
@@ -222,7 +222,7 @@
 							<button class="icon-btn.main-btn" name="change" id="change"  onclick="javascript:openChangePopup(this.form);">교환</button>
 							</td>
 						</tr>
-							</c:if>
+						
 							</c:forEach>
 						</c:when>
 					
@@ -232,9 +232,6 @@
 	
 				</table>
 			</form>
-			<br>
-			<br>
-			<br>
 			<!-- /row -->
 			</div>
 			</div>
@@ -273,7 +270,7 @@
 		var detail_code = td.eq(1).text();
 		console.log("detail_code "+detail_code);
 		
-		var od_statust =  td.eq(3).text();
+		var od_statust =  td.eq(2).text();
 		
 		console.log("od_status "+od_status);
 		
@@ -306,10 +303,14 @@
 	
 	/**주문 취소상태의 경우 버튼 나오지 않게*/
 	$(document).ready(function(){	
-	var cancel_s = $("#pod_status").html();
+	var cancel_s = $(".pod_status").html();
 	console.log("cancel_s: "+cancel_s)
 		
 	if(cancel_s=="취소"){
+		$("#refund").css("display", "none");
+		$("#change").css("display", "none");
+	}
+	if(cancel_s=="환불완료"){
 		$("#refund").css("display", "none");
 		$("#change").css("display", "none");
 	}

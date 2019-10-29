@@ -71,7 +71,7 @@
 			ON O3.DETAIL_CODE = O2.DETAIL_CODE
 			JOIN PRODUCT P 
 			ON O2.P_CODE = P.P_CODE		  
-	WHERE O3.OD_STATUS != '6' and  O3.OD_STATUS != '9'
+	WHERE O3.OD_STATUS != '6' and  O3.OD_STATUS != '9'and O3.OD_STATUS ! = '4'
 
    </select>
    
@@ -101,7 +101,7 @@
 			ON O3.DETAIL_CODE = O2.DETAIL_CODE
 			JOIN PRODUCT P 
 			ON O2.P_CODE = P.P_CODE		  
-	WHERE O3.OD_STATUS = '6' OR  O3.OD_STATUS = '9'
+	WHERE O3.OD_STATUS = '6' OR  O3.OD_STATUS = '9' OR O3.OD_STATUS = '4'
 
    </select>
 	

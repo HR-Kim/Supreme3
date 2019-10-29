@@ -82,11 +82,12 @@
 	  			WHERE  1=1                          
 	  			AND reg_dt <![CDATA[ >  ]]> to_date('19700101','yyyymmdd')
 	  			<include refid="baseCondition"/>                                        
-	  			ORDER BY bSeq DESC                                   
+	                          
 	  		)A                                                         
 	  	   WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})    						       
 	  	) B                                                            
-	  	WHERE B.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1)                  				   
+	  	WHERE B.rnum <![CDATA[ >= ]]> (#{pageSize} * (#{pageNum}-1)+1) 
+	  	ORDER BY bSeq                          				   
 	  )T1
 	  NATURAL JOIN                                                      
 	  (                                                                 

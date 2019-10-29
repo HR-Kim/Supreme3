@@ -134,7 +134,7 @@
 	<script>
 	
 	$("#refundBtn").on("click", function() {
-		//alert("change");
+		alert("change");
 		var checkbox = $('[name=checkOrder]').is(':checked'); 
 		if (checkbox != true){
 			alert ("약관에 동의해주세요")
