@@ -215,7 +215,7 @@
 							</td>							
 							<td class ="pod_status" id="pod_status"><c:out value="${pvo.od_status}"/></td>
 							<td class="price text-center" style="display:none;" id="detail_code" name="detail_code"><c:out value="${pvo.detail_code}"/></td>
-							<td class="price text-center" id="unit_price" name="unit_price"><strong>$<c:out value="${pvo.unit_price}"/></strong></td>
+							<td class="price text-center" id="unit_price" name="unit_price"><strong>￦<c:out value="${pvo.unit_price}"/></strong></td>
 							<td class="total text-center" id="quantitiy" name="quantitiy"><strong class="primary-color"><c:out value="${pvo.quantitiy * pvo.unit_price}"/></strong></td>
 							<td class="total text-center">
 							<button class="icon-btn.main-btn" name="refund" id="refund"  onclick="javascript:openRefundPopup(this.form);">환불</button>
@@ -267,10 +267,10 @@
 		
 		console.log("클릭한 row의 모든 데이터 "+tr.text());
 		
-		var detail_code = td.eq(1).text();
+		var detail_code = td.eq(0).text();
 		console.log("detail_code "+detail_code);
 		
-		var od_statust =  td.eq(2).text();
+		var od_statust =  td.eq(1).text();
 		
 		console.log("od_status "+od_status);
 		

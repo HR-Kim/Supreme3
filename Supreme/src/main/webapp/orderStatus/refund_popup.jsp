@@ -94,7 +94,7 @@
 								<a href="#"><%=name%></a>
 							</td>	
 							<td class="thumb" id="status"><%=status%></td>						
-							<td class="price text-center"><strong>$<%=unit_price%></strong><br><del class="font-weak"><small>$<%=p_price%></small></del></td>
+							<td class="price text-center"><strong>$<%=unit_price%></strong><br><del class="font-weak"><small><%=p_price%></small></del></td>
 							<td class="price text-center"><%=quantitiy%></td>
 							<td class="total text-center"><%=total %><strong class="primary-color"></strong>원</td>
 							<td class="total text-center">
@@ -134,19 +134,19 @@
 	<script>
 	
 	$("#refundBtn").on("click", function() {
-		alert("change");
+		//alert("change");
 		var checkbox = $('[name=checkOrder]').is(':checked'); 
 		if (checkbox != true){
-			alert ("약관에 동의해주세요")
+		alert ("약관에 동의해주세요")
 			return false;
 		}else{
 			
-		var dcode = <%=detail_code%>
-		console.log("dcode"+dcode)
+		var dcode = "<%=detail_code%>";
+		console.log("dcode"+dcode);
 		
 		$.ajax({
 			type : "POST",
-			url : "${context}/orderStauts/do_update.do",
+			url : "${context}/orderStatus/do_update.do",
 			dataType : "html",
 			data : {
 				

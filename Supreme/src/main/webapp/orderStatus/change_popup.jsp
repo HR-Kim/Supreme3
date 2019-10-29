@@ -140,12 +140,12 @@
 			return false;
 		}else{
 			
-		var dcode = <%=detail_code%>
-		console.log("dcode"+dcode)
+		var dcode = "<%=detail_code%>"
+		console.log("dcode"+dcode);
 		
 		$.ajax({
 			type : "POST",
-			url : "${context}/orderStauts/do_update.do",
+			url : "${context}/orderStatus/do_update.do",
 			dataType : "html",
 			data : {
 				
