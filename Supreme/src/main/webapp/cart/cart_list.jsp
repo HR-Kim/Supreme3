@@ -78,7 +78,7 @@
 			<div class="order-summary clearfix">
 				<!-- Grid영역 -->
 				
-				
+				<br><br><br>
 					<div class="col-md-12">
 						<div class="order-summary clearfix">
 							<div class="section-title">
@@ -164,6 +164,7 @@
 		</div>
 	</div>
 	</div>
+	<br><br><br>
 	<!-- FOOTER -->
 	<%@include file ="/template/footer.jsp" %>
 	<!-- /FOOTER -->

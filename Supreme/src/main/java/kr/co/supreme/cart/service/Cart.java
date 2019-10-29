@@ -5,9 +5,9 @@ import kr.co.supreme.cmn.DTO;
 public class Cart extends DTO{
 	
 	private int cartCode  ;    //장바구니번호
-	private int pCode     ;    //상품번호
+	private double pCode     ;    //상품번호
 	private int quantity  ;    //수량
-	private int unitPrice ;    //단가
+	private double unitPrice ;    //단가
 	private String id     ;    //회원아이디
 	
 	private String pImage; //상품이미지
@@ -17,7 +17,7 @@ public class Cart extends DTO{
 	
 	public Cart() {}
 
-	public Cart(int cartCode, int pCode, int quantity, int unitPrice, String id, String pImage, String pName) {
+	public Cart(int cartCode, double pCode, int quantity, double unitPrice, String id, String pImage, String pName) {
 		super();
 		this.cartCode = cartCode;
 		this.pCode = pCode;
@@ -44,11 +44,11 @@ public class Cart extends DTO{
 		this.cartCode = cartCode;
 	}
 
-	public int getpCode() {
+	public double getpCode() {
 		return pCode;
 	}
 
-	public void setpCode(int pCode) {
+	public void setpCode(double pCode) {
 		this.pCode = pCode;
 	}
 
@@ -60,11 +60,11 @@ public class Cart extends DTO{
 		this.quantity = quantity;
 	}
 
-	public int getUnitPrice() {
+	public double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(int unitPrice) {
+	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
@@ -98,19 +98,7 @@ public class Cart extends DTO{
 				+ ", id=" + id + ", pImage=" + pImage + ", pName=" + pName + ", toString()=" + super.toString() + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + cartCode;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + pCode;
-		result = prime * result + ((pImage == null) ? 0 : pImage.hashCode());
-		result = prime * result + ((pName == null) ? 0 : pName.hashCode());
-		result = prime * result + quantity;
-		result = prime * result + unitPrice;
-		return result;
-	}
+
 
 	@Override
 	public boolean equals(Object obj) {

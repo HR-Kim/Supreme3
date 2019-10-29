@@ -207,6 +207,10 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		public String get(HttpServletRequest req,Cart cart,Model model) {
 			
 			
+	
+			LOG.debug("============================");
+			LOG.debug("=cart="+cart);
+			LOG.debug("============================");
 			
 			Search search = new Search();
 			//param
@@ -218,6 +222,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 				search.setPageNum(1);
 			}	
 			search.setSearchWord(cart.getId());
+	
 			
 			search.setSearchDiv(StringUtil.nvl(search.getSearchDiv()));
 			search.setSearchWord(StringUtil.nvl(search.getSearchWord()));
@@ -242,6 +247,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			LOG.debug("자 여기ekdkdkdkkdkdk"+referer);
 			return "redirect:"+ referer;
 		    			
+//			return VIEW_LIST_NM;
 		}
 		
 		

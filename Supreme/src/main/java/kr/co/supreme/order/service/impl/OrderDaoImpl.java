@@ -113,9 +113,9 @@ public class OrderDaoImpl implements WorkDiv {
 			List<Cart> list = this.sqlSessionTemplate.selectList(statement2, search);
 			for (int i = 0; i < list.size(); i++) {
 				String uuid = UUID.randomUUID().toString();
-				order.setP_code(Integer.toString(list.get(i).getpCode()));
+				order.setP_code(Double.toString(list.get(i).getpCode()));
 				order.setQuantitiy(Integer.toString(list.get(i).getQuantity()));
-				order.setUnit_price(Integer.toString(list.get(i).getUnitPrice()));
+				order.setUnit_price(Double.toString(list.get(i).getUnitPrice()));
 				order.setDetail_code(uuid); // 주문 상세번호 난수 생성.
 				this.sqlSessionTemplate.insert(statement3, order);
 				order.setOd_status("1");
