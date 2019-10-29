@@ -181,7 +181,7 @@ public class ProductController {
 	   }
 
 	   /**단건조회 */
-	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.POST)
+	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.GET)
 	   public String get_selectOne(Product product,Model model) {
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);

@@ -250,46 +250,40 @@
 				  
 				  <c:choose>
                		<c:when test="${list.size()>0}">
-               		
                			<c:forEach var="product" items="${list}">
-                     <!-- Product Single -->
-                     
-                     <div class="col-md-4 col-sm-6 col-xs-6">
-                        <div class="product product-single">
-                           <div class="product-thumb">
-                              <div class="product-label">
-                               	<c:choose>
-	                               	<c:when test="${product.sale_percent=='100'}"></c:when>  
-	                               	<c:otherwise>                           	
-	                                 	<span class="sale"><c:out value="${product.sale_percent}"/>%에 구매</span>
-	                                 </c:otherwise>
-                                </c:choose> 
-                              </div>
-                              <button class="main-btn quick-view detail" title="<c:out value='${product.p_code}'/>"><i class="fa fa-search-plus"></i>자세히 보기</button>
-                              <img src="${context}/resources" alt="">
-                           </div>
-                           <div class="product-body">
-                           <c:choose>
-	                        <c:when test="${product.sale_percent=='100'}">
-	                            <h3 class="product-price"><fmt:formatNumber value="${product.p_price}"/> 원</h3>
-	                      	</c:when>
-                           	<c:otherwise> 
-                           	   	<small>원가 <del class="font-weak"><fmt:formatNumber value="${product.p_price}"/> 원</del></small>
-                           	   	<br>
-                           	   	<h3 class="product-price"><fmt:formatNumber value="${(product.p_price*product.sale_percent)/100}"/> 원</h3>                         	   	
-                           	   </c:otherwise>
-                           </c:choose>   
-                              <h2 class="product-name"><a href="#"><c:out value="${product.p_name}"/></a></h2>
-                             
-                           </div>
-                           
-                        </div>
-                        
-                        
-                     </div>
-                       		</c:forEach>
-                  			</c:when>
-                 		 </c:choose>  
+	                     <!-- Product Single -->
+	                     <div class="col-md-4 col-sm-4 col-xs-4">
+	                        <div class="product product-single">
+	                           <div class="product-thumb">
+	                              <div class="product-label">
+	                              	<c:choose>
+		                               	<c:when test="${product.sale_percent=='100'}"></c:when> 
+		                               	<c:otherwise>                           	
+		                                 	<span class="sale"><c:out value="${product.sale_percent}"/>%에 구매</span>
+		                                 </c:otherwise>
+	                                </c:choose> 
+	                              </div>
+	                              <button class="main-btn quick-view detail" title="<c:out value='${product.p_code}'/>">
+	                              <i class="fa fa-search-plus"></i>자세히 보기</button>
+	                              <img src="${context}/${product.p_image}" width="220px" height="220px" alt="">
+	                           </div>
+	                           <div class="product-body">
+	                            <c:choose>
+			                        <c:when test="${product.sale_percent=='100'}">
+			                            <h3 class="product-price"><fmt:formatNumber value="${product.p_price}"/> 원</h3>
+			                      	</c:when>
+		                           	<c:otherwise> 
+		                           	   	<h3 class="product-price"><fmt:formatNumber value="${(product.p_price*product.sale_percent)/100}"/> 원</h3>
+		                           	   	<small>원가 <del class="font-weak"><fmt:formatNumber value="${product.p_price}"/> 원</del></small>                         	   	
+		                           </c:otherwise>
+	                           </c:choose>   
+	                             <h2 class="product-name"><a href="#"><c:out value="${product.p_name}"/></a></h2>
+	                           </div>
+	                        </div>
+	                     </div>
+               		</c:forEach>
+          			</c:when>
+         		 </c:choose>  
                      
                    
 

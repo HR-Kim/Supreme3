@@ -226,7 +226,7 @@
 								</div>
 							</div>	
 						</li>
-						<li><a href="#"> 공지사항 </a></li>
+						<li><a href="${context}/board/get_retrieve.do"> 공지사항 </a></li>
 						</li>
 					</ul>
 				</div>
@@ -252,9 +252,9 @@
 	   	<input type="hidden" name="l_code" />
 	</form>
 	
-	<form class="form-horizontal" name="Frm3" id="Frm3" method="post">
-		<input type="hidden" name="uid" id="uid" value="<c:out value='${user.id}'/>" />
-	</form>
+	<form class="form-horizontal" name="Frm3" id="Frm3" method="get">
+         <input type="hidden" name="searchWord" id="searchWord" value="<c:out value='${user.id}'/>" />
+   </form>
 		
 	<!-- jQuery Plugins -->
 	<script src="${context}/resources/js/jquery.min.js"></script>
@@ -274,9 +274,14 @@
 	
 		
 		function cart(){
-	         var ss = $("#uid").val();
+	         var ss = $('#searchWord').val();
 	         //alert(ss);
-	         location.href =   "${context}/cart/direct.do?id"+ss;
+	          var frm = document.Frm3;
+	   
+	           frm.action = "${context}/cart/direct.do";
+	              frm.submit();
+	              
+	      //   location.href =   "${context}/cart/direct.do?id"+ss;
 	      }
 	
 	   $('.detail1').on('click',function() {

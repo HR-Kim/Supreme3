@@ -106,7 +106,7 @@
 					  <include refid="hCodeCondition"/>
 					  <include refid="lCodeCondition"/>
 					  <include refid="statusCondition"/>
-		             ORDER BY reg_dt DESC
+		             ORDER BY p_name ASC
 		            )A
 		            WHERE rownum <![CDATA[ <= ]]> (#{pageSize} * (#{pageNum}-1)+#{pageSize})
 		        )B    
