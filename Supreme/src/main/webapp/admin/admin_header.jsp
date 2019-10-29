@@ -98,9 +98,7 @@
 						<li><a href="${context}/user/get_retrieve.do"> 회원 관리 </a></li>
 						<li><a href="${context}/product/get_admin_retrieve.do"> 상품 관리 </a></li>
 						<li><a href="${context}/orderStatus/get_admin_retrieve.do"> 주문 관리</a></li>
-						<li><a href="#"> 게시판 관리 </a></li>
 						
-						</li>
 					</ul>
 				</div>
 				<!-- menu nav -->

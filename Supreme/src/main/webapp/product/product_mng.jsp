@@ -168,7 +168,17 @@
 									<td class="text-center"><c:out value="${product.p_name}"/></td>
 									<td class="text-center"><c:out value="${product.p_price}"/></td>
 									<td class="text-center"><c:out value="${product.stock}"/></td>
-									<td class="text-center"><c:out value="${product.status}"/></td>
+									<c:choose>
+										<c:when test="${product.status=='10'}">
+										<td class="text-center"><c:out value="판매중"/></td>
+										</c:when>
+										<c:when test="${product.status=='20'}">
+										<td class="text-center"><c:out value="재입고 예정"/></td>
+										</c:when>
+										<c:otherwise>
+										<td class="text-center"><c:out value="매진"/></td>
+										</c:otherwise>
+									</c:choose>
 									<td class="hidden"><c:out value="${product.p_new}"/></td>
 									<td class="hidden"><c:out value="${product.p_best}"/></td>
 									<td class="hidden"><c:out value="${product.p_sale}"/></td>

@@ -283,6 +283,7 @@
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);
+	            		location.reload();
 	            		
 	            	}else{
 	            		alert(parseData.msgMsg);

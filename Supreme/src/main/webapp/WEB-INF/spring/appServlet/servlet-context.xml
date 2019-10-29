@@ -58,6 +58,7 @@
   		<interceptor>
 			<mapping path="/orderStatus/get_retrieve.do"/>
 			<mapping path="/cart/direct.do"/>
+			<mapping path="/cart/get.do"/>
 			<mapping path="/order/get.do"/>
 			<mapping path="/user/update.do"/>
 			<beans:ref bean="loginInterceptor"/>

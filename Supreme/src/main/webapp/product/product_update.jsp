@@ -11,7 +11,7 @@
 <%
 	
 	Product pro = (Product) request.getAttribute("vo"); 
-out.print(pro);
+
 
 	
 

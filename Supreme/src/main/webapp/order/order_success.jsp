@@ -28,6 +28,10 @@ String code = (String)request.getAttribute("code");
 </head>
 <body>
 <%@include file ="/template/header.jsp" %>
+	<br>
+	<br>
+	<br>
+	
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
@@ -37,6 +41,10 @@ String code = (String)request.getAttribute("code");
 		<h1>결제가 완료되었습니다.</h1>
 			<button type="button" class="primary-btn" id="check">주문 조회하기</button>
 	</div>
+	<br>
+	<br>
+	<br>
+	
 	<!--// div container -->
 	<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 	<script src="${context}/resources/js/jquery-1.12.4.js"></script>
@@ -60,5 +68,20 @@ String code = (String)request.getAttribute("code");
 	<script src="../resources/js/nouislider.min.js"></script>
 	<script src="../resources/js/jquery.zoom.min.js"></script>
 	<script src="../resources/js/main.js"></script>
+	<script type="text/javascript">
+		$("#check").on('click',function() {
+		  
+		 
+		   
+			
+			location.href = "${context}/orderStatus/get_retrieve.do";
+		   	
+	   	 
+	   	 
+	   	 
+	 	 });
+	
+	
+	</script>
 </body>
 </html>

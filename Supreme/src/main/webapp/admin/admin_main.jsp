@@ -133,7 +133,7 @@
 			<div class="col-lg-10 col-sm-10 col-xs-10">
 				<div class="text-right">
 					<button type="button" class="btn btn-default btn-sm" id="doUpdate">회원 정보 수정</button>
-					<button type="button" class="btn btn-default btn-sm" id="doDelete">회원 탈퇴</button>
+					
 				</div>
 			</div>
 		</div>
@@ -289,7 +289,7 @@
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
 	            		alert(parseData.msgMsg);
-	            		
+	            		location.reload();
 	            	}else{
 	            		alert(parseData.msgMsg);
 	            	}

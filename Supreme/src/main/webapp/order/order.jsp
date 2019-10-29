@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.supreme.cart.service.Cart"%>
@@ -61,6 +62,11 @@ for(int i=0;i<3;i++){
 		<br>
 			<h3>받는사람 정보</h3>
 			<div class="form-group">
+				<input class="hidden" id="user_id" value="<c:out value='${user.id}'/>">
+				<input class="hidden" id="p_code" value="<c:out value='${aaa.getP_code()}'/>"> 
+				<input class="hidden" id="quantitiy" value="<c:out value='${aaa.getQuantitiy()}'/>"> 
+				<input class="hidden" id="unit_price" value="<c:out value='${aaa.getUnit_price()}'/>"> 
+				
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">	
 					<input type="text" maxlength="300"  class="form-control input" id="name"  name="name" value="<c:out value='${user.name}'/>">
@@ -128,9 +134,9 @@ for(int i=0;i<3;i++){
 									<tr>
 										<td class="details"><a href="#">${aaa.getP_code()}</a></td>
 										<th></th>
-										<td class="price text-center"><strong>${aaa.getUnit_price()}</strong><br></td>
+										<td class="price text-center"><strong><fmt:formatNumber value="${aaa.getUnit_price()}"/></strong><br></td>
 										<td class="qty text-center"><strong class="primary-color">${aaa.getQuantitiy()}</strong></td>
-										<td class="total text-center"><strong class="primary-color">${aaa.getUnit_price() * aaa.getQuantitiy()}</strong></td>
+										<td class="total text-center"><strong class="primary-color"><fmt:formatNumber value="${aaa.getUnit_price() * aaa.getQuantitiy()}"/></strong></td>
 									</tr>
 									
 								</tbody>
@@ -353,16 +359,16 @@ function sample6_execDaumPostcode() {
 	            	"pay_method": $("#paymentway").val(),
 	            	"bank": "111",
 	            	"deposit_name": "111", */
-	            	"id" : "admin",
+	            	"id" : $("#user_id").val(),
 	            	"rName" : $("#name").val(),
 	            	"rPostcode" : $("#postcode").val(),
 	            	"rAddress1" : $("#address1").val(),
 	            	"rAddress2" : $("#address2").val(),
 	            	"rTel" : $("#tel").val(),
 	            	"request" : $("#request").val(),	
-	              	"p_code" : "123",
-	              	"quantitiy" : "1",
-	              	"unit_price" : "10000",
+	              	"p_code" : $("#p_code").val(),
+	              	"quantitiy" : $("#quantitiy").val(),
+	              	"unit_price" : $("#unit_price").val(),
 	              	
 	              	"check" : "1"
 	              	
@@ -372,7 +378,7 @@ function sample6_execDaumPostcode() {
 	            	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
 	            	var parseData = $.parseJSON(data);
 	            	if(parseData.msgId=="1"){
-	            		alert(parseData.msgMsg);
+	            	//	alert(parseData.msgMsg);
 	            		console.log("결제완료!");
 	            		location.href = "${context}/order/order_success.jsp"
 	            		
