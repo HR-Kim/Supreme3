@@ -56,16 +56,7 @@ public class ProductController {
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);
 	      LOG.debug("============================");      
-//	      if(null == product.getH_code() || "".equals(product.getH_code().trim())) {
-//		         throw new IllegalArgumentException("대분류 번호를 입력하세요.");
-//		  }
-//		      
-//		  if(null == product.getL_code() || "".equals(product.getL_code().trim())) {
-//		         throw new IllegalArgumentException("소분류 번호를 입력하세요.");
-//		  }
-//		  if(null == product.getP_name() || "".equals(product.getP_name().trim())) {
-//			     throw new IllegalArgumentException("상품명을 입력하세요.");
-//		  }      
+    
 	      
 	      int flag = this.productService.do_update(product);
 	      Message  message=new Message();
@@ -76,6 +67,36 @@ public class ProductController {
 	      }else {
 	         message.setMsgId(String.valueOf(flag));
 	         message.setMsgMsg("제품 수정에 실패했습니다.");         
+	      }
+	      
+	      Gson gson=new Gson();
+	      gsonStr = gson.toJson(message);      
+	      
+	      
+	      return gsonStr;
+	      
+	   }
+	   
+	   /**수량 수정 */
+	   @RequestMapping(value="product/do_stock_update.do",method = RequestMethod.POST
+	         ,produces = "application/json;charset=UTF-8")
+	   @ResponseBody      
+	   public String do_stock_update(Product product) {
+	      String gsonStr = "";
+	      LOG.debug("============================");
+	      LOG.debug("=product="+product);
+	      LOG.debug("============================");      
+    
+	      
+	      int flag = this.productService.do_stock_update(product);
+	      Message  message=new Message();
+	      
+	      if(flag>0) {
+	         message.setMsgId(String.valueOf(flag));
+	         message.setMsgMsg("윤구제품 수정이 완료되었습니다.");
+	      }else {
+	         message.setMsgId(String.valueOf(flag));
+	         message.setMsgMsg("윤구제품 수정에 실패했습니다.");         
 	      }
 	      
 	      Gson gson=new Gson();
@@ -160,7 +181,7 @@ public class ProductController {
 	   }
 
 	   /**단건조회 */
-	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.GET)
+	   @RequestMapping(value="product/get_selectOne.do",method = RequestMethod.POST)
 	   public String get_selectOne(Product product,Model model) {
 	      LOG.debug("============================");
 	      LOG.debug("=product="+product);

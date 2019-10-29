@@ -20,5 +20,7 @@ public interface WorkDiv {
 	
 	/**엑셀다운 */
 	public List<?> get_excelDown(DTO dto);
+	
+	
 
 }

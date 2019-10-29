@@ -157,8 +157,10 @@
 					if(null != jData){
 						if (jData.msgId == "30") {
 							alert("로그인에 성공했습니다");
-							window.history.back()
-						//	location.href = "${context}/product/get_cat_retrieve.do"
+						//	location.reload();
+						//	window.history.go(-2);
+							
+							location.href = "${context}/product/get_cat_retrieve.do"
 							
 						}else if (jData.msgId == "10") {
 							$("#u_id").focus();

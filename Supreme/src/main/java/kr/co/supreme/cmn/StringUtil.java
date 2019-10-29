@@ -246,7 +246,7 @@ public class StringUtil {
 		sb.append("<select  class=\"form-control input-sm\" name='" + selectBoxNm + "' id='" + selectBoxNm + "' > \n");
 		// 전체
 		if (allYN == true) {
-			sb.append("<option value=''>전체</option> \n");
+			sb.append("<option value=''>선택</option> \n");
 		}
 
 		// <option value="1" selected>일반사용자</option>

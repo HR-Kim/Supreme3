@@ -115,13 +115,13 @@
 
 						<!-- Cart -->
 						<li class="header-cart">
-							<a href="${context}/cart/direct.do">
-								<div class="header-btns-icon">
-									<i class="fa fa-shopping-cart"></i>
-								</div>
-								<strong class="text-uppercase">My Cart</strong>
-							</a>
-							
+						   <a href="#" onclick="cart()">
+						      <div class="header-btns-icon">
+						         <i class="fa fa-shopping-cart"></i>
+						      </div>
+						      <strong class="text-uppercase">My Cart</strong>
+						   </a>
+						
 						</li>
 						<!-- /Cart -->
 
@@ -180,15 +180,15 @@
 									<div class="col-md-12">
 										<ul class="list-links">
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=21"><i class="fa fa-paw"></i> 하우스</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20&lCodeCat=21"><i class="fa fa-paw"></i> 하우스</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=22"><i class="fa fa-paw"></i> 캣타워</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20&lCodeCat=22"><i class="fa fa-paw"></i> 캣타워</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=23"><i class="fa fa-paw"></i> 낚시대</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20&lCodeCat=23"><i class="fa fa-paw"></i> 낚시대</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=24"><i class="fa fa-paw"></i> 레이저</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20&lCodeCat=24"><i class="fa fa-paw"></i> 레이저</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=25"><i class="fa fa-paw"></i> 스크래쳐</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20&lCodeCat=25"><i class="fa fa-paw"></i> 스크래쳐</a></li>
 										</ul>
 									</div>
 								</div>
@@ -200,11 +200,11 @@
 									<div class="col-md-12">
 										<ul class="list-links">
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=31"><i class="fa fa-paw"></i> 목욕용품</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=30&lCodeCat=31"><i class="fa fa-paw"></i> 목욕용품</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=32"><i class="fa fa-paw"></i> 화장실용품</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=30&lCodeCat=32"><i class="fa fa-paw"></i> 화장실용품</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=33"><i class="fa fa-paw"></i> 미용용품</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=30&lCodeCat=33"><i class="fa fa-paw"></i> 미용용품</a></li>
 										</ul>
 									</div>
 								</div>
@@ -216,11 +216,11 @@
 									<div class="col-md-12">
 										<ul class="list-links">
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=41"><i class="fa fa-paw"></i> 이동장</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=40&lCodeCat=41"><i class="fa fa-paw"></i> 이동장</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=42"><i class="fa fa-paw"></i> 가슴줄</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=40&lCodeCat=42"><i class="fa fa-paw"></i> 가슴줄</a></li>
 											<li><br></li>
-											<li><a href="${context}/product/get_cat_retrieve.do?lCodeCat=43"><i class="fa fa-paw"></i> 의류</a></li>
+											<li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=40&lCodeCat=43"><i class="fa fa-paw"></i> 의류</a></li>
 										</ul>
 									</div>
 								</div>
@@ -251,6 +251,10 @@
 	<form class="form-horizontal" name="Frm2" id="Frm2" method="post">
 	   	<input type="hidden" name="l_code" />
 	</form>
+	
+	<form class="form-horizontal" name="Frm3" id="Frm3" method="post">
+		<input type="hidden" name="uid" id="uid" value="<c:out value='${user.id}'/>" />
+	</form>
 		
 	<!-- jQuery Plugins -->
 	<script src="${context}/resources/js/jquery.min.js"></script>
@@ -268,6 +272,12 @@
 			location.reload();
 		};
 	
+		
+		function cart(){
+	         var ss = $("#uid").val();
+	         //alert(ss);
+	         location.href =   "${context}/cart/direct.do?id"+ss;
+	      }
 	
 	   $('.detail1').on('click',function() {
 			  

@@ -52,23 +52,18 @@
 	
 	<!-- interceptor -->
 	<interceptors>
-		<!-- viewname interceptor -->
-		<interceptor>
-		    <mapping path="/*/*.do"/>
-			<beans:ref  bean="viewNameInterceptor"/>
-		</interceptor>
+		
 		
 		<!-- LoginInterceptor -->
- <!-- 		<interceptor>
-			<mapping path="/user/**"/>
+  		<interceptor>
+			<mapping path="/orderStatus/get_retrieve.do"/>
+			<mapping path="/cart/direct.do"/>
+			<mapping path="/order/get.do"/>
+			<mapping path="/user/update.do"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
-	 -->
-		<!-- AdminLoginInterceptor -->
-			<interceptor>
-				<mapping path="/admin/admin_main.jsp"/>
-				<beans:ref bean="adminLoginInterceptor"/>
-			</interceptor>
+
+		
 		
 	</interceptors>
 	

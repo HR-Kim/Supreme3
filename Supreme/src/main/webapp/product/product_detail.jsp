@@ -89,7 +89,7 @@ Product pro = (Product) request.getAttribute("vo");
 				<!--  Product Details -->
 				<div class="product product-details clearfix">
 					<div class="col-md-6">
-					<img src="${context}/${vo.p_image}" alt="">
+					<img src="${context}/resources/img/test567.jpg" alt="">
 					</div>
 					<div class="col-md-6">
 					
@@ -110,8 +110,8 @@ Product pro = (Product) request.getAttribute("vo");
 							<p><strong>제조회사:</strong><c:out value="${vo.p_company}"/></p>
 							
 						<div class="product-options">
-							<p><strong>상품 재고:</strong><c:out value="${vo.stock}"/> 개 남음</p>	
-							<p><strong>팔린 상품개수:</strong><c:out value="${vo.unit_sales}"/> 개 팔림</p>
+						
+							<p><strong>팔린 상품개수:</strong><c:out value="${vo.stock}"/> 개 남음</p>
 							<div class="qty-input test">
 								<span class="text-uppercase">수량: </span>
 								<input class="input" id="quantity" type="number">
@@ -166,6 +166,7 @@ Product pro = (Product) request.getAttribute("vo");
 	<form class="form-horizontal" name="detailFrm" id="detailFrm" method="get">
 	   	<input type="hidden" name="p_code" value='${vo.p_code}'/>	    
 	   	<input type="hidden" name="unit_price" value='${vo.p_price}'/>
+	   	<input type="hidden" name="stock" id ="stock" value='${vo.stock}'/>
 	   	<input type="hidden" name="quantitiy"/>
 	</form>
 	
@@ -200,18 +201,21 @@ Product pro = (Product) request.getAttribute("vo");
 		  	  
 	   	
 		  var quantitiy = $('#quantity').val();
-		 
+		  var stock = $('#stock').val();
+		  
 		  
 		  var frm = document.detailFrm;
 		  
 		  frm.quantitiy.value=quantitiy;
 		  
-		  frm.action = "${context}/order/get.do";
+		  frm.action = "${context}/order/get.do?stock"+stock;
 	   	  frm.submit();
 	   	 
-	   	  
+	
 	   	 
-	 	 });
+	 	 });				//---function
+	 	 
+	 	
 	
 	//장바구니 담기버튼
 	 $("#cart").on('click',function() {
@@ -225,6 +229,9 @@ Product pro = (Product) request.getAttribute("vo");
 		 frm.action = "${context}/cart/get.do";
 	   	 frm.submit();
 	   	 alert("장바구니에 담겼습니다.");
+	   	 
+	   	 
+	   	 
 	 	 });
 		
    
@@ -233,7 +240,7 @@ Product pro = (Product) request.getAttribute("vo");
 			
   					
   			
-		});	// function
+			});	// function
 	</script>
 </body>
 

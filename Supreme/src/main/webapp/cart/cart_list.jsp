@@ -81,6 +81,9 @@
 				
 					<div class="col-md-12">
 						<div class="order-summary clearfix">
+						<br>
+						<br>
+						<br>
 							<div class="section-title">
 								<h3 class="title">장바구니</h3>
 							</div>
@@ -159,11 +162,13 @@
 
 					</div>
 				<div class="pull-right">
-			
 			</div>
 		</div>
 	</div>
 	</div>
+	<br>
+	<br>
+	<br>
 	<!-- FOOTER -->
 	<%@include file ="/template/footer.jsp" %>
 	<!-- /FOOTER -->

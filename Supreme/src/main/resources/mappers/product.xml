@@ -89,9 +89,7 @@
 			B.p_image as p_image,
 			B.stock as stock, 
 			B.unit_sales as unit_sales,
-			DECODE(B.status,'10','판매중'
-			,'20','재입고 예정'
-			,'30','매진','미분류') as status,
+			B.status as status,
 			B.p_new as p_new,
 			B.p_best as p_best,
 			B.p_sale as p_sale,
@@ -126,8 +124,7 @@
 		)T2
 	</select>
 	
-	
-	
+
 	
 	<select id="get_retrieve" parameterType="Product" resultType="Product">
 		SELECT T1.*,T2.*													
@@ -234,6 +231,14 @@
 			reg_dt = SYSDATE
 		WHERE
 		    p_code = #{p_code,jdbcType=NUMERIC} 
+	</update>
+	
+	<update id="do_stock_update" parameterType="Product">
+		
+		UPDATE product
+   	    SET UNIT_SALES = UNIT_SALES + #{unit_sales,jdbcType=NUMERIC} ,
+            STOCK = STOCK - #{unit_sales,jdbcType=NUMERIC}      
+		WHERE P_CODE = #{p_code,jdbcType=NUMERIC} 
 	</update>
 	
 	<select id="get_selectOne" parameterType="Product" resultType="Product" >

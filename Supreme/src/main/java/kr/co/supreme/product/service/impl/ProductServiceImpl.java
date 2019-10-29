@@ -59,6 +59,12 @@ public class ProductServiceImpl implements ProductService {
 		return productDaoImpl.get_admin_retrieve(dto);
 	}
 
+	@Override
+	public int do_stock_update(DTO dto) {
+		// TODO Auto-generated method stub
+		return productDaoImpl.do_stock_update(dto);
+	}
+
 	
 
 	

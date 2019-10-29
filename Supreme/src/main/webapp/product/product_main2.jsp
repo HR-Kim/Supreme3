@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="kr.co.supreme.product.service.ProductSearch"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.supreme.code.service.Code"%>
@@ -136,11 +137,59 @@
             <li><a href="${context}/product/get_cat_retrieve.do">Home</a></li>
             <%if(vo.gethCodeCat()==null && vo.getlCodeCat()==null){ %>
             <li class="active">전체상품</li>
+            
             <%}else if(vo.gethCodeCat().equals("10") && vo.getlCodeCat()==null){ %>
             <li class="active">먹거리</li>
+            <%}else if(vo.gethCodeCat().equals("10") && vo.getlCodeCat().equals("11")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=10">먹거리</a></li>
+            <li class="active">사료</li>
+            <%}else if(vo.gethCodeCat().equals("10") && vo.getlCodeCat().equals("12")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=10">먹거리</a></li>
+            <li class="active">간식</li>
+            
             <%}else if(vo.gethCodeCat().equals("20") && vo.getlCodeCat()==null){ %>
-            <li class="active">먹거리</li>
-            <%} %>
+            <li class="active">생활용품</li>
+            <%}else if(vo.gethCodeCat().equals("20") && vo.getlCodeCat().equals("21")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20">생활용품</a></li>
+            <li class="active">하우스</li>
+            <%}else if(vo.gethCodeCat().equals("20") && vo.getlCodeCat().equals("22")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20">생활용품</a></li>
+            <li class="active">캣타워</li>
+            <%}else if(vo.gethCodeCat().equals("20") && vo.getlCodeCat().equals("23")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20">생활용품</a></li>
+            <li class="active">낚시대</li>
+            <%}else if(vo.gethCodeCat().equals("20") && vo.getlCodeCat().equals("24")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20">생활용품</a></li>
+            <li class="active">레이저</li>
+            <%}else if(vo.gethCodeCat().equals("20") && vo.getlCodeCat().equals("25")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=20">생활용품</a></li>
+            <li class="active">스크래쳐</li>
+            
+            <%}else if(vo.gethCodeCat().equals("30") && vo.getlCodeCat()==null){ %>
+            <li class="active">위생용품</li>
+            <%}else if(vo.gethCodeCat().equals("30") && vo.getlCodeCat().equals("31")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=30">위생용품</a></li>
+            <li class="active">목욕용품</li>
+            <%}else if(vo.gethCodeCat().equals("30") && vo.getlCodeCat().equals("32")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=30">위생용품</a></li>
+            <li class="active">화장실용품</li>
+            <%}else if(vo.gethCodeCat().equals("30") && vo.getlCodeCat().equals("33")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=30">위생용품</a></li>
+            <li class="active">미용용품</li>
+            
+            <%}else if(vo.gethCodeCat().equals("40") && vo.getlCodeCat()==null){ %>
+            <li class="active">외출용품</li>
+            <%}else if(vo.gethCodeCat().equals("40") && vo.getlCodeCat().equals("41")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=40">외출용품</a></li>
+            <li class="active">이동장</li>
+            <%}else if(vo.gethCodeCat().equals("40") && vo.getlCodeCat().equals("42")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=40">외출용품</a></li>
+            <li class="active">가슴줄</li>
+            <%}else if(vo.gethCodeCat().equals("40") && vo.getlCodeCat().equals("43")){ %>
+            <li><a href="${context}/product/get_cat_retrieve.do?hCodeCat=40">외출용품</a></li>
+            <li class="active">의류</li>
+            
+            <%}else{} %>
             
          </ul>
       </div>
@@ -210,18 +259,26 @@
                            <div class="product-thumb">
                               <div class="product-label">
                                	<c:choose>
-                               	<c:when test="${product.sale_percent=='100'}"></c:when>  
-                               	<c:otherwise>                           	
-                                 <span class="sale"><c:out value="${product.sale_percent}"/>%에 구매</span>
-                                 </c:otherwise>
+	                               	<c:when test="${product.sale_percent=='100'}"></c:when>  
+	                               	<c:otherwise>                           	
+	                                 	<span class="sale"><c:out value="${product.sale_percent}"/>%에 구매</span>
+	                                 </c:otherwise>
                                 </c:choose> 
                               </div>
                               <button class="main-btn quick-view detail" title="<c:out value='${product.p_code}'/>"><i class="fa fa-search-plus"></i>자세히 보기</button>
                               <img src="${context}/resources" alt="">
                            </div>
                            <div class="product-body">
-                              <h3 class="product-price"><c:out value="${product.p_price}"/> 원</h3>
-                              
+                           <c:choose>
+	                        <c:when test="${product.sale_percent=='100'}">
+	                            <h3 class="product-price"><fmt:formatNumber value="${product.p_price}"/> 원</h3>
+	                      	</c:when>
+                           	<c:otherwise> 
+                           	   	<small>원가 <del class="font-weak"><fmt:formatNumber value="${product.p_price}"/> 원</del></small>
+                           	   	<br>
+                           	   	<h3 class="product-price"><fmt:formatNumber value="${(product.p_price*product.sale_percent)/100}"/> 원</h3>                         	   	
+                           	   </c:otherwise>
+                           </c:choose>   
                               <h2 class="product-name"><a href="#"><c:out value="${product.p_name}"/></a></h2>
                              
                            </div>

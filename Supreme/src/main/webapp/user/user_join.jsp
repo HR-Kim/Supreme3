@@ -36,100 +36,102 @@
 	<!-- 입력 Form -->
 	<div class="container">
 		<!-- div title -->
-		<div class="page-header">
-			<h1 class="p-b-33">회원가입</h1>
+		<div class="section-title">
+			<h1 class="title">회원가입</h1>
 		</div>
+		
 		<!--// div title -->
-	
-		<div class="col-lg-12"></div>
-		<div class="col-lg-12"></div>
-		<div class="panel panel-default"></div>
+		<br>
+		<br>
+		<br>
 		<!-- 입력 form -->
 		<form action="do_save.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
 			<input type="hidden"  name="fileId" id="fileId" >
 			<div class="form-group">
 				<label for="u_id" class="col-sm-2 control-label">아이디</label>
-				<div class="col-sm-6">
-					<input type="text" maxlength="10"  class="form-control input-sm" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id">
+				<div class="col-sm-4">
+					<input type="text" maxlength="10"  class="form-control input" id="u_id" placeholder="아이디를 10자 이내로 입력해 주세요." name="u_id">
 				</div>
 				<div class="text-right col-sm-2">
-					<button type="button" class="btn btn-default btn-sm" id="idCheck">ID 중복 확인</button>
+					<button type="button" class="main-btn" id="idCheck">ID 중복 확인</button>
 				</div>	
 				<input type="hidden" id="idDuplication" value="id_UnCheck">
 			</div>
 			<div class="form-group">
 				<label for="passwd" class="col-sm-2 control-label">비밀번호</label>
 				<div class="col-sm-8">
-					<input type="password" maxlength="100"  class="form-control input-sm" id="passwd" placeholder="숫자와 영문자로 입력해 주세요." name="passwd">
+					<input type="password" maxlength="100"  class="form-control input" id="passwd" placeholder="숫자와 영문자로 입력해 주세요." name="passwd">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="passwd_check" class="col-sm-2 control-label">비밀번호 확인</label>
 				<div class="col-sm-8">
-					<input type="password" maxlength="100"  class="form-control input-sm" id="passwd_check" placeholder="비밀번호 확인" name="passwd_check">
+					<input type="password" maxlength="100"  class="form-control input" id="passwd_check" placeholder="비밀번호 확인" name="passwd_check">
 				</div>
 			</div>			
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="name" placeholder="이름" name="name">
+					<input type="text" maxlength="300"  class="form-control input" id="name" placeholder="이름" name="name">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="nickname" class="col-sm-2 control-label">닉네임</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="nickname" placeholder="닉네임" name="nickname">
+					<input type="text" maxlength="300"  class="form-control input" id="nickname" placeholder="닉네임" name="nickname">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">이메일</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300" with="20%" class="form-control input-sm" id="email1" placeholder="이메일" name="email1">
+					<input type="text" maxlength="300" with="20%" class="form-control input" id="email1" placeholder="이메일" name="email1">
 				</div>
 				<label for="email" class="col-sm-1 control-label">@</label>
 				<div class="text-left col-sm-3">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="email2" placeholder="도메인 (ex naver.com)" name="email2">
+					<input type="text" maxlength="300"  class="form-control input" id="email2" placeholder="도메인 (ex naver.com)" name="email2">
 				</div>
 			
 			</div>	
 			<div class="form-group">
 				<label for="tel" class="col-sm-2 control-label">전화번호</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="tel" placeholder="'-'없이 번호만 입력해 주세요." name="tel">
+					<input type="text" maxlength="300"  class="form-control input" id="tel" placeholder="'-'없이 번호만 입력해 주세요." name="tel">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="postcode" class="col-sm-2 control-label">우편번호</label>
+				
 				<div class="col-sm-4">
-					<input type="text" maxlength="10"  class="form-control input-sm" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled">
+					<input type="text" maxlength="10"  class="form-control input" id="postcode" placeholder="우편번호" name="postcode" disabled="disabled">
 				</div>
 				<div class="text-right col-sm-4">
-					<button type="button" class="btn btn-default btn-sm" id="pcode_search">우편번호 조회</button>
+					<button type="button" class="main-btn" id="pcode_search">우편번호 조회</button>
 				</div>	
 			</div>
 			<div class="form-group">
 				<label for="address1" class="col-sm-2 control-label">주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address1" placeholder="주소" name="address1" disabled="disabled">
+					<input type="text" maxlength="300"  class="form-control input" id="address1" placeholder="주소" name="address1" disabled="disabled">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="address2" class="col-sm-2 control-label">상세주소</label>
 				<div class="col-sm-8">
-					<input type="text" maxlength="300"  class="form-control input-sm" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2">
+					<input type="text" maxlength="300"  class="form-control input" id="address2" placeholder="상세 주소를 입력해 주세요." name="address2">
 				</div>
-			</div>
-			
-			
-					
+			</div>	
 		</form>
 		
 		<!-- Button Area -->
+		<br>
+		<br>
+		<br>
 		<div class="row">
 			<div class="col-lg-10 col-sm-10 col-xs-10">
+			
 				<div class="text-right">
-					<button type="button" class="btn btn-default btn-sm" id="doInit">초기화</button>
-					<button type="button" class="btn btn-default btn-sm" id="doSave">회원가입</button>
+					<button type="button" class="primary-btn" id="doInit">초기화</button>
+					<button type="button" class="primary-btn" id="doSave">회원가입</button>
 				</div>
 			</div>
 		</div>
@@ -137,6 +139,9 @@
 		<div class="row"><br></div>
 		<div class="row"><br></div>
 		<div class="row"><br></div>
+		<br>
+		<br>
+		<br>
 		
 		
 		

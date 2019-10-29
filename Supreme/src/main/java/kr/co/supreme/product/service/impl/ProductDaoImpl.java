@@ -44,6 +44,28 @@ public class ProductDaoImpl implements WorkDiv {
 		return flag;
 		
 	}
+	
+
+	public int do_stock_update(DTO dto) {
+		String statement = NAMESPACE+".do_stock_update";
+		Product product = (Product) dto;
+		LOG.debug("=========================");
+		LOG.debug("1. param:"+product);
+		LOG.debug("=========================");
+		
+		LOG.debug("=========================");
+		LOG.debug("2. statement:"+statement);
+		LOG.debug("=========================");	
+		
+		
+		
+		int flag = this.sqlSessionTemplate.update(statement, product);
+		LOG.debug("=========================");
+		LOG.debug("3. flag:"+flag);
+		LOG.debug("=========================");			
+		return flag;
+		
+	}
 
 	@Override
 	public int do_delete(DTO dto) {
