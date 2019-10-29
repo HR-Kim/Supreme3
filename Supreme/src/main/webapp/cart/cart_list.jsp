@@ -81,9 +81,6 @@
 				
 					<div class="col-md-12">
 						<div class="order-summary clearfix">
-						<br>
-						<br>
-						<br>
 							<div class="section-title">
 								<h3 class="title">장바구니</h3>
 							</div>
@@ -162,24 +159,28 @@
 
 					</div>
 				<div class="pull-right">
+			
 			</div>
 		</div>
 	</div>
 	</div>
-	<br>
-	<br>
-	<br>
 	<!-- FOOTER -->
 	<%@include file ="/template/footer.jsp" %>
 	<!-- /FOOTER -->
 
+<form class="form-horizontal" name="Frm" id="Frm" method="get">
+	   	<input type="hidden" name="searchWord" id="searchWord" value="<c:out value='${user.id}'/>" />
+	</form>
+	
 <script>
 
 $("#buy").on("click",function(){
-	console.log("doSave");
-
-	location.href = "${context}/order/get2.do"
+	var ss = $('#searchWord').val();
+	alert(ss);
 	
+	var frm = document.Frm;
+	frm.action = "${context}/order/get2.do";
+ 	 frm.submit();
 
 });
 
