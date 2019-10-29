@@ -295,7 +295,7 @@
 		}); 
 	
 		$(document).ready(function() {
-			if("${admin}"=="Admin"){
+			if("${user.id==admin}"){
 				$("#dowrite").show();
 			}else{
 				$("#dowrite").hide();
