@@ -174,10 +174,13 @@
 					</c:choose>
 				  </tbody>
 				</table>
-			
-			<div class="text-right"  >
-				<button class="primary-btn" name="dowrite" id="dowrite" onclick="location='${context}/board/board_write.jsp'">등록하기</button>
-			</div>
+			<c:choose>
+				<c:when test="${user.id=='admin' }">
+					<div class="text-right"  >
+						<button class="primary-btn" name="dowrite" id="dowrite" onclick="location='${context}/board/board_write.jsp'">등록하기</button>
+					</div>
+				</c:when>
+			</c:choose>
 		</div>
 		
 		<!-- //Grid영역 -->

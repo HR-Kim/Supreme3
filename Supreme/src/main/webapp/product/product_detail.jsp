@@ -131,7 +131,7 @@ Product pro = (Product) request.getAttribute("vo");
 							<p><strong>재고:</strong><c:out value="${vo.stock}"/>개 남음</p>
 							<div class="qty-input test">
 								<span class="text-uppercase">수량: </span>
-								<input class="input" id="quantity" type="number">
+								<input class="input" value="1" id="quantity" type="number">
 							</div>	
 						</div>
 						
