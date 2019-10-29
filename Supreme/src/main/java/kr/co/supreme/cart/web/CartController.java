@@ -206,8 +206,8 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 		@RequestMapping(value="cart/get.do",method = RequestMethod.GET)
 		public String get(HttpServletRequest req,Cart cart,Model model) {
 			
-			
-	
+			if(cart.getId()==null || cart.getId()=="") {
+			}else{
 			LOG.debug("============================");
 			LOG.debug("=cart="+cart);
 			LOG.debug("============================");
@@ -246,7 +246,7 @@ Logger LOG = LoggerFactory.getLogger(this.getClass());
 			String referer = req.getHeader("Referer");
 			LOG.debug("자 여기ekdkdkdkkdkdk"+referer);
 //			return "redirect:"+ referer;
-		    			
+			}			
 			return VIEW_LIST_NM;
 		}
 		

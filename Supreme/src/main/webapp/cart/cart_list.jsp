@@ -169,73 +169,72 @@
 	<%@include file ="/template/footer.jsp" %>
 	<!-- /FOOTER -->
 
-<form class="form-horizontal" name="Frm" id="Frm" method="get">
+	<form class="form-horizontal" name="Frm" id="Frm" method="get">
 	   	<input type="hidden" name="searchWord" id="searchWord" value="<c:out value='${user.id}'/>" />
 	</form>
+	<form class="form-horizontal" name="Frm2" id="Frm2" method="get">
+         <input type="hidden" name="userid" id="userid" value="<c:out value='${user.id}'/>" />
+    </form>
 	
-<script>
+	<script>	
 
-$("#buy").on("click",function(){
-	var ss = $('#searchWord').val();
+	$("#buy").on("click",function(){
+		var ss = $('#searchWord').val();
+		
+		
+		var frm = document.Frm;
+		frm.action = "${context}/order/get2.do";
+	 	 frm.submit();
+	
+	});
 	
 	
-	var frm = document.Frm;
-	frm.action = "${context}/order/get2.do";
- 	 frm.submit();
-
-});
-
-
+		
+		
 	
-	
-function go_cart_delete(cseq){
-    
-    if(confirm("정말 삭제하시겠습니까?")){
-        location.href="${context}/order/do_delete.do?cseq="+cseq;      
-    }
-     
-}
 
+	function go_cart_ajax_delete(cseq){
+	   if(confirm("정말 삭제하시겠습니까?")){
+	      console.log(cseq);
+	      var frm = document.Frm2;
+	      var id = $("#userid").val();
+	      
+	      console.log(id);
+	   $.ajax({
+	        type:"POST",
+	        url:"${context}/cart/do_delete.do",
+	        dataType:"html",// JSON
+	        data:{
+	           "cartCode" : cseq,
+	           "id" : id
+	        },
+	        success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
+	            //console.log(data);
+	           //{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
+	           var parseData = $.parseJSON(data);
+	           if(parseData.msgId=="1"){
+	              alert(parseData.msgMsg);
+	              console.log("삭제완료!");
+	              location.href = "${context}/cart/direct.do?searchWord="+id;
+	              
+	              
+	           }else{
+	              alert(parseData.msgMsg);
+	           }
+	           
 
-function go_cart_ajax_delete(cseq){
-	if(confirm("정말 삭제하시겠습니까?")){
-		console.log(cseq);
-		var id = ${user.id};
-	$.ajax({
-        type:"POST",
-        url:"${context}/cart/do_delete.do",
-        dataType:"html",// JSON
-        data:{
-        	"cartCode" : cseq,
-        	"id" : id
-        },
-        success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
-            //console.log(data);
-        	//{"msgId":"1","msgMsg":"삭제 되었습니다.","totalCnt":0,"num":0}
-        	var parseData = $.parseJSON(data);
-        	if(parseData.msgId=="1"){
-        		alert(parseData.msgMsg);
-        		console.log("삭제완료!");
-        		location.href = "${context}/cart/get_retrieve.do?idd=admin";
-        		
-        		
-        	}else{
-        		alert(parseData.msgMsg);
-        	}
-        	
-
-        	
-        },
-        complete: function(data){//무조건 수행
-         
-        },
-        error: function(xhr,status,error){
-         
-        }
-    });	
-	
-	}
-};
+	           
+	        },
+	        complete: function(data){//무조건 수행
+	         
+	        },
+	        error: function(xhr,status,error){
+	         
+	        }
+	    });   
+	   
+	   }
+	};
 </script>
 
 </body>

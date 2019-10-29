@@ -29,7 +29,7 @@ Product pro = (Product) request.getAttribute("vo");
 	
 
 	<!-- BREADCRUMB -->
-	user: ${user} 
+	
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
@@ -238,7 +238,7 @@ Product pro = (Product) request.getAttribute("vo");
 	//장바구니 담기버튼
 	 $("#cart").on('click',function() {
 		  
-		 
+		 confirm("장바구니에 담으시겠습니까?");
 	   
 		 var quantity = $('#quantity').val();
 		 
@@ -246,7 +246,7 @@ Product pro = (Product) request.getAttribute("vo");
 		 frm.quantity.value=quantity;
 		 frm.action = "${context}/cart/get.do";
 	   	 frm.submit();
-	   	 alert("장바구니에 담겼습니다.");
+	   	 
 	   	 
 	   	 
 	   	 

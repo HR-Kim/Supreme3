@@ -60,7 +60,11 @@ for(int i=0;i<3;i++){
 		<div class="panel panel-default"></div>
 		<!-- 입력 form -->
 		<form action="do_update.do" name="frmJoin" id="frmJoin" method="post" class="form-horizontal">
-			
+			<input class="hidden" id="user_id" value="<c:out value='${user.id}'/>">
+			<input class="hidden" id="p_code" value="<c:out value='${aaa.getP_code()}'/>"> 
+			<input class="hidden" id="quantitiy" value="<c:out value='${aaa.getQuantitiy()}'/>"> 
+			<input class="hidden" id="unit_price" value="<c:out value='${aaa.getUnit_price()}'/>"> 
+				
 			<h3>받는사람 정보</h3>
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">이름</label>
@@ -129,9 +133,9 @@ for(int i=0;i<3;i++){
 							<c:forEach  var="list"  items="${list}">
 								<tr>
 									<td class="text-center"><c:out value="${list.pName}"/></td>
-									<td class="text-center"><fmt:formatNumber pattern="###,###,###" value="${list.unitPrice}"/></td>
+									<td class="text-center"><fmt:formatNumber value="${list.unitPrice}"/></td>
 									<td class="text-center"><c:out value="${list.quantity}"/></td>
-								<fmt:formatNumber pattern="###,###,###" var = "sum" value = "${sum + list.unitPrice * list.quantity}" />
+								    <fmt:parseNumber var="sum" value = "${sum + (list.unitPrice * list.quantity)}" integerOnly="true" />
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -147,7 +151,7 @@ for(int i=0;i<3;i++){
 							</table>
 							
 								<div class="pull-right">
-								<h3><strong>결제 금액 : <fmt:formatNumber pattern="###,###,###" value="${sum}"/></strong></h3>
+								<h3><strong>결제 금액 : <fmt:formatNumber value="${sum}"/></strong></h3>
 								<table>
 								<tr>
 									
@@ -316,7 +320,7 @@ function sample6_execDaumPostcode() {
 	    	*/
 	    	name: '주문명:결제테스트',
 	    	//결제창에서 보여질 이름
-	    	amount: ${sum},
+	    	amount: 100,
 	    	//가격
 	    	buyer_email: 'iamport@siot.do',
 	    	buyer_name: '구매자이름',
@@ -369,16 +373,16 @@ function sample6_execDaumPostcode() {
 	            	"pay_method": $("#paymentway").val(),
 	            	"bank": "111",
 	            	"deposit_name": "111", */
-	            	"id" : "admin",
+	            	"id" : $("#user_id").val(),
 	            	"rName" : $("#name").val(),
 	            	"rPostcode" : $("#postcode").val(),
 	            	"rAddress1" : $("#address1").val(),
 	            	"rAddress2" : $("#address2").val(),
 	            	"rTel" : $("#tel").val(),
 	            	"request" : $("#request").val(),	
-	              	"p_code" : "123",
-	              	"quantitiy" : "1",
-	              	"unit_price" : "10000",
+	              	"p_code" : $("#p_code").val(),
+	              	"quantitiy" : $("#quantitiy").val(),
+	              	"unit_price" : $("#unit_price").val(),
 	              	"check" : "2"
 	            },
 	            success: function(data){//통신이 성공적으로 이루어 졌을때 받을 함수
